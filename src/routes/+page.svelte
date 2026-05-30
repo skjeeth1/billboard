@@ -1,10 +1,4 @@
-Here is your `+page.svelte` file updated with all the new sections (Events, Alumni Connect, Contact) and the finalized descriptions, image grids, and calls to action we built earlier.
 
-I've carefully integrated them into the exact structure and styling you provided, ensuring the smooth reveal animations (`use:reveal`) and responsive design apply to everything.
-
-### `+page.svelte`
-
-```svelte
 <script>
   import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
