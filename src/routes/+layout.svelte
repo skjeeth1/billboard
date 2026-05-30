@@ -5,11 +5,10 @@
   let isOpen = $state(false);
 
   const menuItems = [
-    { label: 'Docs', href: '#docs' },
-    { label: 'Blog', href: '#blog' },
-    { label: 'Company', href: '#company' },
-    { label: 'Community', href: '#community', external: true },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'About', href: '#about' },
+    { label: 'Epoch', href: '#epoch' },
+    { label: 'Members', href: '#members' },
+    { label: 'Contact', href: '#contact', external: true }
   ];
 
   function toggleMenu() {
@@ -51,7 +50,8 @@
     <ul class="menu-list">
       {#each menuItems as item, i (item.label)}
         <li in:fly={{ y: 20, duration: 400, delay: 100 + (i * 50) }}>
-          <a href={resolve(item.href)} class="menu-link" onclick={toggleMenu}>
+          // eslint-disable-next-line svelte/no-navigation-without-resolve
+          <a href={item.href} class="menu-link" onclick={toggleMenu}>
             {item.label}
             {#if item.external}
               <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
