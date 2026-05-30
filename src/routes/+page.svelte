@@ -142,7 +142,7 @@
 		padding: 2px;
 		border-radius: 24px;
 		position: relative;
-		max-width: 100%;
+		max-width: 48rem;
 		margin: 0 auto;
 
 		background: linear-gradient(-30deg, var(--gradient-color), transparent, var(--gradient-color)),
@@ -275,7 +275,7 @@
 	/* --- Typography --- */
 	.main-title {
 		font-family: 'Lato', sans-serif;
-		font-size: 4rem;
+		font-size: 3rem;
 		font-weight: 700;
 		line-height: 1.2;
 		color: #c0caf5;
@@ -334,13 +334,20 @@
 			padding: 24px 32px 80px 32px; /* Increased mobile bottom padding */
 		}
 		.main-title {
-			font-size: 2.5rem;
+			font-size: 2rem;
 		}
 		.subtitle {
 			font-size: 1rem;
 		}
 		.about-section {
 			padding: 4rem 3rem;
+		}
+	}
+
+	/* --- Mobile landscape --- */
+	@media (max-height: 768px) {
+		.main-title {
+			font-size: 1.5rem;
 		}
 	}
 </style>

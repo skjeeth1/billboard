@@ -1,7 +1,7 @@
 <script>
 	let { children } = $props();
   import { slide, fly } from 'svelte/transition';
-
+  import { resolve } from '$app/paths'
   let isOpen = $state(false);
 
   const menuItems = [
@@ -25,7 +25,7 @@
 <nav class="navbar" class:bg-solid={isOpen}>
   <div class="nav-container">
     
-    <a href="/" class="logo" onclick={() => { isOpen = false; document.body.style.overflow = 'auto'; }}>
+    <a href="{resolve('/')}" class="logo" onclick={() => { isOpen = false; document.body.style.overflow = 'auto'; }}>
       <span class="logo-text">[LOGO]</span>
     </a>
 
@@ -51,7 +51,7 @@
     <ul class="menu-list">
       {#each menuItems as item, i (item.label)}
         <li in:fly={{ y: 20, duration: 400, delay: 100 + (i * 50) }}>
-          <a href={item.href} class="menu-link" onclick={toggleMenu}>
+          <a href={resolve(item.href)} class="menu-link" onclick={toggleMenu}>
             {item.label}
             {#if item.external}
               <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -76,7 +76,7 @@
 
   /* --- Navbar --- */
   .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
