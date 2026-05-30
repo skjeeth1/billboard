@@ -200,6 +200,24 @@
       eget est. Phasellus id venenatis ex.
     </p>
   </section>
+
+  <section class="about-section" use:reveal>
+    <h3 class="section-title">EPOCH</h3>
+
+    <p class="description">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+      Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+      mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+      massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+    </p>
+
+    <p class="dummy-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum tincidunt massa, vel
+      facilisis ex eleifend vitae. Sed non lectus id libero dapibus scelerisque. Nulla facilisi.
+      Cras congue, sapien eu eleifend sollicitudin, felis quam cursus mauris, id semper arcu nunc
+      eget est. Phasellus id venenatis ex.
+    </p>
+  </section>
 </div>
 
 <style>
@@ -343,8 +361,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-	height: 100%;
-	justify-content: center;
+    height: 100%;
+    justify-content: center;
     z-index: 10;
   }
 
