@@ -20,7 +20,17 @@
       document.body.style.overflow = isOpen ? 'hidden' : 'auto';
     }
   }
+
+  // Safety catch: Close mobile menu and restore scroll if window is resized to desktop
+  function handleResize() {
+    if (typeof window !== 'undefined' && window.innerWidth >= 768 && isOpen) {
+      isOpen = false;
+      document.body.style.overflow = 'auto';
+    }
+  }
 </script>
+
+<svelte:window onresize={handleResize} />
 
 <nav class="navbar" class:bg-solid={isOpen}>
   <div class="nav-container">
@@ -29,11 +39,21 @@
       class="logo"
       onclick={() => {
         isOpen = false;
-        document.body.style.overflow = 'auto';
+        if (typeof window !== 'undefined') document.body.style.overflow = 'auto';
       }}
     >
       <span class="logo-text">[LOGO]</span>
     </a>
+
+    <ul class="desktop-menu">
+      {#each menuItems as item (item.label)}
+        <li>
+          <a href={item.href} class="desktop-link">
+            {item.label}
+          </a>
+        </li>
+      {/each}
+    </ul>
 
     <button class="menu-toggle" aria-label="Toggle menu" onclick={toggleMenu}>
       {#if !isOpen}
@@ -71,20 +91,6 @@
         <li in:fly={{ y: 20, duration: 400, delay: 100 + i * 50 }}>
           <a href={item.href} class="menu-link" onclick={toggleMenu}>
             {item.label}
-            {#if item.external}
-              <svg
-                class="external-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            {/if}
           </a>
         </li>
       {/each}
@@ -153,15 +159,32 @@
     color: #ffffff;
   }
 
-  .logo-icon {
-    width: 28px;
-    height: 28px;
-  }
-
   .logo-text {
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.02em;
+  }
+
+  /* --- Desktop Menu Styles --- */
+  .desktop-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .desktop-link {
+    text-decoration: none;
+    color: #8f93a2;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .desktop-link:hover {
+    color: #ffffff;
   }
 
   /* --- Hamburger Toggle --- */
@@ -183,10 +206,10 @@
     transition: transform 0.2s ease;
   }
 
-  /* --- Full Screen Menu --- */
+  /* --- Full Screen Menu (Mobile) --- */
   .mobile-menu {
     position: fixed;
-    top: 70px; /* Sits exactly below the navbar */
+    top: 70px;
     left: 0;
     width: 100%;
     height: calc(100vh - 70px);
@@ -211,7 +234,7 @@
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: #8f93a2; /* Muted gray for default state */
+    color: #8f93a2;
     font-size: 1.125rem;
     font-weight: 500;
     transition: color 0.2s ease;
@@ -222,9 +245,17 @@
     color: #ffffff;
   }
 
-  .external-icon {
-    width: 14px;
-    height: 14px;
-    opacity: 0.7;
+  @media (min-width: 768px) {
+    .desktop-menu {
+      display: flex; 
+    }
+    
+    .menu-toggle {
+      display: none; 
+    }
+    
+    .mobile-menu {
+      display: none !important; 
+    }
   }
 </style>
