@@ -3,6 +3,9 @@
   import { onMount } from 'svelte';
 
   let animate = $state(false);
+  
+  // Toggle this variable to true/false in code to control the effect
+  let enElectricEffect = true; 
 
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
@@ -58,105 +61,107 @@
 </svelte:head>
 
 <div class="page-wrapper">
-  <svg class="svg-container">
-    <defs>
-      <filter
-        id="turbulent-displace"
-        colorInterpolationFilters="sRGB"
-        x="-20%"
-        y="-20%"
-        width="140%"
-        height="140%"
-      >
-        <feTurbulence
-          type="turbulence"
-          baseFrequency="0.02"
-          numOctaves="10"
-          result="noise1"
-          seed="1"
-        />
-        <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
-          <animate
-            attributeName="dy"
-            values="700; 0"
-            dur="6s"
-            repeatCount="indefinite"
-            calcMode="linear"
+  {#if enElectricEffect}
+    <svg class="svg-container">
+      <defs>
+        <filter
+          id="turbulent-displace"
+          colorInterpolationFilters="sRGB"
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="140%"
+        >
+          <feTurbulence
+            type="turbulence"
+            baseFrequency="0.02"
+            numOctaves="10"
+            result="noise1"
+            seed="1"
           />
-        </feOffset>
+          <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+            <animate
+              attributeName="dy"
+              values="700; 0"
+              dur="6s"
+              repeatCount="indefinite"
+              calcMode="linear"
+            />
+          </feOffset>
 
-        <feTurbulence
-          type="turbulence"
-          baseFrequency="0.02"
-          numOctaves="10"
-          result="noise2"
-          seed="1"
-        />
-        <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
-          <animate
-            attributeName="dy"
-            values="0; -700"
-            dur="6s"
-            repeatCount="indefinite"
-            calcMode="linear"
+          <feTurbulence
+            type="turbulence"
+            baseFrequency="0.02"
+            numOctaves="10"
+            result="noise2"
+            seed="1"
           />
-        </feOffset>
+          <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+            <animate
+              attributeName="dy"
+              values="0; -700"
+              dur="6s"
+              repeatCount="indefinite"
+              calcMode="linear"
+            />
+          </feOffset>
 
-        <feTurbulence
-          type="turbulence"
-          baseFrequency="0.02"
-          numOctaves="10"
-          result="noise1"
-          seed="2"
-        />
-        <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
-          <animate
-            attributeName="dx"
-            values="490; 0"
-            dur="6s"
-            repeatCount="indefinite"
-            calcMode="linear"
+          <feTurbulence
+            type="turbulence"
+            baseFrequency="0.02"
+            numOctaves="10"
+            result="noise1"
+            seed="2"
           />
-        </feOffset>
+          <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+            <animate
+              attributeName="dx"
+              values="490; 0"
+              dur="6s"
+              repeatCount="indefinite"
+              calcMode="linear"
+            />
+          </feOffset>
 
-        <feTurbulence
-          type="turbulence"
-          baseFrequency="0.02"
-          numOctaves="10"
-          result="noise2"
-          seed="2"
-        />
-        <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
-          <animate
-            attributeName="dx"
-            values="0; -490"
-            dur="6s"
-            repeatCount="indefinite"
-            calcMode="linear"
+          <feTurbulence
+            type="turbulence"
+            baseFrequency="0.02"
+            numOctaves="10"
+            result="noise2"
+            seed="2"
           />
-        </feOffset>
+          <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+            <animate
+              attributeName="dx"
+              values="0; -490"
+              dur="6s"
+              repeatCount="indefinite"
+              calcMode="linear"
+            />
+          </feOffset>
 
-        <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
-        <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
-        <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+          <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+          <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+          <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
 
-        <feDisplacementMap
-          in="SourceGraphic"
-          in2="combinedNoise"
-          scale="30"
-          xChannelSelector="R"
-          yChannelSelector="B"
-        />
-      </filter>
-    </defs>
-  </svg>
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="combinedNoise"
+            scale="30"
+            xChannelSelector="R"
+            yChannelSelector="B"
+          />
+        </filter>
+      </defs>
+    </svg>
+  {/if}
 
   <section class="hero-section">
     {#if animate}
       <div class="card-container">
         <div class="inner-container">
           <div class="border-outer">
-            <div class="main-card"></div>
+            <div class="main-card" class:electric-active={enElectricEffect}></div>
           </div>
           <div class="glow-layer-1"></div>
           <div class="glow-layer-2"></div>
@@ -302,7 +307,7 @@
     height: calc(100% + 4px);
     border-radius: 24px;
     border: 2px solid var(--electric-border-color);
-    filter: url(#turbulent-displace);
+    /* Filter removed from here so it defaults to off on desktop */
   }
 
   .glow-layer-1 {
@@ -419,12 +424,12 @@
     text-align: left;
     padding: 6rem 2rem;
     box-sizing: border-box;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
   }
   .section-title {
     /* font-family: 'Atkinson Hyperlegible', sans-serif; */
-    font-size: 1.5rem;
+    font-size: 5rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     color: #bb9af7;
@@ -432,17 +437,17 @@
   }
 
   .description {
-    font-size: 1.1rem;
+    font-size: 1.7rem;
     line-height: 1.6;
     color: #a9b1d6;
     margin-bottom: 2.5rem;
   }
 
   .dummy-text {
-    font-size: 0.95rem;
+    font-size: 1.25rem;
     line-height: 1.7;
     color: #565f89;
-    max-width: 600px;
+    /* max-width: 600px; */
   }
 
   /* --- Responsive --- */
@@ -461,6 +466,11 @@
     }
     .about-section {
       padding: 4rem 3rem;
+    }
+    
+    /* The electricity filter is only applied on mobile devices AND if the dynamic class is present */
+    .main-card.electric-active {
+      filter: url(#turbulent-displace);
     }
   }
 </style>
