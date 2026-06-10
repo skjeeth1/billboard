@@ -1,9 +1,7 @@
 
 <script>
 	let { children } = $props();
-  import { slide, fly } from 'svelte/transition';
   import { resolve } from '$app/paths'
-  let { children } = $props();
   import { slide, fly, fade } from 'svelte/transition';
 
   let isOpen = $state(false);
@@ -68,7 +66,6 @@
 <nav class="navbar" class:bg-solid={isOpen || isAllActivityOpen}>
   <div class="nav-container">
     
-    <a href="{resolve('/')}" class="logo" onclick={() => { isOpen = false; document.body.style.overflow = 'auto'; }}>
     <a
       href="/"
       class="logo"
