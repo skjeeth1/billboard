@@ -10,11 +10,11 @@
         networking.
     </p>
 
-    <p class="dummy-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum tincidunt massa, vel
-        facilisis ex eleifend vitae. Sed non lectus id libero dapibus scelerisque. Nulla facilisi.
-        Cras congue, sapien eu eleifend sollicitudin, felis quam cursus mauris, id semper arcu nunc
-        eget est. Phasellus id venenatis ex.
+    <p class="about-text">
+        Established in 1964 at the CET Campus, the Department of Electronics and Communication Engineering offers
+		comprehensive B.Tech and M.Tech programmes. Driven by a mission of academic excellence, research innovation 
+		and strong industry-alumni networking, our department is dedicated to transforming students into highly competent,
+		socially responsible and ethically grounded professionals equipped to meet the evolving needs of the global industry.
     </p>
 </section>
 
@@ -47,11 +47,11 @@
 		margin-bottom: 2.5rem;
 	}
 
-	.dummy-text {
+	.about-text {
 		font-size: 0.95rem;
 		line-height: 1.7;
 		color: #565f89;
-		max-width: 600px;
+		max-width: 1000px;
 	}
 
 	/* --- Responsive --- */
