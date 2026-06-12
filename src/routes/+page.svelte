@@ -2,6 +2,7 @@
 <script>
   import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import data from './data.json';
 
   let animate = $state(false);
   
@@ -186,7 +187,7 @@
               College of Engineering, Trivandrum
             </h2>
             <div in:fly={{ y: 20, duration: 1000, delay: 800 }}>
-              <a href="#epoch" class="cta-button">Explore Epoch</a>
+              <a href="/epoch" class="cta-button">Explore Epoch</a>
             </div>
           </div>
         </div>
@@ -214,27 +215,15 @@
     </p>
 
     <div class="image-grid">
-      <div class="image-card">
-        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80" alt="Hardware Workshop" />
-        <div class="card-content">
-          <h4>Hands-on Workshops</h4>
-          <p>Learn from industry experts with specialized equipment.</p>
+      {#each data.epoch as item (item.title)}
+        <div class="image-card" use:reveal>
+          <img src={item.image} alt={item.alt} />
+          <div class="card-content">
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
         </div>
-      </div>
-      <div class="image-card">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Coding Hackathon" />
-        <div class="card-content">
-          <h4>24hr Hackathons</h4>
-          <p>Compete with top coders to solve complex logic challenges.</p>
-        </div>
-      </div>
-      <div class="image-card">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Tech Exhibitions" />
-        <div class="card-content">
-          <h4>Tech Exhibitions</h4>
-          <p>Discover the latest hardware innovations and student projects.</p>
-        </div>
-      </div>
+      {/each}
     </div>
   </section>
 
@@ -243,38 +232,18 @@
     <p class="description">Upcoming departmental activities, seminars, and workshops.</p>
     
     <div class="events-list">
-      <div class="event-row">
-        <div class="event-date">
-          <span class="day">15</span>
-          <span class="month">AUG</span>
+      {#each data.events as event (event.title)}
+        <div class="event-row" use:reveal>
+          <div class="event-date">
+            <span class="day">{event.day}</span>
+            <span class="month">{event.month}</span>
+          </div>
+          <div class="event-details">
+            <h4>{event.title}</h4>
+            <p>{event.description}</p>
+          </div>
         </div>
-        <div class="event-details">
-          <h4>VLSI Design Masterclass</h4>
-          <p>Guest lecture and hands-on session led by senior engineers from Intel.</p>
-        </div>
-      </div>
-      
-      <div class="event-row">
-        <div class="event-date">
-          <span class="day">02</span>
-          <span class="month">SEP</span>
-        </div>
-        <div class="event-details">
-          <h4>IoT Hackathon Kickoff</h4>
-          <p>Briefing session for the inter-college Internet of Things hackathon.</p>
-        </div>
-      </div>
-
-      <div class="event-row">
-        <div class="event-date">
-          <span class="day">28</span>
-          <span class="month">SEP</span>
-        </div>
-        <div class="event-details">
-          <h4>Alumni Mentorship Mixer</h4>
-          <p>An evening of networking and guidance with notable ECE alumni.</p>
-        </div>
-      </div>
+      {/each}
     </div>
   </section>
 
@@ -283,26 +252,14 @@
     <p class="description">Bridging the gap between our distinguished alumni and current students.</p>
     
     <div class="alumni-grid">
-      <div class="alumni-card">
-        <div class="avatar"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Alumni 1" /></div>
-        <h4>Dr. Ananya Sharma</h4>
-        <p class="role">Principal Researcher</p>
-        <p class="company">Microsoft Research</p>
-      </div>
-      
-      <div class="alumni-card">
-        <div class="avatar"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=150&q=80" alt="Alumni 2" /></div>
-        <h4>Rajiv Menon</h4>
-        <p class="role">Senior Staff Engineer</p>
-        <p class="company">Qualcomm</p>
-      </div>
-      
-      <div class="alumni-card">
-        <div class="avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Alumni 3" /></div>
-        <h4>Sneha Patel</h4>
-        <p class="role">Hardware Architect</p>
-        <p class="company">NVIDIA</p>
-      </div>
+      {#each data.alumni as person (person.name)}
+        <div class="alumni-card" use:reveal>
+          <div class="avatar"><img src={person.avatar} alt={person.alt} /></div>
+          <h4>{person.name}</h4>
+          <p class="role">{person.role}</p>
+          <p class="company">{person.company}</p>
+        </div>
+      {/each}
     </div>
   </section>
 
