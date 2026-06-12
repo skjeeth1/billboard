@@ -1,6 +1,7 @@
 
 <script>
-  let { children } = $props();
+	let { children } = $props();
+  import { resolve } from '$app/paths'
   import { slide, fly, fade } from 'svelte/transition';
 
   let isOpen = $state(false);
@@ -11,9 +12,8 @@
   const menuItems = [
     { label: 'About', href: '#about' },
     { label: 'Epoch', href: '#epoch' },
-    { label: 'Events', href: '#events' },
-    { label: 'Alumni', href: '#alumni' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'Members', href: '#members' },
+    { label: 'Contact', href: '#contact', external: true }
   ];
 
   function toggleMenu() {
@@ -65,6 +65,7 @@
 
 <nav class="navbar" class:bg-solid={isOpen || isAllActivityOpen}>
   <div class="nav-container">
+    
     <a
       href="/"
       class="logo"
@@ -255,6 +256,8 @@
   <div class="mobile-menu" transition:slide={{ duration: 200 }}>
     <ul class="menu-list">
       {#each menuItems as item, i (item.label)}
+        <li in:fly={{ y: 20, duration: 400, delay: 100 + (i * 50) }}>
+          // eslint-disable-next-line svelte/no-navigation-without-resolve
         <li in:fly={{ y: 20, duration: 400, delay: 100 + i * 50 }}>
           <a href={item.href} class="menu-link" onclick={toggleMenu}>
             {item.label}
@@ -277,6 +280,11 @@
 
   /* Navbar */
   .navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
     position: fixed; top: 0; left: 0; width: 100%; height: 70px;
     background-color: rgba(12, 12, 16, 0.8);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
