@@ -1,0 +1,49 @@
+[
+  {
+    "semester": "Semester 1",
+    "subjects": [
+      {
+        "name": "Linear Algebra and Calculus",
+        "link": "https://www.google.com"
+      },
+      {
+        "name": "Engineering Physics",
+        "link": "#drive-link"
+      },
+      {
+        "name": "Engineering Chemistry",
+        "link": "#drive-link"
+      },
+      {
+        "name": "Engineering Mechanics",
+        "link": "#drive-link"
+      }
+    ]
+  },
+  {
+    "semester": "Semester 3",
+    "subjects": [
+      {
+        "name": "Solid State Devices",
+        "link": "#drive-link"
+      },
+      {
+        "name": "Network Theory",
+        "link": "#drive-link"
+      },
+      {
+        "name": "Logic Circuit Design",
+        "link": "#drive-link"
+      }
+    ]
+  },
+  {
+    "semester": "Semester 4",
+    "subjects": [
+      {
+        "name": "Analog Communication",
+        "link": "#drive-link"
+      }
+    ]
+  }
+]
