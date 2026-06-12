@@ -6,7 +6,7 @@
   import ElectricCard from '$lib/components/ElectricCard.svelte';
   import Section from '$lib/components/Section.svelte';
 
-  import data from '$lib/data/data.json';
+  import alumniData from '$lib/data/alumni.json';
   import eventData from '$lib/data/events.json';
   import epochData from '$lib/data/epoch.json';
 
@@ -135,7 +135,7 @@
     description="Bridging the gap between our distinguished alumni and current students."
   >
     <div class="alumni-grid">
-      {#each data.alumni as person (person.name)}
+      {#each alumniData as person (person.name)}
         <div class="alumni-card" use:reveal>
           <div class="avatar"><img src={person.avatar} alt={person.alt} /></div>
           <h4>{person.name}</h4>
