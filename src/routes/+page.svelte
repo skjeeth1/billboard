@@ -7,7 +7,7 @@
   import Section from '$lib/components/Section.svelte';
 
   import alumniData from '$lib/data/alumni.json';
-  import eventData from '$lib/data/events.json';
+  import newsData from '$lib/data/newsroom.json';
   import epochData from '$lib/data/epoch.json';
 
   let animate = $state(false);
@@ -26,14 +26,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet"
   />
 </svelte:head>
@@ -109,23 +101,46 @@
   </Section>
 
   <Section
-    id="events"
-    title="EVENTS"
-    description="Upcoming departmental activities, seminars, and workshops."
+    id="oppam"
+    title="OPPAM"
+    description="Your ultimate repository for study materials. orem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur augue elit, ullamcorper imperdiet leo interdum id. Etiam et tincidunt elit. Quisque nisl mauris, dignissim at ligula non, pulvinar finibus nibh. Vestibulum convallis justo sem, eget rhoncus metus dapibus eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  >
+    <!-- <p class="dummy-text">
+      The department currently offers two B.Tech. programmes, five M.Tech. programmes, and doctoral
+      programmes in various specialized areas. All programmes are approved by AICTE, and the
+      department is recognized as an approved QIP Centre, contributing significantly to academic
+      excellence, research, and technological innovation.
+    </p> -->
+    <div class="explore-container" use:reveal>
+      <a href="/oppam" class="cta-button">Visit Oppam &rarr;</a>
+    </div>
+  </Section>
+
+  <Section
+    id="newsroom"
+    title="NEWSROOM"
+    description="Upcoming departmental activities, seminars, and notifications."
   >
     <div class="events-list">
-      {#each eventData as event (event.title)}
+      {#each newsData.slice(0, 3) as event (event.title)}
         <div class="event-row" use:reveal>
           <div class="event-date">
             <span class="day">{event.day}</span>
             <span class="month">{event.month}</span>
           </div>
           <div class="event-details">
+            <span class="event-tag {event.tag}">
+              {event.tag === 'notification' ? 'NOTIFICATION' : 'DEPARTMENT EVENT'}
+            </span>
             <h4>{event.title}</h4>
             <p>{event.description}</p>
           </div>
         </div>
       {/each}
+    </div>
+
+    <div class="explore-container" use:reveal>
+      <a href="/newsroom" class="cta-button">Explore all news &rarr;</a>
     </div>
   </Section>
 
@@ -184,8 +199,6 @@
 </div>
 
 <style>
-
-
   .page-wrapper {
     font-family: 'JetBrains Mono', monospace;
     background-color: #1a1b26;
@@ -234,7 +247,6 @@
 
   /* --- Typography --- */
   .main-title {
-    /* font-family: 'Lato', sans-serif; */
     font-size: 4rem;
     font-weight: 700;
     line-height: 1.2;
@@ -243,7 +255,6 @@
   }
 
   .subtitle {
-    /* font-family: 'Atkinson Hyperlegible', sans-serif; */
     font-size: 1.2rem;
     font-weight: 700;
     color: #c0caf5;
@@ -399,6 +410,26 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     opacity: 0.8;
+  }
+
+  .event-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .event-tag.event {
+    background-color: rgba(187, 154, 247, 0.15);
+    color: #bb9af7;
+  }
+
+  .event-tag.notification {
+    background-color: rgba(122, 162, 247, 0.15);
+    color: #7aa2f7;
   }
 
   .event-details h4 {
@@ -584,5 +615,4 @@
       align-items: baseline;
     }
   }
-
 </style>

@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>Epoch | The Annual Tech Fest</title>
+  <title>Epoch</title>
   <meta name="description" content="Dive deep into Epoch, the annual technical symposium of CET." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,16 +22,21 @@
     <div class="hero-background"></div>
     <div class="hero-content">
       <h1>EPOCH</h1>
-      <p>Innovate. Integrate. Inspire.</p>
+      <p>Building Competence. Shaping Careers. Creating Opportunities.</p>
     </div>
   </section>
 
   <Section 
-    title="Our Vision" 
-    description="Epoch is more than just a tech fest; it's a celebration of innovation, a platform for collaboration, and a beacon for future engineers. We aim to create an environment where creativity meets technology, and ideas transform into reality." 
+    title="VISION" 
+    description="EPOCH (Electronics Placement & Outcome Competency Hub) is a flagship initiative of the Department of Electronics and Communication Engineering dedicated to enhancing student employability, professional competencies, and career outcomes. It serves as a structured platform that brings together faculty mentors, industry insights, alumni support, and student coordinators to prepare learners for successful careers in both core and non-core domains." 
   />
 
-  <Section title="Latest Event">
+  <Section
+  title="WHAT WE PROVIDE"
+  description="Through regular aptitude and technical assessments, placement-oriented training, mock interviews, group discussions, industry interactions, technical workshops, and career guidance sessions, EPOCH equips students with the skills and confidence required to excel in recruitment processes. The initiative also fosters continuous learning, industry exposure, and performance tracking, creating a holistic ecosystem for professional growth and placement readiness."
+  />
+
+  <Section title="UPCOMING EVENT">
     <div class="latest-event-container">
       <div class="event-image">
         <img src={latestEvent.image} alt={latestEvent.alt} />
@@ -53,7 +58,7 @@
     </div>
   </Section>
 
-  <Section title="Previous Events">
+  <Section title="PREVIOUS EVENTS">
     <div class="previous-events-grid">
       {#each previousEvents as event (event.title)}
         <div class="prev-event-card">
@@ -128,8 +133,9 @@
     background-color: rgba(26, 27, 38, 0.5);
     border: 1px solid rgba(187, 154, 247, 0.2);
     border-radius: 16px;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-top: 2rem;
+    box-shadow: 0 0 15px rgba(187, 154, 247, 0.2);
   }
 
   .event-image {
