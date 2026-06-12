@@ -5,19 +5,20 @@
   import { reveal } from '$lib/utils/animations.js';
   import ElectricCard from '$lib/components/ElectricCard.svelte';
   import Section from '$lib/components/Section.svelte';
-  
+
   import data from '$lib/data/data.json';
+  import eventData from '$lib/data/events.json';
+  import epochData from '$lib/data/epoch.json';
 
   let animate = $state(false);
-  
+
   // Toggle this variable to true/false in code to control the effect
-  let enElectricEffect = false; 
+  let enElectricEffect = false;
 
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
     animate = true;
   });
-
 </script>
 
 <svelte:head>
@@ -41,65 +42,79 @@
   <section class="hero-section">
     {#if animate}
       <ElectricCard active={enElectricEffect}>
-          <div class="content-top">
-            <h1 class="main-title" in:fly={{ y: 40, duration: 1000, delay: 200 }}>
-              ELECTRONICS AND COMMUNICATION ENGINEERING
-            </h1>
-          </div>
+        <div class="content-top">
+          <h1 class="main-title" in:fly={{ y: 40, duration: 1000, delay: 200 }}>
+            ELECTRONICS AND COMMUNICATION ENGINEERING
+          </h1>
+        </div>
 
-          <hr class="divider" />
+        <hr class="divider" />
 
-          <div class="content-bottom">
-            <h2 class="subtitle" in:fly={{ y: 20, duration: 1000, delay: 600 }}>
-              College of Engineering, Trivandrum
-            </h2>
-            <div in:fly={{ y: 20, duration: 1000, delay: 800 }}>
+        <div class="content-bottom">
+          <h2 class="subtitle" in:fly={{ y: 20, duration: 1000, delay: 600 }}>
+            College of Engineering, Trivandrum
+          </h2>
+          <!-- <div in:fly={{ y: 20, duration: 1000, delay: 800 }}>
               <a href="/epoch" class="cta-button">Explore Epoch</a>
-            </div>
-          </div>
+            </div> -->
+        </div>
       </ElectricCard>
     {/if}
   </section>
 
-  <Section 
-    id="about" 
-    title="ABOUT" 
-    description="Driven by a mission of academic excellence, research innovation, and strong industry-alumni networking."
+  <Section
+    id="about"
+    title="ABOUT"
+    description="The Department of Electronics and Communication Engineering, established at CET Campus, Sreekariyam in 1964–65, is one of the institution’s oldest and most distinguished departments. Starting with a B.Tech. programme in Electronics and Communication Engineering and an initial intake of 33 students, the department has grown into a centre for quality education and research."
   >
     <p class="dummy-text">
-      The Department of Electronics and Communication Engineering (ECE) at the College of Engineering, Trivandrum is committed to fostering innovation and excellence. We offer a rigorous academic curriculum backed by cutting-edge research laboratories and experienced faculty. Our goal is to mold technically proficient, ethically sound engineers equipped to tackle the complex technological challenges of the future while contributing significantly to society and industry.
+      The department currently offers two B.Tech. programmes, five M.Tech. programmes, and doctoral
+      programmes in various specialized areas. All programmes are approved by AICTE, and the
+      department is recognized as an approved QIP Centre, contributing significantly to academic
+      excellence, research, and technological innovation.
     </p>
   </Section>
 
-  <Section 
-    id="epoch" 
-    title="EPOCH" 
+  <Section
+    id="epoch"
+    title="EPOCH"
     description="The ultimate technical symposium hosted by the finest minds in engineering."
   >
     <p class="dummy-text">
-      Epoch is our flagship annual technical festival, bringing together hundreds of students, innovators, and industry leaders across the country. Through high-stakes hackathons, thought-provoking exhibitions, and hands-on workshops, Epoch provides an unparalleled platform for students to demonstrate their skills, explore emerging technologies, and collaborate on real-world problems.
+      Epoch is our flagship annual technical festival, bringing together hundreds of students,
+      innovators, and industry leaders across the country. Through high-stakes hackathons,
+      thought-provoking exhibitions, and hands-on workshops, Epoch provides an unparalleled platform
+      for students to demonstrate their skills, explore emerging technologies, and collaborate on
+      real-world problems.
     </p>
 
     <div class="image-grid">
-      {#each data.epoch as item (item.title)}
+      {#each epochData.slice(0, 3) as item (item.title)}
         <div class="image-card" use:reveal>
+          <div class="card-badge" class:latest={item.tag === 'latest'}>
+            {item.tag === 'latest' ? 'LATEST' : 'PREVIOUS'}
+          </div>
           <img src={item.image} alt={item.alt} />
           <div class="card-content">
             <h4>{item.title}</h4>
-            <p>{item.description}</p>
+            <p>{item.speaker}, <strong>{item.company}</strong></p>
           </div>
         </div>
       {/each}
     </div>
+
+    <div class="explore-container" use:reveal>
+      <a href="/epoch" class="cta-button">Explore all events &rarr;</a>
+    </div>
   </Section>
 
-  <Section 
-    id="events" 
-    title="EVENTS" 
+  <Section
+    id="events"
+    title="EVENTS"
     description="Upcoming departmental activities, seminars, and workshops."
   >
     <div class="events-list">
-      {#each data.events as event (event.title)}
+      {#each eventData as event (event.title)}
         <div class="event-row" use:reveal>
           <div class="event-date">
             <span class="day">{event.day}</span>
@@ -114,9 +129,9 @@
     </div>
   </Section>
 
-  <Section 
-    id="alumni" 
-    title="ALUMNI CONNECT" 
+  <Section
+    id="alumni"
+    title="ALUMNI CONNECT"
     description="Bridging the gap between our distinguished alumni and current students."
   >
     <div class="alumni-grid">
@@ -251,6 +266,13 @@
     box-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
   }
 
+  .explore-container {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .dummy-text {
     font-size: 1.25rem;
     line-height: 1.7;
@@ -272,12 +294,37 @@
     border: 1px solid rgba(187, 154, 247, 0.2);
     border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
+    position: relative;
   }
 
   .image-card:hover {
     transform: translateY(-5px);
     border-color: rgba(187, 154, 247, 0.6);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: rgba(26, 27, 38, 0.8);
+    color: #a9b1d6;
+    border: 1px solid #565f89;
+    z-index: 2;
+  }
+
+  .card-badge.latest {
+    background-color: rgba(187, 154, 247, 0.2);
+    color: #bb9af7;
+    border-color: #bb9af7;
   }
 
   .image-card img {
@@ -320,7 +367,9 @@
     padding: 1.5rem;
     border-radius: 12px;
     border-left: 4px solid #bb9af7;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
   }
 
   .event-row:hover {
@@ -377,7 +426,9 @@
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease;
   }
 
   .alumni-card:hover {
@@ -424,7 +475,7 @@
   }
 
   /* --- Contact Section --- */
-  .contact-container {
+  /* .contact-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
@@ -494,7 +545,7 @@
   .submit-btn:hover {
     background-color: #c0caf5;
     box-shadow: 0 0 15px rgba(187, 154, 247, 0.4);
-  }
+  } */
 
   /* --- Responsive --- */
   @media (max-width: 768px) {
@@ -510,13 +561,13 @@
     .subtitle {
       font-size: 1rem;
     }
-    
+
     /* Responsive grids and lists */
-    .contact-container {
+    /* .contact-container {
       grid-template-columns: 1fr;
       gap: 3rem;
-    }
-    
+    } */
+
     .event-row {
       flex-direction: column;
       align-items: flex-start;
@@ -524,7 +575,7 @@
       border-left: none;
       border-top: 4px solid #bb9af7;
     }
-    
+
     .event-date {
       flex-direction: row;
       gap: 0.5rem;
