@@ -1,0 +1,39 @@
+[
+  {
+    "title": "Annual Tech Symposium 2024",
+    "day": "15",
+    "month": "MAR",
+    "date": "March 15, 2024",
+    "description": "Join us for a two-day technical extravaganza featuring guest lectures and workshops.",
+    "details": "The event will feature prominent industry experts covering AI, embedded systems, and robotics. Registration closes on March 10th. Open to all engineering students across the state.",
+    "tag": "event",
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "title": "Guest Lecture on VLSI Design",
+    "day": "20",
+    "month": "FEB",
+    "date": "February 20, 2024",
+    "description": "An interactive session by Dr. Jane Doe from Intel.",
+    "details": "Learn about the latest trends in very-large-scale integration (VLSI) and semiconductor manufacturing. Venue: Seminar Hall 1, Time: 2:00 PM - 4:00 PM.",
+    "tag": "event"
+  },
+  {
+    "title": "Even Semester Registration",
+    "day": "05",
+    "month": "FEB",
+    "date": "February 05, 2024",
+    "description": "Deadline to register for Even Semester classes.",
+    "details": "All students must complete their course registration via the student portal. Please reach out to your faculty advisor for final approvals. Late registrations will incur a fee of ₹500.",
+    "tag": "notification"
+  },
+  {
+    "title": "Call for Project Proposals",
+    "day": "30",
+    "month": "JAN",
+    "date": "January 30, 2024",
+    "description": "Submit final year project abstracts to your respective guides.",
+    "details": "Final year students must submit a 2-page project proposal detailing their objective, methodology, and hardware/software requirements. Approval must be obtained by Feb 15th to proceed with the procurement of components.",
+    "tag": "notification"
+  }
+]
