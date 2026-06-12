@@ -13,7 +13,7 @@
   let animate = $state(false);
 
   // Toggle this variable to true/false in code to control the effect
-  let enElectricEffect = false;
+  let enElectricEffect = true;
 
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
