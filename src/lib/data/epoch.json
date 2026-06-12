@@ -1,0 +1,73 @@
+[
+  {
+    "tag": "latest",
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    "alt": "Latest Tech Event",
+    "date": "October 25, 2023",
+    "title": "The Future of AI in Hardware",
+    "speaker": "Dr. Alan Turing",
+    "company": "DeepMind",
+    "description": "Join us for an exclusive deep dive into how artificial intelligence is revolutionizing hardware design and fabrication. Dr. Turing will explore recent breakthroughs and what they mean for the next generation of engineers.",
+    "link": "#register"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    "alt": "Previous Event 1",
+    "date": "September 15, 2023",
+    "title": "Quantum Computing Basics",
+    "speaker": "Jane Doe",
+    "company": "IBM",
+    "description": "An introductory session on quantum computing, discussing qubits, superposition, and quantum algorithms.",
+    "link": "#watch"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    "alt": "Previous Event 2",
+    "date": "August 20, 2023",
+    "title": "Advanced Robotics",
+    "speaker": "John Smith",
+    "company": "Boston Dynamics",
+    "description": "Exploring the latest advancements in robotics, focusing on mobility, balance, and autonomous navigation.",
+    "link": "#watch"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    "alt": "Previous Event 3",
+    "date": "July 10, 2023",
+    "title": "Nano-fabrication Workshop",
+    "speaker": "Dr. Sarah Lee",
+    "company": "Intel",
+    "description": "A comprehensive workshop on the techniques and challenges of nano-fabrication in semiconductor manufacturing.",
+    "link": "#watch"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    "alt": "Previous Event 4",
+    "date": "April 12, 2023",
+    "title": "The Evolution of Microprocessors",
+    "speaker": "Lisa Su",
+    "company": "AMD",
+    "description": "A comprehensive look at the history and future of microprocessor design and manufacturing.",
+    "link": "#watch"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    "alt": "Previous Event 5",
+    "date": "February 28, 2023",
+    "title": "Next-Gen Wireless Networks",
+    "speaker": "David Patel",
+    "company": "Qualcomm",
+    "description": "Understanding the infrastructure and potential of 5G and early 6G technologies.",
+    "link": "#watch"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    "alt": "Previous Event 6",
+    "date": "January 15, 2023",
+    "title": "Embedded Systems in Automotive",
+    "speaker": "Dr. Heinz Muller",
+    "company": "Bosch",
+    "description": "How modern vehicles are becoming data centers on wheels through advanced embedded systems.",
+    "link": "#watch"
+  }
+]

@@ -1,47 +1,24 @@
-
 <script>
   import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
 
+  import { reveal } from '$lib/utils/animations.js';
+  import ElectricCard from '$lib/components/ElectricCard.svelte';
+  import Section from '$lib/components/Section.svelte';
+
+  import alumniData from '$lib/data/alumni.json';
+  import eventData from '$lib/data/events.json';
+  import epochData from '$lib/data/epoch.json';
+
   let animate = $state(false);
-  
+
   // Toggle this variable to true/false in code to control the effect
-  let enElectricEffect = true; 
+  let enElectricEffect = false;
 
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
     animate = true;
   });
-
-  function reveal(node, { delay = 0 } = {}) {
-    node.style.opacity = '0';
-    node.style.transform = 'translateY(24px)';
-
-    node.offsetHeight;
-
-    node.style.transition = `
-      opacity 0.6s ease ${delay}ms,
-      transform 0.6s ease ${delay}ms
-    `;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        node.style.opacity = '1';
-        node.style.transform = 'translateY(0)';
-        observer.disconnect();
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(node);
-
-    return {
-      destroy() {
-        observer.disconnect();
-      }
-    };
-  }
 </script>
 
 <svelte:head>
@@ -62,254 +39,118 @@
 </svelte:head>
 
 <div class="page-wrapper">
-  {#if enElectricEffect}
-    <svg class="svg-container">
-      <defs>
-        <filter
-          id="turbulent-displace"
-          colorInterpolationFilters="sRGB"
-          x="-20%"
-          y="-20%"
-          width="140%"
-          height="140%"
-        >
-          <feTurbulence
-            type="turbulence"
-            baseFrequency="0.02"
-            numOctaves="10"
-            result="noise1"
-            seed="1"
-          />
-          <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
-            <animate
-              attributeName="dy"
-              values="700; 0"
-              dur="6s"
-              repeatCount="indefinite"
-              calcMode="linear"
-            />
-          </feOffset>
-
-          <feTurbulence
-            type="turbulence"
-            baseFrequency="0.02"
-            numOctaves="10"
-            result="noise2"
-            seed="1"
-          />
-          <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
-            <animate
-              attributeName="dy"
-              values="0; -700"
-              dur="6s"
-              repeatCount="indefinite"
-              calcMode="linear"
-            />
-          </feOffset>
-
-          <feTurbulence
-            type="turbulence"
-            baseFrequency="0.02"
-            numOctaves="10"
-            result="noise1"
-            seed="2"
-          />
-          <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
-            <animate
-              attributeName="dx"
-              values="490; 0"
-              dur="6s"
-              repeatCount="indefinite"
-              calcMode="linear"
-            />
-          </feOffset>
-
-          <feTurbulence
-            type="turbulence"
-            baseFrequency="0.02"
-            numOctaves="10"
-            result="noise2"
-            seed="2"
-          />
-          <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
-            <animate
-              attributeName="dx"
-              values="0; -490"
-              dur="6s"
-              repeatCount="indefinite"
-              calcMode="linear"
-            />
-          </feOffset>
-
-          <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
-          <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
-          <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
-
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="combinedNoise"
-            scale="30"
-            xChannelSelector="R"
-            yChannelSelector="B"
-          />
-        </filter>
-      </defs>
-    </svg>
-  {/if}
-
   <section class="hero-section">
     {#if animate}
-      <div class="card-container">
-        <div class="inner-container">
-          <div class="border-outer">
-            <div class="main-card" class:electric-active={enElectricEffect}></div>
-          </div>
-          <div class="glow-layer-1"></div>
-          <div class="glow-layer-2"></div>
+      <ElectricCard active={enElectricEffect}>
+        <div class="content-top">
+          <h1 class="main-title" in:fly={{ y: 40, duration: 1000, delay: 200 }}>
+            ELECTRONICS AND COMMUNICATION ENGINEERING
+          </h1>
         </div>
 
-        <div class="overlay-1"></div>
-        <div class="overlay-2"></div>
-        <div class="background-glow"></div>
+        <hr class="divider" />
 
-        <div class="content-container">
-          <div class="content-top">
-            <h1 class="main-title" in:fly={{ y: 40, duration: 1000, delay: 200 }}>
-              ELECTRONICS AND COMMUNICATION ENGINEERING
-            </h1>
-          </div>
-
-          <hr class="divider" />
-
-          <div class="content-bottom">
-            <h2 class="subtitle" in:fly={{ y: 20, duration: 1000, delay: 600 }}>
-              College of Engineering, Trivandrum
-            </h2>
-            <div in:fly={{ y: 20, duration: 1000, delay: 800 }}>
-              <a href="#epoch" class="cta-button">Explore Epoch</a>
-            </div>
-          </div>
+        <div class="content-bottom">
+          <h2 class="subtitle" in:fly={{ y: 20, duration: 1000, delay: 600 }}>
+            College of Engineering, Trivandrum
+          </h2>
+          <!-- <div in:fly={{ y: 20, duration: 1000, delay: 800 }}>
+              <a href="/epoch" class="cta-button">Explore Epoch</a>
+            </div> -->
         </div>
-      </div>
+      </ElectricCard>
     {/if}
   </section>
 
-  <section id="about" class="about-section" use:reveal>
-    <h3 class="section-title">ABOUT</h3>
-    <p class="description">
-      Driven by a mission of academic excellence, research innovation, and strong industry-alumni networking.
-    </p>
+  <Section
+    id="about"
+    title="ABOUT"
+    description="The Department of Electronics and Communication Engineering, established at CET Campus, Sreekariyam in 1964–65, is one of the institution’s oldest and most distinguished departments. Starting with a B.Tech. programme in Electronics and Communication Engineering and an initial intake of 33 students, the department has grown into a centre for quality education and research."
+  >
     <p class="dummy-text">
-      The Department of Electronics and Communication Engineering (ECE) at the College of Engineering, Trivandrum is committed to fostering innovation and excellence. We offer a rigorous academic curriculum backed by cutting-edge research laboratories and experienced faculty. Our goal is to mold technically proficient, ethically sound engineers equipped to tackle the complex technological challenges of the future while contributing significantly to society and industry.
+      The department currently offers two B.Tech. programmes, five M.Tech. programmes, and doctoral
+      programmes in various specialized areas. All programmes are approved by AICTE, and the
+      department is recognized as an approved QIP Centre, contributing significantly to academic
+      excellence, research, and technological innovation.
     </p>
-  </section>
+  </Section>
 
-  <section id="epoch" class="about-section" use:reveal>
-    <h3 class="section-title">EPOCH</h3>
-    <p class="description">
-      The ultimate technical symposium hosted by the finest minds in engineering.
-    </p>
+  <Section
+    id="epoch"
+    title="EPOCH"
+    description="The ultimate technical symposium hosted by the finest minds in engineering."
+  >
     <p class="dummy-text">
-      Epoch is our flagship annual technical festival, bringing together hundreds of students, innovators, and industry leaders across the country. Through high-stakes hackathons, thought-provoking exhibitions, and hands-on workshops, Epoch provides an unparalleled platform for students to demonstrate their skills, explore emerging technologies, and collaborate on real-world problems.
+      Epoch is our flagship annual technical festival, bringing together hundreds of students,
+      innovators, and industry leaders across the country. Through high-stakes hackathons,
+      thought-provoking exhibitions, and hands-on workshops, Epoch provides an unparalleled platform
+      for students to demonstrate their skills, explore emerging technologies, and collaborate on
+      real-world problems.
     </p>
 
     <div class="image-grid">
-      <div class="image-card">
-        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=600&q=80" alt="Hardware Workshop" />
-        <div class="card-content">
-          <h4>Hands-on Workshops</h4>
-          <p>Learn from industry experts with specialized equipment.</p>
+      {#each epochData.slice(0, 3) as item (item.title)}
+        <div class="image-card" use:reveal>
+          <div class="card-badge" class:latest={item.tag === 'latest'}>
+            {item.tag === 'latest' ? 'LATEST' : 'PREVIOUS'}
+          </div>
+          <img src={item.image} alt={item.alt} />
+          <div class="card-content">
+            <h4>{item.title}</h4>
+            <p>{item.speaker}, <strong>{item.company}</strong></p>
+          </div>
         </div>
-      </div>
-      <div class="image-card">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Coding Hackathon" />
-        <div class="card-content">
-          <h4>24hr Hackathons</h4>
-          <p>Compete with top coders to solve complex logic challenges.</p>
-        </div>
-      </div>
-      <div class="image-card">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Tech Exhibitions" />
-        <div class="card-content">
-          <h4>Tech Exhibitions</h4>
-          <p>Discover the latest hardware innovations and student projects.</p>
-        </div>
-      </div>
+      {/each}
     </div>
-  </section>
 
-  <section id="events" class="about-section" use:reveal>
-    <h3 class="section-title">EVENTS</h3>
-    <p class="description">Upcoming departmental activities, seminars, and workshops.</p>
-    
+    <div class="explore-container" use:reveal>
+      <a href="/epoch" class="cta-button">Explore all events &rarr;</a>
+    </div>
+  </Section>
+
+  <Section
+    id="events"
+    title="EVENTS"
+    description="Upcoming departmental activities, seminars, and workshops."
+  >
     <div class="events-list">
-      <div class="event-row">
-        <div class="event-date">
-          <span class="day">15</span>
-          <span class="month">AUG</span>
+      {#each eventData as event (event.title)}
+        <div class="event-row" use:reveal>
+          <div class="event-date">
+            <span class="day">{event.day}</span>
+            <span class="month">{event.month}</span>
+          </div>
+          <div class="event-details">
+            <h4>{event.title}</h4>
+            <p>{event.description}</p>
+          </div>
         </div>
-        <div class="event-details">
-          <h4>VLSI Design Masterclass</h4>
-          <p>Guest lecture and hands-on session led by senior engineers from Intel.</p>
-        </div>
-      </div>
-      
-      <div class="event-row">
-        <div class="event-date">
-          <span class="day">02</span>
-          <span class="month">SEP</span>
-        </div>
-        <div class="event-details">
-          <h4>IoT Hackathon Kickoff</h4>
-          <p>Briefing session for the inter-college Internet of Things hackathon.</p>
-        </div>
-      </div>
-
-      <div class="event-row">
-        <div class="event-date">
-          <span class="day">28</span>
-          <span class="month">SEP</span>
-        </div>
-        <div class="event-details">
-          <h4>Alumni Mentorship Mixer</h4>
-          <p>An evening of networking and guidance with notable ECE alumni.</p>
-        </div>
-      </div>
+      {/each}
     </div>
-  </section>
+  </Section>
 
-  <section id="alumni" class="about-section" use:reveal>
-    <h3 class="section-title">ALUMNI CONNECT</h3>
-    <p class="description">Bridging the gap between our distinguished alumni and current students.</p>
-    
+  <Section
+    id="alumni"
+    title="ALUMNI CONNECT"
+    description="Bridging the gap between our distinguished alumni and current students."
+  >
     <div class="alumni-grid">
-      <div class="alumni-card">
-        <div class="avatar"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Alumni 1" /></div>
-        <h4>Dr. Ananya Sharma</h4>
-        <p class="role">Principal Researcher</p>
-        <p class="company">Microsoft Research</p>
-      </div>
-      
-      <div class="alumni-card">
-        <div class="avatar"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=150&q=80" alt="Alumni 2" /></div>
-        <h4>Rajiv Menon</h4>
-        <p class="role">Senior Staff Engineer</p>
-        <p class="company">Qualcomm</p>
-      </div>
-      
-      <div class="alumni-card">
-        <div class="avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Alumni 3" /></div>
-        <h4>Sneha Patel</h4>
-        <p class="role">Hardware Architect</p>
-        <p class="company">NVIDIA</p>
-      </div>
+      {#each alumniData as person (person.name)}
+        <div class="alumni-card" use:reveal>
+          <div class="avatar"><img src={person.avatar} alt={person.alt} /></div>
+          <h4>{person.name}</h4>
+          <p class="role">{person.role}</p>
+          <p class="company">{person.company}</p>
+        </div>
+      {/each}
     </div>
-  </section>
+  </Section>
 
-  <section id="contact" class="about-section" use:reveal>
-    <h3 class="section-title">CONTACT</h3>
-    <p class="description">Get in touch with the Department of ECE.</p>
-    
+  <!-- <Section 
+    id="contact" 
+    title="CONTACT" 
+    description="Get in touch with the Department of ECE."
+  >
     <div class="contact-container">
       <div class="contact-info">
         <div class="info-block">
@@ -339,7 +180,7 @@
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
     </div>
-  </section>
+  </Section> -->
 </div>
 
 <style>
@@ -352,13 +193,6 @@
     overflow-x: hidden;
   }
 
-  .svg-container {
-    position: absolute;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-  }
-
   .hero-section {
     min-height: 100vh;
     display: flex;
@@ -368,124 +202,6 @@
     text-align: center;
     padding: 2rem;
     box-sizing: border-box;
-  }
-
-  /* --- Electric Card Styles Adapted for Tokyonight --- */
-  .card-container {
-    --electric-border-color: #bb9af7;
-    --electric-light-color: #9d7cd8;
-    --gradient-color: rgba(187, 154, 247, 0.2);
-    --color-neutral-900: #1a1b26;
-
-    padding: 2px;
-    border-radius: 24px;
-    position: relative;
-    max-width: 100%;
-    height: 70vh;
-    margin: 0 auto;
-
-    background:
-      linear-gradient(-30deg, var(--gradient-color), transparent, var(--gradient-color)),
-      linear-gradient(to bottom, var(--color-neutral-900), var(--color-neutral-900));
-  }
-
-  .inner-container,
-  .overlay-1,
-  .overlay-2,
-  .background-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 24px;
-    pointer-events: none;
-  }
-
-  .border-outer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid rgba(187, 154, 247, 0.4);
-    border-radius: 24px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-  }
-
-  .main-card {
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    border-radius: 24px;
-    border: 2px solid var(--electric-border-color);
-    /* Filter removed from here so it defaults to off on desktop */
-  }
-
-  .glow-layer-1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid rgba(187, 154, 247, 0.6);
-    border-radius: 24px;
-    filter: blur(1px);
-  }
-
-  .glow-layer-2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid var(--electric-light-color);
-    border-radius: 24px;
-    filter: blur(4px);
-  }
-
-  .overlay-1 {
-    opacity: 1;
-    mix-blend-mode: overlay;
-    transform: scale(1.05);
-    filter: blur(16px);
-    background: linear-gradient(-30deg, white, transparent 30%, transparent 70%, white);
-  }
-
-  .overlay-2 {
-    opacity: 0.5;
-    mix-blend-mode: overlay;
-    transform: scale(1.05);
-    filter: blur(16px);
-    background: linear-gradient(-30deg, white, transparent 30%, transparent 70%, white);
-  }
-
-  .background-glow {
-    filter: blur(32px);
-    transform: scale(1.05);
-    opacity: 0.3;
-    z-index: -1;
-    background: linear-gradient(
-      -30deg,
-      var(--electric-light-color),
-      transparent,
-      var(--electric-border-color)
-    );
-  }
-
-  /* --- Content Container (Dictates Card Size) --- */
-  .content-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    z-index: 10;
   }
 
   .content-top {
@@ -550,33 +266,11 @@
     box-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
   }
 
-  /* --- Sections Base --- */
-  .about-section {
-    min-height: 100vh;
+  .explore-container {
+    margin-top: 3rem;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    padding: 6rem 2rem;
-    box-sizing: border-box;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .section-title {
-    /* font-family: 'Atkinson Hyperlegible', sans-serif; */
-    font-size: 5rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #bb9af7;
-    margin-bottom: 2rem;
-  }
-
-  .description {
-    font-size: 1.7rem;
-    line-height: 1.6;
-    color: #a9b1d6;
-    margin-bottom: 2.5rem;
+    justify-content: center;
   }
 
   .dummy-text {
@@ -600,12 +294,37 @@
     border: 1px solid rgba(187, 154, 247, 0.2);
     border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
+    position: relative;
   }
 
   .image-card:hover {
     transform: translateY(-5px);
     border-color: rgba(187, 154, 247, 0.6);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: rgba(26, 27, 38, 0.8);
+    color: #a9b1d6;
+    border: 1px solid #565f89;
+    z-index: 2;
+  }
+
+  .card-badge.latest {
+    background-color: rgba(187, 154, 247, 0.2);
+    color: #bb9af7;
+    border-color: #bb9af7;
   }
 
   .image-card img {
@@ -648,7 +367,9 @@
     padding: 1.5rem;
     border-radius: 12px;
     border-left: 4px solid #bb9af7;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
   }
 
   .event-row:hover {
@@ -705,7 +426,9 @@
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease;
   }
 
   .alumni-card:hover {
@@ -752,7 +475,7 @@
   }
 
   /* --- Contact Section --- */
-  .contact-container {
+  /* .contact-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
@@ -822,7 +545,7 @@
   .submit-btn:hover {
     background-color: #c0caf5;
     box-shadow: 0 0 15px rgba(187, 154, 247, 0.4);
-  }
+  } */
 
   /* --- Responsive --- */
   @media (max-width: 768px) {
@@ -838,24 +561,13 @@
     .subtitle {
       font-size: 1rem;
     }
-    .about-section {
-      padding: 4rem 3rem;
-    }
-    .section-title {
-      font-size: 3.5rem;
-    }
-    
-    /* The electricity filter is only applied on mobile devices AND if the dynamic class is present */
-    .main-card.electric-active {
-      filter: url(#turbulent-displace);
-    }
-    
+
     /* Responsive grids and lists */
-    .contact-container {
+    /* .contact-container {
       grid-template-columns: 1fr;
       gap: 3rem;
-    }
-    
+    } */
+
     .event-row {
       flex-direction: column;
       align-items: flex-start;
@@ -863,7 +575,7 @@
       border-left: none;
       border-top: 4px solid #bb9af7;
     }
-    
+
     .event-date {
       flex-direction: row;
       gap: 0.5rem;
