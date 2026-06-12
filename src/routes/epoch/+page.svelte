@@ -1,5 +1,8 @@
 <script>
-  import data from './data.json';
+  import epochData from '$lib/data/epoch.json';
+
+  const latestEvent = epochData.find((event) => event.tag === 'latest');
+  const previousEvents = epochData.filter((event) => event.tag !== 'latest');
 </script>
 
 <svelte:head>
@@ -25,7 +28,9 @@
   <section class="epoch-section">
     <h2>Our Vision</h2>
     <p class="section-description">
-      Epoch is more than just a tech fest; it's a celebration of innovation, a platform for collaboration, and a beacon for future engineers. We aim to create an environment where creativity meets technology, and ideas transform into reality.
+      Epoch is more than just a tech fest; it's a celebration of innovation, a platform for
+      collaboration, and a beacon for future engineers. We aim to create an environment where
+      creativity meets technology, and ideas transform into reality.
     </p>
   </section>
 
@@ -33,18 +38,21 @@
     <h2>Latest Event</h2>
     <div class="latest-event-container">
       <div class="event-image">
-        <img src={data.latestEvent.image} alt={data.latestEvent.alt} />
+        <img src={latestEvent.image} alt={latestEvent.alt} />
       </div>
       <div class="event-info">
-        <span class="event-date">{data.latestEvent.date}</span>
-        <h3 class="event-title">{data.latestEvent.title}</h3>
+        <span class="event-date">{latestEvent.date}</span>
+        <h3 class="event-title">{latestEvent.title}</h3>
         <p class="speaker-info">
-          <span class="speaker-name">{data.latestEvent.speaker}</span> | <span class="speaker-company">{data.latestEvent.company}</span>
+          <span class="speaker-name">{latestEvent.speaker}</span> |
+          <span class="speaker-company">{latestEvent.company}</span>
         </p>
         <p class="event-description">
-          {data.latestEvent.description}
+          {latestEvent.description}
         </p>
-        <a href={data.latestEvent.link} class="cta-button">{data.latestEvent.link === "#register" ? "Register Now" : "Learn More"}</a>
+        <a href={latestEvent.link} class="cta-button"
+          >{latestEvent.link === '#register' ? 'GMeet Link' : 'Learn More'}</a
+        >
       </div>
     </div>
   </section>
@@ -52,13 +60,13 @@
   <section class="epoch-section previous-events">
     <h2>Previous Events</h2>
     <div class="previous-events-grid">
-      {#each data.previousEvents as event}
+      {#each previousEvents as event (event.title)}
         <div class="prev-event-card">
           <img src={event.image} alt={event.alt} />
           <div class="prev-event-details">
             <h4>{event.title}</h4>
             <p>{event.speaker}, <strong>{event.company}</strong></p>
-            <a href={event.link} class="event-link">Watch Recording &rarr;</a>
+            <a href={event.link} class="event-link">Event informations &rarr;</a>
           </div>
         </div>
       {/each}
@@ -76,7 +84,7 @@
 
   .epoch-hero {
     position: relative;
-    height: 60vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
