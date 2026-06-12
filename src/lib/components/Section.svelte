@@ -48,7 +48,10 @@
       padding: 4rem 3rem;
     }
     .section-title {
-      font-size: 3.5rem;
+      font-size: 3rem;
+    }
+    .description{
+      font-size: 1.25rem;
     }
   }
 </style>

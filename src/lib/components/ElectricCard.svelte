@@ -16,7 +16,7 @@
         <feTurbulence
           type="turbulence"
           baseFrequency="0.02"
-          numOctaves="10"
+          numOctaves="2"
           result="noise1"
           seed="1"
         />
@@ -33,7 +33,7 @@
         <feTurbulence
           type="turbulence"
           baseFrequency="0.02"
-          numOctaves="10"
+          numOctaves="2"
           result="noise2"
           seed="1"
         />
@@ -50,7 +50,7 @@
         <feTurbulence
           type="turbulence"
           baseFrequency="0.02"
-          numOctaves="10"
+          numOctaves="2"
           result="noise1"
           seed="2"
         />
@@ -67,7 +67,7 @@
         <feTurbulence
           type="turbulence"
           baseFrequency="0.02"
-          numOctaves="10"
+          numOctaves="2"
           result="noise2"
           seed="2"
         />
@@ -239,7 +239,7 @@
     z-index: 10;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     /* The electricity filter is only applied on mobile devices AND if the dynamic class is present */
     .main-card.electric-active {
       filter: url(#turbulent-displace);
