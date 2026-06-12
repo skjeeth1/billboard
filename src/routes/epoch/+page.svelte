@@ -1,5 +1,6 @@
 <script>
   import epochData from '$lib/data/epoch.json';
+  import Section from '$lib/components/Section.svelte';
 
   const latestEvent = epochData.find((event) => event.tag === 'latest');
   const previousEvents = epochData.filter((event) => event.tag !== 'latest');
@@ -25,17 +26,12 @@
     </div>
   </section>
 
-  <section class="epoch-section">
-    <h2>Our Vision</h2>
-    <p class="section-description">
-      Epoch is more than just a tech fest; it's a celebration of innovation, a platform for
-      collaboration, and a beacon for future engineers. We aim to create an environment where
-      creativity meets technology, and ideas transform into reality.
-    </p>
-  </section>
+  <Section 
+    title="Our Vision" 
+    description="Epoch is more than just a tech fest; it's a celebration of innovation, a platform for collaboration, and a beacon for future engineers. We aim to create an environment where creativity meets technology, and ideas transform into reality." 
+  />
 
-  <section class="epoch-section latest-event">
-    <h2>Latest Event</h2>
+  <Section title="Latest Event">
     <div class="latest-event-container">
       <div class="event-image">
         <img src={latestEvent.image} alt={latestEvent.alt} />
@@ -55,10 +51,9 @@
         >
       </div>
     </div>
-  </section>
+  </Section>
 
-  <section class="epoch-section previous-events">
-    <h2>Previous Events</h2>
+  <Section title="Previous Events">
     <div class="previous-events-grid">
       {#each previousEvents as event (event.title)}
         <div class="prev-event-card">
@@ -71,7 +66,7 @@
         </div>
       {/each}
     </div>
-  </section>
+  </Section>
 </div>
 
 <style>
@@ -122,26 +117,6 @@
   .hero-content p {
     font-size: 1.5rem;
     color: #a9b1d6;
-  }
-
-  .epoch-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    text-align: center;
-  }
-
-  .epoch-section h2 {
-    font-size: 3rem;
-    color: #bb9af7;
-    margin-bottom: 1rem;
-  }
-
-  .section-description {
-    font-size: 1.25rem;
-    color: #a9b1d6;
-    max-width: 800px;
-    margin: 0 auto 3rem auto;
   }
 
   .latest-event-container {
@@ -279,9 +254,6 @@
   @media (max-width: 768px) {
     .hero-content h1 {
       font-size: 3rem;
-    }
-    .epoch-section h2 {
-      font-size: 2.5rem;
     }
     .latest-event-container {
       flex-direction: column;

@@ -1,5 +1,6 @@
 <script>
   import oppamData from '$lib/data/oppam.json';
+  import Section from '$lib/components/Section.svelte';
 </script>
 
 <svelte:head>
@@ -22,13 +23,10 @@
     </div>
   </section>
 
-  <section class="oppam-section">
-    <h2>Academic Resources</h2>
-    <p class="section-description">
-      Find subject-wise notes, previous year question papers, and study materials curated for each
-      semester below.
-    </p>
-
+  <Section 
+    title="Academic Resources"
+    description="Find subject-wise notes, previous year question papers, and study materials curated for each semester below."
+  >
     <div class="semesters-container">
       {#each oppamData as sem (sem.semester)}
         <details class="semester-dropdown">
@@ -46,7 +44,7 @@
         </details>
       {/each}
     </div>
-  </section>
+  </Section>
 </div>
 
 <style>
@@ -101,31 +99,13 @@
     color: #a9b1d6;
   }
 
-  .oppam-section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    text-align: center;
-  }
-
-  .oppam-section h2 {
-    font-size: 3rem;
-    color: #bb9af7;
-    margin-bottom: 1rem;
-  }
-
-  .section-description {
-    font-size: 1.25rem;
-    color: #a9b1d6;
-    margin: 0 auto 3rem auto;
-  }
-
   /* --- Accordion Styles --- */
   .semesters-container {
     text-align: left;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    width: 100%;
   }
 
   .semester-dropdown {
@@ -219,9 +199,6 @@
   @media (max-width: 768px) {
     .hero-content h1 {
       font-size: 3.5rem;
-    }
-    .oppam-section h2 {
-      font-size: 2.5rem;
     }
   }
 

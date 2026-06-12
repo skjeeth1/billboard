@@ -13,7 +13,7 @@
   let animate = $state(false);
 
   // Toggle this variable to true/false in code to control the effect
-  let enElectricEffect = false;
+  let enElectricEffect = true;
 
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
@@ -67,12 +67,12 @@
     title="ABOUT"
     description="The Department of Electronics and Communication Engineering, established at CET Campus, Sreekariyam in 1964–65, is one of the institution’s oldest and most distinguished departments. Starting with a B.Tech. programme in Electronics and Communication Engineering and an initial intake of 33 students, the department has grown into a centre for quality education and research."
   >
-    <p class="dummy-text">
+    <!-- <p class="dummy-text">
       The department currently offers two B.Tech. programmes, five M.Tech. programmes, and doctoral
       programmes in various specialized areas. All programmes are approved by AICTE, and the
       department is recognized as an approved QIP Centre, contributing significantly to academic
       excellence, research, and technological innovation.
-    </p>
+    </p> -->
   </Section>
 
   <Section
@@ -80,13 +80,13 @@
     title="EPOCH"
     description="The ultimate technical symposium hosted by the finest minds in engineering."
   >
-    <p class="dummy-text">
+    <!-- <p class="dummy-text">
       Epoch is our flagship annual technical festival, bringing together hundreds of students,
       innovators, and industry leaders across the country. Through high-stakes hackathons,
       thought-provoking exhibitions, and hands-on workshops, Epoch provides an unparalleled platform
       for students to demonstrate their skills, explore emerging technologies, and collaborate on
       real-world problems.
-    </p>
+    </p> -->
 
     <div class="image-grid">
       {#each epochData.slice(0, 3) as item (item.title)}
@@ -184,6 +184,8 @@
 </div>
 
 <style>
+
+
   .page-wrapper {
     font-family: 'JetBrains Mono', monospace;
     background-color: #1a1b26;
@@ -582,4 +584,5 @@
       align-items: baseline;
     }
   }
+
 </style>
