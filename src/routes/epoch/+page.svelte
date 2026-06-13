@@ -22,7 +22,11 @@
     <div class="hero-background"></div>
     <div class="hero-content">
       <h1>EPOCH</h1>
-      <p>Building Competence. Shaping Careers. Creating Opportunities.</p>
+      <p>
+        <span class="sentence">Building Competence.</span>
+        <span class="sentence">Shaping Careers.</span>
+        <span class="sentence">Creating Opportunities.</span>
+      </p>
     </div>
   </section>
 
@@ -31,10 +35,38 @@
     description="EPOCH (Electronics Placement & Outcome Competency Hub) is a flagship initiative of the Department of Electronics and Communication Engineering dedicated to enhancing student employability, professional competencies, and career outcomes. It serves as a structured platform that brings together faculty mentors, industry insights, alumni support, and student coordinators to prepare learners for successful careers in both core and non-core domains." 
   />
 
-  <Section
-  title="WHAT WE PROVIDE"
-  description="Through regular aptitude and technical assessments, placement-oriented training, mock interviews, group discussions, industry interactions, technical workshops, and career guidance sessions, EPOCH equips students with the skills and confidence required to excel in recruitment processes. The initiative also fosters continuous learning, industry exposure, and performance tracking, creating a holistic ecosystem for professional growth and placement readiness."
-  />
+  <Section title="WHAT WE PROVIDE">
+    <div class="provide-content">
+      <p>
+        EPOCH equips students with the skills and confidence required to excel in recruitment processes through:
+      </p>
+      <ul class="feature-list">
+        <li>
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Regular aptitude and technical assessments
+        </li>
+        <li>
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Placement-oriented training
+        </li>
+        <li>
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Mock interviews and group discussions
+        </li>
+        <li>
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Industry interactions and technical workshops
+        </li>
+        <li>
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Career guidance sessions
+        </li>
+      </ul>
+      <p>
+        The initiative also fosters continuous learning, industry exposure, and performance tracking, creating a holistic ecosystem for professional growth and placement readiness.
+      </p>
+    </div>
+  </Section>
 
   <Section title="UPCOMING EVENT">
     <div class="latest-event-container">
@@ -122,6 +154,42 @@
   .hero-content p {
     font-size: 1.5rem;
     color: #a9b1d6;
+  }
+
+  .sentence {
+    display: inline-block;
+  }
+
+  .provide-content {
+    font-size: 1.7rem;
+    line-height: 1.6;
+    color: #a9b1d6;
+    margin-bottom: 2.5rem;
+  }
+
+  .provide-content p {
+    margin: 0 0 1rem 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding-left: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .arrow-icon {
+    color: #bb9af7;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
   }
 
   .latest-event-container {
@@ -260,6 +328,10 @@
   @media (max-width: 768px) {
     .hero-content h1 {
       font-size: 3rem;
+    }
+    .provide-content {
+      font-size: 1.175rem;
+      line-height: 1.4;
     }
     .latest-event-container {
       flex-direction: column;
