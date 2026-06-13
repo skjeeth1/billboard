@@ -5,16 +5,21 @@
   import { reveal } from '$lib/utils/animations.js';
   import ElectricCard from '$lib/components/ElectricCard.svelte';
   import Section from '$lib/components/Section.svelte';
+  import GalleryCarousel from '$lib/components/GalleryCarousel.svelte';
 
   import achievementsData from '$lib/data/achievements.json';
   import newsData from '$lib/data/newsroom.json';
   import epochData from '$lib/data/epoch.json';
+  import galleryData from '$lib/data/gallery.json';
   import { getImageUrl } from '$lib/utils/images.js';
 
   let animate = $state(false);
 
   // Toggle this variable to true/false in code to control the effect
   let enElectricEffect = true;
+
+  // Flatten all images from gallery data to pass into a single carousel
+  const allGalleryImages = galleryData.flatMap(section => section.images);
 
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
@@ -165,6 +170,20 @@
 
     <div class="explore-container" use:reveal>
       <a href="/achievements" class="cta-button">View all achievements &rarr;</a>
+    </div>
+  </Section>
+
+  <Section
+    id="gallery"
+    title="GALLERY"
+    description="A visual journey through our department's events, workshops, and everyday life."
+  >
+    <div class="gallery-container" use:reveal>
+      <GalleryCarousel images={allGalleryImages} />
+    </div>
+
+    <div class="explore-container" use:reveal>
+      <a href="/gallery" class="cta-button">View Full Gallery &rarr;</a>
     </div>
   </Section>
 
@@ -548,6 +567,10 @@
     font-size: 0.95rem;
     color: #a9b1d6;
     line-height: 1.6;
+  }
+
+  .gallery-container {
+    width: 100%;
   }
 
   /* --- Contact Section --- */
