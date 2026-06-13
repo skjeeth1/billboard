@@ -54,10 +54,13 @@
     color: #c0caf5;
     line-height: 1.7;
     min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .oppam-hero {
     position: relative;
+    width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -198,7 +201,7 @@
   /* --- Responsive --- */
   @media (max-width: 768px) {
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
     }
   }
 

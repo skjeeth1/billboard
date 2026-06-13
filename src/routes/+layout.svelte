@@ -5,12 +5,12 @@
   let isOpen = $state(false);
 
   const menuItems = [
-    { label: 'About', href: '/#about' },
     { label: 'Epoch', href: '/epoch' },
     { label: 'Oppam', href: '/oppam' },
     { label: 'Newsroom', href: '/newsroom' },
     { label: 'Alumni', href: '/#alumni' },
     { label: 'Gallery', href: '/#gallery' },
+    { label: 'About Us', href: '/association' },
     // { label: 'Contact', href: '/#contact' },
   ];
 
@@ -25,19 +25,20 @@
     isOpen = !isOpen;
 
     if (typeof window !== 'undefined') {
-      document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+      document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
     }
   }
 
   function handleResize() {
     if (typeof window !== 'undefined' && window.innerWidth >= 768 && isOpen) {
       isOpen = false;
-      document.body.style.overflow = 'auto';
+      document.body.style.overflowY = 'auto';
     }
   }
 </script>
 
 <svelte:head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -55,7 +56,7 @@
       class="logo"
       onclick={() => {
         isOpen = false;
-        if (typeof window !== 'undefined') document.body.style.overflow = 'auto';
+        if (typeof window !== 'undefined') document.body.style.overflowY = 'auto';
       }}
     >
       <span class="logo-text">[LOGO]</span>
@@ -140,8 +141,13 @@
 
 <style>
   /* Global / Base */
-  :global(body) {
+  :global(*, *::before, *::after) {
+    box-sizing: border-box;
+  }
+
+  :global(html, body) {
     margin: 0;
+    padding: 0;
     background-color: #0c0c10;
     font-family:
       system-ui,
@@ -150,6 +156,8 @@
       'Segoe UI',
       Roboto,
       sans-serif;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   :global(h1, h2, h3, h4, h5, h6) {
