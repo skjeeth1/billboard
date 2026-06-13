@@ -29,7 +29,7 @@
   }
 
   .section-title {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     color: #bb9af7;
@@ -38,7 +38,7 @@
   }
 
   .description {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     line-height: 1.6;
     color: #a9b1d6;
     margin-bottom: 2.5rem;

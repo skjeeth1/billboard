@@ -162,7 +162,7 @@
   }
 
   .provide-content {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     line-height: 1.6;
     color: #a9b1d6;
     margin-bottom: 2.5rem;
@@ -195,7 +195,6 @@
 
   .latest-event-container {
     display: flex;
-    flex-direction: column;
     text-align: left;
     background-color: rgba(26, 27, 38, 0.5);
     border: 1px solid rgba(187, 154, 247, 0.2);
@@ -336,6 +335,9 @@
     }
     .event-info {
       padding: 1.5rem;
+    }
+    .latest-event-container {
+      flex-direction: column;
     }
   }
 </style>
