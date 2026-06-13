@@ -47,6 +47,16 @@
               <img src={getImageUrl(item.image)} alt={item.title} class="news-image" />
             {/if}
             <p>{item.details}</p>
+            {#if item.link && item['link-name']}
+              <div class="news-action">
+                <a 
+                  href={item.link} 
+                  target={item.link.startsWith('http') ? '_blank' : null} 
+                  rel={item.link.startsWith('http') ? 'noopener noreferrer' : null} 
+                  class="news-link"
+                >{item['link-name']} &rarr;</a>
+              </div>
+            {/if}
           </div>
         </details>
       {/each}
@@ -73,6 +83,16 @@
               <img src={getImageUrl(item.image)} alt={item.title} class="news-image" />
             {/if}
             <p>{item.details}</p>
+            {#if item.link && item['link-name']}
+              <div class="news-action">
+                <a 
+                  href={item.link} 
+                  target={item.link.startsWith('http') ? '_blank' : null} 
+                  rel={item.link.startsWith('http') ? 'noopener noreferrer' : null} 
+                  class="news-link"
+                >{item['link-name']} &rarr;</a>
+              </div>
+            {/if}
           </div>
         </details>
       {/each}
@@ -231,6 +251,23 @@
 
   .news-details p {
     margin: 0;
+  }
+
+  .news-action {
+    margin-top: 1.5rem;
+  }
+
+  .news-link {
+    display: inline-block;
+    color: #bb9af7;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  .news-link:hover {
+    color: #c0caf5;
   }
 
   @media (max-width: 768px) {

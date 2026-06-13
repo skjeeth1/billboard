@@ -26,7 +26,7 @@
 
   <div class="gallery-sections">
     {#each galleryData as section (section.id)}
-      <Section title={section.title} description={section.description}>
+      <Section id={section.id} title={section.title} description={section.description}>
         <GalleryCarousel images={section.images} />
       </Section>
     {/each}
