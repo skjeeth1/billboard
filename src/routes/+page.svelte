@@ -15,6 +15,17 @@
   // Toggle this variable to true/false in code to control the effect
   let enElectricEffect = true;
 
+  // Eagerly load all image URLs from the lib/images directory
+  const images = import.meta.glob('/src/lib/images/**/*', { eager: true, query: '?url', import: 'default' });
+
+  function getImageUrl(imagePath) {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
+
+    const key = Object.keys(images).find((k) => k.endsWith(`/${imagePath}`));
+    return key ? images[key] : imagePath;
+  }
+
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
     animate = true;
@@ -81,17 +92,17 @@
     </p> -->
 
     <div class="image-grid">
-      {#each epochData.slice(0, 3) as item (item.title)}
-        <div class="image-card" use:reveal>
+      {#each epochData.slice(0, 3) as item (item.alt)}
+        <a href="/epoch#{item.tag === 'latest' ? 'upcoming' : item.alt.replace(/\s+/g, '-').toLowerCase()}" class="image-card" use:reveal>
           <div class="card-badge" class:latest={item.tag === 'latest'}>
             {item.tag === 'latest' ? 'LATEST' : 'PREVIOUS'}
           </div>
-          <img src={item.image} alt={item.alt} />
+          <img src={getImageUrl(item.image)} alt={item.alt} />
           <div class="card-content">
             <h4>{item.title}</h4>
             <p>{item.speaker}, <strong>{item.company}</strong></p>
           </div>
-        </div>
+        </a>
       {/each}
     </div>
 
@@ -152,7 +163,7 @@
     <div class="alumni-grid">
       {#each alumniData as person (person.name)}
         <div class="alumni-card" use:reveal>
-          <div class="avatar"><img src={person.avatar} alt={person.alt} /></div>
+          <div class="avatar"><img src={getImageUrl(person.avatar)} alt={person.alt} /></div>
           <h4>{person.name}</h4>
           <p class="role">{person.role}</p>
           <p class="company">{person.company}</p>
@@ -321,6 +332,8 @@
       transform 0.3s ease,
       border-color 0.3s ease;
     position: relative;
+    display: block;
+    text-decoration: none;
   }
 
   .image-card:hover {
@@ -352,8 +365,7 @@
 
   .image-card img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
     display: block;
   }
 

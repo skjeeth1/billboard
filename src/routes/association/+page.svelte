@@ -3,6 +3,17 @@
   import associationData from '$lib/data/association.json';
   import Section from '$lib/components/Section.svelte';
 
+  // Eagerly load all image URLs from the lib/images directory
+  const images = import.meta.glob('/src/lib/images/**/*', { eager: true, query: '?url', import: 'default' });
+
+  function getImageUrl(imagePath) {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
+
+    const key = Object.keys(images).find((k) => k.endsWith(`/${imagePath}`));
+    return key ? images[key] : imagePath;
+  }
+
   // Keep track of which teams are expanded
   let expandedTeams = $state({});
 
@@ -56,7 +67,7 @@
                   class:lead-member={i === 0}
                   in:fly={{ y: 20, duration: 400, delay: i * 50 }}
                 >
-                  <div class="avatar"><img src={member.image} alt={member.name} /></div>
+                  <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
                   <div class="member-details">
                     <h4>{member.name}</h4>
                     <p class="role">{member.role}</p>
@@ -75,7 +86,7 @@
 
           {#if expandedTeams[team.team] && team.memeImage}
             <div class="easter-egg" in:fly={{ y: 20, duration: 400 }}>
-              <img src={team.memeImage} alt="Team Meme" class="secret-image" />
+              <img src={getImageUrl(team.memeImage)} alt="Team Meme" class="secret-image" />
               <p class="secret-line">{team.memeLine}</p>
             </div>
           {/if}

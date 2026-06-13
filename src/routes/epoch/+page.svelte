@@ -2,6 +2,17 @@
   import epochData from '$lib/data/epoch.json';
   import Section from '$lib/components/Section.svelte';
 
+  // Eagerly load all image URLs from the lib/images directory
+  const images = import.meta.glob('/src/lib/images/**/*', { eager: true, query: '?url', import: 'default' });
+
+  function getImageUrl(imagePath) {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
+
+    const key = Object.keys(images).find((k) => k.endsWith(`/${imagePath}`));
+    return key ? images[key] : imagePath;
+  }
+
   const latestEvent = epochData.find((event) => event.tag === 'latest');
   const previousEvents = epochData.filter((event) => event.tag !== 'latest');
 </script>
@@ -69,9 +80,9 @@
   </Section>
 
   <Section title="UPCOMING EVENT">
-    <div class="latest-event-container">
+    <div id="upcoming" class="latest-event-container">
       <div class="event-image">
-        <img src={latestEvent.image} alt={latestEvent.alt} />
+        <img src={getImageUrl(latestEvent.image)} alt={latestEvent.alt} />
       </div>
       <div class="event-info">
         <span class="event-date">{latestEvent.date}</span>
@@ -92,13 +103,13 @@
 
   <Section title="PREVIOUS EVENTS">
     <div class="previous-events-grid">
-      {#each previousEvents as event (event.title)}
-        <div class="prev-event-card">
-          <img src={event.image} alt={event.alt} />
+      {#each previousEvents as event (event.alt)}
+        <div class="prev-event-card" id={event.alt.replace(/\s+/g, '-').toLowerCase()}>
+          <img src={getImageUrl(event.image)} alt={event.alt} />
           <div class="prev-event-details">
             <h4>{event.title}</h4>
             <p>{event.speaker}, <strong>{event.company}</strong></p>
-            <a href={event.link} class="event-link">Event informations &rarr;</a>
+            <a href={event.link} class="event-link">Event Drive &rarr;</a>
           </div>
         </div>
       {/each}
@@ -194,31 +205,30 @@
 
   .latest-event-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 3rem;
+    flex-direction: column;
     text-align: left;
     background-color: rgba(26, 27, 38, 0.5);
     border: 1px solid rgba(187, 154, 247, 0.2);
     border-radius: 16px;
-    padding: 1.5rem;
+    overflow: hidden;
     margin-top: 2rem;
     box-shadow: 0 0 15px rgba(187, 154, 247, 0.2);
+    scroll-margin-top: 100px;
   }
 
   .event-image {
-    flex: 1;
+    width: 100%;
   }
 
   .event-image img {
     width: 100%;
     height: auto;
-    border-radius: 12px;
+    display: block;
     object-fit: cover;
   }
 
   .event-info {
-    flex: 1;
+    padding: 2.5rem;
   }
 
   .event-date {
@@ -266,6 +276,7 @@
     overflow: hidden;
     text-align: left;
     transition: transform 0.3s ease;
+    scroll-margin-top: 100px;
   }
 
   .prev-event-card:hover {
@@ -275,8 +286,8 @@
 
   .prev-event-card img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
+    display: block;
   }
 
   .prev-event-details {
@@ -333,9 +344,8 @@
       font-size: 1.175rem;
       line-height: 1.4;
     }
-    .latest-event-container {
-      flex-direction: column;
-      gap: 2rem;
+    .event-info {
+      padding: 1.5rem;
     }
   }
 </style>
