@@ -2,17 +2,7 @@
   import { fly } from 'svelte/transition';
   import associationData from '$lib/data/association.json';
   import Section from '$lib/components/Section.svelte';
-
-  // Eagerly load all image URLs from the lib/images directory
-  const images = import.meta.glob('/src/lib/images/**/*', { eager: true, query: '?url', import: 'default' });
-
-  function getImageUrl(imagePath) {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
-
-    const key = Object.keys(images).find((k) => k.endsWith(`/${imagePath}`));
-    return key ? images[key] : imagePath;
-  }
+  import { getImageUrl } from '$lib/utils/images.js';
 
   // Keep track of which teams are expanded
   let expandedTeams = $state({});
@@ -135,7 +125,7 @@
   .hero-content {
     position: relative;
     z-index: 2;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
 
   .hero-content h1 {
@@ -292,6 +282,12 @@
     }
     .toggle-btn {
       width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      padding: 0 1.5rem;
     }
   }
 </style>

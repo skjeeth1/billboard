@@ -6,25 +6,15 @@
   import ElectricCard from '$lib/components/ElectricCard.svelte';
   import Section from '$lib/components/Section.svelte';
 
-  import alumniData from '$lib/data/alumni.json';
+  import achievementsData from '$lib/data/achievements.json';
   import newsData from '$lib/data/newsroom.json';
   import epochData from '$lib/data/epoch.json';
+  import { getImageUrl } from '$lib/utils/images.js';
 
   let animate = $state(false);
 
   // Toggle this variable to true/false in code to control the effect
   let enElectricEffect = true;
-
-  // Eagerly load all image URLs from the lib/images directory
-  const images = import.meta.glob('/src/lib/images/**/*', { eager: true, query: '?url', import: 'default' });
-
-  function getImageUrl(imagePath) {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
-
-    const key = Object.keys(images).find((k) => k.endsWith(`/${imagePath}`));
-    return key ? images[key] : imagePath;
-  }
 
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
@@ -70,12 +60,10 @@
     title="ABOUT"
     description="The Department of Electronics and Communication Engineering, established at CET Campus, Sreekariyam in 1964–65, is one of the institution’s oldest and most distinguished departments. Starting with a B.Tech. programme in Electronics and Communication Engineering and an initial intake of 33 students, the department has grown into a centre for quality education and research."
   >
-    <!-- <p class="dummy-text">
-      The department currently offers two B.Tech. programmes, five M.Tech. programmes, and doctoral
-      programmes in various specialized areas. All programmes are approved by AICTE, and the
-      department is recognized as an approved QIP Centre, contributing significantly to academic
-      excellence, research, and technological innovation.
-    </p> -->
+    <div class="department-photo-container" use:reveal>
+      <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80" alt="ECE Department" class="department-photo" />
+      <p class="photo-subtext">Our humble department</p>
+    </div>
   </Section>
 
   <Section
@@ -156,25 +144,33 @@
   </Section>
 
   <Section
-    id="alumni"
-    title="ALUMNI CONNECT"
-    description="Bridging the gap between our distinguished alumni and current students."
+    id="achievements"
+    title="ACHIEVEMENTS"
+    description="Celebrating the outstanding milestones and successes of our students and faculty."
   >
-    <div class="alumni-grid">
-      {#each alumniData as person (person.name)}
-        <div class="alumni-card" use:reveal>
-          <div class="avatar"><img src={getImageUrl(person.avatar)} alt={person.alt} /></div>
-          <h4>{person.name}</h4>
-          <p class="role">{person.role}</p>
-          <p class="company">{person.company}</p>
+    <div class="achievements-grid">
+      {#each achievementsData.slice(0, 3) as achievement (achievement.title)}
+        <div class="achievement-card" use:reveal>
+          <div class="achievement-image">
+            <img src={getImageUrl(achievement.image)} alt={achievement.title} />
+          </div>
+          <div class="achievement-content">
+            <h4>{achievement.title}</h4>
+            <p class="names">{achievement.names.join(', ')}</p>
+            <p class="description">{achievement.description}</p>
+          </div>
         </div>
       {/each}
+    </div>
+
+    <div class="explore-container" use:reveal>
+      <a href="/achievements" class="cta-button">View all achievements &rarr;</a>
     </div>
   </Section>
 
   <Section
     id="association"
-    title="OUR ASSOCIATION"
+    title="OUR TEAM"
     description="The ECE Web Association is the official student body responsible for designing, developing, and maintaining the digital infrastructure of the Department of Electronics and Communication Engineering. We foster a community of tech enthusiasts, providing them with opportunities to work on real-world projects."
   >
     <div class="explore-container" use:reveal>
@@ -236,7 +232,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     box-sizing: border-box;
   }
 
@@ -312,6 +308,28 @@
     line-height: 1.7;
     color: #565f89;
     margin-bottom: 3rem;
+  }
+
+  /* --- About Section Photo --- */
+  .department-photo-container {
+    margin-top: 2.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .department-photo {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(187, 154, 247, 0.2);
+  }
+
+  .photo-subtext {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #7aa2f7;
   }
 
   /* --- Image Grid Cards --- */
@@ -467,66 +485,68 @@
     font-size: 1rem;
   }
 
-  /* --- Alumni Grid --- */
-  .alumni-grid {
+  /* --- Achievements Grid --- */
+  .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     width: 100%;
   }
 
-  .alumni-card {
+  .achievement-card {
     background-color: rgba(26, 27, 38, 0.4);
     border: 1px solid rgba(187, 154, 247, 0.15);
     border-radius: 16px;
-    padding: 2rem;
-    text-align: center;
+    overflow: hidden;
+    text-align: left;
     transition:
       border-color 0.3s ease,
-      background-color 0.3s ease;
+      background-color 0.3s ease,
+      transform 0.3s ease;
   }
 
-  .alumni-card:hover {
+  .achievement-card:hover {
     border-color: rgba(187, 154, 247, 0.5);
     background-color: rgba(26, 27, 38, 0.7);
+    transform: translateY(-5px);
   }
 
-  .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 0 auto 1.5rem auto;
-    border: 3px solid #bb9af7;
+  .achievement-image {
+    width: 100%;
+    height: 200px;
     overflow: hidden;
-    padding: 3px;
   }
 
-  .avatar img {
+  .achievement-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    display: block;
   }
 
-  .alumni-card h4 {
+  .achievement-content {
+    padding: 1.5rem;
+  }
+
+  .achievement-content h4 {
     margin: 0 0 0.5rem 0;
     font-size: 1.25rem;
     color: #c0caf5;
+    line-height: 1.4;
   }
 
-  .alumni-card .role {
-    margin: 0 0 0.25rem 0;
+  .achievement-content .names {
+    margin: 0 0 1rem 0;
+    font-size: 0.95rem;
+    color: #bb9af7;
+    font-weight: 600;
+  }
+
+  .achievement-content .description {
+    margin: 0;
     font-size: 0.95rem;
     color: #a9b1d6;
-  }
-
-  .alumni-card .company {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #7aa2f7;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    line-height: 1.6;
   }
 
   /* --- Contact Section --- */
@@ -605,10 +625,10 @@
   /* --- Responsive --- */
   @media (max-width: 768px) {
     .content-top {
-      padding: 80px 32px 24px 32px;
+      padding: 80px 1rem 24px 1rem;
     }
     .content-bottom {
-      padding: 24px 32px 80px 32px;
+      padding: 24px 1rem 80px 1rem;
     }
     .main-title {
       font-size: 2.5rem;
@@ -635,6 +655,12 @@
       flex-direction: row;
       gap: 0.5rem;
       align-items: baseline;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-section {
+      padding: 2rem;
     }
   }
 </style>

@@ -22,7 +22,7 @@
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    padding: 6rem 2rem;
+    padding: 6rem 1rem;
     box-sizing: border-box;
     max-width: 1000px;
     margin: 0 auto;
@@ -34,6 +34,7 @@
     letter-spacing: 0.1em;
     color: #bb9af7;
     margin-bottom: 2rem;
+    overflow-wrap: break-word;
   }
 
   .description {
@@ -45,10 +46,10 @@
 
   @media (max-width: 768px) {
     .about-section {
-      padding: 4rem 3rem;
+      padding: 4rem 2rem;
     }
     .section-title {
-      font-size: 3rem;
+      font-size: 2.25rem;
       line-height: 1.1;
       margin-bottom: 1.5rem;
     }
