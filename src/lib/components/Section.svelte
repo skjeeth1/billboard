@@ -49,9 +49,11 @@
     }
     .section-title {
       font-size: 3rem;
+      margin-bottom: 1.5rem;
     }
     .description{
-      font-size: 1.25rem;
+      font-size: 1.175rem;
+      line-height: 1.4;
     }
   }
 </style>
