@@ -96,7 +96,7 @@
 </nav>
 
 {#if isOpen}
-  <div class="mobile-menu" transition:slide={{ duration: 200 }}>
+  <div class="mobile-menu" transition:slide={{ duration: 300 }}>
     <ul class="menu-list">
       {#each menuItems as item, i (item.label)}
         <li in:fly={{ y: 20, duration: 400, delay: 100 + i * 50 }}>
@@ -147,7 +147,7 @@
     transition: background-color 0.3s ease;
   }
   .navbar.bg-solid {
-    backdrop-filter: none;
+    background-color: #0c0c10;
     border-bottom-color: transparent;
     box-shadow: none;
   }
