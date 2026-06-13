@@ -16,9 +16,9 @@
 
   const socialLinks = {
     instagram: 'https://instagram.com/your_handle',
-    github: 'https://github.com/your_handle',
-    linkedin: 'https://linkedin.com/in/your_handle',
-    college: 'https://yourcollege.edu'
+    github: 'https://github.com/skjeeth1',
+    linkedin: 'https://in.linkedin.com/company/ec-association-cet',
+    college: 'https://ece.cet.ac.in/'
   };
 
   function toggleMenu() {
