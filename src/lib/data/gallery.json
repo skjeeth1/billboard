@@ -1,0 +1,26 @@
+[
+  {
+    "id": "robosoccer",
+    "title": "Robosoccer 2024",
+    "description": "Highlights from the annual autonomous robotics competition, where student-built machines face off on the field.",
+    "images": [
+      { "src": "epoch1.jpeg", "alt": "Robosoccer Match 1" },
+      { "src": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80", "alt": "Team preparing" },
+      { "src": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", "alt": "Audience cheering" },
+      { "src": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80", "alt": "Bot tuning" },
+      { "src": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80", "alt": "Final Match" }
+    ]
+  },
+  {
+    "id": "alumni-day",
+    "title": "Alumni Day 2023",
+    "description": "Reconnecting with past graduates, celebrating their journeys, and inspiring the next generation of engineers.",
+    "images": [
+      { "src": "https://images.unsplash.com/photo-1523580494112-071d1e21e87c?auto=format&fit=crop&w=800&q=80", "alt": "Alumni speaking at podium" },
+      { "src": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80", "alt": "Group photo" },
+      { "src": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80", "alt": "Networking event" },
+      { "src": "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80", "alt": "Panel discussion" },
+      { "src": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80", "alt": "Awards ceremony" }
+    ]
+  }
+]

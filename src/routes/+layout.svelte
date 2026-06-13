@@ -9,7 +9,7 @@
     { label: 'Oppam', href: '/oppam' },
     { label: 'Newsroom', href: '/newsroom' },
     { label: 'Achievements', href: '/achievements' },
-    { label: 'Gallery', href: '/#gallery' },
+    { label: 'Gallery', href: '/gallery' },
     { label: 'About Us', href: '/association' },
     // { label: 'Contact', href: '/#contact' },
   ];
