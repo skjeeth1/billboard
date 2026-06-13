@@ -8,7 +8,7 @@
     { label: 'Epoch', href: '/epoch' },
     { label: 'Oppam', href: '/oppam' },
     { label: 'Newsroom', href: '/newsroom' },
-    { label: 'Alumni', href: '/#alumni' },
+    { label: 'Achievements', href: '/achievements' },
     { label: 'Gallery', href: '/#gallery' },
     { label: 'About Us', href: '/association' },
     // { label: 'Contact', href: '/#contact' },
@@ -192,7 +192,7 @@
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
     height: 100%;
   }
 
@@ -266,7 +266,7 @@
     height: calc(100vh - 70px);
     background-color: #0c0c10;
     z-index: 40;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem;
     box-sizing: border-box;
     overflow-y: auto;
   }
@@ -294,6 +294,9 @@
   }
 
   @media (min-width: 768px) {
+    .nav-container {
+      padding: 0 1.5rem;
+    }
     .desktop-menu {
       display: flex;
     }
@@ -309,7 +312,7 @@
   .global-footer {
     background-color: #0c0c10;
     border-top: 1px solid rgba(187, 154, 247, 0.2);
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem;
   }
   .footer-content {
     max-width: 1200px;
@@ -346,6 +349,9 @@
   }
 
   @media (min-width: 768px) {
+    .global-footer {
+      padding: 2rem 1.5rem;
+    }
     .footer-content {
       flex-direction: row;
       justify-content: space-between;
