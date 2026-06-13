@@ -161,6 +161,16 @@
     </div>
   </Section>
 
+  <Section
+    id="association"
+    title="OUR ASSOCIATION"
+    description="The ECE Web Association is the official student body responsible for designing, developing, and maintaining the digital infrastructure of the Department of Electronics and Communication Engineering. We foster a community of tech enthusiasts, providing them with opportunities to work on real-world projects."
+  >
+    <div class="explore-container" use:reveal>
+      <a href="/association" class="cta-button">Meet the Members &rarr;</a>
+    </div>
+  </Section>
+
   <!-- <Section 
     id="contact" 
     title="CONTACT" 
