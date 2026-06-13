@@ -24,7 +24,7 @@
   </section>
 
   <Section 
-    title="Academic Resources"
+    title="ACADEMIC RESOURCES"
     description="Find subject-wise notes, previous year question papers, and study materials curated for each semester below."
   >
     <div class="semesters-container">
