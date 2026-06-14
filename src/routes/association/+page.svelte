@@ -1,14 +1,21 @@
 <script>
-  import { fly } from 'svelte/transition';
+  import { fly, fade, slide } from 'svelte/transition';
   import associationData from '$lib/data/association.json';
   import Section from '$lib/components/Section.svelte';
   import { getImageUrl } from '$lib/utils/images.js';
 
-  // Keep track of which teams are expanded
   let expandedTeams = $state({});
+  let expandedMemes = $state({});
+
+  let activeTab = $state(associationData.length > 0 ? associationData[0].tab : '');
+  let isDropdownOpen = $state(false);
+  let displayedTeams = $derived(associationData.find(t => t.tab === activeTab)?.teams || []);
 
   function toggleTeam(teamName) {
     expandedTeams[teamName] = !expandedTeams[teamName];
+    if (!expandedTeams[teamName]) {
+      expandedMemes[teamName] = false;
+    }
   }
 </script>
 
@@ -38,47 +45,115 @@
   />
 
   <Section title="MEET THE TEAM">
+    {#if associationData.length > 0}
+      <div class="dropdown-wrapper">
+        <div class="dropdown-container">
+          <button class="dropdown-toggle" onclick={() => isDropdownOpen = !isDropdownOpen}>
+            <div class="dropdown-toggle-content">
+              <span class="dropdown-value">{activeTab}</span>
+            </div>
+            <svg class="chevron" class:open={isDropdownOpen} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          
+          {#if isDropdownOpen}
+            <div class="dropdown-menu" transition:fly={{ y: -10, duration: 200 }}>
+              {#each associationData as tabData}
+                <button 
+                  class="dropdown-item" 
+                  class:active={activeTab === tabData.tab} 
+                  onclick={() => { activeTab = tabData.tab; isDropdownOpen = false; }}
+                >
+                  {tabData.tab}
+                </button>
+              {/each}
+            </div>
+          {/if}
+        </div>
+      </div>
+    {/if}
+
     <div class="teams-container">
-      {#each associationData as team (team.team)}
-        <div class="team-block">
+      {#each displayedTeams as team (team.team)}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <div 
+          class="team-block" 
+          class:clickable={!expandedMemes[team.team] && team.memeImage && (team.members.length <= (team.tag || 1) || expandedTeams[team.team])}
+          onclick={() => {
+            if (!expandedMemes[team.team] && team.memeImage && (team.members.length <= (team.tag || 1) || expandedTeams[team.team])) {
+              expandedMemes[team.team] = true;
+            }
+          }}
+          in:fade={{ duration: 300 }}
+        >
           <div class="team-header">
             <div class="team-info">
               <h3>{team.team}</h3>
-              <p>{team.description}</p>
+              {#if team.description}
+                <p>{team.description}</p>
+              {/if}
             </div>
           </div>
 
           <div class="members-grid">
-            {#each team.members as member, i (member.name)}
-              <!-- Show only the lead (index 0) if collapsed, show all if expanded -->
-              {#if expandedTeams[team.team] || i === 0}
-                <div 
-                  class="member-card" 
-                  class:lead-member={i === 0}
-                  in:fly={{ y: 20, duration: 400, delay: i * 50 }}
-                >
-                  <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
-                  <div class="member-details">
-                    <h4>{member.name}</h4>
-                    <p class="role">{member.role}</p>
-                    <p class="year">{member.year}</p>
-                  </div>
+            {#each team.members.slice(0, team.tag || 1) as member, i (member.name)}
+              <div 
+                class="member-card lead-member"
+                in:fly={{ y: 20, duration: 400, delay: i * 50 }}
+              >
+                <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
+                <div class="member-details">
+                  <h4>{member.name}</h4>
+                  <p class="role">{member.role}</p>
+                  {#if member.year}<p class="year">{member.year}</p>{/if}
                 </div>
-              {/if}
+              </div>
             {/each}
           </div>
 
-          <div class="team-footer">
-            <button class="toggle-btn" aria-label="Toggle team members" onclick={() => toggleTeam(team.team)}>
-              {expandedTeams[team.team] ? 'Hide Team −' : 'View All +'}
-            </button>
-          </div>
-
-          {#if expandedTeams[team.team] && team.memeImage}
-            <div class="easter-egg" in:fly={{ y: 20, duration: 400 }}>
-              <img src={getImageUrl(team.memeImage)} alt="Team Meme" class="secret-image" />
-              <p class="secret-line">{team.memeLine}</p>
+          {#if expandedTeams[team.team] && team.members.length > (team.tag || 1)}
+            <div transition:slide={{ duration: 400 }}>
+              <div class="members-grid" style="padding-top: 2rem;">
+                {#each team.members.slice(team.tag || 1) as member, i (member.name)}
+                  <div 
+                    class="member-card"
+                    in:fly={{ y: 20, duration: 400, delay: i * 50 }}
+                    out:fade={{ duration: 200 }}
+                  >
+                    <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
+                    <div class="member-details">
+                      <h4>{member.name}</h4>
+                      <p class="role">{member.role}</p>
+                      {#if member.year}<p class="year">{member.year}</p>{/if}
+                    </div>
+                  </div>
+                {/each}
+              </div>
             </div>
+          {/if}
+
+          {#if team.members.length > (team.tag || 1)}
+            <div class="team-footer">
+              <button class="toggle-btn" aria-label="Toggle team members" onclick={(e) => { e.stopPropagation(); toggleTeam(team.team); }}>
+                {expandedTeams[team.team] ? 'Hide Team -' : 'View All +'}
+              </button>
+            </div>
+          {/if}
+
+          {#if team.members.length <= (team.tag || 1) || expandedTeams[team.team]}
+            {#if expandedMemes[team.team] && team.memeImage}
+              <div transition:slide={{ duration: 400 }}>
+                <div class="easter-egg" in:fly={{ y: 20, duration: 400, delay: 100 }} out:fade={{ duration: 200 }}>
+                  <img src={getImageUrl(team.memeImage)} alt="Team Meme" class="secret-image" />
+                  <p class="secret-line">{team.memeLine}</p>
+                  <button class="hide-meme-text" aria-label="Hide meme" onclick={(e) => { e.stopPropagation(); expandedMemes[team.team] = false; }}>
+                    Hide Meme -
+                  </button>
+                </div>
+              </div>
+            {:else if team.memeImage}
+              <p class="meme-hint" in:fade={{ duration: 300 }}>click to show meme</p>
+            {/if}
           {/if}
         </div>
       {/each}
@@ -142,6 +217,106 @@
     color: #a9b1d6;
   }
 
+  /* --- Dropdown Menu --- */
+  .dropdown-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .dropdown-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    background-color: rgba(26, 27, 38, 0.4);
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    border-radius: 16px;
+    color: #c0caf5;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-toggle-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+
+  .dropdown-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #bb9af7;
+  }
+
+  .dropdown-toggle:hover {
+    background: rgba(26, 27, 38, 0.9);
+    border-color: rgba(187, 154, 247, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .chevron {
+    color: #bb9af7;
+    transition: transform 0.3s ease;
+  }
+
+  .chevron.open {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    width: 100%;
+    background: #16161e;
+    border: 1px solid rgba(187, 154, 247, 0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-item {
+    padding: 1.25rem 2rem;
+    background: transparent;
+    border: none;
+    color: #a9b1d6;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid rgba(187, 154, 247, 0.1);
+  }
+
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-item:hover {
+    background-color: rgba(187, 154, 247, 0.1);
+    color: #c0caf5;
+  }
+
+  .dropdown-item.active {
+    color: #bb9af7;
+    font-weight: 700;
+    background-color: rgba(187, 154, 247, 0.05);
+  }
+
   /* --- Teams Section --- */
   .teams-container {
     display: flex;
@@ -155,6 +330,16 @@
     border: 1px solid rgba(187, 154, 247, 0.2);
     border-radius: 16px;
     padding: 2rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .team-block.clickable {
+    cursor: pointer;
+  }
+
+  .team-block.clickable:hover {
+    border-color: rgba(187, 154, 247, 0.5);
+    background-color: rgba(26, 27, 38, 0.5);
   }
 
   .team-header {
@@ -273,6 +458,33 @@
     font-size: 0.55rem;
     color: #565f89;
     margin: 0;
+  }
+
+  .hide-meme-text {
+    background: none;
+    border: none;
+    color: #bb9af7;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    padding: 0;
+    margin-top: 1.25rem;
+    transition: color 0.3s ease;
+  }
+
+  .hide-meme-text:hover {
+    color: #c0caf5;
+  }
+
+  .meme-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #565f89;
+    margin: 1.5rem 0 0 0;
+    font-style: italic;
   }
 
   /* --- Responsive --- */
