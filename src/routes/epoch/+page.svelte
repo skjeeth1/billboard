@@ -95,9 +95,11 @@
   <Section title="PREVIOUS EVENTS">
     <div class="previous-events-list">
       {#each previousEvents as event (event.alt)}
-        <div class="prev-event-wrapper" id={event.alt.replace(/\s+/g, '-').toLowerCase()}>
-          <NewsCard item={event} />
-        </div>
+        <NewsCard 
+          item={event} 
+          id={event.alt.replace(/\s+/g, '-').toLowerCase()}
+          group="epoch-previous-events"
+        />
       {/each}
     </div>
   </Section>
@@ -248,15 +250,11 @@
   }
 
   .previous-events-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
     margin-top: 2rem;
     width: 100%;
-  }
-
-  .prev-event-wrapper {
-    scroll-margin-top: 100px;
   }
 
   .cta-button {

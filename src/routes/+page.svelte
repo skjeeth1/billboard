@@ -66,6 +66,7 @@
     {/if}
   </section>
 
+  <!-- Main About section -->
   <Section
     id="about"
     title="ABOUT"
@@ -77,6 +78,7 @@
     </div>
   </Section>
 
+  <!-- Epoch section -->
   <Section
     id="epoch"
     title="EPOCH"
@@ -102,6 +104,7 @@
     </div>
   </Section>
 
+  <!-- Oppam section -->
   <Section
     id="oppam"
     title="OPPAM"
@@ -112,6 +115,7 @@
     </div>
   </Section>
 
+  <!-- Newsroom section -->
   <Section
     id="newsroom"
     title="NEWSROOM"
@@ -140,6 +144,7 @@
     </div>
   </Section>
 
+  <!-- Achievements section -->
   <Section
     id="achievements"
     title="ACHIEVEMENTS"
@@ -165,6 +170,7 @@
     </div>
   </Section>
 
+  <!-- Gallery section -->
   <Section
     id="gallery"
     title="GALLERY"
@@ -179,6 +185,7 @@
     </div>
   </Section>
 
+  <!-- Association section -->
   <Section
     id="association"
     title="OUR TEAM"
@@ -397,6 +404,7 @@
     padding: 1.5rem;
     border-radius: 12px;
     border-left: 4px solid #bb9af7;
+    position: relative;
     transition:
       transform 0.2s ease,
       background-color 0.2s ease;
@@ -557,6 +565,13 @@
       flex-direction: row;
       gap: 0.5rem;
       align-items: baseline;
+    }
+
+    .event-tag {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      margin-bottom: 0;
     }
   }
 
