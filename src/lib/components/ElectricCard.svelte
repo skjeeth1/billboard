@@ -241,8 +241,8 @@
 
   @media (max-width: 768px) {
     /* The electricity filter is only applied on mobile devices AND if the dynamic class is present */
-    .main-card.electric-active {
+    /* .main-card.electric-active {
       filter: url(#turbulent-displace);
-    }
+    } */
   }
 </style>
