@@ -254,7 +254,7 @@
 
 
   .dropdown-value {
-    font-size: 1.35rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #bb9af7;
   }
