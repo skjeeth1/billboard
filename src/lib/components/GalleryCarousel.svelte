@@ -62,7 +62,8 @@
   <div class="carousel-container">
     <div class="image-card">
       {#key currentIndex}
-        <div 
+        <a 
+          href={images[currentIndex].href}
           class="image-wrapper"
           in:fly={{ x: `${navDirection * 100}%`, duration: 400 }}
           out:fly={{ x: `${-navDirection * 100}%`, duration: 400 }}
@@ -71,7 +72,7 @@
             src={getImageUrl(images[currentIndex].src)} 
             alt={images[currentIndex].alt} 
           />
-        </div>
+        </a>
       {/key}
     </div>
   </div>
