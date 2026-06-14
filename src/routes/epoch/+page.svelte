@@ -1,5 +1,5 @@
 <script>
-  import { Section, epochData, getImageUrl } from '$lib';
+  import { Section, NewsCard, epochData, getImageUrl } from '$lib';
 
   const latestEvent = epochData.find((event) => event.tag === 'latest');
   const previousEvents = epochData.filter((event) => event.tag !== 'latest');
