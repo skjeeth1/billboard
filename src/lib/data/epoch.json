@@ -7,8 +7,9 @@
     "title": "What Recruiters Expect from you?",
     "speaker": "Adarsh Varghese (ECE '24)",
     "company": "Firmware Engineer @ TISMO",
-    "description": "Find out in the Talks Session with Adarsh Varghese, Firmware Engineer at TISMO. Gain valuable insights into recruiter expectations, placement preparation and the qualities that help candidates stand out.",
-    "link": "#register"
+    "details": "Find out in the Talks Session with Adarsh Varghese, Firmware Engineer at TISMO. Gain valuable insights into recruiter expectations, placement preparation and the qualities that help candidates stand out.",
+    "link": "#register",
+    "link-name": "Event Resources"
   },
   {
     "image": "epoch5.jpeg",
@@ -17,8 +18,9 @@
     "title": "Cracking a Management Role",
     "speaker": "Nimisha Nair (ECE '22)",
     "company": "Ex-KPMG Analyst | Global Outperformer Trainee @ Hilti",
-    "description": "The EPOCH is delighted to present an insightful session on navigating and excelling in management careers.",
-    "link": "#watch"
+    "details": "The EPOCH is delighted to present an insightful session on navigating and excelling in management careers.",
+    "link": "#watch",
+    "link-name": "Event Resources"
   },
   {
     "image": "epoch4.jpeg",
@@ -27,8 +29,9 @@
     "title": "Placement Talk Session 4",
     "speaker": "Asvin M (ECE '23), Abhijith V J (ECE '23)",
     "company": "Texas Instruments",
-    "description": "Placements need more than grades — recruiters look for skills, mindset, communication, and initiative. Join us to gain insights on industry expectations, placement journeys, and building a standout profile",
-    "link": "#watch"
+    "details": "Placements need more than grades — recruiters look for skills, mindset, communication, and initiative. Join us to gain insights on industry expectations, placement journeys, and building a standout profile",
+    "link": "#watch",
+    "link-name": "Event Resources"
   },
   {
     "image": "epoch3.jpeg",
@@ -37,8 +40,9 @@
     "title": "Placement Talk Session 3",
     "speaker": "Athul",
     "company": "Texas Instruments",
-    "description": "Step into an insightful session with Athul, Senior Embedded Firmware Engineer at Texas Instruments, and gain industry perspectives on placements, skills, and career growth.",
-    "link": "#watch"
+    "details": "Step into an insightful session with Athul, Senior Embedded Firmware Engineer at Texas Instruments, and gain industry perspectives on placements, skills, and career growth.",
+    "link": "#watch",
+    "link-name": "Event Resources"
   },
   {
     "image": "epoch2.jpeg",
@@ -47,8 +51,9 @@
     "title": "Stepping into the Core Sector",
     "speaker": "Diya Rose Thomas, Keshav Balakrishnan",
     "company": "Digital Intern @ Analog Devices",
-    "description": "EPOCH in collaboration with Internship Cell CET is back with Session 2 of our placement series  focusing on the core electronics domain— Digital Design and Verification.",
-    "link": "#watch"
+    "details": "EPOCH in collaboration with Internship Cell CET is back with Session 2 of our placement series  focusing on the core electronics domain— Digital Design and Verification.",
+    "link": "#watch",
+    "link-name": "Event Resources"
   },
   {
     "image": "epoch1.jpeg",
@@ -57,8 +62,9 @@
     "title": "Cracking the Management Role",
     "speaker": "Anu, Sreelakshmi",
     "company": "KPMG",
-    "description": "The EC Association brings you an insightful talk session — Cracking the Management Role , featuring our speakers Anu and Sreelakshmi, placed at KPMG.",
-    "link": "#watch"
+    "details": "The EC Association brings you an insightful talk session — Cracking the Management Role , featuring our speakers Anu and Sreelakshmi, placed at KPMG.",
+    "link": "#watch",
+    "link-name": "Event Resources"
   }
 
 ]
