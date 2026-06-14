@@ -2,6 +2,7 @@
   import epochData from '$lib/data/epoch.json';
   import Section from '$lib/components/Section.svelte';
   import { getImageUrl } from '$lib/utils/images.js';
+  import NewsCard from '$lib/components/NewsCard.svelte';
 
   const latestEvent = epochData.find((event) => event.tag === 'latest');
   const previousEvents = epochData.filter((event) => event.tag !== 'latest');
@@ -92,15 +93,10 @@
   </Section>
 
   <Section title="PREVIOUS EVENTS">
-    <div class="previous-events-grid">
+    <div class="previous-events-list">
       {#each previousEvents as event (event.alt)}
-        <div class="prev-event-card" id={event.alt.replace(/\s+/g, '-').toLowerCase()}>
-          <img src={getImageUrl(event.image)} alt={event.alt} />
-          <div class="prev-event-details">
-            <h4>{event.title}</h4>
-            <p>{event.speaker}, <strong>{event.company}</strong></p>
-            <a href={event.link} class="event-link">Event Drive &rarr;</a>
-          </div>
+        <div class="prev-event-wrapper" id={event.alt.replace(/\s+/g, '-').toLowerCase()}>
+          <NewsCard item={event} />
         </div>
       {/each}
     </div>
@@ -251,59 +247,16 @@
     margin-bottom: 2rem;
   }
 
-  .previous-events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+  .previous-events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
     margin-top: 2rem;
-  }
-
-  .prev-event-card {
-    background-color: rgba(26, 27, 38, 0.5);
-    border: 1px solid rgba(187, 154, 247, 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    text-align: left;
-    transition: transform 0.3s ease;
-    scroll-margin-top: 100px;
-  }
-
-  .prev-event-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(187, 154, 247, 0.5);
-  }
-
-  .prev-event-card img {
     width: 100%;
-    height: auto;
-    display: block;
   }
 
-  .prev-event-details {
-    padding: 1.5rem;
-  }
-
-  .prev-event-details h4 {
-    font-size: 1.25rem;
-    color: #c0caf5;
-    margin: 0 0 0.5rem 0;
-  }
-
-  .prev-event-details p {
-    color: #a9b1d6;
-    margin: 0 0 1.5rem 0;
-    font-size: 0.95rem;
-  }
-
-  .event-link {
-    color: #bb9af7;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease;
-  }
-
-  .event-link:hover {
-    color: #c0caf5;
+  .prev-event-wrapper {
+    scroll-margin-top: 100px;
   }
 
   .cta-button {
