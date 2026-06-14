@@ -17,6 +17,17 @@
         </p>
       {/if}
       <p class="news-desc">{item.description}</p>
+      {#if item.link && item['link-name']}
+        <div class="news-action">
+          <a 
+            href={item.link} 
+            target={item.link.startsWith('http') ? '_blank' : null} 
+            rel={item.link.startsWith('http') ? 'noopener noreferrer' : null} 
+            class="news-link"
+            onclick={(e) => e.stopPropagation()}
+          >{item['link-name']} &rarr;</a>
+        </div>
+      {/if}
     </div>
   </summary>
   <div class="news-details">
@@ -25,16 +36,6 @@
       <img src={getImageUrl(item.image)} alt={item.title} class="news-image" />
     {/if}
     <p>{item.details}</p>
-    {#if item.link && item['link-name']}
-      <div class="news-action">
-        <a 
-          href={item.link} 
-          target={item.link.startsWith('http') ? '_blank' : null} 
-          rel={item.link.startsWith('http') ? 'noopener noreferrer' : null} 
-          class="news-link"
-        >{item['link-name']} &rarr;</a>
-      </div>
-    {/if}
   </div>
 </details>
 
@@ -135,8 +136,7 @@
   .news-image {
     display: block;
     width: 100%;
-    max-height: 350px;
-    object-fit: cover;
+    height: auto;
     border-radius: 8px;
     margin: 0 auto 1.25rem auto;
   }
@@ -146,7 +146,7 @@
   }
 
   .news-action {
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
   }
 
   .news-link {
