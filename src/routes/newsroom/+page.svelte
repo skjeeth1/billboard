@@ -33,7 +33,7 @@
   >
     <div class="news-container">
       {#each events as item (item.title)}
-        <NewsCard {item} />
+        <NewsCard {item} group="newsroom-events" />
       {/each}
     </div>
   </Section>
@@ -44,7 +44,7 @@
   >
     <div class="news-container">
       {#each notifications as item (item.title)}
-        <NewsCard {item} />
+        <NewsCard {item} group="newsroom-notifications" />
       {/each}
     </div>
   </Section>
@@ -105,9 +105,9 @@
 
   /* --- News Card Styles --- */
   .news-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
     width: 100%;
   }
 
