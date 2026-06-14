@@ -7,13 +7,26 @@
 
 <div class="achievement-card" in:fly={{ y: 20, duration: 400, delay }}>
   <div class="achievement-image">
-    <img src={getImageUrl(achievement.image)} alt={achievement.title} />
+    <img src={getImageUrl(achievement.image)} alt={achievement.title || achievement.name} />
   </div>
   <div class="achievement-content">
-    <span class="date-badge">{achievement.date}</span>
-    <h4>{achievement.title}</h4>
-    <p class="names">{achievement.names.join(', ')}</p>
+    {#if achievement.date}
+      <span class="date-badge">{achievement.date}</span>
+    {/if}
+    <h4>{achievement.title || achievement.name}</h4>
+    {#if achievement.names}
+      <p class="names">{achievement.names.join(', ')}</p>
+    {:else if achievement.field}
+      <p class="names">{achievement.field}</p>
+    {/if}
     <p class="description">{achievement.description}</p>
+    {#if achievement.tags}
+      <div class="tags-container">
+        {#each Object.entries(achievement.tags) as [tag, value]}
+          <span class="tag"><strong>{tag}:</strong> {value}</span>
+        {/each}
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -39,4 +52,8 @@
   .achievement-content h4 { margin: 0 0 0.5rem 0; font-size: 1.25rem; color: #c0caf5; line-height: 1.4; }
   .achievement-content .names { margin: 0 0 1rem 0; font-size: 1rem; color: #bb9af7; font-weight: 600; }
   .achievement-content .description { margin: 0; font-size: 1rem; color: #a9b1d6; line-height: 1.6; }
+
+  .tags-container { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .tag { display: inline-block; font-size: 0.85rem; color: #a9b1d6; }
+  .tag strong { color: #bb9af7; margin-right: 0.25rem; }
 </style>

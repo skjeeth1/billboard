@@ -203,6 +203,16 @@
       <a href="/association" class="cta-button">Meet the Members &rarr;</a>
     </div>
   </Section>
+
+  <Section
+    id="information"
+    title="DEPARTMENT DATA"
+    description="Data regarding different informations about our department."
+  >
+    <div class="explore-container" use:reveal>
+      <a href="/information" class="cta-button">Consult the archives &rarr;</a>
+    </div>
+  </Section>
 </div>
 
 <style>

@@ -1,0 +1,49 @@
+{
+  "faculties": [
+    {
+      "name": "Dr. Jane Doe",
+      "designation": "HOD & Professor",
+      "speciality": "Microelectronics and VLSI",
+      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "name": "John Smith",
+      "designation": "Associate Professor",
+      "speciality": "Signal Processing",
+      "photo": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      "name": "Emily Chen",
+      "designation": "Assistant Professor",
+      "speciality": "Communication Systems",
+      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80"
+    }
+  ],
+  "labs": [
+    {
+      "name": "VLSI Design Lab",
+      "field": "Hardware Design",
+      "description": "State-of-the-art facility equipped with the latest VLSI design and simulation software for advanced integrated circuits.",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+      "tags": {
+        "Software": "Cadence, Synopsys",
+        "Capacity": "30 Students"
+      }
+    },
+    {
+      "name": "Communication Systems Lab",
+      "field": "Signal Processing",
+      "description": "Advanced laboratory for studying analog and digital communication systems, complete with signal analyzers.",
+      "image": "https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=800&q=80",
+      "tags": {
+        "Equipment": "Spectrum Analyzers, DSOs",
+        "Room": "Room 204"
+      }
+    }
+  ],
+  "links": {
+    "faculty": "https://drive.google.com/drive/folders/dummy-faculty-link",
+    "students": "https://drive.google.com/drive/folders/dummy-students-link",
+    "labs": "https://drive.google.com/drive/folders/dummy-labs-link"
+  }
+}
