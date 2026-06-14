@@ -83,7 +83,7 @@
           <span class="speaker-company">{latestEvent.company}</span>
         </p>
         <p class="event-description">
-          {latestEvent.description}
+          {latestEvent.details}
         </p>
         <a href={latestEvent.link} class="cta-button"
           >{latestEvent.link === '#register' ? 'GMeet Link' : 'Learn More'}</a
