@@ -2,16 +2,23 @@
   import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
 
-  import { reveal } from '$lib/utils/animations.js';
-  import ElectricCard from '$lib/components/ElectricCard.svelte';
-  import Section from '$lib/components/Section.svelte';
-  import GalleryCarousel from '$lib/components/GalleryCarousel.svelte';
+  import {
+    // components
+    ElectricCard,
+    Section,
+    GalleryCarousel,
+    AchievementCard,
 
-  import achievementsData from '$lib/data/achievements.json';
-  import newsData from '$lib/data/newsroom.json';
-  import epochData from '$lib/data/epoch.json';
-  import galleryData from '$lib/data/gallery.json';
-  import { getImageUrl } from '$lib/utils/images.js';
+    // data
+    achievementsData,
+    newsData,
+    epochData,
+    galleryData,
+
+    // utils
+    reveal,
+    getImageUrl
+  } from '$lib';
 
   let animate = $state(false);
 
@@ -20,8 +27,8 @@
 
   // Flatten all images from gallery data to pass into a single carousel
   // and attach an href so each image links to its specific subsection.
-  const allGalleryImages = galleryData.flatMap(section => 
-    section.images.map(image => ({
+  const allGalleryImages = galleryData.flatMap((section) =>
+    section.images.map((image) => ({
       ...(typeof image === 'string' ? { src: image } : image),
       href: `/gallery#${section.id}`
     }))
@@ -73,7 +80,11 @@
     description="The Department of Electronics and Communication Engineering, established at CET Campus, Sreekariyam in 1964–65, is one of the institution’s oldest and most distinguished departments. Starting with a B.Tech. programme in Electronics and Communication Engineering and an initial intake of 33 students, the department has grown into a centre for quality education and research."
   >
     <div class="department-photo-container" use:reveal>
-      <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80" alt="ECE Department" class="department-photo" />
+      <img
+        src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80"
+        alt="ECE Department"
+        class="department-photo"
+      />
       <p class="photo-subtext">Our humble department</p>
     </div>
   </Section>
@@ -85,8 +96,14 @@
     description="The ultimate technical symposium hosted by the finest minds in engineering."
   >
     <div class="image-grid">
-      {#each epochData.slice(0, 3) as item (item.alt)}
-        <a href="/epoch#{item.tag === 'latest' ? 'upcoming' : item.alt.replace(/\s+/g, '-').toLowerCase()}" class="image-card" use:reveal>
+      {#each epochData.slice(0, 1) as item (item.alt)}
+        <a
+          href="/epoch#{item.tag === 'latest'
+            ? 'upcoming'
+            : item.alt.replace(/\s+/g, '-').toLowerCase()}"
+          class="image-card"
+          use:reveal
+        >
           <div class="card-badge" class:latest={item.tag === 'latest'}>
             {item.tag === 'latest' ? 'LATEST' : 'PREVIOUS'}
           </div>
@@ -122,7 +139,7 @@
     description="Upcoming departmental activities, seminars, and notifications."
   >
     <div class="events-list">
-      {#each newsData.slice(0, 3) as event (event.title)}
+      {#each newsData.slice(0, 2) as event (event.title)}
         <div class="event-row" use:reveal>
           <div class="event-date">
             <span class="day">{event.day}</span>
@@ -151,17 +168,8 @@
     description="Celebrating the outstanding milestones and successes of our students and faculty."
   >
     <div class="achievements-grid">
-      {#each achievementsData.slice(0, 3) as achievement (achievement.title)}
-        <div class="achievement-card" use:reveal>
-          <div class="achievement-image">
-            <img src={getImageUrl(achievement.image)} alt={achievement.title} />
-          </div>
-          <div class="achievement-content">
-            <h4>{achievement.title}</h4>
-            <p class="names">{achievement.names.join(', ')}</p>
-            <p class="description">{achievement.description}</p>
-          </div>
-        </div>
+      {#each achievementsData.slice(0, 1) as achievement, i (achievement.title)}
+        <AchievementCard {achievement} delay={i * 50} />
       {/each}
     </div>
 
@@ -195,7 +203,6 @@
       <a href="/association" class="cta-button">Meet the Members &rarr;</a>
     </div>
   </Section>
-
 </div>
 
 <style>
@@ -476,62 +483,6 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     width: 100%;
-  }
-
-  .achievement-card {
-    background-color: rgba(26, 27, 38, 0.4);
-    border: 1px solid rgba(187, 154, 247, 0.15);
-    border-radius: 16px;
-    overflow: hidden;
-    text-align: left;
-    transition:
-      border-color 0.3s ease,
-      background-color 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .achievement-card:hover {
-    border-color: rgba(187, 154, 247, 0.5);
-    background-color: rgba(26, 27, 38, 0.7);
-    transform: translateY(-5px);
-  }
-
-  .achievement-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-  }
-
-  .achievement-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .achievement-content {
-    padding: 1.5rem;
-  }
-
-  .achievement-content h4 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.25rem;
-    color: #c0caf5;
-    line-height: 1.4;
-  }
-
-  .achievement-content .names {
-    margin: 0 0 1rem 0;
-    font-size: 0.95rem;
-    color: #bb9af7;
-    font-weight: 600;
-  }
-
-  .achievement-content .description {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #a9b1d6;
-    line-height: 1.6;
   }
 
   .gallery-container {

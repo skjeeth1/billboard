@@ -1,7 +1,8 @@
 <script>
   import { fly } from 'svelte/transition';
-  import { getImageUrl } from '$lib/utils/images.js';
   import { onMount, onDestroy } from 'svelte';
+
+  import { getImageUrl } from '$lib/utils/images.js';
 
   let { images } = $props();
 

@@ -1,7 +1,5 @@
 <script>
-  import newsData from '$lib/data/newsroom.json';
-  import Section from '$lib/components/Section.svelte';
-  import NewsCard from '$lib/components/NewsCard.svelte';
+  import { Section, NewsCard, newsData } from '$lib';
 
   const events = newsData.filter((item) => item.tag === 'event');
   const notifications = newsData.filter((item) => item.tag === 'notification');
@@ -9,8 +7,11 @@
 
 <svelte:head>
   <title>Newsroom | Department of ECE</title>
-  <meta name="description" content="Stay updated with department events and general notifications." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <meta
+    name="description"
+    content="Stay updated with department events and general notifications."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
@@ -27,7 +28,7 @@
     </div>
   </section>
 
-  <Section 
+  <Section
     title="DEPARTMENT EVENTS"
     description="Upcoming and recent departmental activities, seminars, and workshops."
   >
@@ -38,7 +39,7 @@
     </div>
   </Section>
 
-  <Section 
+  <Section
     title="GENERAL NOTIFICATIONS"
     description="Important announcements, deadlines, and academic updates."
   >
@@ -67,7 +68,6 @@
     justify-content: center;
     text-align: center;
     color: white;
-
   }
 
   .hero-background {

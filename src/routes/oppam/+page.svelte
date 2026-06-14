@@ -1,6 +1,5 @@
 <script>
-  import oppamData from '$lib/data/oppam.json';
-  import Section from '$lib/components/Section.svelte';
+  import { Section, oppamData } from '$lib';
 </script>
 
 <svelte:head>
@@ -23,7 +22,7 @@
     </div>
   </section>
 
-  <Section 
+  <Section
     title="ACADEMIC RESOURCES"
     description="Find subject-wise notes, previous year question papers, and study materials curated for each semester below."
   >

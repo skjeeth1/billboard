@@ -1,12 +1,13 @@
 <script>
-  import galleryData from '$lib/data/gallery.json';
-  import Section from '$lib/components/Section.svelte';
-  import GalleryCarousel from '$lib/components/GalleryCarousel.svelte';
+  import { Section, GalleryCarousel, galleryData } from '$lib';
 </script>
 
 <svelte:head>
   <title>Gallery | Department of ECE</title>
-  <meta name="description" content="A visual journey through our department's events and milestones." />
+  <meta
+    name="description"
+    content="A visual journey through our department's events and milestones."
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -71,9 +72,23 @@
     z-index: 1;
   }
 
-  .hero-content { position: relative; z-index: 2; padding: 0 1rem; }
-  .hero-content h1 { font-size: 4rem; font-weight: 700; letter-spacing: 0.1em; margin: 0; color: #bb9af7; text-shadow: 0 0 15px rgba(187, 154, 247, 0.5); }
-  .hero-content p { font-size: 1.5rem; color: #a9b1d6; }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+  }
+  .hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0;
+    color: #bb9af7;
+    text-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+  .hero-content p {
+    font-size: 1.5rem;
+    color: #a9b1d6;
+  }
 
   .gallery-sections {
     display: flex;
@@ -82,7 +97,11 @@
   }
 
   @media (max-width: 768px) {
-    .hero-content h1 { font-size: 2.25rem; }
-    .hero-content p { font-size: 1.125rem; }
+    .hero-content h1 {
+      font-size: 2.25rem;
+    }
+    .hero-content p {
+      font-size: 1.125rem;
+    }
   }
 </style>

@@ -11,7 +11,6 @@
     { label: 'Achievements', href: '/achievements' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'About Us', href: '/association' },
-    // { label: 'Contact', href: '/#contact' },
   ];
 
   const socialLinks = {
@@ -295,7 +294,7 @@
 
   @media (min-width: 768px) {
     .nav-container {
-      padding: 0 1.5rem;
+      padding: 0 2rem;
     }
     .desktop-menu {
       display: flex;

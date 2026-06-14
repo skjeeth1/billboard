@@ -1,15 +1,14 @@
 <script>
   import { fly, fade, slide } from 'svelte/transition';
-  import associationData from '$lib/data/association.json';
-  import Section from '$lib/components/Section.svelte';
-  import { getImageUrl } from '$lib/utils/images.js';
+
+  import { Section, getImageUrl, associationData } from '$lib';
 
   let expandedTeams = $state({});
   let expandedMemes = $state({});
 
   let activeTab = $state(associationData.length > 0 ? associationData[0].tab : '');
   let isDropdownOpen = $state(false);
-  let displayedTeams = $derived(associationData.find(t => t.tab === activeTab)?.teams || []);
+  let displayedTeams = $derived(associationData.find((t) => t.tab === activeTab)?.teams || []);
 
   function toggleTeam(teamName) {
     expandedTeams[teamName] = !expandedTeams[teamName];
@@ -39,7 +38,7 @@
     </div>
   </section>
 
-  <Section 
+  <Section
     title="OUR MISSION"
     description="The ECE Association is the official student body responsible for designing, developing, and maintaining the infrastructure of the Department of Electronics and Communication Engineering. We foster a community of tech enthusiasts, providing them with opportunities to work on real-world projects, hone their skills, and bridge the gap between academic learning and industry standards."
   />
@@ -48,20 +47,35 @@
     {#if associationData.length > 0}
       <div class="dropdown-wrapper">
         <div class="dropdown-container">
-          <button class="dropdown-toggle" onclick={() => isDropdownOpen = !isDropdownOpen}>
+          <button class="dropdown-toggle" onclick={() => (isDropdownOpen = !isDropdownOpen)}>
             <div class="dropdown-toggle-content">
               <span class="dropdown-value">{activeTab}</span>
             </div>
-            <svg class="chevron" class:open={isDropdownOpen} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <svg
+              class="chevron"
+              class:open={isDropdownOpen}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg
+            >
           </button>
-          
+
           {#if isDropdownOpen}
             <div class="dropdown-menu" transition:fly={{ y: -10, duration: 200 }}>
               {#each associationData as tabData}
-                <button 
-                  class="dropdown-item" 
-                  class:active={activeTab === tabData.tab} 
-                  onclick={() => { activeTab = tabData.tab; isDropdownOpen = false; }}
+                <button
+                  class="dropdown-item"
+                  class:active={activeTab === tabData.tab}
+                  onclick={() => {
+                    activeTab = tabData.tab;
+                    isDropdownOpen = false;
+                  }}
                 >
                   {tabData.tab}
                 </button>
@@ -76,11 +90,17 @@
       {#each displayedTeams as team (team.team)}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <div 
-          class="team-block" 
-          class:clickable={!expandedMemes[team.team] && team.memeImage && (team.members.length <= (team.tag || 1) || expandedTeams[team.team])}
+        <div
+          class="team-block"
+          class:clickable={!expandedMemes[team.team] &&
+            team.memeImage &&
+            (team.members.length <= (team.tag || 1) || expandedTeams[team.team])}
           onclick={() => {
-            if (!expandedMemes[team.team] && team.memeImage && (team.members.length <= (team.tag || 1) || expandedTeams[team.team])) {
+            if (
+              !expandedMemes[team.team] &&
+              team.memeImage &&
+              (team.members.length <= (team.tag || 1) || expandedTeams[team.team])
+            ) {
               expandedMemes[team.team] = true;
             }
           }}
@@ -97,10 +117,7 @@
 
           <div class="members-grid">
             {#each team.members.slice(0, team.tag || 1) as member, i (member.name)}
-              <div 
-                class="member-card lead-member"
-                in:fly={{ y: 20, duration: 400, delay: i * 50 }}
-              >
+              <div class="member-card lead-member" in:fly={{ y: 20, duration: 400, delay: i * 50 }}>
                 <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
                 <div class="member-details">
                   <h4>{member.name}</h4>
@@ -115,12 +132,14 @@
             <div transition:slide={{ duration: 400 }}>
               <div class="members-grid" style="padding-top: 2rem;">
                 {#each team.members.slice(team.tag || 1) as member, i (member.name)}
-                  <div 
+                  <div
                     class="member-card"
                     in:fly={{ y: 20, duration: 400, delay: i * 50 }}
                     out:fade={{ duration: 200 }}
                   >
-                    <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
+                    <div class="avatar">
+                      <img src={getImageUrl(member.image)} alt={member.name} />
+                    </div>
                     <div class="member-details">
                       <h4>{member.name}</h4>
                       <p class="role">{member.role}</p>
@@ -134,7 +153,14 @@
 
           {#if team.members.length > (team.tag || 1)}
             <div class="team-footer">
-              <button class="toggle-btn" aria-label="Toggle team members" onclick={(e) => { e.stopPropagation(); toggleTeam(team.team); }}>
+              <button
+                class="toggle-btn"
+                aria-label="Toggle team members"
+                onclick={(e) => {
+                  e.stopPropagation();
+                  toggleTeam(team.team);
+                }}
+              >
                 {expandedTeams[team.team] ? 'Hide Team -' : 'View All +'}
               </button>
             </div>
@@ -143,10 +169,21 @@
           {#if team.members.length <= (team.tag || 1) || expandedTeams[team.team]}
             {#if expandedMemes[team.team] && team.memeImage}
               <div transition:slide={{ duration: 400 }}>
-                <div class="easter-egg" in:fly={{ y: 20, duration: 400, delay: 100 }} out:fade={{ duration: 200 }}>
+                <div
+                  class="easter-egg"
+                  in:fly={{ y: 20, duration: 400, delay: 100 }}
+                  out:fade={{ duration: 200 }}
+                >
                   <img src={getImageUrl(team.memeImage)} alt="Team Meme" class="secret-image" />
                   <p class="secret-line">{team.memeLine}</p>
-                  <button class="hide-meme-text" aria-label="Hide meme" onclick={(e) => { e.stopPropagation(); expandedMemes[team.team] = false; }}>
+                  <button
+                    class="hide-meme-text"
+                    aria-label="Hide meme"
+                    onclick={(e) => {
+                      e.stopPropagation();
+                      expandedMemes[team.team] = false;
+                    }}
+                  >
                     Hide Meme -
                   </button>
                 </div>
@@ -252,7 +289,6 @@
     gap: 0.75rem;
   }
 
-
   .dropdown-value {
     font-size: 1.1rem;
     font-weight: 700;
@@ -298,7 +334,9 @@
     font-size: 1.1rem;
     text-align: left;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
     border-bottom: 1px solid rgba(187, 154, 247, 0.1);
   }
 
@@ -330,7 +368,9 @@
     border: 1px solid rgba(187, 154, 247, 0.2);
     border-radius: 16px;
     padding: 2rem;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease;
   }
 
   .team-block.clickable {
