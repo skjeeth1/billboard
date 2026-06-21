@@ -340,6 +340,7 @@
     gap: 2rem;
     width: 100%;
     margin-top: 1rem;
+    justify-items: center;
   }
 
   .image-card {
@@ -353,6 +354,7 @@
     position: relative;
     display: block;
     text-decoration: none;
+    max-width: 28rem;
   }
 
   .image-card:hover {
@@ -390,19 +392,24 @@
 
   .card-content {
     padding: 1.5rem;
+    width: fit-content;
+
   }
 
   .card-content h4 {
     margin: 0 0 0.5rem 0;
     color: #c0caf5;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    width: fit-content;
   }
 
   .card-content p {
     margin: 0;
     color: #7aa2f7;
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     line-height: 1.4;
+    width: fit-content;
+
   }
 
   /* --- Events List --- */
@@ -533,6 +540,22 @@
       top: 1.5rem;
       right: 1.5rem;
       margin-bottom: 0;
+    }
+
+    .card-content h4 {
+    margin: 0 0 0.5rem 0;
+    color: #c0caf5;
+    font-size: 1.1rem;
+    width: fit-content;
+  }
+
+    .card-content p {
+      margin: 0;
+      color: #7aa2f7;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      width: fit-content;
+
     }
   }
 
