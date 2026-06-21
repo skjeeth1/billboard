@@ -3,19 +3,20 @@
   // 1. COMPONENT PROPS
   // ==========================================
   let {
-    icWidthDesktop = 600,
-    icHeightDesktop = 400,
-    icWidthMobile = 200,
-    icHeightMobile = 200,
-    textLabel = "ECE\nDEPARTMENT", // Use \n to split lines
+    icWidthDesktop = 800,
+    icHeightDesktop = 200,
+    icWidthMobile = 280,
+    icHeightMobile = 400,
+    textLabel = "ELECTRONICS\nAND\nCOMMUN-\n ICATION\nDEPARTMENT", 
     showGrid = false,
     viaSpawnChance = 0.3,
     
-    // Programmatic settings
     tracesX = 20,
     tracesY = 16,
     activeStreaksLimit = 15, 
-    enableGlow = true
+    
+    enableGlowDesktop = true,
+    enableGlowMobile = false
   } = $props();
 
   const ROUTING = { 
@@ -36,9 +37,10 @@
   let boardH = $state(600);
   let isMobile = $state(false);
 
-  // Directly pass dimensions based on device state (No clamping!)
   let safeIcW = $derived(isMobile ? icWidthMobile : icWidthDesktop);
   let safeIcH = $derived(isMobile ? icHeightMobile : icHeightDesktop);
+
+  let isGlowEnabled = $derived(isMobile ? enableGlowMobile : enableGlowDesktop);
 
   let icX = $derived((boardW - safeIcW) / 2);
   let icY = $derived((boardH - safeIcH) / 2);
@@ -46,10 +48,10 @@
   let pin1Cx = $derived(icX + 30);
   let pin1Cy = $derived(icY + 30);
   
-  let textX = $derived(boardW / 2);
-  let textY = $derived(boardH / 2); 
+  // Anchor text coordinates just below and aligned with the Pin 1 area
+  let textX = $derived(icX + 24); 
+  let textY = $derived(icY + 104); 
 
-  // Dynamically split lines by actual newlines or escaped newlines
   let textLines = $derived(textLabel.split('\\n').flatMap(line => line.split('\n')));
 
   let isVisible = $state(true);
@@ -191,16 +193,16 @@
     let raw = [];
 
     if (buckets.left > 0) {
-      const outerYs = getEvenlySpaced(buckets.left, 20, boardH - 20);
       const innerYs = getEvenlySpaced(buckets.left, icY + 10, icY + safeIcH - 10);
+      const outerYs = isMobile ? innerYs : getEvenlySpaced(buckets.left, 20, boardH - 20);
       for (let i = 0; i < buckets.left; i++) {
         raw.push({ start: [0, outerYs[i]], edge: [icX, innerYs[i]], occluded: [icX + ROUTING.occlusionDepth, innerYs[i]], side: 'left', index: i, total: buckets.left });
       }
     }
 
     if (buckets.right > 0) {
-      const outerYs = getEvenlySpaced(buckets.right, 20, boardH - 20);
       const innerYs = getEvenlySpaced(buckets.right, icY + 10, icY + safeIcH - 10);
+      const outerYs = isMobile ? innerYs : getEvenlySpaced(buckets.right, 20, boardH - 20);
       for (let i = 0; i < buckets.right; i++) {
         raw.push({ start: [boardW, outerYs[i]], edge: [icX + safeIcW, innerYs[i]], occluded: [icX + safeIcW - ROUTING.occlusionDepth, innerYs[i]], side: 'right', index: i, total: buckets.right });
       }
@@ -371,7 +373,7 @@
     class="pcb-board"
     class:mobile={isMobile}
     class:paused={!isVisible}
-    class:no-glow={!enableGlow}
+    class:no-glow={!isGlowEnabled}
     class:all-active-mode={Number(activeStreaksLimit) === -1}
   >
 
@@ -424,15 +426,15 @@
     <text 
       x={textX} 
       y={textY} 
-      text-anchor="middle" 
-      dominant-baseline="middle"
+      text-anchor="start" 
+      dominant-baseline="hanging"
       class="ic-text"
       font-size="{Math.max(20, safeIcW * (isMobile ? 0.12 : 0.08))}px"
     >
       {#each textLines as line, i}
         <tspan 
           x={textX} 
-          dy={i === 0 ? `-${(textLines.length - 1) * 0.6}em` : '1.2em'}
+          dy={i === 0 ? '0' : '1.2em'}
         >
           {line}
         </tspan>
@@ -445,7 +447,6 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-  /* Wrapper strictly fills the exact viewport */
   .ece-card-wrapper {
     width: 100vw;
     height: 100vh;
@@ -507,13 +508,13 @@
     text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
   }
 
-  .pcb-board.mobile:not(.no-glow) .ic-text {
+  .pcb-board.mobile .ic-text {
     fill: #a882ff;
     text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
     animation: textFlicker 2.6s ease-in-out infinite;
   }
 
-  .pcb-board.mobile.paused:not(.no-glow) .ic-text {
+  .pcb-board.mobile.paused .ic-text {
     animation-play-state: paused;
   }
 
@@ -563,9 +564,6 @@
     animation: signalFlow var(--duration) linear forwards;
   }
 
-  .pcb-board.mobile .trace,
-  .pcb-board.mobile .ic-pad,
-  .pcb-board.mobile .ic-pin1,
   .pcb-board.no-glow .trace,
   .pcb-board.no-glow .ic-pad,
   .pcb-board.no-glow .ic-pin1,
