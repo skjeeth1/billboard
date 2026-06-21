@@ -4,10 +4,10 @@
   // ==========================================
   let {
     icWidthDesktop = 800,
-    icHeightDesktop = 200,
+    icHeightDesktop = 500,
     icWidthMobile = 280,
     icHeightMobile = 360,
-    textLabel = "ELECTRONICS\nAND\nCOMMUN-\n ICATION\nDEPARTMENT", 
+    textLabel = "ELECTRONICS\nAND\nCOMMUN-\nICATION\nDEPARTMENT", 
     showGrid = false,
     viaSpawnChance = 0.3,
     
