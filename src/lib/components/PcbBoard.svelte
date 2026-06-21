@@ -7,15 +7,17 @@
     icWidthDesktop = 800,
     icHeightDesktop = 500,
     enableGlowDesktop = true,
-    textOffsetXDesktop = 24,
-    textOffsetYDesktop = 124,
+    textOffsetXDesktop = 60,
+    fontSizeDesktop = 64,
+    lineSpacingDesktop = 68,
 
     // --- MOBILE CONFIGURATION ---
     icWidthMobile = 280,
     icHeightMobile = 360,
     enableGlowMobile = true,
-    textOffsetXMobile = 24,
-    textOffsetYMobile = 70, // Slightly higher up for mobile
+    textOffsetXMobile = 25,
+    fontSizeMobile = 32,    
+    lineSpacingMobile = 40, 
 
     // --- GLOBAL SETTINGS ---
     textLabel = "ELECTRONICS\nAND\nCOMMUN-\n ICATION\nDEPARTMENT", 
@@ -40,23 +42,24 @@
   let boardH = $state(600);
   let isMobile = $state(false);
 
-  // Grouped Dynamic Resolution (Mobile vs Desktop)
   let safeIcW = $derived(isMobile ? icWidthMobile : icWidthDesktop);
   let safeIcH = $derived(isMobile ? icHeightMobile : icHeightDesktop);
   let isGlowEnabled = $derived(isMobile ? enableGlowMobile : enableGlowDesktop);
+  
   let textOffsetX = $derived(isMobile ? textOffsetXMobile : textOffsetXDesktop);
-  let textOffsetY = $derived(isMobile ? textOffsetYMobile : textOffsetYDesktop);
+  let fontSize = $derived(isMobile ? fontSizeMobile : fontSizeDesktop);
+  let lineSpacing = $derived(isMobile ? lineSpacingMobile : lineSpacingDesktop);
 
-  // Core Geometry Anchor Points
   let icX = $derived((boardW - safeIcW) / 2);
   let icY = $derived((boardH - safeIcH) / 2);
   
   let pin1Cx = $derived(icX + 30);
   let pin1Cy = $derived(icY + 30);
   
-  // Text Anchor Points (Driven by the Offsets)
+  // Text Anchor Points 
   let textX = $derived(icX + textOffsetX); 
-  let textY = $derived(icY + textOffsetY); 
+  let textCenterY = $derived(icY + safeIcH / 2); // Exact vertical center of chip
+  
   let textLines = $derived(textLabel.split('\\n').flatMap(line => line.split('\n')));
 
   let isVisible = $state(true);
@@ -382,32 +385,74 @@
     class:all-active-mode={Number(activeStreaksLimit) === -1}
   >
 
-    {#if showGrid}
-      <defs>
+    <defs>
+      <filter id="glow-heavy" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      
+      <filter id="glow-light" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+
+      <filter id="chip-shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="20" stdDeviation="15" flood-color="#000000" flood-opacity="0.8" />
+      </filter>
+
+      {#if showGrid}
         <pattern id="pcb-grid" width="40" height="40" patternUnits="userSpaceOnUse">
           <circle cx="4" cy="4" r="2" fill="rgba(168, 130, 255, 0.15)" />
           <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"/>
         </pattern>
-      </defs>
+      {/if}
+    </defs>
+
+    {#if showGrid}
       <rect width="100%" height="100%" fill="url(#pcb-grid)" />
     {/if}
 
     {#each routedConnections as conn (conn.id)}
-      <path class="physical-trace" d={conn.physicalPathData} />
+      <path 
+        class="physical-trace" 
+        d={conn.physicalPathData} 
+        filter={isGlowEnabled && Number(activeStreaksLimit) === -1 ? 'url(#glow-light)' : null}
+      />
 
       {#if conn.via}
-        <circle class="via-ring" cx={conn.via.x} cy={conn.via.y} r={conn.via.r} />
+        <circle 
+          class="via-ring" 
+          cx={conn.via.x} 
+          cy={conn.via.y} 
+          r={conn.via.r} 
+          filter={isGlowEnabled && Number(activeStreaksLimit) === -1 ? 'url(#glow-light)' : null}
+        />
         <circle class="via-hole" cx={conn.via.x} cy={conn.via.y} r={conn.via.r * 0.45} />
       {/if}
 
       {@const pad = getPadRect(conn.edge, conn.side)}
-      <rect class="ic-pad" x={pad.x} y={pad.y} width={pad.w} height={pad.h} rx="2" />
+      <rect 
+        class="ic-pad" 
+        x={pad.x} 
+        y={pad.y} 
+        width={pad.w} 
+        height={pad.h} 
+        rx="2" 
+        filter={isGlowEnabled ? 'url(#glow-light)' : null}
+      />
     {/each}
 
     {#each activeStreaks as streak (streak.uid)}
       <path
         class="trace"
         d={streak.conn.animPathData}
+        filter={isGlowEnabled ? 'url(#glow-heavy)' : null}
         style="--dash-len:{streak.conn.dash}; --gap-len:{streak.conn.gap}; --offset-start:{streak.conn.offsetStart}; --offset-end:{streak.conn.offsetEnd}; --duration:{streak.conn.duration}s; animation-delay:{streak.delay}s"
         onanimationend={() => handleStreakEnd(streak.uid)}
       />
@@ -420,26 +465,26 @@
       height={safeIcH} 
       rx="16" 
       class="ic-chip" 
+      filter="url(#chip-shadow)"
     />
     <circle 
       class="ic-pin1" 
       cx={pin1Cx} 
       cy={pin1Cy} 
       r={7} 
+      filter={isGlowEnabled ? 'url(#glow-light)' : null}
     />
     
     <text 
-      x={textX} 
-      y={textY} 
       text-anchor="start" 
-      dominant-baseline="hanging"
+      dominant-baseline="middle"
       class="ic-text"
-      font-size="{Math.max(20, safeIcW * (isMobile ? 0.12 : 0.08))}px"
+      font-size="{fontSize}px"
     >
       {#each textLines as line, i}
         <tspan 
           x={textX} 
-          dy={i === 0 ? '0' : '1.2em'}
+          y={textCenterY + (i - (textLines.length - 1) / 2) * lineSpacing}
         >
           {line}
         </tspan>
@@ -484,26 +529,16 @@
     fill: #cdb8f5;
     stroke: #6b4fb3;
     stroke-width: 1; 
-    /* iOS WebKit Fixes for Drop Shadows */
-    -webkit-filter: drop-shadow(0 0 4px rgba(168, 130, 255, 0.6));
-    filter: drop-shadow(0 0 4px rgba(168, 130, 255, 0.6)); 
-    transform: translate3d(0, 0, 0); 
     pointer-events: none;
   }
 
   .ic-pin1 {
     fill: #a882ff;
-    -webkit-filter: drop-shadow(0 0 6px #a882ff);
-    filter: drop-shadow(0 0 6px #a882ff); 
-    transform: translate3d(0, 0, 0);
   }
 
   .ic-chip {
     fill: #151515;
     stroke-width: 4; 
-    -webkit-filter: drop-shadow(0px 20px 30px rgba(0,0,0,0.8));
-    filter: drop-shadow(0px 20px 30px rgba(0,0,0,0.8)); 
-    transform: translate3d(0, 0, 0);
   }
 
   .ic-text {
@@ -511,6 +546,11 @@
     font-family: 'Share Tech Mono', 'Courier New', monospace;
     font-weight: 400;
     letter-spacing: 4px; 
+    
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+
+    /* Text-shadow is safe on iOS, it is only SVG shape dropshadows that break */
     text-shadow: -2px -2px 2px #000, 2px 2px 2px rgba(255,255,255,0.2);
     transition: fill 0.3s ease, text-shadow 0.3s ease;
   }
@@ -556,40 +596,20 @@
     stroke: #a882ff;
   }
 
-  .pcb-board.all-active-mode:not(.no-glow) .physical-trace,
-  .pcb-board.all-active-mode:not(.no-glow) .via-ring {
-    -webkit-filter: drop-shadow(0 0 6px rgba(168, 130, 255, 0.8));
-    filter: drop-shadow(0 0 6px rgba(168, 130, 255, 0.8));
-    transform: translate3d(0, 0, 0);
-  }
-
   .trace {
     fill: none;
     stroke: #a882ff;
     stroke-width: 4; 
     stroke-linecap: round;
     stroke-linejoin: round;
-    /* iOS WebKit Fix */
-    -webkit-filter: drop-shadow(0 0 6px #a882ff);
-    filter: drop-shadow(0 0 6px #a882ff); 
     pointer-events: none;
     
-    /* Hardware Accel is critical here to prevent filter loss on animate */
     will-change: stroke-dashoffset;
     transform: translate3d(0, 0, 0);
 
     stroke-dasharray: var(--dash-len) var(--gap-len);
     stroke-dashoffset: var(--offset-start);
     animation: signalFlow var(--duration) linear forwards;
-  }
-
-  .pcb-board.no-glow .trace,
-  .pcb-board.no-glow .ic-pad,
-  .pcb-board.no-glow .ic-pin1,
-  .pcb-board.no-glow.all-active-mode .physical-trace,
-  .pcb-board.no-glow.all-active-mode .via-ring {
-    -webkit-filter: none !important;
-    filter: none !important;
   }
 
   .pcb-board.paused .trace {
