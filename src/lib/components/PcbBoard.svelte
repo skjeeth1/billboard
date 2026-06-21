@@ -20,7 +20,8 @@
     lineSpacingMobile = 40, 
 
     // --- GLOBAL SETTINGS ---
-    textLabel = "ELECTRONICS\nAND\nCOMMUN-\n ICATION\nDEPARTMENT", 
+    textLabelDesktop = "ELECTRONICS\nAND\nCOMMUNICATION\nDEPARTMENT", 
+    textLabelMobile = "ELECTRONICS\nAND\nCOMMUN-\nICATION\nDEPARTMENT",
     showGrid = false,
     viaSpawnChance = 0.2,
     tracesX = 20,
@@ -60,7 +61,8 @@
   let textX = $derived(icX + textOffsetX); 
   let textCenterY = $derived(icY + safeIcH / 2); // Exact vertical center of chip
   
-  let textLines = $derived(textLabel.split('\\n').flatMap(line => line.split('\n')));
+  let currentTextLabel = $derived(isMobile ? textLabelMobile : textLabelDesktop);
+  let textLines = $derived(currentTextLabel.split('\\n').flatMap(line => line.split('\n')));
 
   let isVisible = $state(true);
   
@@ -500,7 +502,7 @@
   .ece-card-wrapper {
     width: 100vw;
     height: 100vh;
-    background: #0d0914;
+    background: #0d0e13;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -522,7 +524,7 @@
   }
 
   .via-hole {
-    fill: #0d0914;
+    fill: #0d0e13;
   }
 
   .ic-pad {
@@ -537,7 +539,7 @@
   }
 
   .ic-chip {
-    fill: #151515;
+    fill: #1a1b26;
     stroke-width: 4; 
   }
 
@@ -555,18 +557,13 @@
     transition: fill 0.3s ease, text-shadow 0.3s ease;
   }
 
-  .ece-card-wrapper:hover .pcb-board:not(.no-glow) .ic-text {
-    fill: #a882ff;
-    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
-  }
-
-  .pcb-board.mobile .ic-text {
+  .pcb-board:not(.no-glow) .ic-text {
     fill: #a882ff;
     text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
     animation: textFlicker 2.6s ease-in-out infinite;
   }
 
-  .pcb-board.mobile.paused .ic-text {
+  .pcb-board.paused .ic-text {
     animation-play-state: paused;
   }
 
@@ -579,7 +576,7 @@
 
   .physical-trace {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.08);
+    stroke: #1a1b26;
     stroke-width: 4; 
     stroke-linecap: round;
     stroke-linejoin: round;
