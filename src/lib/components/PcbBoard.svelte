@@ -16,7 +16,7 @@
     activeStreaksLimit = 15, 
     
     enableGlowDesktop = true,
-    enableGlowMobile = false
+    enableGlowMobile = true
   } = $props();
 
   const ROUTING = { 
