@@ -14,7 +14,7 @@
     // --- MOBILE CONFIGURATION ---
     icWidthMobile = 280,
     icHeightMobile = 360,
-    enableGlowMobile = true,
+    enableGlowMobile = false,
     textOffsetXMobile = 25,
     fontSizeMobile = 32,    
     lineSpacingMobile = 40, 
