@@ -23,9 +23,6 @@
 
   let animate = $state(false);
 
-  // Toggle this variable to true/false in code to control the effect
-  let enElectricEffect = true;
-
   // Flatten all images from gallery data to pass into a single carousel
   // and attach an href so each image links to its specific subsection.
   const allGalleryImages = galleryData.flatMap((section) =>

@@ -7,9 +7,9 @@
     icHeightDesktop = 500,
     icWidthMobile = 280,
     icHeightMobile = 360,
-    textLabel = "ELECTRONICS\nAND\nCOMMUN-\nICATION\nDEPARTMENT", 
+    textLabel = "ELECTRONICS\nAND\nCOMMUN-\n ICATION\nDEPARTMENT", 
     showGrid = false,
-    viaSpawnChance = 0.3,
+    viaSpawnChance = 0.2,
     
     tracesX = 20,
     tracesY = 16,
@@ -50,7 +50,7 @@
   
   // Anchor text coordinates just below and aligned with the Pin 1 area
   let textX = $derived(icX + 24); 
-  let textY = $derived(icY + 90); 
+  let textY = $derived(icY + 124); 
 
   let textLines = $derived(textLabel.split('\\n').flatMap(line => line.split('\n')));
 
