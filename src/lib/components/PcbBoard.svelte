@@ -6,10 +6,12 @@
     // --- DESKTOP CONFIGURATION ---
     icWidthDesktop = 800,
     icHeightDesktop = 500,
-    enableGlowDesktop = true,
+    enableGlowDesktop = false,
     textOffsetXDesktop = 60,
     fontSizeDesktop = 64,
     lineSpacingDesktop = 68,
+    tracesXDesktop = 10,
+    tracesYDesktop = 10,
 
     // --- MOBILE CONFIGURATION ---
     icWidthMobile = 280,
@@ -17,15 +19,15 @@
     enableGlowMobile = false,
     textOffsetXMobile = 25,
     fontSizeMobile = 32,    
-    lineSpacingMobile = 40, 
+    lineSpacingMobile = 40,
+    tracesXMobile = 10,
+    tracesYMobile = 12,
 
     // --- GLOBAL SETTINGS ---
     textLabelDesktop = "ELECTRONICS\nAND\nCOMMUNICATION\nDEPARTMENT", 
     textLabelMobile = "ELECTRONICS\nAND\nCOMMUN-\nICATION\nDEPARTMENT",
     showGrid = false,
     viaSpawnChance = 0.2,
-    tracesX = 20,
-    tracesY = 16,
     activeStreaksLimit = 15
   } = $props();
 
@@ -45,11 +47,16 @@
 
   let safeIcW = $derived(isMobile ? icWidthMobile : icWidthDesktop);
   let safeIcH = $derived(isMobile ? icHeightMobile : icHeightDesktop);
+  
+  // Controls glow for light streaks and pads based on device
   let isGlowEnabled = $derived(isMobile ? enableGlowMobile : enableGlowDesktop);
   
   let textOffsetX = $derived(isMobile ? textOffsetXMobile : textOffsetXDesktop);
   let fontSize = $derived(isMobile ? fontSizeMobile : fontSizeDesktop);
   let lineSpacing = $derived(isMobile ? lineSpacingMobile : lineSpacingDesktop);
+
+  let tracesX = $derived(isMobile ? tracesXMobile : tracesXDesktop);
+  let tracesY = $derived(isMobile ? tracesYMobile : tracesYDesktop);
 
   let icX = $derived((boardW - safeIcW) / 2);
   let icY = $derived((boardH - safeIcH) / 2);
@@ -383,7 +390,6 @@
     class="pcb-board"
     class:mobile={isMobile}
     class:paused={!isVisible}
-    class:no-glow={!isGlowEnabled}
     class:all-active-mode={Number(activeStreaksLimit) === -1}
   >
 
@@ -474,7 +480,7 @@
       cx={pin1Cx} 
       cy={pin1Cy} 
       r={7} 
-      filter={isGlowEnabled ? 'url(#glow-light)' : null}
+      filter="url(#glow-light)"
     />
     
     <text 
@@ -543,8 +549,9 @@
     stroke-width: 4; 
   }
 
+  /* Text always glows now */
   .ic-text {
-    fill: rgba(255, 255, 255, 0.1);
+    fill: #a882ff;
     font-family: 'Share Tech Mono', 'Courier New', monospace;
     font-weight: 400;
     letter-spacing: 4px; 
@@ -552,15 +559,10 @@
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
 
-    /* Text-shadow is safe on iOS, it is only SVG shape dropshadows that break */
-    text-shadow: -2px -2px 2px #000, 2px 2px 2px rgba(255,255,255,0.2);
-    transition: fill 0.3s ease, text-shadow 0.3s ease;
-  }
-
-  .pcb-board:not(.no-glow) .ic-text {
-    fill: #a882ff;
+    /* Drop-shadow applied directly for consistent glow */
     text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
     animation: textFlicker 2.6s ease-in-out infinite;
+    transition: fill 0.3s ease, text-shadow 0.3s ease;
   }
 
   .pcb-board.paused .ic-text {
