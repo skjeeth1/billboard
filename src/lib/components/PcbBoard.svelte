@@ -3,16 +3,18 @@
   // 1. COMPONENT PROPS
   // ==========================================
   let {
-    icWidth = 800,
-    icHeight = 350,
-    textLabel = "ECE DEBT",
+    icWidthDesktop = 600,
+    icHeightDesktop = 400,
+    icWidthMobile = 200,
+    icHeightMobile = 200,
+    textLabel = "ECE\nDEPARTMENT", // Use \n to split lines
     showGrid = false,
     viaSpawnChance = 0.3,
     
-    // Programmatic settings (Defaults to a nice balance)
+    // Programmatic settings
     tracesX = 20,
     tracesY = 16,
-    activeStreaksLimit = 15, // Set to -1 to light up everything statically
+    activeStreaksLimit = 15, 
     enableGlow = true
   } = $props();
 
@@ -32,9 +34,11 @@
   
   let boardW = $state(1000); 
   let boardH = $state(600);
+  let isMobile = $state(false);
 
-  let safeIcW = $derived(Math.min(icWidth, boardW * 0.7));
-  let safeIcH = $derived(Math.min(icHeight, boardH * 0.6));
+  // Directly pass dimensions based on device state (No clamping!)
+  let safeIcW = $derived(isMobile ? icWidthMobile : icWidthDesktop);
+  let safeIcH = $derived(isMobile ? icHeightMobile : icHeightDesktop);
 
   let icX = $derived((boardW - safeIcW) / 2);
   let icY = $derived((boardH - safeIcH) / 2);
@@ -43,9 +47,11 @@
   let pin1Cy = $derived(icY + 30);
   
   let textX = $derived(boardW / 2);
-  let textY = $derived(boardH / 2 + (safeIcH * 0.05)); 
+  let textY = $derived(boardH / 2); 
 
-  let isMobile = $state(false);
+  // Dynamically split lines by actual newlines or escaped newlines
+  let textLines = $derived(textLabel.split('\\n').flatMap(line => line.split('\n')));
+
   let isVisible = $state(true);
   
   let totalTraces = $derived(tracesX + tracesY);
@@ -83,8 +89,11 @@
         const y2 = y1 + absDx * dirY;
         points.push([startX, y1], [edgeX, y2], [edgeX, edgeY]);
       } else {
-        const midY = startY + dy / 2 + stagger;
-        points.push([startX, midY], [edgeX, midY], [edgeX, edgeY]);
+        const half = absDy / 2;
+        const straightX = absDx - half;
+        const x1 = startX + straightX * dirX;
+        const y1 = edgeY - half * dirY;
+        points.push([x1, startY], [edgeX, y1], [edgeX, edgeY]);
       }
     } else {
       if (absDy <= absDx) {
@@ -117,13 +126,12 @@
     return { via: points[0], newRoute: points };
   }
 
-  function getCirclePoints(cx, cy, r, numPoints = 16) {
+  function getCirclePoints(cx, cy, r, startAngle = 0, numPoints = 16) {
     const pts = [];
     for (let i = 0; i <= numPoints; i++) {
-      const angle = (i / numPoints) * Math.PI * 2;
+      const angle = startAngle + (i / numPoints) * Math.PI * 2;
       pts.push([cx + Math.cos(angle) * r, cy + Math.sin(angle) * r]);
     }
-    pts.push([cx, cy]);
     return pts;
   }
 
@@ -223,7 +231,7 @@
       let viaData = null;
 
       if (Math.random() < viaSpawnChance) {
-        const targetDist = fullLength * (Math.random() * 0.5);
+        const targetDist = fullLength * (0.3 + Math.random() * 0.4);
         const split = getPointOnRoute(routePoints, targetDist);
         finalRoute = split.newRoute;
         viaData = { x: split.via[0], y: split.via[1], r: 7 }; 
@@ -233,7 +241,9 @@
       let animPoints = physicalPoints;
 
       if (viaData) {
-        const viaPts = getCirclePoints(viaData.x, viaData.y, viaData.r);
+        const nextPoint = finalRoute[1] ?? conn.occluded;
+        const exitAngle = Math.atan2(nextPoint[1] - viaData.y, nextPoint[0] - viaData.x);
+        const viaPts = getCirclePoints(viaData.x, viaData.y, viaData.r, exitAngle);
         animPoints = [...viaPts, ...finalRoute.slice(1), conn.occluded];
       }
 
@@ -292,11 +302,9 @@
     }
   }
 
-  // Ensure config limits aren't exceeded internally
   let activeTracesX = $derived(Math.min(tracesX, maxTraces));
   let activeTracesY = $derived(Math.min(tracesY, maxTraces));
 
-  // Re-route on dimension or count changes
   $effect(() => {
     routedConnections = generateConnections(activeTracesX, activeTracesY, connectionIdCounter);
     connectionIdCounter += totalTraces; 
@@ -305,7 +313,6 @@
     prevTotal = -1; 
   });
 
-  // Streak limit dynamic sizing & -1 Logic
   $effect(() => {
     let limit = Number(activeStreaksLimit);
     let total = routedConnections.length;
@@ -413,25 +420,35 @@
       cy={pin1Cy} 
       r={7} 
     />
+    
     <text 
       x={textX} 
       y={textY} 
       text-anchor="middle" 
+      dominant-baseline="middle"
       class="ic-text"
-      font-size="{Math.max(24, safeIcW * 0.08)}px"
+      font-size="{Math.max(20, safeIcW * (isMobile ? 0.12 : 0.08))}px"
     >
-      {textLabel}
+      {#each textLines as line, i}
+        <tspan 
+          x={textX} 
+          dy={i === 0 ? `-${(textLines.length - 1) * 0.6}em` : '1.2em'}
+        >
+          {line}
+        </tspan>
+      {/each}
     </text>
 
   </svg>
 </div>
 
 <style>
-  /* The wrapper strictly takes up whatever box the user provides in their layout */
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  /* Wrapper strictly fills the exact viewport */
   .ece-card-wrapper {
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
+    width: 100vw;
+    height: 100vh;
     background: #0d0914;
     overflow: hidden;
     position: relative;
@@ -478,11 +495,33 @@
 
   .ic-text {
     fill: rgba(255, 255, 255, 0.1);
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    letter-spacing: 8px; 
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-weight: 400;
+    letter-spacing: 4px; 
     text-shadow: -2px -2px 2px #000, 2px 2px 2px rgba(255,255,255,0.2);
-    transition: all 0.3s ease;
+    transition: fill 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  .ece-card-wrapper:hover .pcb-board:not(.no-glow) .ic-text {
+    fill: #a882ff;
+    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
+  }
+
+  .pcb-board.mobile:not(.no-glow) .ic-text {
+    fill: #a882ff;
+    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
+    animation: textFlicker 2.6s ease-in-out infinite;
+  }
+
+  .pcb-board.mobile.paused:not(.no-glow) .ic-text {
+    animation-play-state: paused;
+  }
+
+  @keyframes textFlicker {
+    0%, 100% { opacity: 1; text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff; }
+    45%      { opacity: 0.86; text-shadow: 0 0 10px #a882ff, 0 0 22px #a882ff; }
+    55%      { opacity: 0.92; text-shadow: 0 0 12px #a882ff, 0 0 26px #a882ff; }
+    75%      { opacity: 0.88; text-shadow: 0 0 10px #a882ff, 0 0 22px #a882ff; }
   }
 
   .physical-trace {
@@ -495,7 +534,6 @@
     transition: stroke 0.4s ease, stroke-opacity 0.4s ease;
   }
 
-  /* --- ALL ACTIVE MODE OVERRIDES (-1 LIMIT) --- */
   .pcb-board.all-active-mode .physical-trace {
     stroke: #a882ff;
     stroke-opacity: 0.9;
@@ -509,7 +547,6 @@
   .pcb-board.all-active-mode:not(.no-glow) .via-ring {
     filter: drop-shadow(0 0 6px rgba(168, 130, 255, 0.8));
   }
-  /* ------------------------------------------- */
 
   .trace {
     fill: none;
@@ -519,11 +556,8 @@
     stroke-linejoin: round;
     filter: drop-shadow(0 0 6px #a882ff); 
     pointer-events: none;
-
-    /* Hardware Acceleration to fix lag */
     will-change: stroke-dashoffset;
     transform: translateZ(0);
-
     stroke-dasharray: var(--dash-len) var(--gap-len);
     stroke-dashoffset: var(--offset-start);
     animation: signalFlow var(--duration) linear forwards;
@@ -546,15 +580,11 @@
 
   @media (prefers-reduced-motion: reduce) {
     .trace { animation: none; opacity: 0; }
+    .ic-text { animation: none !important; }
   }
 
   @keyframes signalFlow {
     0% { stroke-dashoffset: var(--offset-start); }
     100% { stroke-dashoffset: var(--offset-end); }
-  }
-
-  .ece-card-wrapper:hover .ic-text {
-    fill: #a882ff;
-    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff; 
   }
 </style>

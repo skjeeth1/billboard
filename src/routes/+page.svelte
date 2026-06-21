@@ -72,13 +72,8 @@
   </section> -->
 
   <PcbBoard 
-    textLabel="ECE DEPARTMENT" 
-    icWidth={600}
-    icHeight={400}
-    tracesX={20}
-    tracesY={2}
-    // bind:enableGlow={glowEnabled}
-    // bind:activeStreaksLimit={limit}
+    tracesX={10}
+    tracesY={10}
   />
 
   <!-- Main About section -->
