@@ -248,12 +248,12 @@
   }
 
   .event-image {
-    width: 100%;
+    min-height: 0;
   }
 
   .event-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
   }
@@ -330,6 +330,16 @@
     }
     .event-info {
       padding: 1.5rem;
+    }
+    .event-title {
+      font-size: 1.5rem;
+    }
+    .event-description {
+      font-size: 0.9rem;
+    }
+    .event-image {
+      width: 100%;
+      height: auto;
     }
     .latest-event-container {
       flex-direction: column;
