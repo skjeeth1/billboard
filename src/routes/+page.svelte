@@ -4,7 +4,8 @@
 
   import {
     // components
-    ElectricCard,
+    // ElectricCard,
+    PcbBoard,
     Section,
     GalleryCarousel,
     AchievementCard,
@@ -50,7 +51,7 @@
 </svelte:head>
 
 <div class="page-wrapper">
-  <section class="hero-section">
+  <!-- <section class="hero-section">
     {#if animate}
       <ElectricCard active={enElectricEffect}>
         <div class="content-top">
@@ -65,13 +66,20 @@
           <h2 class="subtitle" in:fly={{ y: 20, duration: 1000, delay: 600 }}>
             College of Engineering, Trivandrum
           </h2>
-          <!-- <div in:fly={{ y: 20, duration: 1000, delay: 800 }}>
-              <a href="/epoch" class="cta-button">Explore Epoch</a>
-            </div> -->
         </div>
       </ElectricCard>
     {/if}
-  </section>
+  </section> -->
+
+  <PcbBoard 
+    textLabel="ECE DEPARTMENT" 
+    icWidth={600}
+    icHeight={400}
+    tracesX={20}
+    tracesY={2}
+    // bind:enableGlow={glowEnabled}
+    // bind:activeStreaksLimit={limit}
+  />
 
   <!-- Main About section -->
   <Section

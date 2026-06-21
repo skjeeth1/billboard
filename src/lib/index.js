@@ -4,6 +4,7 @@ export { default as Section } from '$lib/components/Section.svelte';
 export { default as GalleryCarousel } from '$lib/components/GalleryCarousel.svelte';
 export { default as AchievementCard } from '$lib/components/AchievementCard.svelte';
 export { default as NewsCard } from '$lib/components/NewsCard.svelte';
+export { default as PcbBoard } from '$lib/components/PcbBoard.svelte';
 
 // utils
 export { reveal } from '$lib/utils/animations.js';
