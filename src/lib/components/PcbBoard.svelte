@@ -3,55 +3,60 @@
   // 1. COMPONENT PROPS
   // ==========================================
   let {
+    // --- DESKTOP CONFIGURATION ---
     icWidthDesktop = 800,
     icHeightDesktop = 500,
+    enableGlowDesktop = true,
+    textOffsetXDesktop = 24,
+    textOffsetYDesktop = 124,
+
+    // --- MOBILE CONFIGURATION ---
     icWidthMobile = 280,
     icHeightMobile = 360,
+    enableGlowMobile = true,
+    textOffsetXMobile = 24,
+    textOffsetYMobile = 70, // Slightly higher up for mobile
+
+    // --- GLOBAL SETTINGS ---
     textLabel = "ELECTRONICS\nAND\nCOMMUN-\n ICATION\nDEPARTMENT", 
     showGrid = false,
     viaSpawnChance = 0.2,
-    
     tracesX = 20,
     tracesY = 16,
-    activeStreaksLimit = 15, 
-    
-    enableGlowDesktop = true,
-    enableGlowMobile = true
+    activeStreaksLimit = 15
   } = $props();
 
   const ROUTING = { 
-    occlusionDepth: 40, 
-    maxDesktop: 60, 
-    maxMobile: 24,
-    streakLength: 100,
-    staggerSpacing: 16
+    occlusionDepth: 40, maxDesktop: 60, maxMobile: 24,
+    streakLength: 100, staggerSpacing: 16
   };
-  
   const PAD = { stick: 16, overlap: 4, thickness: 6 };
 
   // ==========================================
-  // 2. REACTIVE SYSTEM STATE
+  // 2. REACTIVE SYSTEM STATE & LAYOUT
   // ==========================================
   
   let boardW = $state(1000); 
   let boardH = $state(600);
   let isMobile = $state(false);
 
+  // Grouped Dynamic Resolution (Mobile vs Desktop)
   let safeIcW = $derived(isMobile ? icWidthMobile : icWidthDesktop);
   let safeIcH = $derived(isMobile ? icHeightMobile : icHeightDesktop);
-
   let isGlowEnabled = $derived(isMobile ? enableGlowMobile : enableGlowDesktop);
+  let textOffsetX = $derived(isMobile ? textOffsetXMobile : textOffsetXDesktop);
+  let textOffsetY = $derived(isMobile ? textOffsetYMobile : textOffsetYDesktop);
 
+  // Core Geometry Anchor Points
   let icX = $derived((boardW - safeIcW) / 2);
   let icY = $derived((boardH - safeIcH) / 2);
   
   let pin1Cx = $derived(icX + 30);
   let pin1Cy = $derived(icY + 30);
   
-  // Anchor text coordinates just below and aligned with the Pin 1 area
-  let textX = $derived(icX + 24); 
-  let textY = $derived(icY + 124); 
-
+  // Text Anchor Points (Driven by the Offsets)
+  let textX = $derived(icX + textOffsetX); 
+  let textY = $derived(icY + textOffsetY); 
   let textLines = $derived(textLabel.split('\\n').flatMap(line => line.split('\n')));
 
   let isVisible = $state(true);
@@ -479,19 +484,26 @@
     fill: #cdb8f5;
     stroke: #6b4fb3;
     stroke-width: 1; 
+    /* iOS WebKit Fixes for Drop Shadows */
+    -webkit-filter: drop-shadow(0 0 4px rgba(168, 130, 255, 0.6));
     filter: drop-shadow(0 0 4px rgba(168, 130, 255, 0.6)); 
+    transform: translate3d(0, 0, 0); 
     pointer-events: none;
   }
 
   .ic-pin1 {
     fill: #a882ff;
+    -webkit-filter: drop-shadow(0 0 6px #a882ff);
     filter: drop-shadow(0 0 6px #a882ff); 
+    transform: translate3d(0, 0, 0);
   }
 
   .ic-chip {
     fill: #151515;
     stroke-width: 4; 
+    -webkit-filter: drop-shadow(0px 20px 30px rgba(0,0,0,0.8));
     filter: drop-shadow(0px 20px 30px rgba(0,0,0,0.8)); 
+    transform: translate3d(0, 0, 0);
   }
 
   .ic-text {
@@ -546,7 +558,9 @@
 
   .pcb-board.all-active-mode:not(.no-glow) .physical-trace,
   .pcb-board.all-active-mode:not(.no-glow) .via-ring {
+    -webkit-filter: drop-shadow(0 0 6px rgba(168, 130, 255, 0.8));
     filter: drop-shadow(0 0 6px rgba(168, 130, 255, 0.8));
+    transform: translate3d(0, 0, 0);
   }
 
   .trace {
@@ -555,10 +569,15 @@
     stroke-width: 4; 
     stroke-linecap: round;
     stroke-linejoin: round;
+    /* iOS WebKit Fix */
+    -webkit-filter: drop-shadow(0 0 6px #a882ff);
     filter: drop-shadow(0 0 6px #a882ff); 
     pointer-events: none;
+    
+    /* Hardware Accel is critical here to prevent filter loss on animate */
     will-change: stroke-dashoffset;
-    transform: translateZ(0);
+    transform: translate3d(0, 0, 0);
+
     stroke-dasharray: var(--dash-len) var(--gap-len);
     stroke-dashoffset: var(--offset-start);
     animation: signalFlow var(--duration) linear forwards;
@@ -569,6 +588,7 @@
   .pcb-board.no-glow .ic-pin1,
   .pcb-board.no-glow.all-active-mode .physical-trace,
   .pcb-board.no-glow.all-active-mode .via-ring {
+    -webkit-filter: none !important;
     filter: none !important;
   }
 
