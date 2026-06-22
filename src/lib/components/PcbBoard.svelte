@@ -4,14 +4,14 @@
   // ==========================================
   let {
     // --- DESKTOP CONFIGURATION ---
-    icWidthDesktop = 800,
-    icHeightDesktop = 500,
+    icWidthDesktop = 1200,
+    icHeightDesktop = 600,
     enableGlowDesktop = false,
     textOffsetXDesktop = 60,
     fontSizeDesktop = 64,
     lineSpacingDesktop = 68,
-    tracesXDesktop = 10,
-    tracesYDesktop = 10,
+    tracesXDesktop = 8,
+    tracesYDesktop = 20,
 
     // --- MOBILE CONFIGURATION ---
     icWidthMobile = 280,
@@ -23,12 +23,21 @@
     tracesXMobile = 10,
     tracesYMobile = 12,
 
+    // --- DISCRETE COMPONENTS (RESISTORS / CAPACITORS) ---
+    resistorsDesktop = 0,
+    resistorsMobile = 1,
+    capacitorsDesktop = 0,
+    capacitorsMobile = 1,
+
     // --- GLOBAL SETTINGS ---
     textLabelDesktop = "ELECTRONICS\nAND\nCOMMUNICATION\nDEPARTMENT", 
     textLabelMobile = "ELECTRONICS\nAND\nCOMMUN-\nICATION\nDEPARTMENT",
     showGrid = false,
     viaSpawnChance = 0.2,
-    activeStreaksLimit = 15
+    activeStreaksLimit = 15,
+
+    // --- POWER SWITCH ---
+    defaultPowerOn = true
   } = $props();
 
   const ROUTING = { 
@@ -48,7 +57,6 @@
   let safeIcW = $derived(isMobile ? icWidthMobile : icWidthDesktop);
   let safeIcH = $derived(isMobile ? icHeightMobile : icHeightDesktop);
   
-  // Controls glow for light streaks and pads based on device
   let isGlowEnabled = $derived(isMobile ? enableGlowMobile : enableGlowDesktop);
   
   let textOffsetX = $derived(isMobile ? textOffsetXMobile : textOffsetXDesktop);
@@ -58,15 +66,28 @@
   let tracesX = $derived(isMobile ? tracesXMobile : tracesXDesktop);
   let tracesY = $derived(isMobile ? tracesYMobile : tracesYDesktop);
 
+  let resistorCount = $derived(isMobile ? resistorsMobile : resistorsDesktop);
+  let capacitorCount = $derived(isMobile ? capacitorsMobile : capacitorsDesktop);
+
+  // Scaled up footprints
+  let resistorBodyLen = $derived(isMobile ? 24 : 32);
+  let resistorBodyW = $derived(isMobile ? 12 : 16);
+  let resistorPadLen = $derived(isMobile ? 6 : 8);
+
+  let capBaseSize = $derived(isMobile ? 22 : 28);
+  // Radius > capBaseSize / 2 so the circle overlaps the square base
+  let capRadius = $derived(isMobile ? 13 : 16); 
+  let capPadLen = $derived(isMobile ? 6 : 8);
+  let capPadW = $derived(isMobile ? 8 : 10);
+
   let icX = $derived((boardW - safeIcW) / 2);
   let icY = $derived((boardH - safeIcH) / 2);
   
   let pin1Cx = $derived(icX + 30);
   let pin1Cy = $derived(icY + 30);
   
-  // Text Anchor Points 
   let textX = $derived(icX + textOffsetX); 
-  let textCenterY = $derived(icY + safeIcH / 2); // Exact vertical center of chip
+  let textCenterY = $derived(icY + safeIcH / 2); 
   
   let currentTextLabel = $derived(isMobile ? textLabelMobile : textLabelDesktop);
   let textLines = $derived(currentTextLabel.split('\\n').flatMap(line => line.split('\n')));
@@ -85,6 +106,26 @@
   let prevTotal = -1;
 
   let cardEl; 
+
+  let powerOn = $state(defaultPowerOn);
+  let isBooting = $state(false);
+
+  let railConnections = $derived(routedConnections.filter(c => c.isRail));
+
+  let switchScale = $derived(isMobile ? 0.8 : 1.5); 
+  let switchBodyW = $derived(32 * switchScale);
+  let switchBodyH = $derived(84 * switchScale); 
+  let switchLeadLen = $derived(16 * switchScale);
+  let switchViaGap = $derived(16 * switchScale);
+  let switchViaR = $derived(6 * switchScale);
+  let switchKnobSize = $derived(44 * switchScale); 
+  let switchMargin = $derived(isMobile ? 22 : 38);
+  
+  let switchClearanceX = $derived(isMobile? 10 : 120); 
+  let switchClearanceY = $derived(isMobile? 120: 30); 
+  
+  let switchX = $derived(switchMargin + switchClearanceX);
+  let switchY = $derived(boardH - switchBodyH - switchMargin - switchClearanceY);
 
   // ==========================================
   // 3. PURE UTILITY FUNCTIONS
@@ -143,6 +184,26 @@
       currentDist += segLen;
     }
     return { via: points[0], newRoute: points };
+  }
+
+  function getPointAndAngleOnPath(points, distance) {
+    let currentDist = 0;
+    for (let i = 0; i < points.length - 1; i++) {
+      const p1 = points[i];
+      const p2 = points[i + 1];
+      const segLen = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]);
+      if (segLen > 0 && currentDist + segLen >= distance) {
+        const t = (distance - currentDist) / segLen;
+        const x = p1[0] + (p2[0] - p1[0]) * t;
+        const y = p1[1] + (p2[1] - p1[1]) * t;
+        const angle = Math.atan2(p2[1] - p1[1], p2[0] - p1[0]);
+        return { x, y, angle };
+      }
+      currentDist += segLen;
+    }
+    const last = points[points.length - 1];
+    const prev = points[points.length - 2] ?? last;
+    return { x: last[0], y: last[1], angle: Math.atan2(last[1] - prev[1], last[0] - prev[0]) };
   }
 
   function getCirclePoints(cx, cy, r, startAngle = 0, numPoints = 16) {
@@ -242,7 +303,8 @@
     }
 
     let idOffset = connectionIdStart;
-    return raw.map((conn) => {
+    
+    const mapped = raw.map((conn, index) => {
       const routePoints = getRoutePoints(conn.start[0], conn.start[1], conn.edge[0], conn.edge[1], conn.side, conn.index, conn.total);
       const fullLength = pathLength(routePoints);
       
@@ -266,21 +328,101 @@
         animPoints = [...viaPts, ...finalRoute.slice(1), conn.occluded];
       }
 
-      const length = pathLength(animPoints);
-      const dash = Math.min(ROUTING.streakLength, length / 4);
-      const gap = length + dash;
+      let isOutward = index % 2 === 1;
 
       return {
         id: idOffset++,
-        physicalPathData: pointsToPath(physicalPoints),
-        animPathData: pointsToPath(animPoints), 
+        physicalPoints,
+        animPoints,
+        isOutward,
+        edge: conn.edge,
+        side: conn.side,
+        via: viaData,
+        isRail: false,
+        componentType: null,
+        componentLabel: null
+      };
+    });
+
+    const topConns = mapped.filter(c => c.side === 'top');
+    const bottomConns = mapped.filter(c => c.side === 'bottom');
+    if (topConns.length) {
+      let tl = topConns.reduce((a, b) => (a.edge[0] <= b.edge[0] ? a : b));
+      tl.isRail = true;
+      tl.isOutward = false; 
+    }
+    if (bottomConns.length) {
+      let br = bottomConns.reduce((a, b) => (a.edge[0] >= b.edge[0] ? a : b));
+      br.isRail = true;
+      br.isOutward = true; 
+    }
+
+    // Filter valid component candidates based on platform space
+    const componentCandidates = mapped.filter(c => {
+      if (c.via || c.isRail) return false;
+      if (isMobile && (c.side === 'left' || c.side === 'right')) return false;
+      return true;
+    });
+
+    const shuffledCandidates = [...componentCandidates];
+    for (let i = shuffledCandidates.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledCandidates[i], shuffledCandidates[j]] = [shuffledCandidates[j], shuffledCandidates[i]];
+    }
+
+    const wantedResistors = Math.max(0, Math.floor(resistorCount));
+    const wantedCapacitors = Math.max(0, Math.floor(capacitorCount));
+
+    shuffledCandidates.slice(0, wantedResistors).forEach((c, i) => {
+      c.componentType = 'resistor';
+      c.componentLabel = `R${i + 1}`;
+    });
+    shuffledCandidates.slice(wantedResistors, wantedResistors + wantedCapacitors).forEach((c, i) => {
+      c.componentType = 'capacitor';
+      c.componentLabel = `C${i + 1}`;
+    });
+
+    return mapped.map(conn => {
+      let finalAnimPoints = conn.isOutward ? [...conn.animPoints].reverse() : conn.animPoints;
+      
+      const length = pathLength(finalAnimPoints);
+      const dash = Math.min(ROUTING.streakLength, length / 4);
+      const gap = length + dash;
+
+      let component = null;
+      if (conn.componentType) {
+        const fullLen = pathLength(conn.physicalPoints);
+        const minD = fullLen * 0.3;
+        const maxD = fullLen * 0.7;
+        const targetDist = minD + Math.random() * (maxD - minD);
+        const { x, y, angle } = getPointAndAngleOnPath(conn.physicalPoints, targetDist);
+
+        let angleDeg = angle * (180 / Math.PI);
+        angleDeg = ((angleDeg + 180) % 360 + 360) % 360 - 180;
+        if (angleDeg > 90) angleDeg -= 180;
+        else if (angleDeg <= -90) angleDeg += 180;
+
+        component = {
+          type: conn.componentType,
+          label: conn.componentLabel,
+          x, y,
+          angle: angleDeg
+        };
+      }
+
+      return {
+        id: conn.id,
+        physicalPathData: pointsToPath(conn.physicalPoints),
+        animPathData: pointsToPath(finalAnimPoints), 
         dash, gap,
         offsetStart: 1.5 * dash,
         offsetEnd: -(length + 0.5 * dash),
         duration: Math.min(4, Math.max(1.4, length / 90)),
         edge: conn.edge,
         side: conn.side,
-        via: viaData
+        via: conn.via,
+        isRail: conn.isRail,
+        component
       };
     });
   }
@@ -290,10 +432,10 @@
   // ==========================================
 
   function addRandomStreak() {
-    if (activeStreaksLimit === -1) return; 
+    if (!powerOn || activeStreaksLimit === -1) return; 
     
     let activeConnIds = new Set(activeStreaks.map(s => s.conn.id));
-    let available = routedConnections.filter(c => !activeConnIds.has(c.id));
+    let available = routedConnections.filter(c => !activeConnIds.has(c.id) && !c.isRail);
     
     if (available.length === 0) return;
     
@@ -314,7 +456,8 @@
         activeStreaks = newStreaks;
 
         setTimeout(() => {
-            if (activeStreaksLimit !== -1 && activeStreaks.length < Math.min(activeStreaksLimit, routedConnections.length)) {
+            const nonRailTotal = routedConnections.filter(c => !c.isRail).length;
+            if (powerOn && activeStreaksLimit !== -1 && activeStreaks.length < Math.min(activeStreaksLimit, nonRailTotal)) {
                 addRandomStreak();
             }
         }, 50);
@@ -334,7 +477,12 @@
 
   $effect(() => {
     let limit = Number(activeStreaksLimit);
-    let total = routedConnections.length;
+    let total = routedConnections.filter(c => !c.isRail).length;
+
+    if (!powerOn) {
+        activeStreaks = [];
+        return;
+    }
 
     if (limit === -1) {
         activeStreaks = [];
@@ -342,7 +490,7 @@
         return;
     }
 
-    if (limit !== prevLimit || total !== prevTotal) {
+    if (limit !== prevLimit || total !== prevTotal || activeStreaks.length === 0) {
         prevLimit = limit;
         prevTotal = total;
         
@@ -358,7 +506,32 @@
   });
 
   // ==========================================
-  // 5. BROWSER EVENT EFFECTS
+  // 5. POWER SWITCH LOGIC
+  // ==========================================
+
+  function toggleSwitch() {
+    powerOn = !powerOn;
+  }
+
+  function handleSwitchKey(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleSwitch();
+    }
+  }
+
+  $effect(() => {
+    if (powerOn) {
+      isBooting = true;
+    }
+  });
+
+  function handleTextAnimEnd() {
+    isBooting = false;
+  }
+
+  // ==========================================
+  // 6. BROWSER EVENT EFFECTS
   // ==========================================
 
   $effect(() => {
@@ -389,8 +562,9 @@
     xmlns="http://www.w3.org/2000/svg"
     class="pcb-board"
     class:mobile={isMobile}
-    class:paused={!isVisible}
-    class:all-active-mode={Number(activeStreaksLimit) === -1}
+    class:paused={!isVisible || !powerOn}
+    class:powered={powerOn}
+    class:all-active-mode={Number(activeStreaksLimit) === -1 && powerOn}
   >
 
     <defs>
@@ -429,17 +603,19 @@
     {#each routedConnections as conn (conn.id)}
       <path 
         class="physical-trace" 
+        class:rail={conn.isRail}
         d={conn.physicalPathData} 
-        filter={isGlowEnabled && Number(activeStreaksLimit) === -1 ? 'url(#glow-light)' : null}
+        filter={isGlowEnabled && Number(activeStreaksLimit) === -1 && powerOn ? 'url(#glow-light)' : null}
       />
 
       {#if conn.via}
         <circle 
           class="via-ring" 
+          class:rail={conn.isRail}
           cx={conn.via.x} 
           cy={conn.via.y} 
           r={conn.via.r} 
-          filter={isGlowEnabled && Number(activeStreaksLimit) === -1 ? 'url(#glow-light)' : null}
+          filter={isGlowEnabled && Number(activeStreaksLimit) === -1 && powerOn ? 'url(#glow-light)' : null}
         />
         <circle class="via-hole" cx={conn.via.x} cy={conn.via.y} r={conn.via.r * 0.45} />
       {/if}
@@ -447,24 +623,116 @@
       {@const pad = getPadRect(conn.edge, conn.side)}
       <rect 
         class="ic-pad" 
+        class:rail={conn.isRail}
         x={pad.x} 
         y={pad.y} 
         width={pad.w} 
         height={pad.h} 
         rx="2" 
-        filter={isGlowEnabled ? 'url(#glow-light)' : null}
+        filter={isGlowEnabled && powerOn ? 'url(#glow-light)' : null}
       />
     {/each}
 
-    {#each activeStreaks as streak (streak.uid)}
-      <path
-        class="trace"
-        d={streak.conn.animPathData}
-        filter={isGlowEnabled ? 'url(#glow-heavy)' : null}
-        style="--dash-len:{streak.conn.dash}; --gap-len:{streak.conn.gap}; --offset-start:{streak.conn.offsetStart}; --offset-end:{streak.conn.offsetEnd}; --duration:{streak.conn.duration}s; animation-delay:{streak.delay}s"
-        onanimationend={() => handleStreakEnd(streak.uid)}
-      />
+    {#if powerOn && isVisible}
+      {#each railConnections as rconn (rconn.id)}
+        <path
+          class="rail-streak"
+          d={rconn.animPathData}
+          filter="url(#glow-heavy)"
+          style="--dash-len:{rconn.dash}; --gap-len:{rconn.gap}; --offset-start:{rconn.offsetStart}; --offset-end:{rconn.offsetEnd}; --duration:{rconn.duration}s;"
+        />
+      {/each}
+
+      {#each activeStreaks as streak (streak.uid)}
+        <path
+          class="trace"
+          d={streak.conn.animPathData}
+          filter={isGlowEnabled ? 'url(#glow-heavy)' : null}
+          style="--dash-len:{streak.conn.dash}; --gap-len:{streak.conn.gap}; --offset-start:{streak.conn.offsetStart}; --offset-end:{streak.conn.offsetEnd}; --duration:{streak.conn.duration}s; animation-delay:{streak.delay}s"
+          onanimationend={() => handleStreakEnd(streak.uid)}
+        />
+      {/each}
+    {/if}
+
+    {#each routedConnections as conn (conn.id)}
+      {#if conn.component}
+        <g
+          class="component-group"
+          transform={`translate(${conn.component.x}, ${conn.component.y}) rotate(${conn.component.angle})`}
+          filter={isGlowEnabled && powerOn ? 'url(#glow-light)' : null}
+        >
+          {#if conn.component.type === 'resistor'}
+            <rect class="resistor-body" x={-resistorBodyLen / 2} y={-resistorBodyW / 2} width={resistorBodyLen} height={resistorBodyW} rx="1" />
+            <rect class="smd-pad" x={-resistorBodyLen / 2} y={-resistorBodyW / 2} width={resistorPadLen} height={resistorBodyW} rx="1" />
+            <rect class="smd-pad" x={resistorBodyLen / 2 - resistorPadLen} y={-resistorBodyW / 2} width={resistorPadLen} height={resistorBodyW} rx="1" />
+            <text class="component-label" x="0" y={-resistorBodyW / 2 - 6} text-anchor="middle">{conn.component.label}</text>
+          {:else}
+            <rect class="smd-pad" x={-capBaseSize / 2 - capPadLen} y={-capPadW / 2} width={capPadLen} height={capPadW} rx="1" />
+            <rect class="smd-pad" x={capBaseSize / 2} y={-capPadW / 2} width={capPadLen} height={capPadW} rx="1" />
+            <rect class="cap-base" x={-capBaseSize / 2} y={-capBaseSize / 2} width={capBaseSize} height={capBaseSize} rx="2" />
+            <circle class="cap-circle" cx="0" cy="0" r={capRadius} />
+            <path class="cap-purple-half" d={`M 0 ${-capRadius} A ${capRadius} ${capRadius} 0 0 1 0 ${capRadius} Z`} />
+            <text class="component-label" x="0" y={-capRadius - 6} text-anchor="middle">{conn.component.label}</text>
+          {/if}
+        </g>
+      {/if}
     {/each}
+
+    <g
+      class="switch-group"
+      transform={`translate(${switchX}, ${switchY})`}
+      role="switch"
+      aria-checked={powerOn}
+      aria-label="Power switch"
+      tabindex="0"
+      onclick={toggleSwitch}
+      onkeydown={handleSwitchKey}
+    >
+      <line
+        class="switch-trace" class:on={powerOn}
+        x1={switchBodyW / 2} y1={-switchLeadLen} x2={switchBodyW / 2} y2="0"
+      />
+      <circle
+        class="via-ring switch-via-ring" class:on={powerOn}
+        cx={switchBodyW / 2} cy={-switchLeadLen - switchViaGap} r={switchViaR}
+      />
+      <circle
+        class="via-hole"
+        cx={switchBodyW / 2} cy={-switchLeadLen - switchViaGap} r={switchViaR * 0.45}
+      />
+
+      <line
+        class="switch-trace" class:on={powerOn}
+        x1={switchBodyW / 2} y1={switchBodyH} x2={switchBodyW / 2} y2={switchBodyH + switchLeadLen}
+      />
+      <circle
+        class="via-ring switch-via-ring" class:on={powerOn}
+        cx={switchBodyW / 2} cy={switchBodyH + switchLeadLen + switchViaGap} r={switchViaR}
+      />
+      <circle
+        class="via-hole"
+        cx={switchBodyW / 2} cy={switchBodyH + switchLeadLen + switchViaGap} r={switchViaR * 0.45}
+      />
+
+      <rect class="switch-plate" x="-4" y="-4" width={switchBodyW + 8} height={switchBodyH + 8} rx="7" />
+      <rect class="switch-housing" x="0" y="0" width={switchBodyW} height={switchBodyH} rx="12" />
+      <rect class="switch-track" x={(switchBodyW - 8) / 2} y="6" width="8" height={switchBodyH - 12} rx="4" />
+
+      <text class="switch-mark" x="-14" y="16" text-anchor="end" dominant-baseline="middle">|</text>
+      <text class="switch-mark" x="-14" y={switchBodyH - 16} text-anchor="end" dominant-baseline="middle">○</text>
+
+      <rect
+        class="switch-knob" class:on={powerOn}
+        x={(switchBodyW - switchKnobSize) / 2}
+        y={powerOn ? 4 : switchBodyH - switchKnobSize - 4}
+        width={switchKnobSize} height={switchKnobSize}
+        rx="6"
+      />
+      
+      <text class="silk-label" x={switchBodyW / 2} y={switchBodyH + switchLeadLen + switchViaGap + 20} text-anchor="middle">SW1</text>
+    </g>
+
+    <text class="silk-label" x={icX} y={icY - 10} text-anchor="start">IC1</text>
 
     <rect 
       x={icX} 
@@ -477,17 +745,21 @@
     />
     <circle 
       class="ic-pin1" 
+      class:on={powerOn}
       cx={pin1Cx} 
       cy={pin1Cy} 
       r={7} 
-      filter="url(#glow-light)"
+      filter={powerOn && isGlowEnabled ? 'url(#glow-light)' : null}
     />
     
     <text 
       text-anchor="start" 
       dominant-baseline="middle"
       class="ic-text"
+      class:active={powerOn && !isBooting}
+      class:booting={isBooting}
       font-size="{fontSize}px"
+      onanimationend={handleTextAnimEnd}
     >
       {#each textLines as line, i}
         <tspan 
@@ -541,6 +813,10 @@
   }
 
   .ic-pin1 {
+    fill: #3a3d4d;
+    transition: fill 0.3s ease;
+  }
+  .ic-pin1.on {
     fill: #a882ff;
   }
 
@@ -549,23 +825,30 @@
     stroke-width: 4; 
   }
 
-  /* Text always glows now */
   .ic-text {
-    fill: #a882ff;
+    fill: #383a48;
     font-family: 'Share Tech Mono', 'Courier New', monospace;
     font-weight: 400;
     letter-spacing: 4px; 
-    
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-
-    /* Drop-shadow applied directly for consistent glow */
-    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
-    animation: textFlicker 2.6s ease-in-out infinite;
-    transition: fill 0.3s ease, text-shadow 0.3s ease;
+    transition: fill 0.4s ease;
   }
 
-  .pcb-board.paused .ic-text {
+  .ic-text.active {
+    fill: #a882ff;
+    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
+    animation: textFlicker 2.6s ease-in-out infinite;
+  }
+
+  .ic-text.booting {
+    fill: #a882ff;
+    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
+    animation: textBootFlicker 1.6s steps(1, end) 1 both;
+  }
+
+  .pcb-board.paused .ic-text.active,
+  .pcb-board.paused .ic-text.booting {
     animation-play-state: paused;
   }
 
@@ -574,6 +857,28 @@
     45%      { opacity: 0.86; text-shadow: 0 0 10px #a882ff, 0 0 22px #a882ff; }
     55%      { opacity: 0.92; text-shadow: 0 0 12px #a882ff, 0 0 26px #a882ff; }
     75%      { opacity: 0.88; text-shadow: 0 0 10px #a882ff, 0 0 22px #a882ff; }
+  }
+
+  @keyframes textBootFlicker {
+    0%   { opacity: 0; }
+    3%   { opacity: 1; }
+    6%   { opacity: 0; }
+    9%   { opacity: 1; }
+    11%  { opacity: 0.1; }
+    14%  { opacity: 1; }
+    17%  { opacity: 0; }
+    21%  { opacity: 1; }
+    24%  { opacity: 0.15; }
+    28%  { opacity: 1; }
+    35%  { opacity: 0.4; }
+    40%  { opacity: 1; }
+    47%  { opacity: 0.05; }
+    52%  { opacity: 1; }
+    62%  { opacity: 0.5; }
+    68%  { opacity: 1; }
+    80%  { opacity: 0.7; }
+    88%  { opacity: 1; }
+    100% { opacity: 1; }
   }
 
   .physical-trace {
@@ -593,6 +898,30 @@
   
   .pcb-board.all-active-mode .via-ring {
     stroke: #a882ff;
+  }
+
+  .physical-trace.rail {
+    stroke: #a882ff;
+    stroke-opacity: 0.85;
+  }
+  .ic-pad.rail {
+    fill: #cdb8f5;
+    stroke: #a882ff;
+  }
+  .via-ring.rail {
+    stroke: #a882ff;
+  }
+
+  .rail-streak {
+    fill: none;
+    stroke: #dcc9ff;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    will-change: stroke-dashoffset;
+    stroke-dasharray: var(--dash-len) var(--gap-len);
+    animation: signalFlow var(--duration) linear infinite;
   }
 
   .trace {
@@ -615,13 +944,125 @@
     animation-play-state: paused;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .trace { animation: none; opacity: 0; }
-    .ic-text { animation: none !important; }
-  }
-
   @keyframes signalFlow {
     0% { stroke-dashoffset: var(--offset-start); }
     100% { stroke-dashoffset: var(--offset-end); }
+  }
+
+  .silk-label {
+    fill: rgba(255, 255, 255, 0.7);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    pointer-events: none;
+  }
+
+  .component-group {
+    pointer-events: none;
+  }
+
+  .resistor-body {
+    fill: #1a1b26;
+    stroke: #2a2c38;
+    stroke-width: 1;
+  }
+
+  .smd-pad {
+    fill: #cdb8f5;
+    stroke: #6b4fb3;
+    stroke-width: 1;
+  }
+
+  .cap-base {
+    fill: #23242e;
+    stroke: #3a3c4a;
+    stroke-width: 1;
+  }
+
+  .cap-circle {
+    fill: #1a1b26;
+    stroke: #3a3d4d;
+    stroke-width: 1;
+  }
+
+  .cap-purple-half {
+    fill: #a882ff;
+  }
+
+  .component-label {
+    fill: rgba(255, 255, 255, 0.55);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .switch-group {
+    cursor: pointer;
+  }
+  .switch-group:focus-visible {
+    outline: none;
+  }
+  .switch-group:focus-visible .switch-housing {
+    stroke: #a882ff;
+    stroke-width: 2;
+  }
+
+  .switch-plate {
+    fill: #15161c;
+    stroke: #2a2c38;
+    stroke-width: 1;
+  }
+
+  .switch-housing {
+    fill: #23242e;
+    stroke: #3a3c4a;
+    stroke-width: 1.5;
+    transition: stroke 0.2s ease;
+  }
+  .switch-group:hover .switch-housing {
+    stroke: #54566a;
+  }
+
+  .switch-track {
+    fill: #0a0b10;
+  }
+
+  .switch-mark {
+    fill: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    font-family: 'Share Tech Mono', monospace;
+    pointer-events: none;
+  }
+
+  .switch-knob {
+    fill: #5a5d70;
+    stroke: #7c7f94;
+    stroke-width: 1;
+    transition: y 0.25s cubic-bezier(0.4, 0, 0.2, 1), fill 0.3s ease, stroke 0.3s ease;
+  }
+  .switch-knob.on {
+    fill: #a882ff;
+    stroke: #d3bbff;
+  }
+
+  .switch-trace {
+    stroke: #1a1b26;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke 0.3s ease;
+  }
+  .switch-trace.on {
+    stroke: #a882ff;
+  }
+
+  .switch-via-ring.on {
+    stroke: #a882ff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .trace { animation: none; opacity: 0; }
+    .rail-streak { animation: none; opacity: 0; }
+    .ic-text.active, .ic-text.booting { animation: none !important; }
+    .switch-knob { transition: none; }
   }
 </style>
