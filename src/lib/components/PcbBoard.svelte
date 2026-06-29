@@ -4,14 +4,14 @@
   // ==========================================
   let {
     // --- DESKTOP CONFIGURATION ---
-    icWidthDesktop = 1200,
-    icHeightDesktop = 600,
+    icWidthDesktop = 700,
+    icHeightDesktop = 500,
     enableGlowDesktop = false,
     textOffsetXDesktop = 60,
     fontSizeDesktop = 64,
     lineSpacingDesktop = 68,
     tracesXDesktop = 8,
-    tracesYDesktop = 20,
+    tracesYDesktop = 10,
 
     // --- MOBILE CONFIGURATION ---
     icWidthMobile = 280,

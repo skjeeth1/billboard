@@ -1,7 +1,7 @@
 <script>
   import { getImageUrl } from '$lib/utils/images.js';
   
-  let { item, id = undefined, group = undefined } = $props();
+  let { item, id =  item.title.replace(/\s+/g, '-').toLowerCase(), group = undefined } = $props();
 </script>
 
 <details class="news-card {item.image ? 'has-image' : ''}" {id} name={group}>

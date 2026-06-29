@@ -40,7 +40,7 @@
 
   <Section
     title="OUR MISSION"
-    description="The ECE Association is the official student body responsible for designing, developing, and maintaining the infrastructure of the Department of Electronics and Communication Engineering. We foster a community of tech enthusiasts, providing them with opportunities to work on real-world projects, hone their skills, and bridge the gap between academic learning and industry standards."
+    description="Meet the dedicated students who drive the EC Association forward. From office bearers and committee heads to team members, this section highlights the individuals who work together to organize initiatives, foster innovation, and strengthen our community."
   />
 
   <Section title="MEET THE TEAM">

@@ -9,6 +9,7 @@
     Section,
     GalleryCarousel,
     AchievementCard,
+    NotificationToast,
 
     // data
     achievementsData,
@@ -32,6 +33,8 @@
     }))
   );
 
+  const popupItem = newsData.find((item) => item.showAsPopup);
+
   // Triggers the {#if} block to mount elements after the page loads
   onMount(() => {
     animate = true;
@@ -48,30 +51,8 @@
 </svelte:head>
 
 <div class="page-wrapper">
-  <!-- <section class="hero-section">
-    {#if animate}
-      <ElectricCard active={enElectricEffect}>
-        <div class="content-top">
-          <h1 class="main-title" in:fly={{ y: 40, duration: 1000, delay: 200 }}>
-            ELECTRONICS AND COMMUNICATION ENGINEERING
-          </h1>
-        </div>
 
-        <hr class="divider" />
-
-        <div class="content-bottom">
-          <h2 class="subtitle" in:fly={{ y: 20, duration: 1000, delay: 600 }}>
-            College of Engineering, Trivandrum
-          </h2>
-        </div>
-      </ElectricCard>
-    {/if}
-  </section> -->
-
-  <PcbBoard 
-    tracesX={10}
-    tracesY={10}
-  />
+  <PcbBoard tracesX={10} tracesY={10} />
 
   <!-- Main About section -->
   <Section
@@ -197,7 +178,7 @@
   <Section
     id="association"
     title="OUR TEAM"
-    description="The ECE Web Association is the official student body responsible for designing, developing, and maintaining the digital infrastructure of the Department of Electronics and Communication Engineering. We foster a community of tech enthusiasts, providing them with opportunities to work on real-world projects."
+    description="Meet the dedicated students who drive the EC Association forward. From office bearers and committee heads to team members, this section highlights the individuals who work together to organize initiatives, foster innovation, and strengthen our community. Their leadership, commitment, and collaborative spirit play a vital role in shaping the association's activities and impact. Through their efforts, the EC Association continues to create meaningful opportunities for learning, growth, and engagement."
   >
     <div class="explore-container" use:reveal>
       <a href="/association" class="cta-button">Meet the Members &rarr;</a>
@@ -207,13 +188,22 @@
   <Section
     id="information"
     title="DEPARTMENT DATA"
-    description="Data regarding different informations about our department."
+    description="Access essential information and insights about the department. Explore key resources, records, and institutional data in one place."
   >
     <div class="explore-container" use:reveal>
       <a href="/information" class="cta-button">Consult the archives &rarr;</a>
     </div>
   </Section>
 </div>
+
+{#if popupItem}
+  <NotificationToast 
+    title={popupItem.title} 
+    description={popupItem.description} 
+    image={popupItem.image}
+    tag={popupItem.tag} 
+  />
+{/if}
 
 <style>
   .page-wrapper {
@@ -393,7 +383,6 @@
   .card-content {
     padding: 1.5rem;
     width: fit-content;
-
   }
 
   .card-content h4 {
@@ -409,7 +398,6 @@
     font-size: 1.15rem;
     line-height: 1.4;
     width: fit-content;
-
   }
 
   /* --- Events List --- */
@@ -543,11 +531,11 @@
     }
 
     .card-content h4 {
-    margin: 0 0 0.5rem 0;
-    color: #c0caf5;
-    font-size: 1.1rem;
-    width: fit-content;
-  }
+      margin: 0 0 0.5rem 0;
+      color: #c0caf5;
+      font-size: 1.1rem;
+      width: fit-content;
+    }
 
     .card-content p {
       margin: 0;
@@ -555,7 +543,6 @@
       font-size: 0.95rem;
       line-height: 1.4;
       width: fit-content;
-
     }
   }
 

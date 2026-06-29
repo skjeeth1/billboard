@@ -5,6 +5,7 @@ export { default as GalleryCarousel } from '$lib/components/GalleryCarousel.svel
 export { default as AchievementCard } from '$lib/components/AchievementCard.svelte';
 export { default as NewsCard } from '$lib/components/NewsCard.svelte';
 export { default as PcbBoard } from '$lib/components/PcbBoard.svelte';
+export { default as NotificationToast } from '$lib/components/NotificationToast.svelte';
 
 // utils
 export { reveal } from '$lib/utils/animations.js';

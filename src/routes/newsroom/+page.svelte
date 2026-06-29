@@ -1,8 +1,35 @@
 <script>
   import { Section, NewsCard, newsData } from '$lib';
+  import { onMount } from 'svelte'; // Import onMount
 
   const events = newsData.filter((item) => item.tag === 'event');
   const notifications = newsData.filter((item) => item.tag === 'notification');
+
+  // Intercept the native <details> toggle to inject a smooth layout animation
+  onMount(() => {
+    const handleGridReflow = (e) => {
+      const summary = e.target.closest('summary');
+      
+      // Check if a summary was clicked and if the browser supports View Transitions
+      if (!summary || !document.startViewTransition) return;
+
+      const details = summary.parentElement;
+
+      // Prevent the default instant HTML snap
+      e.preventDefault();
+
+      // Let the browser automatically calculate and animate the grid layout changes
+      document.startViewTransition(() => {
+        details.open = !details.open;
+      });
+    };
+
+    // Attach listener to capture clicks on the summary elements
+    document.addEventListener('click', handleGridReflow);
+    
+    // Cleanup listener on destroy
+    return () => document.removeEventListener('click', handleGridReflow);
+  });
 </script>
 
 <svelte:head>
@@ -45,7 +72,9 @@
   >
     <div class="news-container">
       {#each notifications as item (item.title)}
-        <NewsCard {item} group="newsroom-notifications" />
+        <NewsCard {item}
+        id={item.title.replace(/\s+/g, '-').toLowerCase()} 
+        group="newsroom-notifications" />
       {/each}
     </div>
   </Section>
@@ -76,7 +105,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* A thematic background image for a newsroom/conference */
     background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
     background-position: center;
