@@ -1,10 +1,12 @@
 <script>
   import { fly, fade, slide } from 'svelte/transition';
-
   import { Section, getImageUrl, associationData } from '$lib';
 
   let expandedTeams = $state({});
   let expandedMemes = $state({});
+  
+  // Track the starting index for desktop carousels
+  let teamIndexes = $state({}); 
 
   let activeTab = $state(associationData.length > 0 ? associationData[0].tab : '');
   let isDropdownOpen = $state(false);
@@ -88,19 +90,16 @@
 
     <div class="teams-container">
       {#each displayedTeams as team (team.team)}
-        <!-- svelte-ignore a11y_click_events_have_key_events -->
-        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        {@const currentIndex = teamIndexes[team.team] || 0}
         <div
           class="team-block"
-          class:clickable={!expandedMemes[team.team] &&
-            team.memeImage &&
-            (team.members.length <= (team.tag || 1) || expandedTeams[team.team])}
+          class:clickable={!expandedMemes[team.team] && team.memeImage}
           onclick={() => {
-            if (
-              !expandedMemes[team.team] &&
-              team.memeImage &&
-              (team.members.length <= (team.tag || 1) || expandedTeams[team.team])
-            ) {
+            // Calculate if we should allow meme expansion based on screen size or mobile toggle state
+            const isDesktop = window.innerWidth >= 768;
+            const canShowMobile = team.members.length <= (team.tag || 1) || expandedTeams[team.team];
+
+            if (!expandedMemes[team.team] && team.memeImage && (isDesktop || canShowMobile)) {
               expandedMemes[team.team] = true;
             }
           }}
@@ -115,31 +114,70 @@
             </div>
           </div>
 
-          <div class="members-grid">
-            {#each team.members.slice(0, team.tag || 1) as member, i (member.name)}
-              <div class="member-card lead-member" in:fly={{ y: 20, duration: 400, delay: i * 50 }}>
-                <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
-                <div class="member-details">
-                  <h4>{member.name}</h4>
-                  <p class="role">{member.role}</p>
-                  {#if member.year}<p class="year">{member.year}</p>{/if}
+          <!-- === MOBILE LAYOUT === -->
+          <div class="mobile-only">
+            <div class="members-grid">
+              {#each team.members.slice(0, team.tag || 1) as member, i (member.name)}
+                <div class="member-card lead-member" in:fly={{ y: 20, duration: 400, delay: i * 50 }}>
+                  <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
+                  <div class="member-details">
+                    <h4>{member.name}</h4>
+                    <p class="role">{member.role}</p>
+                    {#if member.year}<p class="year">{member.year}</p>{/if}
+                  </div>
+                </div>
+              {/each}
+            </div>
+
+            {#if expandedTeams[team.team] && team.members.length > (team.tag || 1)}
+              <div transition:slide={{ duration: 400 }}>
+                <div class="members-grid" style="padding-top: 2rem;">
+                  {#each team.members.slice(team.tag || 1) as member, i (member.name)}
+                    <div
+                      class="member-card"
+                      in:fly={{ y: 20, duration: 400, delay: i * 50 }}
+                      out:fade={{ duration: 200 }}
+                    >
+                      <div class="avatar">
+                        <img src={getImageUrl(member.image)} alt={member.name} />
+                      </div>
+                      <div class="member-details">
+                        <h4>{member.name}</h4>
+                        <p class="role">{member.role}</p>
+                        {#if member.year}<p class="year">{member.year}</p>{/if}
+                      </div>
+                    </div>
+                  {/each}
                 </div>
               </div>
-            {/each}
+            {/if}
           </div>
 
-          {#if expandedTeams[team.team] && team.members.length > (team.tag || 1)}
-            <div transition:slide={{ duration: 400 }}>
-              <div class="members-grid" style="padding-top: 2rem;">
-                {#each team.members.slice(team.tag || 1) as member, i (member.name)}
-                  <div
-                    class="member-card"
-                    in:fly={{ y: 20, duration: 400, delay: i * 50 }}
-                    out:fade={{ duration: 200 }}
+          <!-- === DESKTOP LAYOUT === -->
+          <!-- === DESKTOP LAYOUT === -->
+          <div class="desktop-only">
+            
+            <div class="desktop-carousel-wrapper">
+              
+              <!-- Left Arrow Container (Fixed width keeps layout from jumping) -->
+              <div class="arrow-container">
+                {#if team.members.length > 3 && currentIndex > 0}
+                  <button 
+                    class="scroll-arrow left" 
+                    aria-label="Previous members" 
+                    onclick={(e) => { e.stopPropagation(); teamIndexes[team.team] = currentIndex - 1; }}
+                    in:fade={{ duration: 150 }}
                   >
-                    <div class="avatar">
-                      <img src={getImageUrl(member.image)} alt={member.name} />
-                    </div>
+                    &larr;
+                  </button>
+                {/if}
+              </div>
+
+              <!-- Sliced Container (Always spreads items evenly) -->
+              <div class="desktop-scroll-container spread-items">
+                {#each team.members.slice(currentIndex, currentIndex + 3) as member, i (member.name)}
+                  <div class="member-card {currentIndex + i < (team.tag || 1) ? 'lead-member' : ''}" in:fade={{ duration: 250 }}>
+                    <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
                     <div class="member-details">
                       <h4>{member.name}</h4>
                       <p class="role">{member.role}</p>
@@ -148,11 +186,27 @@
                   </div>
                 {/each}
               </div>
-            </div>
-          {/if}
 
+              <!-- Right Arrow Container -->
+              <div class="arrow-container">
+                {#if team.members.length > 3 && currentIndex < team.members.length - 3}
+                  <button 
+                    class="scroll-arrow right" 
+                    aria-label="Next members" 
+                    onclick={(e) => { e.stopPropagation(); teamIndexes[team.team] = currentIndex + 1; }}
+                    in:fade={{ duration: 150 }}
+                  >
+                    &rarr;
+                  </button>
+                {/if}
+              </div>
+
+            </div>
+          </div>
+
+          <!-- MOBILE FOOTER TOGGLE -->
           {#if team.members.length > (team.tag || 1)}
-            <div class="team-footer">
+            <div class="team-footer mobile-only">
               <button
                 class="toggle-btn"
                 aria-label="Toggle team members"
@@ -166,7 +220,8 @@
             </div>
           {/if}
 
-          {#if team.members.length <= (team.tag || 1) || expandedTeams[team.team]}
+          <!-- MEME / EASTER EGG SECTION -->
+          <div class="meme-wrapper" class:mobile-hidden={team.members.length > (team.tag || 1) && !expandedTeams[team.team]}>
             {#if expandedMemes[team.team] && team.memeImage}
               <div transition:slide={{ duration: 400 }}>
                 <div
@@ -191,7 +246,8 @@
             {:else if team.memeImage}
               <p class="meme-hint" in:fade={{ duration: 300 }}>click to show meme</p>
             {/if}
-          {/if}
+          </div>
+
         </div>
       {/each}
     </div>
@@ -199,6 +255,7 @@
 </div>
 
 <style>
+  /* --- Base Layout / Existing CSS --- */
   .association-page {
     font-family: 'JetBrains Mono', monospace;
     background-color: #1a1b26;
@@ -226,7 +283,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* A thematic background image for association/team */
     background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
     background-position: center;
@@ -254,7 +310,6 @@
     color: #a9b1d6;
   }
 
-  /* --- Dropdown Menu --- */
   .dropdown-wrapper {
     display: flex;
     justify-content: center;
@@ -355,7 +410,6 @@
     background-color: rgba(187, 154, 247, 0.05);
   }
 
-  /* --- Teams Section --- */
   .teams-container {
     display: flex;
     flex-direction: column;
@@ -527,8 +581,77 @@
     font-style: italic;
   }
 
-  /* --- Responsive --- */
-  @media (max-width: 768px) {
+  /* =========================================
+     RESPONSIVE LAYOUT SWITCHING
+     ========================================= */
+
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+/* --- Desktop Carousel Styles --- */
+/* --- Desktop Carousel Styles --- */
+  .desktop-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Puts arrows on the far edges */
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .arrow-container {
+    width: 45px; /* Fixed width ensures the center items stay perfectly centered */
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .desktop-scroll-container.spread-items {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1; /* Expands to fill the space between the arrows */
+    gap: 1rem;
+  }
+
+  /* Force desktop member cards to maintain a consistent max width */
+  .desktop-scroll-container .member-card {
+    flex: 0 1 250px; /* Allows them to shrink if needed, but caps width */
+    width: 100%;
+  }
+
+  .scroll-arrow {
+    background: rgba(26, 27, 38, 0.8);
+    border: 1px solid #bb9af7;
+    color: #bb9af7;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-arrow:hover {
+    background: #bb9af7;
+    color: #1a1b26;
+    box-shadow: 0 0 15px rgba(187, 154, 247, 0.4);
+  }
+
+  /* --- Responsive Breakpoints --- */
+  @media (max-width: 767px) {
+    /* Hide the meme section on mobile if it shouldn't be visible yet */
+    .meme-wrapper.mobile-hidden {
+      display: none;
+    }
+    
     .hero-content h1 {
       font-size: 2.5rem;
     }
@@ -540,6 +663,15 @@
   @media (min-width: 768px) {
     .hero-content {
       padding: 0 1.5rem;
+    }
+    
+    /* Toggle Visibility */
+    .mobile-only {
+      display: none !important;
+    }
+
+    .desktop-only {
+      display: block;
     }
   }
 </style>

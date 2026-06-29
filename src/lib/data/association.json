@@ -52,6 +52,18 @@
             "role": "Backend Developer",
             "year": "Second Year",
             "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie&backgroundColor=ffd5dc"
+          },
+          {
+            "name": "Blhablah",
+            "role": "Backend Developer",
+            "year": "Second Year",
+            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie&backgroundColor=ffd5dc"
+          },
+          {
+            "name": "Bwahaha",
+            "role": "Backend Developer",
+            "year": "Second Year",
+            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie&backgroundColor=ffd5dc"
           }
         ]
       },
