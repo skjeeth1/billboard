@@ -1,5 +1,5 @@
 <script>
-  import { fly, fade, slide } from 'svelte/transition';
+  import { fade, slide } from 'svelte/transition';
   import { Section, getImageUrl, associationData } from '$lib';
 
   let expandedTeams = $state({});
@@ -30,15 +30,15 @@
     const filename = `${normalizedName}.webp`;
 
     // Log the generated filename to the console
-    console.log(`[Image Lookup] Normalized filename for ${member.name}:`, filename);
+    // console.log(`[Image Lookup] Normalized filename for ${member.name}:`, filename);
 
     return getImageUrl(filename);
   }
 
   function handleImageError(event, memberName) {
-    console.error(
-      `Image not found in global lookup for: ${memberName}. Falling back to random Dicebear avatar.`
-    );
+    // console.error(
+    //   `Image not found in global lookup for: ${memberName}. Falling back to random Dicebear avatar.`
+    // );
     const fallbackSeed = encodeURIComponent(memberName.replace(/\s+/g, ''));
     event.target.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${fallbackSeed}&backgroundColor=b6e3f4`;
     event.target.onerror = null; // Prevent infinite loop if fallback also fails
@@ -94,7 +94,7 @@
           </button>
 
           {#if isDropdownOpen}
-            <div class="dropdown-menu" transition:fly={{ y: -10, duration: 200 }}>
+            <div class="dropdown-menu">
               {#each associationData as tabData}
                 <button
                   class="dropdown-item"
@@ -143,14 +143,15 @@
           <div class="mobile-only">
             <div class="members-grid">
               {#each team.members.slice(0, team.tag || 1) as member, i (member.name)}
-                <div
-                  class="member-card lead-member"
-                  in:fly={{ y: 20, duration: 400, delay: i * 50 }}
-                >
+                <div class="member-card lead-member">
                   <div class="avatar">
                     <img
                       src={getMemberImage(member)}
                       alt={member.name}
+                      loading="lazy"
+                      decoding="async"
+                      width="120"
+                      height="120"
                       onerror={(e) => handleImageError(e, member.name)}
                     />
                   </div>
@@ -167,15 +168,15 @@
               <div transition:slide={{ duration: 400 }}>
                 <div class="members-grid" style="padding-top: 2rem;">
                   {#each team.members.slice(team.tag || 1) as member, i (member.name)}
-                    <div
-                      class="member-card"
-                      in:fly={{ y: 20, duration: 400, delay: i * 50 }}
-                      out:fade={{ duration: 200 }}
-                    >
+                    <div class="member-card" out:fade={{ duration: 200 }}>
                       <div class="avatar">
                         <img
                           src={getMemberImage(member)}
                           alt={member.name}
+                          loading="lazy"
+                          decoding="async"
+                          width="120"
+                          height="120"
                           onerror={(e) => handleImageError(e, member.name)}
                         />
                       </div>
@@ -222,6 +223,10 @@
                       <img
                         src={getMemberImage(member)}
                         alt={member.name}
+                        loading="lazy"
+                        decoding="async"
+                        width="120"
+                        height="120"
                         onerror={(e) => handleImageError(e, member.name)}
                       />
                     </div>
@@ -276,12 +281,16 @@
           >
             {#if expandedMemes[team.team] && team.memeImage}
               <div transition:slide={{ duration: 400 }}>
-                <div
-                  class="easter-egg"
-                  in:fly={{ y: 20, duration: 400, delay: 100 }}
-                  out:fade={{ duration: 200 }}
-                >
-                  <img src={getImageUrl(team.memeImage)} alt="Team Meme" class="secret-image" />
+                <div class="easter-egg" out:fade={{ duration: 200 }}>
+                  <img
+                    src={getImageUrl(team.memeImage)}
+                    alt="Team Meme"
+                    class="secret-image"
+                    loading="lazy"
+                    decoding="async"
+                    width="120"
+                    height="120"
+                  />
                   <p class="secret-line">{team.memeLine}</p>
                   <button
                     class="hide-meme-text"

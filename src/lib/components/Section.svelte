@@ -4,14 +4,14 @@
   let { id, title, description, children } = $props();
 </script>
 
-<section {id} class="about-section" use:reveal>
+<section {id} class="about-section">
   {#if title}
     <h3 class="section-title">{title}</h3>
   {/if}
   {#if description}
     <p class="description">{description}</p>
   {/if}
-  
+
   {@render children?.()}
 </section>
 
@@ -53,7 +53,7 @@
       line-height: 1.1;
       margin-bottom: 1.5rem;
     }
-    .description{
+    .description {
       font-size: 1.175rem;
       line-height: 1.4;
     }
