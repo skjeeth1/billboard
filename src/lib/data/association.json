@@ -1,120 +1,417 @@
 [
   {
-    "tab": "Executive Committee",
-    "teams": [
+    "tab": "Executives",
+  "teams": [
+    {
+      "team": "Secretary",
+      "description": "Managing records, correspondence, and keeping everything organized.",
+      "memeImage": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
+      "memeLine": "\"Did someone say paperwork?\" 📝",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Blesson Mathews",
+          "role": "Secretary"
+        }
+      ]
+    },
+    {
+      "team": "Joint Secretaries",
+      "description": "Assisting in administration and ensuring smooth operations across all domains.",
+      "memeImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+      "memeLine": "\"Double the trouble, double the fun!\" 🤝",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Nikhil Zacharias",
+          "role": "Joint Secretary"
+        },
+        {
+          "name": "Radhika S Krishnan",
+          "role": "Joint Secretary"
+        }
+      ]
+    },
+    {
+      "team": "Treasurer",
+      "description": "Managing the finances, budgeting, and keeping the accounts in check.",
+      "memeImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+      "memeLine": "\"Where did all the money go?\" 💸",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Indu C R",
+          "role": "Treasurer"
+        }
+      ]
+    },
+    {
+      "team": "Program Secretary",
+      "description": "Planning, organizing, and executing top-notch programs and events.",
+      "memeImage": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80",
+      "memeLine": "\"Everything is under control... mostly.\" 🎭",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Hasil Ali P T",
+          "role": "Program Secretary"
+        },
+        {
+          "name": "Aromal M S",
+          "role": "Program Secretary"
+        },
+        {
+          "name": "Abhinav S D",
+          "role": "Program Secretary"
+        }
+      ]
+    },
+    {
+      "team": "Association Coordinator",
+      "description": "Bridging the gap between the association, teams, and the student body.",
+      "memeImage": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+      "memeLine": "\"I know a guy who knows a guy.\" 🔗",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Dheepak Vinu",
+          "role": "Coordinator"
+        }
+      ]
+    },
+    {
+      "team": "LET & Non-Keralite Representative",
+      "description": "Representing Lateral-Entry & Non-Keralite students and voicing their unique concerns.",
+      "memeImage": "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80",
+      "memeLine": "\"Arriving late but making a statement.\" 🚀",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Riya Jameela",
+          "role": "Representative"
+        },
+
       {
-        "team": "Core Committee",
-        "description": "The leadership team driving the association's vision and initiatives.",
-        "memeImage": "https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "When you have to make the hard decisions but you just want to sleep.",
-        "tag": 2,
-        "members": [
-          {
-            "name": "Jane Doe",
-            "role": "Chairperson",
-            "year": "Final Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=b6e3f4"
-          },
-          {
-            "name": "John Smith",
-            "role": "Vice Chairperson",
-            "year": "Third Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=c0aede"
-          }
-        ]
+        "name": "Stanzin Thayas",
+        "role": "Representative"
+      }
+      ]
+    },
+  {
+    "team": "Executive Committee",
+    "description": "The driving force behind our initiatives, ensuring everything runs smoothly behind the scenes.",
+    "memeImage": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
+    "memeLine": "\"Another meeting that could have been an email.\" 💼",
+    "tag": 6,
+    "members": [
+      {
+        "name": "Mark Johny",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Daris Benny",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Yamin Beck",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Josin Jiby",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Sandhra Treasa Maria",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Helen",
+        "role": "Executive Member"
       }
     ]
+  }
+  ]
+  
+    
   },
-  {
+    {
     "tab": "Our Teams",
     "teams": [
-      {
-        "team": "Web Development",
+        {
+        "team": "Web Team",
         "description": "Architects of the digital experience and internal tools.",
         "memeImage": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
         "memeLine": "\"It works on my machine\" 🤷‍♂️",
         "tag": 1,
         "members": [
-          {
-            "name": "Alice Tech",
-            "role": "Web Master",
-            "year": "Final Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Alice&backgroundColor=ffdfbf"
-          },
-          {
-            "name": "Bob Coder",
-            "role": "Frontend Developer",
-            "year": "Third Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Bob&backgroundColor=d1d4f9"
-          },
-          {
-            "name": "Charlie Dev",
-            "role": "Backend Developer",
-            "year": "Second Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie&backgroundColor=ffd5dc"
-          },
-          {
-            "name": "Blhablah",
-            "role": "Backend Developer",
-            "year": "Second Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie&backgroundColor=ffd5dc"
-          },
-          {
-            "name": "Bwahaha",
-            "role": "Backend Developer",
-            "year": "Second Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie&backgroundColor=ffd5dc"
-          }
+            {
+            "name": "Srikrishna Sathyajeeth",
+            "role": "Head"
+            },
+            {
+            "name": "Neil Martin",
+            "role": "Member"
+            },
+            {
+            "name": "Naveen G S",
+            "role": "Member"
+            },
+            {
+            "name": "Abhin Raj M",
+            "role": "Member"
+            },
+            {
+            "name": "Muhammad Risfal K P",
+            "role": "Member"
+            }
         ]
-      },
-      {
-        "team": "Design & UI/UX",
+        },
+        {
+        "team": "Design Team",
         "description": "Crafting the visual identity and user experience for all platforms.",
         "memeImage": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "Make the logo bigger!",
-        "tag": 1,
-        "members": [
-          {
-            "name": "Diana Pixel",
-            "role": "Design Lead",
-            "year": "Final Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Diana&backgroundColor=b6e3f4"
-          },
-          {
-            "name": "Eve Vector",
-            "role": "UI/UX Designer",
-            "year": "Third Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Eve&backgroundColor=c0aede"
-          }
-        ]
-      }
-    ]
-  },
-
-  {
-    "tab": "Executive ",
-    "teams": [
-      {
-        "team": "Core Committee",
-        "description": "The leadership team driving the association's vision and initiatives.",
-        "memeImage": "https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "When you have to make the hard decisions but you just want to sleep.",
+        "memeLine": "\"Make the logo bigger!\"",
         "tag": 2,
         "members": [
-          {
-            "name": "Jane Doe",
-            "role": "Chairperson",
-            "year": "Final Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=b6e3f4"
-          },
-          {
-            "name": "John Smith",
-            "role": "Vice Chairperson",
-            "year": "Third Year",
-            "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=c0aede"
-          }
+            {
+            "name": "Rida K",
+            "role": "Head"
+            },
+            {
+            "name": "Adarsh S R",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Abhijith D",
+            "role": "Member"
+            },
+            {
+            "name": "Soumya Rajasekharan",
+            "role": "Member"
+            },
+            {
+            "name": "Mydhily Krishna",
+            "role": "Member"
+            },
+            {
+            "name": "Arun Krishna",
+            "role": "Member"
+            },
+            {
+            "name": "Muhammed Basith",
+            "role": "Member"
+            }
         ]
-      }
+        },
+        {
+        "team": "PR Team",
+        "description": "Connecting our vision with the community and managing communications.",
+        "memeImage": "https://images.unsplash.com/photo-1557425955-df376b5903c8?auto=format&fit=crop&w=800&q=80",
+        "memeLine": "\"Is this going on the gram?\" 📸",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Prithvika",
+            "role": "Head"
+            },
+            {
+            "name": "Harinandanan S",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Amal Soman A",
+            "role": "Member"
+            },
+            {
+            "name": "Aman Abdurahman",
+            "role": "Member"
+            },
+            {
+            "name": "Anila Sivan",
+            "role": "Member"
+            },
+            {
+            "name": "Amogha Varsha",
+            "role": "Member"
+            },
+            {
+            "name": "Muhammad Riyan",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Newsletter Team",
+        "description": "Curating stories, updates, and campus news for everyone.",
+        "memeImage": "https://images.unsplash.com/photo-1585241936939-f9c349a4fba7?auto=format&fit=crop&w=800&q=80",
+        "memeLine": "\"Check your spam folder.\" 📧",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Maria Joseph",
+            "role": "Head"
+            },
+            {
+            "name": "Adul Shaj",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Adith Jayakumar",
+            "role": "Member"
+            },
+            {
+            "name": "Avani D Anil",
+            "role": "Member"
+            },
+            {
+            "name": "Akhila P S",
+            "role": "Member"
+            },
+            {
+            "name": "Dhananjayan M",
+            "role": "Member"
+            },
+            {
+            "name": "Arya Devaki",
+            "role": "Member"
+            },
+            {
+            "name": "Melvin Soji",
+            "role": "Member"
+            },
+            {
+            "name": "Sana Saji",
+            "role": "Member"
+            },
+            {
+            "name": "Febin Eldhose",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Media Team",
+        "description": "Capturing moments and creating engaging multimedia content.",
+        "memeImage": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
+        "memeLine": "\"We'll fix it in post.\" 🎬",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Govindh J",
+            "role": "Head"
+            },
+            {
+            "name": "Aadithya Narayanan",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Samil R",
+            "role": "Member"
+            },
+            {
+            "name": "Seblon Basil Hurtis",
+            "role": "Member"
+            },
+            {
+            "name": "Sreesanth T",
+            "role": "Member"
+            },
+            {
+            "name": "Abhineeth G",
+            "role": "Member"
+            },
+            {
+            "name": "Thejas J Anil",
+            "role": "Member"
+            },
+            {
+            "name": "Shahuban Muneer",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Content Team",
+        "description": "Crafting engaging narratives and written content.",
+        "memeImage": "https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&w=800&q=80",
+        "memeLine": "\"Let me ChatGPT that real quick.\" ✍️",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Meriya Eleyas",
+            "role": "Head"
+            },
+            {
+            "name": "Devitheertha T P",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Ann Joy",
+            "role": "Member"
+            },
+            {
+            "name": "Joe Geo Joseph",
+            "role": "Member"
+            },
+            {
+            "name": "Farzeen Junaid",
+            "role": "Member"
+            },
+            {
+            "name": "Amy Jude",
+            "role": "Member"
+            },
+            {
+            "name": "Muhsina P C",
+            "role": "Member"
+            },
+            {
+            "name": "Ujjwal Skandakumar",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Events Team",
+        "description": "Organizing, planning, and executing memorable events.",
+        "memeImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+        "memeLine": "\"Where is the mic?!\" 🎤",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Ashitha A",
+            "role": "Head"
+            },
+            {
+            "name": "Riya Anna Thomas",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Sreehari M S",
+            "role": "Member"
+            },
+            {
+            "name": "Nihal Naseem",
+            "role": "Member"
+            },
+            {
+            "name": "Shehin Shamlan",
+            "role": "Member"
+            },
+            {
+            "name": "Archana Rajesh",
+            "role": "Member"
+            },
+            {
+            "name": "Priyamvada P Achuthan",
+            "role": "Member"
+            },
+            {
+            "name": "Aslam Rasheed",
+            "role": "Member"
+            }
+        ]
+        }
     ]
-  }
+    }
 ]

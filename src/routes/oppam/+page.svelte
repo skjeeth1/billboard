@@ -24,7 +24,9 @@
 
   <Section
     title="ACADEMIC RESOURCES"
-    description="Find subject-wise notes, previous year question papers, and study materials curated for each semester below."
+    description="Your go-to destination for all your  solutions to past KTU question papers for Electronics and Communication Engineering. We take immense pride in presenting a handwritten key, prepared exclusively by Cetians. 
+
+A heartfelt thank you to our dedicated committee members for their unwavering commitment and invaluable contributions."
   >
     <div class="semesters-container">
       {#each oppamData as sem (sem.semester)}

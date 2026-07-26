@@ -4,9 +4,9 @@
 
   let expandedTeams = $state({});
   let expandedMemes = $state({});
-  
+
   // Track the starting index for desktop carousels
-  let teamIndexes = $state({}); 
+  let teamIndexes = $state({});
 
   let activeTab = $state(associationData.length > 0 ? associationData[0].tab : '');
   let isDropdownOpen = $state(false);
@@ -17,6 +17,31 @@
     if (!expandedTeams[teamName]) {
       expandedMemes[teamName] = false;
     }
+  }
+
+  // Image resolution logic
+  function getMemberImage(member) {
+    if (member.image) {
+      return getImageUrl(member.image);
+    }
+
+    // Normalize name: lowercase, trim, replace spaces with underscores
+    const normalizedName = member.name.toLowerCase().trim().replace(/\s+/g, '_');
+    const filename = `${normalizedName}.webp`;
+
+    // Log the generated filename to the console
+    console.log(`[Image Lookup] Normalized filename for ${member.name}:`, filename);
+
+    return getImageUrl(filename);
+  }
+
+  function handleImageError(event, memberName) {
+    console.error(
+      `Image not found in global lookup for: ${memberName}. Falling back to random Dicebear avatar.`
+    );
+    const fallbackSeed = encodeURIComponent(memberName.replace(/\s+/g, ''));
+    event.target.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${fallbackSeed}&backgroundColor=b6e3f4`;
+    event.target.onerror = null; // Prevent infinite loop if fallback also fails
   }
 </script>
 
@@ -95,9 +120,9 @@
           class="team-block"
           class:clickable={!expandedMemes[team.team] && team.memeImage}
           onclick={() => {
-            // Calculate if we should allow meme expansion based on screen size or mobile toggle state
             const isDesktop = window.innerWidth >= 768;
-            const canShowMobile = team.members.length <= (team.tag || 1) || expandedTeams[team.team];
+            const canShowMobile =
+              team.members.length <= (team.tag || 1) || expandedTeams[team.team];
 
             if (!expandedMemes[team.team] && team.memeImage && (isDesktop || canShowMobile)) {
               expandedMemes[team.team] = true;
@@ -118,8 +143,17 @@
           <div class="mobile-only">
             <div class="members-grid">
               {#each team.members.slice(0, team.tag || 1) as member, i (member.name)}
-                <div class="member-card lead-member" in:fly={{ y: 20, duration: 400, delay: i * 50 }}>
-                  <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
+                <div
+                  class="member-card lead-member"
+                  in:fly={{ y: 20, duration: 400, delay: i * 50 }}
+                >
+                  <div class="avatar">
+                    <img
+                      src={getMemberImage(member)}
+                      alt={member.name}
+                      onerror={(e) => handleImageError(e, member.name)}
+                    />
+                  </div>
                   <div class="member-details">
                     <h4>{member.name}</h4>
                     <p class="role">{member.role}</p>
@@ -139,7 +173,11 @@
                       out:fade={{ duration: 200 }}
                     >
                       <div class="avatar">
-                        <img src={getImageUrl(member.image)} alt={member.name} />
+                        <img
+                          src={getMemberImage(member)}
+                          alt={member.name}
+                          onerror={(e) => handleImageError(e, member.name)}
+                        />
                       </div>
                       <div class="member-details">
                         <h4>{member.name}</h4>
@@ -154,18 +192,18 @@
           </div>
 
           <!-- === DESKTOP LAYOUT === -->
-          <!-- === DESKTOP LAYOUT === -->
           <div class="desktop-only">
-            
             <div class="desktop-carousel-wrapper">
-              
-              <!-- Left Arrow Container (Fixed width keeps layout from jumping) -->
+              <!-- Left Arrow Container -->
               <div class="arrow-container">
                 {#if team.members.length > 3 && currentIndex > 0}
-                  <button 
-                    class="scroll-arrow left" 
-                    aria-label="Previous members" 
-                    onclick={(e) => { e.stopPropagation(); teamIndexes[team.team] = currentIndex - 1; }}
+                  <button
+                    class="scroll-arrow left"
+                    aria-label="Previous members"
+                    onclick={(e) => {
+                      e.stopPropagation();
+                      teamIndexes[team.team] = currentIndex - 1;
+                    }}
                     in:fade={{ duration: 150 }}
                   >
                     &larr;
@@ -173,11 +211,20 @@
                 {/if}
               </div>
 
-              <!-- Sliced Container (Always spreads items evenly) -->
+              <!-- Sliced Container -->
               <div class="desktop-scroll-container spread-items">
                 {#each team.members.slice(currentIndex, currentIndex + 3) as member, i (member.name)}
-                  <div class="member-card {currentIndex + i < (team.tag || 1) ? 'lead-member' : ''}" in:fade={{ duration: 250 }}>
-                    <div class="avatar"><img src={getImageUrl(member.image)} alt={member.name} /></div>
+                  <div
+                    class="member-card {currentIndex + i < (team.tag || 1) ? 'lead-member' : ''}"
+                    in:fade={{ duration: 250 }}
+                  >
+                    <div class="avatar">
+                      <img
+                        src={getMemberImage(member)}
+                        alt={member.name}
+                        onerror={(e) => handleImageError(e, member.name)}
+                      />
+                    </div>
                     <div class="member-details">
                       <h4>{member.name}</h4>
                       <p class="role">{member.role}</p>
@@ -190,17 +237,19 @@
               <!-- Right Arrow Container -->
               <div class="arrow-container">
                 {#if team.members.length > 3 && currentIndex < team.members.length - 3}
-                  <button 
-                    class="scroll-arrow right" 
-                    aria-label="Next members" 
-                    onclick={(e) => { e.stopPropagation(); teamIndexes[team.team] = currentIndex + 1; }}
+                  <button
+                    class="scroll-arrow right"
+                    aria-label="Next members"
+                    onclick={(e) => {
+                      e.stopPropagation();
+                      teamIndexes[team.team] = currentIndex + 1;
+                    }}
                     in:fade={{ duration: 150 }}
                   >
                     &rarr;
                   </button>
                 {/if}
               </div>
-
             </div>
           </div>
 
@@ -221,7 +270,10 @@
           {/if}
 
           <!-- MEME / EASTER EGG SECTION -->
-          <div class="meme-wrapper" class:mobile-hidden={team.members.length > (team.tag || 1) && !expandedTeams[team.team]}>
+          <div
+            class="meme-wrapper"
+            class:mobile-hidden={team.members.length > (team.tag || 1) && !expandedTeams[team.team]}
+          >
             {#if expandedMemes[team.team] && team.memeImage}
               <div transition:slide={{ duration: 400 }}>
                 <div
@@ -247,7 +299,6 @@
               <p class="meme-hint" in:fade={{ duration: 300 }}>click to show meme</p>
             {/if}
           </div>
-
         </div>
       {/each}
     </div>
@@ -593,19 +644,18 @@
     display: none;
   }
 
-/* --- Desktop Carousel Styles --- */
-/* --- Desktop Carousel Styles --- */
+  /* --- Desktop Carousel Styles --- */
   .desktop-carousel-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Puts arrows on the far edges */
+    justify-content: space-between;
     width: 100%;
     gap: 1rem;
     padding: 1rem 0;
   }
 
   .arrow-container {
-    width: 45px; /* Fixed width ensures the center items stay perfectly centered */
+    width: 45px;
     display: flex;
     justify-content: center;
     flex-shrink: 0;
@@ -614,13 +664,12 @@
   .desktop-scroll-container.spread-items {
     display: flex;
     justify-content: space-evenly;
-    flex: 1; /* Expands to fill the space between the arrows */
+    flex: 1;
     gap: 1rem;
   }
 
-  /* Force desktop member cards to maintain a consistent max width */
   .desktop-scroll-container .member-card {
-    flex: 0 1 250px; /* Allows them to shrink if needed, but caps width */
+    flex: 0 1 250px;
     width: 100%;
   }
 
@@ -647,11 +696,10 @@
 
   /* --- Responsive Breakpoints --- */
   @media (max-width: 767px) {
-    /* Hide the meme section on mobile if it shouldn't be visible yet */
     .meme-wrapper.mobile-hidden {
       display: none;
     }
-    
+
     .hero-content h1 {
       font-size: 2.5rem;
     }
@@ -664,8 +712,7 @@
     .hero-content {
       padding: 0 1.5rem;
     }
-    
-    /* Toggle Visibility */
+
     .mobile-only {
       display: none !important;
     }

@@ -1,23 +1,30 @@
 [
   {
-    "title": "First Prize at Smart India Hackathon",
-    "names": ["Alice Tech", "Bob Coder", "Charlie Dev"],
-    "description": "Our students won the first prize in the national level hackathon for their innovative solution on urban traffic management using AI.",
-    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    "title": "Wish Intern",
+    "names": ["Nandhana Sanal M - ECE'28"],
+    "description": "Secured WISH internship",
+    "image": "wish-interns.webp",
     "date": "August 2023"
   },
   {
-    "title": "Best Paper Award at IEEE Conference",
-    "names": ["Dr. Jane Doe", "Eve Vector"],
-    "description": "Awarded for outstanding research in the field of quantum computing and neural networks at the International IEEE Conference.",
-    "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+    "title": "Schneider Interns",
+    "names": ["Abhijith D", "Julin Mary Deepak", "- ECE'27"],
+    "description": "Schneider Intership",
+    "image": "schneider-interns.webp",
     "date": "November 2023"
   },
   {
-    "title": "Winners of National Robotics Championship",
-    "names": ["John Smith", "Diana Pixel"],
-    "description": "Secured the championship trophy for building an autonomous rescue robot capable of navigating hazardous terrains.",
-    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+    "title": "AMD Interns",
+    "names": ["Achutha Aswin Naick", "Meriya Eleyas", "Karthik A K", "Shradha P", "- ECE'27"],
+    "description": "AMD Internship",
+    "image": "amd-interns.webp",
+    "date": "January 2024"
+  },
+  {
+    "title": "Texas Interns",
+    "names": ["Gautham Syam", "Anna M Joshy", "Anuragh Haridas", "Nandakishore J", "- ECE'27"],
+    "description": "Texas Internship",
+    "image": "texas-interns.webp",
     "date": "January 2024"
   }
 ]

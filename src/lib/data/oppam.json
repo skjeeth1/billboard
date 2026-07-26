@@ -1,48 +1,92 @@
 [
   {
-    "semester": "Semester 1",
+    "semester": "Semester 2 (2024)",
     "subjects": [
       {
-        "name": "Linear Algebra and Calculus",
-        "link": "https://www.google.com"
+        "name": "Chemistry",
+        "link": "https://drive.google.com/drive/folders/14bdTDeZqqE-MPrRClnScEiGT9RVhh7Sm"
       },
       {
-        "name": "Engineering Physics",
-        "link": "#drive-link"
+        "name": "Foundation of Computing",
+        "link": "https://drive.google.com/drive/folders/1WTGHUsYuMAaxHmbwwUKjkzigHb0_oFRv"
       },
       {
-        "name": "Engineering Chemistry",
-        "link": "#drive-link"
+        "name": "Engineering Entrepreneurship & IPR",
+        "link": "https://drive.google.com/drive/folders/1XV0z1c-MRoWtXGU23TbZ95bGzqkiQu1o"
       },
       {
-        "name": "Engineering Mechanics",
-        "link": "#drive-link"
-      }
-    ]
-  },
-  {
-    "semester": "Semester 3",
-    "subjects": [
-      {
-        "name": "Solid State Devices",
-        "link": "#drive-link"
+        "name": "Mathematics",
+        "link": "https://drive.google.com/drive/folders/13z3bpBXfWLoRQPxWQcU_lotvV2E2SY3d"
       },
       {
         "name": "Network Theory",
-        "link": "#drive-link"
+        "link": "https://drive.google.com/drive/folders/1kprh_4C8XLi1BOu25VsByvHuDyr88FbK"
       },
       {
-        "name": "Logic Circuit Design",
-        "link": "#drive-link"
+        "name": "Programming in C",
+        "link": "https://drive.google.com/drive/folders/11D3j4HubIvJ_RVQfR6Z0kx_zTPY56lwo"
       }
     ]
   },
   {
-    "semester": "Semester 4",
+    "semester": "Semester 4 (2024)",
     "subjects": [
       {
-        "name": "Analog Communication",
-        "link": "#drive-link"
+        "name": "Digital Systems and VLSI Design",
+        "link": "https://drive.google.com/drive/folders/1I9xs_cTiyVe15fWXsAIfCiED_b6Qh7sn"
+      },
+      {
+        "name": "Linear Integrated Circuits",
+        "link": "https://drive.google.com/drive/folders/1DDXVhb3e_oTKZeIYxkQvP0xoX-mr3T1N"
+      },
+      {
+        "name": "Economics",
+        "link": "https://drive.google.com/drive/folders/1GKtjk2AsfGKRN_61yLky-XaR-fC4_E9s"
+      },
+      {
+        "name": "Mathematics",
+        "link": "https://drive.google.com/drive/folders/1QvXUYEHMhYSP0dENO3-ogN2kbneeHg_x"
+      },
+      {
+        "name": "Microcontrollers",
+        "link": "https://drive.google.com/drive/folders/1D9M_Af23DN4R7AmF0ghbmEpkNQFJGPJc"
+      },
+      {
+        "name": "Signals and Systems",
+        "link": "https://drive.google.com/drive/folders/1lZ42WCiw4Qcs4EZ74RIXYxg8C9c0vxMB"
+      }
+    ]
+  },
+  {
+    "semester": "2019 Syllabus",
+    "subjects": [
+      {
+        "name": "Semester 1",
+        "link": "https://drive.google.com/drive/folders/11FspYiI1U5miypGQqXVY8f2BnHv3U5mq"
+      },
+      {
+        "name": "Semester 2",
+        "link": "https://drive.google.com/drive/folders/1mDnX3q57O1sv4qOqY0bxMOCnubg-l0xN"
+      },
+      {
+        "name": "Semester 3",
+        "link": "https://drive.google.com/drive/folders/11GKAfA980huhRhTRhSo0bsjZnVwtnM3y"
+      },
+      {
+        "name": "Semester 4",
+        "link": "https://drive.google.com/drive/folders/1JYQVkq-qWGfmuEHol9pYS3Q1XETBxsj3"
+      },
+      {
+        "name": "Semester 5",
+        "link": "https://drive.google.com/drive/folders/11HYN4GJR7qucryb8Be6Vq4yhB0V7CtNU"
+      },
+      {
+        "name": "Semester 6",
+        "link": "https://drive.google.com/drive/folders/1qum11KIsofp_g9isxND2xTUxFL48TS1F"
+      },
+      {
+        "name": "Semester 7",
+        "link": "https://drive.google.com/drive/folders/11HYZA71yoM0bvAEXd83U99xnMQ_TlOsY"
       }
     ]
   }

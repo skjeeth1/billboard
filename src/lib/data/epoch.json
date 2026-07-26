@@ -1,18 +1,51 @@
 [
   {
     "tag": "latest",
-    "image": "epoch6.jpeg",
-    "alt": "epoch6",
-    "date": "June 13, 2026 | 7:15 PM",
-    "title": "What Recruiters Expect from you?",
-    "speaker": "Adarsh Varghese (ECE '24)",
-    "company": "Firmware Engineer @ TISMO",
-    "details": "Find out in the Talks Session with Adarsh Varghese, Firmware Engineer at TISMO. Gain valuable insights into recruiter expectations, placement preparation and the qualities that help candidates stand out.",
+    "image": "epoch9.webp",
+    "alt": "epoch9",
+    "date": "July 18, 2026 | 3:30 PM",
+    "title": "How to Approach a Research Publication",
+    "speaker": "Dr. Jinu Jayachandran",
+    "company": "Assistant Professor, ECE",
+    "details": "An expert talk with Dr. Jinu Jayachandran to break down exactly how to approach, structure, and submit a research publication without the stress",
     "link": "#register",
     "link-name": "Event Resources"
   },
   {
-    "image": "epoch5.jpeg",
+    "image": "epoch8.webp",
+    "alt": "epoch8",
+    "date": "July 11, 2026 | 7:30 PM",
+    "title": "Placement Talk Session 8",
+    "speaker": "Devika V",
+    "company": "Graduate Engineer Trainee at JSW",
+    "details": "",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch7.webp",
+    "alt": "epoch7",
+    "date": "July 4, 2026 | 7:30 PM",
+    "title": "Placement Talk Session 7",
+    "speaker": "Vykasi Sidhana",
+    "company": "South Indian Bank",
+    "details": "Join us for an engaging session with Vykasi Sidhana, placed at South Indian Bank, as she shares her placement journey and valuable insights into what recruiters truly look for in candidates. An initiative under EPOCH, organized in collaboration with Women TechnoHub.",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch6.webp",
+    "alt": "epoch6",
+    "date": "June 13, 2026 | 7:15 PM",
+    "title": "Placement Talk Session 6",
+    "speaker": "Adarsh Varghese (ECE '24)",
+    "company": "Firmware Engineer @ TISMO",
+    "details": "Find out in the Talks Session with Adarsh Varghese, Firmware Engineer at TISMO. Gain valuable insights into recruiter expectations, placement preparation and the qualities that help candidates stand out.",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch5.webp",
     "alt": "epoch5",
     "date": "June 6, 2026 | 7:00 PM",
     "title": "Cracking a Management Role",
@@ -23,7 +56,7 @@
     "link-name": "Event Resources"
   },
   {
-    "image": "epoch4.jpeg",
+    "image": "epoch4.webp",
     "alt": "epoch4",
     "date": "May 31, 2026 | 7:30 PM",
     "title": "Placement Talk Session 4",
@@ -34,7 +67,7 @@
     "link-name": "Event Resources"
   },
   {
-    "image": "epoch3.jpeg",
+    "image": "epoch3.webp",
     "alt": "epoch3",
     "date": "May 31, 2026 | 7:30 PM",
     "title": "Placement Talk Session 3",
@@ -45,7 +78,7 @@
     "link-name": "Event Resources"
   },
   {
-    "image": "epoch2.jpeg",
+    "image": "epoch2.webp",
     "alt": "epoch2",
     "date": "April 14, 2026 | 7:00 PM",
     "title": "Stepping into the Core Sector",
@@ -56,7 +89,7 @@
     "link-name": "Event Resources"
   },
   {
-    "image": "epoch1.jpeg",
+    "image": "epoch1.webp",
     "alt": "epoch1",
     "date": "April 10, 2026 | 6:00 PM",
     "title": "Cracking the Management Role",

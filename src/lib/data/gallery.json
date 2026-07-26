@@ -4,7 +4,7 @@
     "title": "Robosoccer 2024",
     "description": "Highlights from the annual autonomous robotics competition, where student-built machines face off on the field.",
     "images": [
-      { "src": "epoch1.jpeg", "alt": "Robosoccer Match 1" },
+      { "src": "epoch1.webp", "alt": "Robosoccer Match 1" },
       { "src": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80", "alt": "Team preparing" },
       { "src": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", "alt": "Audience cheering" },
       { "src": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80", "alt": "Bot tuning" },

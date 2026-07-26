@@ -10,11 +10,12 @@
     { label: 'Newsroom', href: '/newsroom' },
     { label: 'Achievements', href: '/achievements' },
     { label: 'Gallery', href: '/gallery' },
-    { label: 'About Us', href: '/association' },
+    { label: 'Data', href: '/information' },
+    { label: 'About Us', href: '/association' }
   ];
 
   const socialLinks = {
-    instagram: 'https://instagram.com/your_handle',
+    instagram: 'https://www.instagram.com/ec_association_cet?igsh=bmw4amhzOW83Mm5z',
     github: 'https://github.com/skjeeth1',
     linkedin: 'https://in.linkedin.com/company/ec-association-cet',
     college: 'https://ece.cet.ac.in/'
@@ -58,7 +59,7 @@
         if (typeof window !== 'undefined') document.body.style.overflowY = 'auto';
       }}
     >
-      <span class="logo-text">[LOGO]</span>
+      <img src="/favicon.ico" alt="Site Logo" class="logo-image" />
     </a>
 
     <ul class="desktop-menu">
@@ -122,17 +123,79 @@
   <div class="footer-content">
     <p class="footer-text">Made by ECE Web Association</p>
     <div class="social-links">
-      <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      <a
+        href={socialLinks.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        title="Instagram"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path
+            d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+          ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg
+        >
       </a>
-      <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+      <a
+        href={socialLinks.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        title="GitHub"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+          ></path></svg
+        >
       </a>
-      <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      <a
+        href={socialLinks.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        title="LinkedIn"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+          ></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"
+          ></circle></svg
+        >
       </a>
-      <a href={socialLinks.college} target="_blank" rel="noopener noreferrer" aria-label="College" title="College">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c3 3 9 3 12 0v-5"></path></svg>
+      <a
+        href={socialLinks.college}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="College"
+        title="College"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c3 3 9 3 12 0v-5"></path></svg
+        >
       </a>
     </div>
   </div>
@@ -203,10 +266,11 @@
     text-decoration: none;
     color: #ffffff;
   }
-  .logo-text {
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+  .logo-image {
+    height: 2rem;
+    width: auto;
+    object-fit: contain;
+    display: block;
   }
 
   /* Desktop Menu */
@@ -333,7 +397,9 @@
   }
   .social-links a {
     color: #8f93a2;
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;

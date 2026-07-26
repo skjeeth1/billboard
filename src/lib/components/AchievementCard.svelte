@@ -37,23 +37,73 @@
     border-radius: 16px;
     overflow: hidden;
     text-align: left;
-    transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      transform 0.3s ease,
+      background-color 0.3s ease;
   }
   .achievement-card:hover {
     border-color: rgba(187, 154, 247, 0.5);
     background-color: rgba(26, 27, 38, 0.7);
     transform: translateY(-5px);
   }
-  .achievement-image { width: 100%; height: 200px; overflow: hidden; }
-  .achievement-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .achievement-content { padding: 1.5rem; }
-  
-  .date-badge { display: inline-block; font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.75rem; color: #bb9af7; }
-  .achievement-content h4 { margin: 0 0 0.5rem 0; font-size: 1.25rem; color: #c0caf5; line-height: 1.4; }
-  .achievement-content .names { margin: 0 0 1rem 0; font-size: 1rem; color: #bb9af7; font-weight: 600; }
-  .achievement-content .description { margin: 0; font-size: 1rem; color: #a9b1d6; line-height: 1.6; }
+  .achievement-image {
+    width: 100%;
+    /* height: 200px; */
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .achievement-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .achievement-content {
+    padding: 1.5rem;
+  }
 
-  .tags-container { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .tag { display: inline-block; font-size: 0.85rem; color: #a9b1d6; }
-  .tag strong { color: #bb9af7; margin-right: 0.25rem; }
+  .date-badge {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    color: #bb9af7;
+  }
+  .achievement-content h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: #c0caf5;
+    line-height: 1.4;
+  }
+  .achievement-content .names {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: #bb9af7;
+    font-weight: 600;
+  }
+  .achievement-content .description {
+    margin: 0;
+    font-size: 1rem;
+    color: #a9b1d6;
+    line-height: 1.6;
+  }
+
+  .tags-container {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #a9b1d6;
+  }
+  .tag strong {
+    color: #bb9af7;
+    margin-right: 0.25rem;
+  }
 </style>
+
