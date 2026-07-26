@@ -10,6 +10,7 @@
     GalleryCarousel,
     AchievementCard,
     NotificationToast,
+    EventCard,
 
     // data
     achievementsData,
@@ -22,8 +23,6 @@
     getImageUrl
   } from '$lib';
 
-  let animate = $state(false);
-
   // Flatten all images from gallery data to pass into a single carousel
   // and attach an href so each image links to its specific subsection.
   const allGalleryImages = galleryData.flatMap((section) =>
@@ -34,11 +33,7 @@
   );
 
   const popupItem = newsData.find((item) => item.showAsPopup);
-
-  // Triggers the {#if} block to mount elements after the page loads
-  onMount(() => {
-    animate = true;
-  });
+  const latestEvent = epochData.find((event) => event.tag === 'latest');
 </script>
 
 <svelte:head>
@@ -51,7 +46,6 @@
 </svelte:head>
 
 <div class="page-wrapper">
-
   <PcbBoard tracesX={10} tracesY={10} />
 
   <!-- Main About section -->
@@ -76,27 +70,18 @@
     title="EPOCH"
     description="The ultimate technical symposium hosted by the finest minds in engineering."
   >
-    <div class="image-grid">
-      {#each epochData.slice(0, 1) as item (item.alt)}
-        <a
-          href="/epoch#{item.tag === 'latest'
-            ? 'upcoming'
-            : item.alt.replace(/\s+/g, '-').toLowerCase()}"
-          class="image-card"
-          use:reveal
-        >
-          <div class="card-badge" class:latest={item.tag === 'latest'}>
-            {item.tag === 'latest' ? 'LATEST' : 'PREVIOUS'}
-          </div>
-          <img src={getImageUrl(item.image)} alt={item.alt} />
-          <div class="card-content">
-            <h4>{item.title}</h4>
-            <p>{item.speaker}, <strong>{item.company}</strong></p>
-          </div>
-        </a>
-      {/each}
+    <div use:reveal>
+      <EventCard
+        image={latestEvent.image}
+        alt={latestEvent.alt}
+        date={latestEvent.date}
+        title={latestEvent.title}
+        speaker={latestEvent.speaker}
+        company={latestEvent.company}
+        details={latestEvent.details}
+        link={latestEvent.link}
+      />
     </div>
-
     <div class="explore-container" use:reveal>
       <a href="/epoch" class="cta-button">Explore all events &rarr;</a>
     </div>
@@ -148,11 +133,20 @@
     title="ACHIEVEMENTS"
     description="Celebrating the outstanding milestones and successes of our students and faculty."
   >
-    <div class="achievements-grid">
-      {#each achievementsData.slice(0, 1) as achievement, i (achievement.title)}
-        <AchievementCard {achievement} delay={i * 50} />
-      {/each}
-    </div>
+    {#each achievementsData.slice(0, 1) as achievement, i (achievement.title)}
+      <div use:reveal>
+        <EventCard
+          image={achievement.image}
+          alt={achievement.title}
+          date={achievement.date || 'Recent'}
+          title={achievement.title}
+          speaker={achievement.name || 'Student Achievement'}
+          company={achievement.category || 'Milestone'}
+          details={achievement.description || achievement.details}
+          link={achievement.link || '/achievements'}
+        />
+      </div>
+    {/each}
 
     <div class="explore-container" use:reveal>
       <a href="/achievements" class="cta-button">View all achievements &rarr;</a>
@@ -197,11 +191,11 @@
 </div>
 
 {#if popupItem}
-  <NotificationToast 
-    title={popupItem.title} 
-    description={popupItem.description} 
+  <NotificationToast
+    title={popupItem.title}
+    description={popupItem.description}
     image={popupItem.image}
-    tag={popupItem.tag} 
+    tag={popupItem.tag}
   />
 {/if}
 

@@ -1,5 +1,5 @@
 <script>
-  import { Section, NewsCard, epochData, getImageUrl } from '$lib';
+  import { Section, NewsCard, EventCard, epochData, getImageUrl } from '$lib';
 
   const latestEvent = epochData.find((event) => event.tag === 'latest');
   const previousEvents = epochData.filter((event) => event.tag !== 'latest');
@@ -114,26 +114,17 @@
     </div>
   </Section>
 
-  <Section title="UPCOMING EVENT">
-    <div id="upcoming" class="latest-event-container">
-      <div class="event-image">
-        <img src={getImageUrl(latestEvent.image)} alt={latestEvent.alt} />
-      </div>
-      <div class="event-info">
-        <span class="event-date">{latestEvent.date}</span>
-        <h3 class="event-title">{latestEvent.title}</h3>
-        <p class="speaker-info">
-          <span class="speaker-name">{latestEvent.speaker}</span> |
-          <span class="speaker-company">{latestEvent.company}</span>
-        </p>
-        <p class="event-description">
-          {latestEvent.details}
-        </p>
-        <a href={latestEvent.link} class="cta-button"
-          >{latestEvent.link === '#register' ? 'GMeet Link' : 'Learn More'}</a
-        >
-      </div>
-    </div>
+  <Section title="LATEST EVENT">
+    <EventCard
+      image={latestEvent.image}
+      alt={latestEvent.alt}
+      date={latestEvent.date}
+      title={latestEvent.title}
+      speaker={latestEvent.speaker}
+      company={latestEvent.company}
+      details={latestEvent.details}
+      link={latestEvent.link}
+    />
   </Section>
 
   <Section title="PREVIOUS EVENTS">
@@ -235,89 +226,12 @@
     margin-top: 0.2rem;
   }
 
-  .latest-event-container {
-    display: flex;
-    text-align: left;
-    background-color: rgba(26, 27, 38, 0.5);
-    border: 1px solid rgba(187, 154, 247, 0.2);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-top: 2rem;
-    box-shadow: 0 0 15px rgba(187, 154, 247, 0.2);
-    scroll-margin-top: 100px;
-  }
-
-  .event-image {
-    min-height: 0;
-  }
-
-  .event-image img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-  }
-
-  .event-info {
-    padding: 2.5rem;
-  }
-
-  .event-date {
-    display: inline-block;
-    font-weight: 600;
-    color: #bb9af7;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.05em;
-  }
-
-  .event-title {
-    font-size: 2rem;
-    color: #c0caf5;
-    margin: 0 0 1rem 0;
-  }
-
-  .speaker-info {
-    font-size: 1.1rem;
-    color: #7aa2f7;
-    margin: 0 0 1.5rem 0;
-  }
-
-  .speaker-name {
-    font-weight: 700;
-    color: #a9b1d6;
-  }
-
-  .event-description {
-    color: #a9b1d6;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-
   .previous-events-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
     width: 100%;
-  }
-
-  .cta-button {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background-color: rgba(187, 154, 247, 0.1);
-    color: #bb9af7;
-    border: 1px solid #bb9af7;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-  }
-
-  .cta-button:hover {
-    background-color: #bb9af7;
-    color: #1a1b26;
-    box-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
   }
 
   @media (max-width: 768px) {
@@ -327,22 +241,6 @@
     .provide-content {
       font-size: 1.175rem;
       line-height: 1.4;
-    }
-    .event-info {
-      padding: 1.5rem;
-    }
-    .event-title {
-      font-size: 1.5rem;
-    }
-    .event-description {
-      font-size: 0.9rem;
-    }
-    .event-image {
-      width: 100%;
-      height: auto;
-    }
-    .latest-event-container {
-      flex-direction: column;
     }
   }
 </style>
