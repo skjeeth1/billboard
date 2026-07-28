@@ -15,7 +15,7 @@
   ];
 
   const socialLinks = {
-    instagram: 'https://www.instagram.com/ec_association_cet?igsh=bmw4amhzOW83Mm5z',
+    instagram: 'https://www.instagram.com/ec_association_cet',
     github: 'https://github.com/skjeeth1',
     linkedin: 'https://in.linkedin.com/company/ec-association-cet',
     college: 'https://ece.cet.ac.in/'
