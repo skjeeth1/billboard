@@ -1,9 +1,10 @@
 <script>
   import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import { getImageUrl } from '$lib';
 
-  let { title, description, tag = 'NEW', image } = $props();
-  
+  let { title, description, tag = 'NEW', image, link, linkName = 'Read more' } = $props();
+
   let visible = $state(true);
 
   // Generate a URL-friendly anchor ID from the title
@@ -28,9 +29,11 @@
 
 {#if visible}
   <div class="modal-backdrop" transition:fade={{ duration: 300 }}>
-    
-    <div class="modal-box" in:fly={{ y: 50, duration: 400, delay: 100 }} out:fly={{ y: 50, duration: 300 }}>
-      
+    <div
+      class="modal-box"
+      in:fly={{ y: 50, duration: 400, delay: 100 }}
+      out:fly={{ y: 50, duration: 300 }}
+    >
       <div class="modal-action-bar">
         <button class="close-btn" aria-label="Close notification" onclick={dismiss}>
           &times;
@@ -38,22 +41,27 @@
       </div>
 
       {#if image}
-        <img src={image} alt={title} class="modal-image" />
+        <img src={getImageUrl(image)} alt={title} class="modal-image" />
       {/if}
 
       <div class="modal-content">
         <span class="event-tag">{tag.toUpperCase()}</span>
         <h2>{title}</h2>
         <p>{description}</p>
-        
-        <!-- Link to the specific news card -->
-        <a href={`/newsroom#${cardId}`} class="read-more-link" onclick={dismiss}>
-          View in Newsroom &rarr;
-        </a>
+
+        {#if link}
+          <!-- Render the custom link if provided -->
+          <a href={link} class="read-more-link" onclick={dismiss}>
+            {linkName} &rarr;
+          </a>
+        {:else}
+          <!-- Fallback to the local newsroom anchor routing -->
+          <a href={`/newsroom#${cardId}`} class="read-more-link" onclick={dismiss}>
+            View in Newsroom &rarr;
+          </a>
+        {/if}
       </div>
-      
     </div>
-    
   </div>
 {/if}
 
@@ -65,26 +73,26 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(15, 15, 20, 0.75); 
-    backdrop-filter: blur(12px); 
+    background-color: rgba(15, 15, 20, 0.75);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; 
-    padding: 1.5rem; 
+    z-index: 9999;
+    padding: 1.5rem;
     box-sizing: border-box;
   }
 
   .modal-box {
-    background-color: #1a1b26; 
+    background-color: #1a1b26;
     border: 1px solid #bb9af7;
     border-radius: 16px;
     padding: 1.5rem 2rem 2.5rem 2rem;
-    max-width: 600px; 
+    max-width: 600px;
     width: 100%;
-    max-height: 90vh; 
-    overflow-y: auto; 
+    max-height: 90vh;
+    overflow-y: auto;
     box-shadow: 0 10px 40px rgba(187, 154, 247, 0.25);
     display: flex;
     flex-direction: column;
@@ -96,14 +104,14 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    margin-bottom: -0.5rem; 
+    margin-bottom: -0.5rem;
   }
 
   .close-btn {
     background: none;
     border: none;
     color: #565f89;
-    font-size: 3rem; 
+    font-size: 3rem;
     cursor: pointer;
     line-height: 0.8;
     transition: color 0.2s ease;
@@ -131,22 +139,22 @@
   .modal-content h2 {
     margin: 0;
     color: #c0caf5;
-    font-size: 2.5rem; 
+    font-size: 2.5rem;
     line-height: 1.2;
   }
 
   .modal-content p {
     margin: 0;
     color: #a9b1d6;
-    font-size: 1.25rem; 
+    font-size: 1.25rem;
     line-height: 1.6;
   }
 
   .event-tag {
     display: inline-block;
-    padding: 0.35rem 0.85rem; 
+    padding: 0.35rem 0.85rem;
     border-radius: 4px;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     background-color: rgba(122, 162, 247, 0.15);
@@ -181,15 +189,15 @@
       padding: 1.5rem;
       gap: 1.25rem;
     }
-    
+
     .modal-content h2 {
-      font-size: 1.8rem; 
+      font-size: 1.8rem;
     }
 
     .modal-content p {
-      font-size: 1.1rem; 
+      font-size: 1.1rem;
     }
-    
+
     .close-btn {
       font-size: 2.5rem;
     }

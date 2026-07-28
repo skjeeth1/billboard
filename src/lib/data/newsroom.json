@@ -1,15 +1,15 @@
 [
   {
-    "title": "Annual Tech Symposium 2024",
-    "day": "15",
-    "month": "MAR",
-    "date": "March 15, 2024",
-    "description": "Join us for a two-day technical extravaganza featuring guest lectures and workshops.",
-    "details": "The event will feature prominent industry experts covering AI, embedded systems, and robotics. Registration closes on March 10th. Open to all engineering students across the state.",
+    "title": "SPECTRA'26 – Project Call",
+    "day": "📌",
+    "month": " ",
+    "date": "Register Now!",
+    "description": "Turn your innovative ideas into reality and compete for exciting prizes at SPECTRA '26.",
+    "details": "Got an idea that can change the future? Now's your chance to make it happen. Present your innovation, compete with the brightest minds, and stand a chance to win from a ₹5,000 Prize Pool. Read more information at the SPECTRA'26 page.",
     "tag": "event",
-    "link": "/gallery#alumni-day",
-    "link-name": "View Event photos",
-    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+    "link": "/spectra",
+    "link-name": "Visit SPECTRA'26 page",
+    "image": "spectra.webp",
     "showAsPopup": true
   },
   {

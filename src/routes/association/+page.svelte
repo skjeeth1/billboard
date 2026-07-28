@@ -70,7 +70,7 @@
     description="Meet the dedicated students who drive the EC Association forward. From office bearers and committee heads to team members, this section highlights the individuals who work together to organize initiatives, foster innovation, and strengthen our community."
   />
 
-  <Section title="MEET THE TEAM">
+  <Section title="MEET THE TEAM" animate={false}>
     {#if associationData.length > 0}
       <div class="dropdown-wrapper">
         <div class="dropdown-container">

@@ -34,6 +34,8 @@
 
   const popupItem = newsData.find((item) => item.showAsPopup);
   const latestEvent = epochData.find((event) => event.tag === 'latest');
+
+  const debtimg = getImageUrl('dept.webp');
 </script>
 
 <svelte:head>
@@ -55,11 +57,7 @@
     description="The Department of Electronics and Communication Engineering, established at CET Campus, Sreekariyam in 1964–65, is one of the institution’s oldest and most distinguished departments. Starting with a B.Tech. programme in Electronics and Communication Engineering and an initial intake of 33 students, the department has grown into a centre for quality education and research."
   >
     <div class="department-photo-container" use:reveal>
-      <img
-        src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80"
-        alt="ECE Department"
-        class="department-photo"
-      />
+      <img src={debtimg} alt="ECE Department" class="department-photo" />
       <p class="photo-subtext">Our humble department</p>
     </div>
   </Section>
@@ -196,6 +194,8 @@
     description={popupItem.description}
     image={popupItem.image}
     tag={popupItem.tag}
+    link={popupItem.link}
+    linkName={popupItem.linkName}
   />
 {/if}
 
@@ -368,29 +368,8 @@
     border-color: #bb9af7;
   }
 
-  .image-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
   .card-content {
     padding: 1.5rem;
-    width: fit-content;
-  }
-
-  .card-content h4 {
-    margin: 0 0 0.5rem 0;
-    color: #c0caf5;
-    font-size: 1.5rem;
-    width: fit-content;
-  }
-
-  .card-content p {
-    margin: 0;
-    color: #7aa2f7;
-    font-size: 1.15rem;
-    line-height: 1.4;
     width: fit-content;
   }
 

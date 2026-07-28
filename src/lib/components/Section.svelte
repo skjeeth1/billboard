@@ -1,10 +1,24 @@
 <script>
   import { reveal } from '$lib/utils/animations.js';
 
-  let { id, title, description, children } = $props();
+  let {
+    id,
+    title,
+    description,
+    children,
+    animate = true // Default to true
+  } = $props();
+
+  // Custom action that conditionally runs your imported action
+  function optionalReveal(node) {
+    if (animate) {
+      return reveal(node);
+    }
+  }
 </script>
 
-<section {id} class="about-section">
+<!-- Use the local wrapper action instead of the direct import -->
+<section {id} class="about-section" use:optionalReveal>
   {#if title}
     <h3 class="section-title">{title}</h3>
   {/if}
