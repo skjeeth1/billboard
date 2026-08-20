@@ -1,5 +1,5 @@
 <script>
-  import { Section } from '$lib';
+  import { Section, getImageUrl } from '$lib';
 </script>
 
 <svelte:head>
@@ -18,7 +18,10 @@
 
 <div class="spectra-page">
   <section class="spectra-hero">
-    <div class="hero-background"></div>
+    <div
+      class="hero-background"
+      style="background-image: url('{getImageUrl('spectrapromo.webp')}');"
+    ></div>
     <div class="hero-content">
       <h1>SPECTRA'26</h1>
       <p>Innovate. Compete. Conquer.</p>
@@ -55,7 +58,7 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
       <div class="action-container">
         <!-- Replace # with your actual Google Form or registration link -->
         <a
-          href="https://www.google.com"
+          href="https://forms.gle/YiuPjD6iTyH5E9vK9"
           class="cta-button"
           target="_blank"
           rel="noopener noreferrer"
@@ -96,7 +99,6 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
     width: 100%;
     height: 100%;
     /* You can replace this Unsplash URL with a local image like getImageUrl('spectra.webp') */
-    background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
     background-position: center;
     filter: brightness(0.3) saturate(1.2);
