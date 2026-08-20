@@ -2,29 +2,29 @@
   {
     "title": "Wish Intern",
     "names": ["Nandhana Sanal M - ECE'28"],
-    "description": "Secured WISH internship",
+    "description": "The ECE Association, College of Engineering Trivandrum, congratulates Nandhana Sanal M (ECE'28) on securing an Internship at Texas Instruments through the WiSH (Women in Semiconductors & Hardware) program!. We wish her a highly successful, learning-filled, and enriching internship experience, and all the very best for her upcoming endeavor!",
     "image": "wish-interns.webp",
     "date": "August 2023"
   },
   {
-    "title": "Schneider Interns",
-    "names": ["Abhijith D", "Julin Mary Deepak", "- ECE'27"],
-    "description": "Schneider Intership",
-    "image": "schneider-interns.webp",
-    "date": "November 2023"
-  },
-  {
     "title": "AMD Interns",
     "names": ["Achutha Aswin Naick", "Meriya Eleyas", "Karthik A K", "Shradha P", "- ECE'27"],
-    "description": "The ECE Association, College of Engineering Trivandrum, congratulates Achutha Aswin Naick, Meriya Eleyas, Karthik A K, and Shradha P (ECE'27) on securing Physical Design Intern positions with the Cores Team at AMD. Their internships are scheduled to commence on 3 August 2026. We wish them a successful and enriching internship experience and all the very best for their future endeavors.",
+    "description": "The ECE Association, College of Engineering Trivandrum, congratulates Achutha Aswin Naick, Meriya Eleyas, Karthik A K, and Shradha P (ECE'27) on securing Physical Design Intern positions with the Cores Team at AMD. We wish them a successful and enriching internship experience and all the very best for their future endeavors.",
     "image": "amd-interns.webp",
-    "date": "January 2024"
+    "date": "August 2026"
+  },
+  {
+    "title": "Schneider Interns",
+    "names": ["Abhijith D", "Julin Mary Deepak", "- ECE'27"],
+    "description": "The ECE Association, College of Engineering Trivandrum, extends its heartfelt congratulations to Abhijith D and Julin Mary Deepak (ECE'27) on successfully completing their summer internships with the Design and Development Team at Schneider Electric India. During their tenure, they made impactful contributions in embedded firmware and hardware design.",
+    "image": "schneider-interns.webp",
+    "date": "May - July 2026"
   },
   {
     "title": "Texas Interns",
     "names": ["Gautham Syam", "Anna M Joshy", "Anuragh Haridas", "Nandakishore J", "- ECE'27"],
-    "description": "Texas Internship",
+    "description": "The ECE Association, College of Engineering Trivandrum, extends its heartfelt congratulations to Gautham Syam, Anna M Joshy, Anuragh Haridas, and Nandakishore J on successfully completing their summer internships at Texas Instruments. During their tenure, they gained valuable hands-on industry experience across key domain areas: Gautham Syam (Digital Design Intern),  Anna M Joshy (Digital Verification Intern), Anuragh Haridas (Analog Design Intern), and Nandakishore J (Analog Design Verification Engineer Intern).",
     "image": "texas-interns.webp",
-    "date": "January 2024"
+    "date": "May - July 2026"
   }
 ]

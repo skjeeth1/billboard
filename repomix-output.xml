@@ -1,0 +1,6159 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+The content has been processed where content has been compressed (code blocks are separated by ⋮---- delimiter).
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: *.md, vite.config.js, svelte.config.js, package.json, package-lock.json, jsconfig.json, eslint.config.js, node_modules
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Content has been compressed - code blocks are separated by ⋮---- delimiter
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+src/
+  lib/
+    assets/
+      favicon.svg
+    components/
+      AchievementCard.svelte
+      ElectricCard.svelte
+      EventCard.svelte
+      GalleryCarousel.svelte
+      NewsCard.svelte
+      NotificationToast.svelte
+      PcbBoard.svelte
+      Section.svelte
+    data/
+      achievements.json
+      association.json
+      epoch.json
+      gallery.json
+      information.json
+      newsroom.json
+      oppam.json
+    images/
+      achievements/
+        amd-interns.webp
+        schneider-interns.webp
+        texas-interns.webp
+        wish-interns.webp
+      assets/
+        dept.webp
+      association/
+        aadithya_narayanan.webp
+        abhin_raj_m.webp
+        abhinav_s_d.webp
+        adarsh_s_r.webp
+        adith_jayakumar.webp
+        adul_shaj.webp
+        amal_soman_a.webp
+        aman_abdurahman.webp
+        amogha_varsha.webp
+        amy_jude.webp
+        anila_sivan.webp
+        ann_joy.webp
+        aromal_m_s.webp
+        ashitha_a.webp
+        aslam_rasheed.webp
+        avani_d_anil.webp
+        ayisha_helan_t_t.webp
+        blesson_mathew.webp
+        daris_benny.webp
+        devitheertha_t_p.webp
+        dhananjayan_m.webp
+        farzeen_junaid.webp
+        febin_eldhose.webp
+        govindh_j.webp
+        hasil_ali_p_t.webp
+        indu_c_r.webp
+        joe_geo_joseph.webp
+        josin_jiby.webp
+        maria_joseph.webp
+        mark_johny.webp
+        melvin_soji.webp
+        meriya_eleyas.webp
+        muhammad_risfal_k_p.webp
+        muhammad_riyan.webp
+        muhammed_basith.webp
+        muhsina_p_c.webp
+        naveen_g_s.webp
+        nihal_naseem.webp
+        nikhil_zacharias.webp
+        prithvika.webp
+        rida_k.webp
+        riya_anna_thomas.webp
+        riya_jameela.webp
+        samil_r.webp
+        sana_saji.webp
+        sandhra_treasa_maria.webp
+        seblon_basil_hurtis.webp
+        shehin_shamlan.webp
+        soumya_rajasekharan.webp
+        sreehari_m_s.webp
+        sreesanth_t.webp
+        srikrishna_sathyajeeth.webp
+        stanzin_thayas.webp
+        ujjwal_skandakumar.webp
+      epoch/
+        epoch1.webp
+        epoch2.webp
+        epoch3.webp
+        epoch4.webp
+        epoch5.webp
+        epoch6.webp
+        epoch7.webp
+        epoch8.webp
+        epoch9.webp
+      memes/
+        money.webp
+      newsroom/
+        spectra.webp
+      compress_images.sh
+    utils/
+      animations.js
+      images.js
+    index.js
+  routes/
+    achievements/
+      +page.svelte
+    association/
+      +page.svelte
+    epoch/
+      +page.svelte
+    gallery/
+      +page.svelte
+    information/
+      +page.svelte
+    newsroom/
+      +page.svelte
+    oppam/
+      +page.svelte
+    +layout.svelte
+    +page.svelte
+  app.html
+static/
+  favicon.ico
+  logo.png
+  robots.txt
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/lib/assets/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="107" height="128" viewBox="0 0 107 128"><title>svelte-logo</title><path d="M94.157 22.819c-10.4-14.885-30.94-19.297-45.792-9.835L22.282 29.608A29.92 29.92 0 0 0 8.764 49.65a31.5 31.5 0 0 0 3.108 20.231 30 30 0 0 0-4.477 11.183 31.9 31.9 0 0 0 5.448 24.116c10.402 14.887 30.942 19.297 45.791 9.835l26.083-16.624A29.92 29.92 0 0 0 98.235 78.35a31.53 31.53 0 0 0-3.105-20.232 30 30 0 0 0 4.474-11.182 31.88 31.88 0 0 0-5.447-24.116" style="fill:#ff3e00"/><path d="M45.817 106.582a20.72 20.72 0 0 1-22.237-8.243 19.17 19.17 0 0 1-3.277-14.503 18 18 0 0 1 .624-2.435l.49-1.498 1.337.981a33.6 33.6 0 0 0 10.203 5.098l.97.294-.09.968a5.85 5.85 0 0 0 1.052 3.878 6.24 6.24 0 0 0 6.695 2.485 5.8 5.8 0 0 0 1.603-.704L69.27 76.28a5.43 5.43 0 0 0 2.45-3.631 5.8 5.8 0 0 0-.987-4.371 6.24 6.24 0 0 0-6.698-2.487 5.7 5.7 0 0 0-1.6.704l-9.953 6.345a19 19 0 0 1-5.296 2.326 20.72 20.72 0 0 1-22.237-8.243 19.17 19.17 0 0 1-3.277-14.502 17.99 17.99 0 0 1 8.13-12.052l26.081-16.623a19 19 0 0 1 5.3-2.329 20.72 20.72 0 0 1 22.237 8.243 19.17 19.17 0 0 1 3.277 14.503 18 18 0 0 1-.624 2.435l-.49 1.498-1.337-.98a33.6 33.6 0 0 0-10.203-5.1l-.97-.294.09-.968a5.86 5.86 0 0 0-1.052-3.878 6.24 6.24 0 0 0-6.696-2.485 5.8 5.8 0 0 0-1.602.704L37.73 51.72a5.42 5.42 0 0 0-2.449 3.63 5.79 5.79 0 0 0 .986 4.372 6.24 6.24 0 0 0 6.698 2.486 5.8 5.8 0 0 0 1.602-.704l9.952-6.342a19 19 0 0 1 5.295-2.328 20.72 20.72 0 0 1 22.237 8.242 19.17 19.17 0 0 1 3.277 14.503 18 18 0 0 1-8.13 12.053l-26.081 16.622a19 19 0 0 1-5.3 2.328" style="fill:#fff"/></svg>
+</file>
+
+<file path="static/robots.txt">
+# allow crawling everything by default
+User-agent: *
+Disallow:
+</file>
+
+<file path=".gitignore">
+node_modules
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# VSCode
+.vscode
+</file>
+
+<file path=".npmrc">
+engine-strict=true
+</file>
+
+<file path=".prettierignore">
+# Package Managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+bun.lockb
+
+# Miscellaneous
+/static/
+</file>
+
+<file path=".prettierrc">
+{
+	"useTabs": false,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"printWidth": 100,
+	"tabWidth": 2,
+	"plugins": ["prettier-plugin-svelte"],
+	"overrides": [
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		}
+	]
+}
+</file>
+
+<file path="src/lib/components/EventCard.svelte">
+<script>
+  import { getImageUrl } from '$lib';
+
+  // Individual props for the event data using Svelte 5 runes
+  let { image, alt, date, title, speaker, company, details, link } = $props();
+</script>
+
+<div id="upcoming" class="latest-event-container">
+  <div class="event-image">
+    <img src={getImageUrl(image)} {alt} />
+  </div>
+  <div class="event-info">
+    <span class="event-date">{date}</span>
+    <h3 class="event-title">{title}</h3>
+    <p class="speaker-info">
+      <span class="speaker-name">{speaker}</span> |
+      <span class="speaker-company">{company}</span>
+    </p>
+    <p class="event-description">
+      {details}
+    </p>
+    <a href={link} class="cta-button">
+      {link === '#register' ? 'GMeet Link' : 'Learn More'}
+    </a>
+  </div>
+</div>
+
+<style>
+  .latest-event-container {
+    display: flex;
+    text-align: left;
+    background-color: rgba(26, 27, 38, 0.5);
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 2rem;
+    box-shadow: 0 0 15px rgba(187, 154, 247, 0.2);
+    scroll-margin-top: 100px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .event-image {
+    flex: 0 0 40%;
+    min-height: 0;
+  }
+
+  .event-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .event-info {
+    flex: 1;
+    padding: 2.5rem;
+  }
+
+  .event-date {
+    display: inline-block;
+    font-weight: 600;
+    color: #bb9af7;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .event-title {
+    font-size: 2rem;
+    color: #c0caf5;
+    margin: 0 0 1rem 0;
+  }
+
+  .speaker-info {
+    font-size: 1.1rem;
+    color: #7aa2f7;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .speaker-name {
+    font-weight: 700;
+    color: #a9b1d6;
+  }
+
+  .event-description {
+    color: #a9b1d6;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: rgba(187, 154, 247, 0.1);
+    color: #bb9af7;
+    border: 1px solid #bb9af7;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+  }
+
+  .cta-button:hover {
+    background-color: #bb9af7;
+    color: #1a1b26;
+    box-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .event-info {
+      padding: 1.5rem;
+    }
+    .event-title {
+      font-size: 1.5rem;
+    }
+    .event-description {
+      font-size: 0.9rem;
+    }
+    .event-image {
+      width: 100%;
+      height: auto;
+    }
+    .latest-event-container {
+      flex-direction: column;
+    }
+  }
+</style>
+</file>
+
+<file path="src/lib/images/compress_images.sh">
+#!/usr/bin/env bash
+
+# Usage:
+# ./compress_images.sh /path/to/images
+
+DIR="${1:-.}"
+
+if [ ! -d "$DIR" ]; then
+    echo "Directory does not exist: $DIR"
+    exit 1
+fi
+
+cd "$DIR" || exit 1
+
+shopt -s nullglob nocaseglob
+
+for f in *.{jpg,jpeg,png,heic,webp}; do
+    [ -f "$f" ] || continue
+
+    base="${f%.*}"
+
+    new=$(echo "$base" |
+        tr '[:upper:]' '[:lower:]' |
+        sed -E '
+            s/[[:space:]]+/_/g;
+            s/_+/_/g;
+            s/\.+/_/g;
+            s/[^a-z0-9_]//g;
+            s/^_+//;
+            s/_+$//
+        ')
+
+    out="${new}.webp"
+
+    # Avoid overwriting existing files
+    if [ -f "$out" ]; then
+        echo "Skipping existing: $out"
+        continue
+    fi
+
+    echo "Converting: $f -> $out"
+
+    ffmpeg -hide_banner -loglevel error \
+        -i "$f" \
+        -vf "scale='min(1200,iw)':-2" \
+        -c:v libwebp \
+        -q:v 70 \
+        -compression_level 6 \
+        -y "$out"
+
+    if [ $? -eq 0 ]; then
+        rm "$f"
+        echo "Removed original: $f"
+    else
+        echo "Failed: $f"
+    fi
+
+done
+
+echo "Done."
+</file>
+
+<file path="src/lib/utils/animations.js">
+export function reveal(node,
+⋮----
+destroy()
+</file>
+
+<file path="src/lib/utils/images.js">
+// Eagerly load all image URLs from the lib/images directory
+⋮----
+export function getImageUrl(imagePath)
+</file>
+
+<file path="src/app.html">
+<!doctype html>
+<html lang="en">
+	<head>
+        <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="text-scale" content="scale" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+</file>
+
+<file path="src/lib/components/NotificationToast.svelte">
+<script>
+  import { fade, fly } from 'svelte/transition';
+  import { onMount } from 'svelte';
+  import { getImageUrl } from '$lib';
+
+  let { title, description, tag = 'NEW', image, link, linkName = 'Read more' } = $props();
+
+  let visible = $state(true);
+
+  // Generate a URL-friendly anchor ID from the title
+  let cardId = $derived(title.replace(/\s+/g, '-').toLowerCase());
+
+  onMount(() => {
+    // Lock scrolling on the main page when the modal mounts
+    document.body.style.overflow = 'hidden';
+
+    // Cleanup function ensures scrolling is restored if the component is destroyed
+    return () => {
+      document.body.style.overflow = '';
+    };
+  });
+
+  function dismiss() {
+    visible = false;
+    // Restore scrolling when the user manually clicks close or the link
+    document.body.style.overflow = '';
+  }
+</script>
+
+{#if visible}
+  <div class="modal-backdrop" transition:fade={{ duration: 300 }}>
+    <div
+      class="modal-box"
+      in:fly={{ y: 50, duration: 400, delay: 100 }}
+      out:fly={{ y: 50, duration: 300 }}
+    >
+      <div class="modal-action-bar">
+        <button class="close-btn" aria-label="Close notification" onclick={dismiss}>
+          &times;
+        </button>
+      </div>
+
+      {#if image}
+        <img src={getImageUrl(image)} alt={title} class="modal-image" />
+      {/if}
+
+      <div class="modal-content">
+        <span class="event-tag">{tag.toUpperCase()}</span>
+        <h2>{title}</h2>
+        <p>{description}</p>
+
+        {#if link}
+          <!-- Render the custom link if provided -->
+          <a href={link} class="read-more-link" onclick={dismiss}>
+            {linkName} &rarr;
+          </a>
+        {:else}
+          <!-- Fallback to the local newsroom anchor routing -->
+          <a href={`/newsroom#${cardId}`} class="read-more-link" onclick={dismiss}>
+            View in Newsroom &rarr;
+          </a>
+        {/if}
+      </div>
+    </div>
+  </div>
+{/if}
+
+<style>
+  /* --- Global Overlay & Container --- */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 15, 20, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .modal-box {
+    background-color: #1a1b26;
+    border: 1px solid #bb9af7;
+    border-radius: 16px;
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(187, 154, 247, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .modal-action-bar {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: -0.5rem;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: #565f89;
+    font-size: 3rem;
+    cursor: pointer;
+    line-height: 0.8;
+    transition: color 0.2s ease;
+    padding: 0;
+  }
+
+  .close-btn:hover {
+    color: #bb9af7;
+  }
+
+  .modal-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(187, 154, 247, 0.2);
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .modal-content h2 {
+    margin: 0;
+    color: #c0caf5;
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .modal-content p {
+    margin: 0;
+    color: #a9b1d6;
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .event-tag {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background-color: rgba(122, 162, 247, 0.15);
+    color: #7aa2f7;
+    width: fit-content;
+  }
+
+  /* --- Read More Link Styling --- */
+  .read-more-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(187, 154, 247, 0.1);
+    color: #bb9af7;
+    border: 1px solid #bb9af7;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    width: fit-content;
+    transition: all 0.3s ease;
+  }
+
+  .read-more-link:hover {
+    background-color: #bb9af7;
+    color: #1a1b26;
+    box-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .modal-box {
+      padding: 1.5rem;
+      gap: 1.25rem;
+    }
+
+    .modal-content h2 {
+      font-size: 1.8rem;
+    }
+
+    .modal-content p {
+      font-size: 1.1rem;
+    }
+
+    .close-btn {
+      font-size: 2.5rem;
+    }
+
+    .read-more-link {
+      font-size: 1rem;
+    }
+  }
+</style>
+</file>
+
+<file path="src/lib/data/gallery.json">
+[
+  {
+    "id": "robosoccer",
+    "title": "Robosoccer 2024",
+    "description": "Highlights from the annual autonomous robotics competition, where student-built machines face off on the field.",
+    "images": [
+      { "src": "epoch1.webp", "alt": "Robosoccer Match 1" },
+      { "src": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80", "alt": "Team preparing" },
+      { "src": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", "alt": "Audience cheering" },
+      { "src": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80", "alt": "Bot tuning" },
+      { "src": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80", "alt": "Final Match" }
+    ]
+  },
+  {
+    "id": "alumni-day",
+    "title": "Alumni Day 2023",
+    "description": "Reconnecting with past graduates, celebrating their journeys, and inspiring the next generation of engineers.",
+    "images": [
+      { "src": "https://images.unsplash.com/photo-1523580494112-071d1e21e87c?auto=format&fit=crop&w=800&q=80", "alt": "Alumni speaking at podium" },
+      { "src": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80", "alt": "Group photo" },
+      { "src": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80", "alt": "Networking event" },
+      { "src": "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80", "alt": "Panel discussion" },
+      { "src": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80", "alt": "Awards ceremony" }
+    ]
+  }
+]
+</file>
+
+<file path="src/lib/data/information.json">
+{
+  "faculties": [
+    {
+      "name": "Dr. Shajahan E. S.",
+      "designation": "HOD & Professor",
+      "speciality": "Mixed Signal Circuit Design, RF MEMS",
+      "photo": "https://ece.cet.ac.in/wp-content/uploads/2019/12/shajahan.png"
+    },
+    {
+      "name": "Dr. Joseph Zacharias",
+      "designation": "Dean & Professor",
+      "speciality": "Optical Communication, Radio Over Fibre,",
+      "photo": "https://ece.cet.ac.in/wp-content/uploads/2019/12/joseph_zakh-n.jpg"
+    },
+    {
+      "name": "Dr. Haris P. A.",
+      "designation": "Professor",
+      "speciality": "Digital Communication, Wireless Communication",
+      "photo": "https://ece.cet.ac.in/wp-content/uploads/2022/09/Dr.-Haris-P-A.jpg"
+    }
+  ],
+  "labs": [
+    {
+      "name": "C2S Lab",
+      "field": "Hardware Design",
+      "description": "State-of-the-art facility equipped with latest VLSI design and FPGAS for advanced FPGA and ASIC design",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+      "tags": {
+        "Software": "Vivado, Cadence, Synopsys",
+        "FPGAs": "PYNQ series, Artix-7, etc.",
+        "Faculty": "Dr. Nikhil M"
+      }
+    },
+    {
+      "name": "Communication Lab",
+      "field": "Analog Integrated Circuits & Simulation Lab",
+      "description": "Familiarize students with the Analog Integrated Circuits and Design and implementation of application circuits using basic Analog Integrated Circuits",
+      "image": "https://ece.cet.ac.in/wp-content/uploads/2022/05/WhatsApp-Image-2022-05-26-at-7.45.06-AM.jpeg",
+      "tags": {
+        "Courses": "ECL331, AEL331, ECL332",
+        "Faculty": "Prof. Rencymol M V",
+        "Staff": "Mr. Anshad R Yunus"
+      }
+    }
+  ],
+  "links": {
+    "faculty": "https://ece.cet.ac.in/faculty/",
+    "students": "https://docs.google.com/spreadsheets/d/14ykni63qP42HnkM7-3QCCvmritYWSwx6bmoSA-Aq4cA/edit?gid=0#gid=0",
+    "labs": "https://ece.cet.ac.in/laboratories/"
+  }
+}
+</file>
+
+<file path="src/lib/data/oppam.json">
+[
+  {
+    "semester": "Semester 2 (2024)",
+    "subjects": [
+      {
+        "name": "Chemistry",
+        "link": "https://drive.google.com/drive/folders/14bdTDeZqqE-MPrRClnScEiGT9RVhh7Sm"
+      },
+      {
+        "name": "Foundation of Computing",
+        "link": "https://drive.google.com/drive/folders/1WTGHUsYuMAaxHmbwwUKjkzigHb0_oFRv"
+      },
+      {
+        "name": "Engineering Entrepreneurship & IPR",
+        "link": "https://drive.google.com/drive/folders/1XV0z1c-MRoWtXGU23TbZ95bGzqkiQu1o"
+      },
+      {
+        "name": "Mathematics",
+        "link": "https://drive.google.com/drive/folders/13z3bpBXfWLoRQPxWQcU_lotvV2E2SY3d"
+      },
+      {
+        "name": "Network Theory",
+        "link": "https://drive.google.com/drive/folders/1kprh_4C8XLi1BOu25VsByvHuDyr88FbK"
+      },
+      {
+        "name": "Programming in C",
+        "link": "https://drive.google.com/drive/folders/11D3j4HubIvJ_RVQfR6Z0kx_zTPY56lwo"
+      }
+    ]
+  },
+  {
+    "semester": "Semester 4 (2024)",
+    "subjects": [
+      {
+        "name": "Digital Systems and VLSI Design",
+        "link": "https://drive.google.com/drive/folders/1I9xs_cTiyVe15fWXsAIfCiED_b6Qh7sn"
+      },
+      {
+        "name": "Linear Integrated Circuits",
+        "link": "https://drive.google.com/drive/folders/1DDXVhb3e_oTKZeIYxkQvP0xoX-mr3T1N"
+      },
+      {
+        "name": "Economics",
+        "link": "https://drive.google.com/drive/folders/1GKtjk2AsfGKRN_61yLky-XaR-fC4_E9s"
+      },
+      {
+        "name": "Mathematics",
+        "link": "https://drive.google.com/drive/folders/1QvXUYEHMhYSP0dENO3-ogN2kbneeHg_x"
+      },
+      {
+        "name": "Microcontrollers",
+        "link": "https://drive.google.com/drive/folders/1D9M_Af23DN4R7AmF0ghbmEpkNQFJGPJc"
+      },
+      {
+        "name": "Signals and Systems",
+        "link": "https://drive.google.com/drive/folders/1lZ42WCiw4Qcs4EZ74RIXYxg8C9c0vxMB"
+      }
+    ]
+  },
+  {
+    "semester": "2019 Syllabus",
+    "subjects": [
+      {
+        "name": "Semester 1",
+        "link": "https://drive.google.com/drive/folders/11FspYiI1U5miypGQqXVY8f2BnHv3U5mq"
+      },
+      {
+        "name": "Semester 2",
+        "link": "https://drive.google.com/drive/folders/1mDnX3q57O1sv4qOqY0bxMOCnubg-l0xN"
+      },
+      {
+        "name": "Semester 3",
+        "link": "https://drive.google.com/drive/folders/11GKAfA980huhRhTRhSo0bsjZnVwtnM3y"
+      },
+      {
+        "name": "Semester 4",
+        "link": "https://drive.google.com/drive/folders/1JYQVkq-qWGfmuEHol9pYS3Q1XETBxsj3"
+      },
+      {
+        "name": "Semester 5",
+        "link": "https://drive.google.com/drive/folders/11HYN4GJR7qucryb8Be6Vq4yhB0V7CtNU"
+      },
+      {
+        "name": "Semester 6",
+        "link": "https://drive.google.com/drive/folders/1qum11KIsofp_g9isxND2xTUxFL48TS1F"
+      },
+      {
+        "name": "Semester 7",
+        "link": "https://drive.google.com/drive/folders/11HYZA71yoM0bvAEXd83U99xnMQ_TlOsY"
+      }
+    ]
+  }
+]
+</file>
+
+<file path="src/routes/achievements/+page.svelte">
+<script>
+  import { Section, AchievementCard, achievementsData } from '$lib';
+</script>
+
+<svelte:head>
+  <title>Achievements | Department of ECE</title>
+  <meta
+    name="description"
+    content="Celebrating the milestones and successes of our students and faculty."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<div class="achievements-page">
+  <section class="achievements-hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <h1>ACHIEVEMENTS</h1>
+      <p>Celebrating excellence and innovation in our department.</p>
+    </div>
+  </section>
+
+  <Section
+    title="OUR MILESTONES"
+    description="A glimpse into the awards, recognitions, and extraordinary accomplishments of our students and faculty over the years. We take pride in pushing boundaries and setting new benchmarks in technology and research."
+  >
+    <div class="achievements-grid">
+      {#each achievementsData as achievement, i (achievement.title)}
+        <AchievementCard {achievement} delay={i * 50} />
+      {/each}
+    </div>
+  </Section>
+</div>
+
+<style>
+  .achievements-page {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    line-height: 1.7;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .achievements-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* A thematic background image for achievements/success */
+    background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3) saturate(1.2);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0;
+    color: #bb9af7;
+    text-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+    overflow-wrap: break-word;
+  }
+
+  .hero-content p {
+    font-size: 1.5rem;
+    color: #a9b1d6;
+  }
+
+  /* Reuse the grid classes from the home page! */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      padding: 0 1.5rem;
+    }
+  }
+</style>
+</file>
+
+<file path="src/routes/information/+page.svelte">
+<script>
+  import { Section, AchievementCard } from '$lib';
+  import informationData from '$lib/data/information.json';
+</script>
+
+<svelte:head>
+  <title>Department Data | Department of ECE</title>
+  <meta
+    name="description"
+    content="Information regarding faculty, students, and lab facilities of the ECE Department."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<div class="information-page">
+  <section class="info-hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <h1>DEPARTMENT DATA</h1>
+      <p>Consult our archives of faculty, students, and facilities.</p>
+    </div>
+  </section>
+
+  <Section
+    title="FACULTY LIST"
+    description="Meet our esteemed faculty members who are driving innovation and education in the field."
+  >
+    <div class="faculty-grid">
+      {#each informationData.faculties as faculty}
+        <div class="faculty-card">
+          <img src={faculty.photo} alt={faculty.name} />
+          <h4>{faculty.name}</h4>
+          <p class="designation">{faculty.designation}</p>
+          <p class="speciality">{faculty.speciality}</p>
+        </div>
+      {/each}
+    </div>
+    <div class="link-container">
+      <a
+        href={informationData.links.faculty}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-link">More faculty data &rarr;</a
+      >
+    </div>
+  </Section>
+
+  <Section
+    title="LAB FACILITIES"
+    description="Explore our cutting-edge laboratories that are equipped for advanced research, development, and learning."
+  >
+    <div class="labs-grid">
+      {#each informationData.labs as lab, i (lab.name)}
+        <AchievementCard achievement={lab} delay={i * 50} />
+      {/each}
+    </div>
+    <div class="link-container">
+      <a
+        href={informationData.links.labs}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-link">Complete lab facilities available &rarr;</a
+      >
+    </div>
+  </Section>
+
+  <Section title="PLACEMENT DATA" description="Access data about our previous placement data.">
+    <div class="link-container">
+      <a
+        href={informationData.links.students}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-link">Placement data spreadsheet &rarr;</a
+      >
+    </div>
+  </Section>
+</div>
+
+<style>
+  .information-page {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    line-height: 1.7;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .info-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3) saturate(1.2);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+  }
+  .hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0;
+    color: #bb9af7;
+    text-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+    overflow-wrap: break-word;
+  }
+  .hero-content p {
+    font-size: 1.5rem;
+    color: #a9b1d6;
+    margin-top: 1rem;
+  }
+
+  .faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .faculty-card {
+    background-color: rgba(26, 27, 38, 0.5);
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .faculty-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(187, 154, 247, 0.6);
+  }
+  .faculty-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.25rem;
+    border: 2px solid rgba(187, 154, 247, 0.5);
+  }
+  .faculty-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: #c0caf5;
+  }
+  .faculty-card p.designation {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #7aa2f7;
+    font-weight: 600;
+  }
+  .faculty-card p.speciality {
+    margin: 0.25rem 0 0 0;
+    font-size: 0.85rem;
+    color: #a9b1d6;
+  }
+
+  .labs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .link-container {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .text-link {
+    display: inline-block;
+    color: #bb9af7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid transparent;
+    transition:
+      border-color 0.3s ease,
+      color 0.3s ease;
+  }
+  .text-link:hover {
+    color: #c0caf5;
+    border-color: #c0caf5;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+    }
+    .faculty-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .labs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</file>
+
+<file path="src/lib/components/AchievementCard.svelte">
+<script>
+  import { fly } from 'svelte/transition';
+  import { getImageUrl } from '$lib/utils/images.js';
+
+  let { achievement, delay = 0 } = $props();
+</script>
+
+<div class="achievement-card" in:fly={{ y: 20, duration: 400, delay }}>
+  <div class="achievement-image">
+    <img src={getImageUrl(achievement.image)} alt={achievement.title || achievement.name} />
+  </div>
+  <div class="achievement-content">
+    {#if achievement.date}
+      <span class="date-badge">{achievement.date}</span>
+    {/if}
+    <h4>{achievement.title || achievement.name}</h4>
+    {#if achievement.names}
+      <p class="names">{achievement.names.join(', ')}</p>
+    {:else if achievement.field}
+      <p class="names">{achievement.field}</p>
+    {/if}
+    <p class="description">{achievement.description}</p>
+    {#if achievement.tags}
+      <div class="tags-container">
+        {#each Object.entries(achievement.tags) as [tag, value]}
+          <span class="tag"><strong>{tag}:</strong> {value}</span>
+        {/each}
+      </div>
+    {/if}
+  </div>
+</div>
+
+<style>
+  .achievement-card {
+    background-color: rgba(26, 27, 38, 0.4);
+    border: 1px solid rgba(187, 154, 247, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: left;
+    transition:
+      border-color 0.3s ease,
+      transform 0.3s ease,
+      background-color 0.3s ease;
+  }
+  .achievement-card:hover {
+    border-color: rgba(187, 154, 247, 0.5);
+    background-color: rgba(26, 27, 38, 0.7);
+    transform: translateY(-5px);
+  }
+  .achievement-image {
+    width: 100%;
+    /* height: 200px; */
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .achievement-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .achievement-content {
+    padding: 1.5rem;
+  }
+
+  .date-badge {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    color: #bb9af7;
+  }
+  .achievement-content h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: #c0caf5;
+    line-height: 1.4;
+  }
+  .achievement-content .names {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: #bb9af7;
+    font-weight: 600;
+  }
+  .achievement-content .description {
+    margin: 0;
+    font-size: 1rem;
+    color: #a9b1d6;
+    line-height: 1.6;
+  }
+
+  .tags-container {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #a9b1d6;
+  }
+  .tag strong {
+    color: #bb9af7;
+    margin-right: 0.25rem;
+  }
+</style>
+</file>
+
+<file path="src/lib/components/GalleryCarousel.svelte">
+<script>
+  import { fly } from 'svelte/transition';
+  import { onMount, onDestroy } from 'svelte';
+
+  import { getImageUrl } from '$lib/utils/images.js';
+
+  let { images } = $props();
+
+  let currentIndex = $state(0);
+  let navDirection = $state(1);
+
+  let autoplayTimer;
+  let interactionTimeout;
+
+  function startAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(() => {
+      navigate('right', false);
+    }, 4000);
+  }
+
+  onMount(() => {
+    if (images && images.length > 1) {
+      startAutoplay();
+    }
+  });
+
+  onDestroy(() => {
+    clearInterval(autoplayTimer);
+    clearTimeout(interactionTimeout);
+  });
+
+  function navigate(direction, isManual = true) {
+    if (!images || images.length <= 1) return;
+
+    if (isManual) {
+      clearInterval(autoplayTimer);
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        startAutoplay();
+      }, 7000);
+    }
+
+    if (direction === 'left') {
+      navDirection = -1;
+      currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    } else {
+      navDirection = 1;
+      currentIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+    }
+  }
+</script>
+
+<div class="carousel-wrapper">
+  <button 
+    class="scroll-btn left" 
+    onclick={() => navigate('left')} 
+    aria-label="Previous image"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+
+  <div class="carousel-container">
+    <div class="image-card">
+      {#key currentIndex}
+        <a 
+          href={images[currentIndex].href}
+          class="image-wrapper"
+          in:fly={{ x: `${navDirection * 100}%`, duration: 400 }}
+          out:fly={{ x: `${-navDirection * 100}%`, duration: 400 }}
+        >
+          <img 
+            src={getImageUrl(images[currentIndex].src)} 
+            alt={images[currentIndex].alt} 
+          />
+        </a>
+      {/key}
+    </div>
+  </div>
+
+  <button 
+    class="scroll-btn right" 
+    onclick={() => navigate('right')} 
+    aria-label="Next image"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+</div>
+
+<style>
+  .carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    flex: 1;
+    min-width: 0;
+    height: 65vh;
+    min-height: 400px;
+    max-height: 800px;
+  }
+  .image-card { width: 100%; height: 100%; overflow: hidden; display: grid; place-items: center; }
+  .image-wrapper {
+    grid-area: 1 / 1; width: 100%; height: 100%;
+    max-width: min(1000px, 90vw); min-width: 0; min-height: 0;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .image-wrapper img {
+    max-width: 100%; max-height: 100%; width: auto; height: auto;
+    border-radius: 12px; border: 1px solid rgba(187, 154, 247, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    background-color: #1a1b26;
+  }
+  .image-card:hover .image-wrapper img { transform: scale(1.03); border-color: rgba(187, 154, 247, 0.5); }
+  
+  .scroll-btn {
+    background: rgba(26, 27, 38, 0.8); color: #bb9af7;
+    border: 1px solid rgba(187, 154, 247, 0.3); border-radius: 50%;
+    width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; position: absolute; z-index: 10; transition: all 0.2s ease;
+  }
+  .scroll-btn:hover { background: #bb9af7; color: #1a1b26; transform: scale(1.1); }
+  .scroll-btn.left { left: -24px; }
+  .scroll-btn.right { right: -24px; }
+
+  @media (max-width: 768px) {
+    .carousel-container { height: 45vh; min-height: 300px; }
+    .scroll-btn.left { left: 0; }
+    .scroll-btn.right { right: 0; }
+  }
+</style>
+</file>
+
+<file path="src/lib/data/achievements.json">
+[
+  {
+    "title": "Wish Intern",
+    "names": ["Nandhana Sanal M - ECE'28"],
+    "description": "The ECE Association, College of Engineering Trivandrum, congratulates Nandhana Sanal M (ECE'28) on securing an Internship at Texas Instruments through the WiSH (Women in Semiconductors & Hardware) program!. We wish her a highly successful, learning-filled, and enriching internship experience, and all the very best for her upcoming endeavor!",
+    "image": "wish-interns.webp",
+    "date": "August 2023"
+  },
+  {
+    "title": "AMD Interns",
+    "names": ["Achutha Aswin Naick", "Meriya Eleyas", "Karthik A K", "Shradha P", "- ECE'27"],
+    "description": "The ECE Association, College of Engineering Trivandrum, congratulates Achutha Aswin Naick, Meriya Eleyas, Karthik A K, and Shradha P (ECE'27) on securing Physical Design Intern positions with the Cores Team at AMD. We wish them a successful and enriching internship experience and all the very best for their future endeavors.",
+    "image": "amd-interns.webp",
+    "date": "August 2026"
+  },
+  {
+    "title": "Schneider Interns",
+    "names": ["Abhijith D", "Julin Mary Deepak", "- ECE'27"],
+    "description": "The ECE Association, College of Engineering Trivandrum, extends its heartfelt congratulations to Abhijith D and Julin Mary Deepak (ECE'27) on successfully completing their summer internships with the Design and Development Team at Schneider Electric India. During their tenure, they made impactful contributions in embedded firmware and hardware design.",
+    "image": "schneider-interns.webp",
+    "date": "May - July 2026"
+  },
+  {
+    "title": "Texas Interns",
+    "names": ["Gautham Syam", "Anna M Joshy", "Anuragh Haridas", "Nandakishore J", "- ECE'27"],
+    "description": "The ECE Association, College of Engineering Trivandrum, extends its heartfelt congratulations to Gautham Syam, Anna M Joshy, Anuragh Haridas, and Nandakishore J on successfully completing their summer internships at Texas Instruments. During their tenure, they gained valuable hands-on industry experience across key domain areas: Gautham Syam (Digital Design Intern),  Anna M Joshy (Digital Verification Intern), Anuragh Haridas (Analog Design Intern), and Nandakishore J (Analog Design Verification Engineer Intern).",
+    "image": "texas-interns.webp",
+    "date": "May - July 2026"
+  }
+]
+</file>
+
+<file path="src/lib/components/ElectricCard.svelte">
+<script>
+  let { children, active = true } = $props();
+</script>
+
+{#if active}
+  <svg class="svg-container">
+    <defs>
+      <filter
+        id="turbulent-displace"
+        colorInterpolationFilters="sRGB"
+        x="-20%"
+        y="-20%"
+        width="140%"
+        height="140%"
+      >
+        <feTurbulence
+          type="turbulence"
+          baseFrequency="0.02"
+          numOctaves="2"
+          result="noise1"
+          seed="1"
+        />
+        <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+          <animate
+            attributeName="dy"
+            values="700; 0"
+            dur="6s"
+            repeatCount="indefinite"
+            calcMode="linear"
+          />
+        </feOffset>
+
+        <feTurbulence
+          type="turbulence"
+          baseFrequency="0.02"
+          numOctaves="2"
+          result="noise2"
+          seed="1"
+        />
+        <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+          <animate
+            attributeName="dy"
+            values="0; -700"
+            dur="6s"
+            repeatCount="indefinite"
+            calcMode="linear"
+          />
+        </feOffset>
+
+        <feTurbulence
+          type="turbulence"
+          baseFrequency="0.02"
+          numOctaves="2"
+          result="noise1"
+          seed="2"
+        />
+        <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+          <animate
+            attributeName="dx"
+            values="490; 0"
+            dur="6s"
+            repeatCount="indefinite"
+            calcMode="linear"
+          />
+        </feOffset>
+
+        <feTurbulence
+          type="turbulence"
+          baseFrequency="0.02"
+          numOctaves="2"
+          result="noise2"
+          seed="2"
+        />
+        <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+          <animate
+            attributeName="dx"
+            values="0; -490"
+            dur="6s"
+            repeatCount="indefinite"
+            calcMode="linear"
+          />
+        </feOffset>
+
+        <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+        <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+        <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="combinedNoise"
+          scale="30"
+          xChannelSelector="R"
+          yChannelSelector="B"
+        />
+      </filter>
+    </defs>
+  </svg>
+{/if}
+
+<div class="card-container">
+  <div class="inner-container">
+    <div class="border-outer">
+      <div class="main-card" class:electric-active={active}></div>
+    </div>
+    <div class="glow-layer-1"></div>
+    <div class="glow-layer-2"></div>
+  </div>
+
+  <div class="overlay-1"></div>
+  <div class="overlay-2"></div>
+  <div class="background-glow"></div>
+
+  <div class="content-container">
+    {@render children?.()}
+  </div>
+</div>
+
+<style>
+  .svg-container {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  /* --- Electric Card Styles Adapted for Tokyonight --- */
+  .card-container {
+    --electric-border-color: #bb9af7;
+    --electric-light-color: #9d7cd8;
+    --gradient-color: rgba(187, 154, 247, 0.2);
+    --color-neutral-900: #1a1b26;
+
+    padding: 2px;
+    border-radius: 24px;
+    position: relative;
+    max-width: 100%;
+    height: 70vh;
+    margin: 0 auto;
+
+    background:
+      linear-gradient(-30deg, var(--gradient-color), transparent, var(--gradient-color)),
+      linear-gradient(to bottom, var(--color-neutral-900), var(--color-neutral-900));
+  }
+
+  .inner-container,
+  .overlay-1,
+  .overlay-2,
+  .background-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    pointer-events: none;
+  }
+
+  .border-outer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid rgba(187, 154, 247, 0.4);
+    border-radius: 24px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+  }
+
+  .main-card {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 24px;
+    border: 2px solid var(--electric-border-color);
+  }
+
+  .glow-layer-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid rgba(187, 154, 247, 0.6);
+    border-radius: 24px;
+    filter: blur(1px);
+  }
+
+  .glow-layer-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--electric-light-color);
+    border-radius: 24px;
+    filter: blur(4px);
+  }
+
+  .overlay-1 {
+    opacity: 1;
+    mix-blend-mode: overlay;
+    transform: scale(1.05);
+    filter: blur(16px);
+    background: linear-gradient(-30deg, white, transparent 30%, transparent 70%, white);
+  }
+
+  .overlay-2 {
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    transform: scale(1.05);
+    filter: blur(16px);
+    background: linear-gradient(-30deg, white, transparent 30%, transparent 70%, white);
+  }
+
+  .background-glow {
+    filter: blur(32px);
+    transform: scale(1.05);
+    opacity: 0.3;
+    z-index: -1;
+    background: linear-gradient(
+      -30deg,
+      var(--electric-light-color),
+      transparent,
+      var(--electric-border-color)
+    );
+  }
+
+  .content-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  @media (max-width: 768px) {
+    /* The electricity filter is only applied on mobile devices AND if the dynamic class is present */
+    /* .main-card.electric-active {
+      filter: url(#turbulent-displace);
+    } */
+  }
+</style>
+</file>
+
+<file path="src/lib/components/NewsCard.svelte">
+<script>
+  import { getImageUrl } from '$lib/utils/images.js';
+  
+  let { item, id =  item.title.replace(/\s+/g, '-').toLowerCase(), group = undefined } = $props();
+</script>
+
+<details class="news-card {item.image ? 'has-image' : ''}" {id} name={group}>
+  <summary>
+    <div class="summary-content">
+      <div class="summary-header">
+        <span class="news-date">{item.date}</span>
+        <div class="toggle-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <h4 class="news-title">{item.title}</h4>
+      {#if item.speaker || item.company}
+        <p class="news-speaker">
+          {#if item.speaker}<span class="speaker-name">{item.speaker}</span>{/if}
+          {#if item.speaker && item.company} | {/if}
+          {#if item.company}<span class="speaker-company">{item.company}</span>{/if}
+        </p>
+      {/if}
+      {#if item.description}
+        <p class="news-desc">{item.description}</p>
+      {/if}
+      {#if item.link && item['link-name']}
+        <div class="news-action">
+          <a 
+            href={item.link} 
+            target={item.link.startsWith('http') ? '_blank' : null} 
+            rel={item.link.startsWith('http') ? 'noopener noreferrer' : null} 
+            class="news-link"
+            onclick={(e) => e.stopPropagation()}
+          >
+            {item['link-name']} &rarr;
+          </a>
+        </div>
+      {/if}
+    </div>
+  </summary>
+  <div class="news-details">
+    <hr class="news-divider" />
+    <div class="news-details-layout">
+      {#if item.image}
+        <div class="news-image-wrapper">
+          <img src={getImageUrl(item.image)} alt={item.title} class="news-image" />
+        </div>
+      {/if}
+      <div class="news-content-wrapper">
+        {#if item.details}
+          <p class="news-details-text">{item.details}</p>
+        {/if}
+      </div>
+    </div>
+  </div>
+</details>
+
+<style>
+  .news-card {
+    background: linear-gradient(145deg, rgba(26, 27, 38, 0.6), rgba(22, 22, 30, 0.8));
+    border: 1px solid rgba(187, 154, 247, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    scroll-margin-top: 100px;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .news-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #bb9af7;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+  }
+
+  .news-card[open] {
+    transform: translateY(-3px);
+    border-color: rgba(187, 154, 247, 0.4);
+    box-shadow: 0 8px 30px rgba(187, 154, 247, 0.15);
+  }
+
+  .news-card[open]::before {
+    opacity: 1;
+  }
+
+  @media (hover: hover) {
+    .news-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(187, 154, 247, 0.4);
+      box-shadow: 0 8px 30px rgba(187, 154, 247, 0.15);
+    }
+
+    .news-card:hover::before {
+      opacity: 1;
+    }
+  }
+
+  .news-card summary {
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    list-style: none; /* Hide default marker */
+    user-select: none;
+  }
+
+  .news-card summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .news-date {
+    color: #bb9af7;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .toggle-icon {
+    color: #7aa2f7;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: rgba(122, 162, 247, 0.1);
+    flex-shrink: 0;
+  }
+
+  .news-card[open] .toggle-icon {
+    transform: rotate(180deg);
+    background: rgba(187, 154, 247, 0.2);
+    color: #bb9af7;
+  }
+
+  .news-title {
+    margin: 0;
+    font-size: 1.35rem;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+
+  .news-speaker {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #7aa2f7;
+  }
+
+  .speaker-name {
+    font-weight: 700;
+    color: #a9b1d6;
+  }
+
+  .speaker-company {
+    font-weight: 600;
+  }
+
+  .news-desc {
+    margin: 0;
+    color: #a9b1d6;
+    font-size: 1rem;
+  }
+
+  .news-details {
+    padding: 0 2rem 2rem 2rem;
+    color: #a9b1d6;
+    line-height: 1.6;
+    animation: slideDown 0.3s ease-out forwards;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .news-details-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .news-divider {
+    margin: 0.5rem 0 1.25rem 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(187, 154, 247, 0.2), transparent);
+  }
+
+  .news-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 0 auto 1.25rem auto;
+    border: 1px solid rgba(187, 154, 247, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .news-details-text {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .news-action {
+    margin-top: 0.25rem;
+  }
+
+  .news-link {
+    display: inline-block;
+    color: #bb9af7;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .news-link:hover {
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .news-card summary {
+      padding: 1.25rem;
+    }
+    .news-details {
+      padding: 0 1.25rem 1.5rem 1.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .news-card[open] {
+      grid-column: 1 / -1;
+    }
+    
+    /* 1. Add this rule to flatten the browser's hidden details wrapper */
+    .news-card.has-image[open]::details-content {
+      display: contents;
+    }
+
+    .news-card.has-image[open] {
+      display: grid;
+      grid-template-columns: 40% 1fr;
+      grid-template-rows: max-content max-content 1fr; 
+      grid-template-areas:
+        "image summary"
+        "image divider"
+        "image details";
+      gap: 0 2rem;
+    }
+    
+    .news-card.has-image[open] summary {
+      grid-area: summary;
+      padding: 1.5rem 2rem 0.5rem 0;
+    }
+    
+    /* 2. Your existing display: contents rules stay exactly the same */
+    .news-card.has-image[open] .news-details,
+    .news-card.has-image[open] .news-details-layout {
+      display: contents;
+    }
+    
+    .news-card.has-image[open] .news-image-wrapper {
+      grid-area: image;
+      padding: 1.5rem 0 1.5rem 1.5rem;
+      box-sizing: border-box;
+    }
+    
+    .news-card.has-image[open] .news-image {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .news-card.has-image[open] .news-content-wrapper {
+      grid-area: details;
+      padding: 0 2rem 1.5rem 0;
+    }
+    
+    .news-card.has-image[open] .news-divider {
+      grid-area: divider;
+      display: block;
+      margin: 0.75rem 2rem 1.25rem 0; 
+    }
+  }
+</style>
+</file>
+
+<file path="src/lib/data/epoch.json">
+[
+  {
+    "tag": "latest",
+    "image": "epoch9.webp",
+    "alt": "epoch9",
+    "date": "July 18, 2026 | 3:30 PM",
+    "title": "How to Approach a Research Publication",
+    "speaker": "Dr. Jinu Jayachandran",
+    "company": "Assistant Professor, ECE",
+    "details": "An expert talk with Dr. Jinu Jayachandran to break down exactly how to approach, structure, and submit a research publication without the stress",
+    "link": "#register",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch8.webp",
+    "alt": "epoch8",
+    "date": "July 11, 2026 | 7:30 PM",
+    "title": "Placement Talk Session 8",
+    "speaker": "Devika V",
+    "company": "Graduate Engineer Trainee at JSW",
+    "details": "",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch7.webp",
+    "alt": "epoch7",
+    "date": "July 4, 2026 | 7:30 PM",
+    "title": "Placement Talk Session 7",
+    "speaker": "Vykasi Sidhana",
+    "company": "South Indian Bank",
+    "details": "Join us for an engaging session with Vykasi Sidhana, placed at South Indian Bank, as she shares her placement journey and valuable insights into what recruiters truly look for in candidates. An initiative under EPOCH, organized in collaboration with Women TechnoHub.",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch6.webp",
+    "alt": "epoch6",
+    "date": "June 13, 2026 | 7:15 PM",
+    "title": "Placement Talk Session 6",
+    "speaker": "Adarsh Varghese (ECE '24)",
+    "company": "Firmware Engineer @ TISMO",
+    "details": "Find out in the Talks Session with Adarsh Varghese, Firmware Engineer at TISMO. Gain valuable insights into recruiter expectations, placement preparation and the qualities that help candidates stand out.",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch5.webp",
+    "alt": "epoch5",
+    "date": "June 6, 2026 | 7:00 PM",
+    "title": "Cracking a Management Role",
+    "speaker": "Nimisha Nair (ECE '22)",
+    "company": "Ex-KPMG Analyst | Global Outperformer Trainee @ Hilti",
+    "details": "The EPOCH is delighted to present an insightful session on navigating and excelling in management careers.",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch4.webp",
+    "alt": "epoch4",
+    "date": "May 31, 2026 | 7:30 PM",
+    "title": "Placement Talk Session 4",
+    "speaker": "Asvin M (ECE '23), Abhijith V J (ECE '23)",
+    "company": "Texas Instruments",
+    "details": "Placements need more than grades — recruiters look for skills, mindset, communication, and initiative. Join us to gain insights on industry expectations, placement journeys, and building a standout profile",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch3.webp",
+    "alt": "epoch3",
+    "date": "May 31, 2026 | 7:30 PM",
+    "title": "Placement Talk Session 3",
+    "speaker": "Athul",
+    "company": "Texas Instruments",
+    "details": "Step into an insightful session with Athul, Senior Embedded Firmware Engineer at Texas Instruments, and gain industry perspectives on placements, skills, and career growth.",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch2.webp",
+    "alt": "epoch2",
+    "date": "April 14, 2026 | 7:00 PM",
+    "title": "Stepping into the Core Sector",
+    "speaker": "Diya Rose Thomas, Keshav Balakrishnan",
+    "company": "Digital Intern @ Analog Devices",
+    "details": "EPOCH in collaboration with Internship Cell CET is back with Session 2 of our placement series  focusing on the core electronics domain— Digital Design and Verification.",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  },
+  {
+    "image": "epoch1.webp",
+    "alt": "epoch1",
+    "date": "April 10, 2026 | 6:00 PM",
+    "title": "Cracking the Management Role",
+    "speaker": "Anu, Sreelakshmi",
+    "company": "KPMG",
+    "details": "The EC Association brings you an insightful talk session — Cracking the Management Role , featuring our speakers Anu and Sreelakshmi, placed at KPMG.",
+    "link": "#watch",
+    "link-name": "Event Resources"
+  }
+
+]
+</file>
+
+<file path="src/lib/index.js">
+// components
+⋮----
+// utils
+⋮----
+// data
+</file>
+
+<file path="src/routes/gallery/+page.svelte">
+<script>
+  import { Section, GalleryCarousel, galleryData } from '$lib';
+</script>
+
+<svelte:head>
+  <title>Gallery | Department of ECE</title>
+  <meta
+    name="description"
+    content="A visual journey through our department's events and milestones."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<div class="gallery-page">
+  <section class="gallery-hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <h1>GALLERY</h1>
+      <p>Moments captured from our events, workshops, and everyday life.</p>
+    </div>
+  </section>
+
+  <div class="gallery-sections">
+    {#each galleryData as section (section.id)}
+      <Section id={section.id} title={section.title} description={section.description}>
+        <GalleryCarousel images={section.images} />
+      </Section>
+    {/each}
+  </div>
+</div>
+
+<style>
+  .gallery-page {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    line-height: 1.7;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding-bottom: 4rem;
+  }
+
+  .gallery-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3) saturate(1.2);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+  }
+  .hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0;
+    color: #bb9af7;
+    text-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+  .hero-content p {
+    font-size: 1.5rem;
+    color: #a9b1d6;
+  }
+
+  .gallery-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.25rem;
+    }
+    .hero-content p {
+      font-size: 1.125rem;
+    }
+  }
+</style>
+</file>
+
+<file path="src/lib/data/association.json">
+[
+  {
+    "tab": "Executives",
+  "teams": [
+    {
+      "team": "Secretary",
+      "description": "Managing records, correspondence, and keeping everything organized.",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Blesson Mathew",
+          "role": "Secretary"
+        }
+      ]
+    },
+    {
+      "team": "Joint Secretaries",
+      "description": "Assisting in administration and ensuring smooth operations across all domains.",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Nikhil Zacharias",
+          "role": "Joint Secretary"
+        },
+        {
+          "name": "Radhika S Krishnan",
+          "role": "Joint Secretary"
+        }
+      ]
+    },
+    {
+      "team": "Treasurer",
+      "description": "Managing the finances, budgeting, and keeping the accounts in check.",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Indu C R",
+          "role": "Treasurer"
+        }
+      ]
+    },
+    {
+      "team": "Program Secretary",
+      "description": "Planning, organizing, and executing top-notch programs and events.",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Hasil Ali P T",
+          "role": "Program Secretary"
+        },
+        {
+          "name": "Aromal M S",
+          "role": "Program Secretary"
+        },
+        {
+          "name": "Abhinav S D",
+          "role": "Program Secretary"
+        }
+      ]
+    },
+    {
+      "team": "Association Coordinator",
+      "description": "Bridging the gap between the association, teams, and the student body.",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Dheepak Vinu",
+          "role": "Coordinator"
+        }
+      ]
+    },
+    {
+      "team": "LET & Non-Keralite Representative",
+      "description": "Representing Lateral-Entry & Non-Keralite students and voicing their unique concerns.",
+      "tag": 2,
+      "members": [
+        {
+          "name": "Riya Jameela",
+          "role": "Lateral-Entry Representative"
+        },
+
+      {
+        "name": "Stanzin Thayas",
+        "role": "Non-Keralite Representative"
+      }
+      ]
+    },
+  {
+    "team": "Executive Committee",
+    "description": "The driving force behind our initiatives, ensuring everything runs smoothly behind the scenes.",
+    "tag": 6,
+    "members": [
+      {
+        "name": "Mark Johny",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Daris Benny",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Yamin Beck",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Josin Jiby",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Sandhra Treasa Maria",
+        "role": "Executive Member"
+      },
+      {
+        "name": "Ayisha Helan T T",
+        "role": "Executive Member"
+      }
+    ]
+  }
+  ]
+  
+    
+  },
+    {
+    "tab": "Our Teams",
+    "teams": [
+        {
+        "team": "Web Team",
+        "description": "Architects of the digital experience and internal tools.",
+        "tag": 1,
+        "members": [
+            {
+            "name": "Srikrishna Sathyajeeth",
+            "role": "Head"
+            },
+            {
+            "name": "Neil Martin",
+            "role": "Member"
+            },
+            {
+            "name": "Naveen G S",
+            "role": "Member"
+            },
+            {
+            "name": "Abhin Raj M",
+            "role": "Member"
+            },
+            {
+            "name": "Muhammad Risfal K P",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Design Team",
+        "description": "Crafting the visual identity and user experience for all platforms.",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Rida K",
+            "role": "Head"
+            },
+            {
+            "name": "Adarsh S R",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Abhijith D",
+            "role": "Member"
+            },
+            {
+            "name": "Soumya Rajasekharan",
+            "role": "Member"
+            },
+            {
+            "name": "Mydhily Krishna",
+            "role": "Member"
+            },
+            {
+            "name": "Arun Krishna",
+            "role": "Member"
+            },
+            {
+            "name": "Muhammed Basith",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "PR Team",
+        "description": "Connecting our vision with the community and managing communications.",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Prithvika",
+            "role": "Head"
+            },
+            {
+            "name": "Harinandanan S",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Amal Soman A",
+            "role": "Member"
+            },
+            {
+            "name": "Aman Abdurahman",
+            "role": "Member"
+            },
+            {
+            "name": "Anila Sivan",
+            "role": "Member"
+            },
+            {
+            "name": "Amogha Varsha",
+            "role": "Member"
+            },
+            {
+            "name": "Muhammad Riyan",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Newsletter Team",
+        "description": "Curating stories, updates, and campus news for everyone.",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Maria Joseph",
+            "role": "Head"
+            },
+            {
+            "name": "Adul Shaj",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Adith Jayakumar",
+            "role": "Member"
+            },
+            {
+            "name": "Avani D Anil",
+            "role": "Member"
+            },
+            {
+            "name": "Akhila P S",
+            "role": "Member"
+            },
+            {
+            "name": "Dhananjayan M",
+            "role": "Member"
+            },
+            {
+            "name": "Arya Devaki",
+            "role": "Member"
+            },
+            {
+            "name": "Melvin Soji",
+            "role": "Member"
+            },
+            {
+            "name": "Sana Saji",
+            "role": "Member"
+            },
+            {
+            "name": "Febin Eldhose",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Media Team",
+        "description": "Capturing moments and creating engaging multimedia content.",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Govindh J",
+            "role": "Head"
+            },
+            {
+            "name": "Aadithya Narayanan",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Samil R",
+            "role": "Member"
+            },
+            {
+            "name": "Seblon Basil Hurtis",
+            "role": "Member"
+            },
+            {
+            "name": "Sreesanth T",
+            "role": "Member"
+            },
+            {
+            "name": "Abhineeth G",
+            "role": "Member"
+            },
+            {
+            "name": "Thejas J Anil",
+            "role": "Member"
+            },
+            {
+            "name": "Shahuban Muneer",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Content Team",
+        "description": "Crafting engaging narratives and written content.",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Meriya Eleyas",
+            "role": "Head"
+            },
+            {
+            "name": "Devitheertha T P",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Ann Joy",
+            "role": "Member"
+            },
+            {
+            "name": "Joe Geo Joseph",
+            "role": "Member"
+            },
+            {
+            "name": "Farzeen Junaid",
+            "role": "Member"
+            },
+            {
+            "name": "Amy Jude",
+            "role": "Member"
+            },
+            {
+            "name": "Muhsina P C",
+            "role": "Member"
+            },
+            {
+            "name": "Ujjwal Skandakumar",
+            "role": "Member"
+            }
+        ]
+        },
+        {
+        "team": "Events Team",
+        "description": "Organizing, planning, and executing memorable events.",
+        "tag": 2,
+        "members": [
+            {
+            "name": "Ashitha A",
+            "role": "Head"
+            },
+            {
+            "name": "Riya Anna Thomas",
+            "role": "Coordinator"
+            },
+            {
+            "name": "Sreehari M S",
+            "role": "Member"
+            },
+            {
+            "name": "Nihal Naseem",
+            "role": "Member"
+            },
+            {
+            "name": "Shehin Shamlan",
+            "role": "Member"
+            },
+            {
+            "name": "Archana Rajesh",
+            "role": "Member"
+            },
+            {
+            "name": "Priyamvada P Achuthan",
+            "role": "Member"
+            },
+            {
+            "name": "Aslam Rasheed",
+            "role": "Member"
+            }
+        ]
+        }
+    ]
+    }
+]
+</file>
+
+<file path="src/lib/data/newsroom.json">
+[
+  {
+    "title": "SPECTRA'26 – Project Call",
+    "day": "📌",
+    "month": " ",
+    "date": "Register Now!",
+    "description": "Turn your innovative ideas into reality and compete for exciting prizes at SPECTRA '26.",
+    "details": "Got an idea that can change the future? Now's your chance to make it happen. Present your innovation, compete with the brightest minds, and stand a chance to win from a ₹5,000 Prize Pool. Read more information at the SPECTRA'26 page.",
+    "tag": "event",
+    "link": "/spectra",
+    "link-name": "Visit SPECTRA'26 page",
+    "image": "spectra.webp",
+    "showAsPopup": true
+  }
+]
+</file>
+
+<file path="src/routes/oppam/+page.svelte">
+<script>
+  import { Section, oppamData } from '$lib';
+</script>
+
+<svelte:head>
+  <title>Oppam | Study Resources</title>
+  <meta name="description" content="Access semester-wise study materials and resources." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<div class="oppam-page">
+  <section class="oppam-hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <h1>OPPAM</h1>
+      <p>Your ultimate repository for study materials.</p>
+    </div>
+  </section>
+
+  <Section
+    title="ACADEMIC RESOURCES"
+    description="Your go-to destination for all your  solutions to past KTU question papers for Electronics and Communication Engineering. We take immense pride in presenting a handwritten key, prepared exclusively by Cetians. 
+
+A heartfelt thank you to our dedicated committee members for their unwavering commitment and invaluable contributions."
+  >
+    <div class="semesters-container">
+      {#each oppamData as sem (sem.semester)}
+        <details class="semester-dropdown">
+          <summary>{sem.semester}</summary>
+          <ul class="subject-list">
+            {#each sem.subjects as subject (subject.name)}
+              <li>
+                <span class="subject-name">{subject.name}</span>
+                <a href={subject.link} target="_blank" rel="noopener noreferrer" class="drive-link">
+                  View Materials &rarr;
+                </a>
+              </li>
+            {/each}
+          </ul>
+        </details>
+      {/each}
+    </div>
+  </Section>
+</div>
+
+<style>
+  .oppam-page {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    line-height: 1.7;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .oppam-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Placeholder background specific to Oppam */
+    background-image: url('https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3) saturate(1.2);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin: 0;
+    color: #bb9af7;
+    text-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+
+  .hero-content p {
+    font-size: 1.5rem;
+    color: #a9b1d6;
+  }
+
+  /* --- Accordion Styles --- */
+  .semesters-container {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .semester-dropdown {
+    background-color: rgba(26, 27, 38, 0.5);
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .semester-dropdown:hover {
+    border-color: rgba(187, 154, 247, 0.5);
+  }
+
+  .semester-dropdown summary {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #c0caf5;
+    cursor: pointer;
+    list-style: none; /* Hide default marker */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+
+  .semester-dropdown summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .semester-dropdown summary::after {
+    content: '+';
+    color: #bb9af7;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .semester-dropdown[open] summary::after {
+    content: '−';
+  }
+
+  .subject-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(187, 154, 247, 0.1);
+  }
+
+  .subject-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(187, 154, 247, 0.1);
+    transition: background-color 0.2s ease;
+  }
+
+  .subject-list li:last-child {
+    border-bottom: none;
+  }
+
+  .subject-list li:hover {
+    background-color: rgba(26, 27, 38, 0.8);
+  }
+
+  .subject-name {
+    color: #a9b1d6;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .drive-link {
+    color: #bb9af7;
+    text-decoration: none;
+    font-weight: 600;
+    background-color: rgba(187, 154, 247, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .drive-link:hover {
+    background-color: #bb9af7;
+    color: #1a1b26;
+    box-shadow: 0 0 10px rgba(187, 154, 247, 0.4);
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .subject-list li {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+</style>
+</file>
+
+<file path="src/lib/components/Section.svelte">
+<script>
+  import { reveal } from '$lib/utils/animations.js';
+
+  let {
+    id,
+    title,
+    description,
+    children,
+    animate = true // Default to true
+  } = $props();
+
+  // Custom action that conditionally runs your imported action
+  function optionalReveal(node) {
+    if (animate) {
+      return reveal(node);
+    }
+  }
+</script>
+
+<!-- Use the local wrapper action instead of the direct import -->
+<section {id} class="about-section" use:optionalReveal>
+  {#if title}
+    <h3 class="section-title">{title}</h3>
+  {/if}
+  {#if description}
+    <p class="description">{description}</p>
+  {/if}
+
+  {@render children?.()}
+</section>
+
+<style>
+  .about-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 6rem 1rem;
+    box-sizing: border-box;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #bb9af7;
+    margin-bottom: 2rem;
+    overflow-wrap: break-word;
+  }
+
+  .description {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #a9b1d6;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .about-section {
+      padding: 4rem 2rem;
+    }
+    .section-title {
+      font-size: 2.25rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .description {
+      font-size: 1.175rem;
+      line-height: 1.4;
+    }
+  }
+</style>
+</file>
+
+<file path="src/routes/newsroom/+page.svelte">
+<script>
+  import { Section, NewsCard, newsData } from '$lib';
+  import { onMount } from 'svelte'; // Import onMount
+
+  const events = newsData.filter((item) => item.tag === 'event');
+  const notifications = newsData.filter((item) => item.tag === 'notification');
+
+  // Intercept the native <details> toggle to inject a smooth layout animation
+  onMount(() => {
+    const handleGridReflow = (e) => {
+      const summary = e.target.closest('summary');
+      
+      // Check if a summary was clicked and if the browser supports View Transitions
+      if (!summary || !document.startViewTransition) return;
+
+      const details = summary.parentElement;
+
+      // Prevent the default instant HTML snap
+      e.preventDefault();
+
+      // Let the browser automatically calculate and animate the grid layout changes
+      document.startViewTransition(() => {
+        details.open = !details.open;
+      });
+    };
+
+    // Attach listener to capture clicks on the summary elements
+    document.addEventListener('click', handleGridReflow);
+    
+    // Cleanup listener on destroy
+    return () => document.removeEventListener('click', handleGridReflow);
+  });
+</script>
+
+<svelte:head>
+  <title>Newsroom | Department of ECE</title>
+  <meta
+    name="description"
+    content="Stay updated with department events and general notifications."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<div class="newsroom-page">
+  <section class="newsroom-hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <h1>NEWSROOM</h1>
+      <p>Stay updated with department events and announcements.</p>
+    </div>
+  </section>
+
+  <Section
+    title="DEPARTMENT EVENTS"
+    description="Upcoming and recent departmental activities, seminars, and workshops."
+  >
+    <div class="news-container">
+      {#each events as item (item.title)}
+        <NewsCard {item} group="newsroom-events" />
+      {/each}
+    </div>
+  </Section>
+
+  <Section
+    title="GENERAL NOTIFICATIONS"
+    description="Important announcements, deadlines, and academic updates."
+  >
+    <div class="news-container">
+      {#each notifications as item (item.title)}
+        <NewsCard {item}
+        id={item.title.replace(/\s+/g, '-').toLowerCase()} 
+        group="newsroom-notifications" />
+      {/each}
+    </div>
+  </Section>
+</div>
+
+<style>
+  .newsroom-page {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  .newsroom-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3) saturate(1.2);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin: 0;
+    color: #bb9af7;
+    text-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+
+  .hero-content p {
+    font-size: 1.5rem;
+    color: #a9b1d6;
+  }
+
+  /* --- News Card Styles --- */
+  .news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+</file>
+
+<file path="src/routes/association/+page.svelte">
+<script>
+  import { fade, slide } from 'svelte/transition';
+  import { Section, getImageUrl, associationData } from '$lib';
+
+  let expandedTeams = $state({});
+  let expandedMemes = $state({});
+
+  // Track the starting index for desktop carousels
+  let teamIndexes = $state({});
+
+  let activeTab = $state(associationData.length > 0 ? associationData[0].tab : '');
+  let isDropdownOpen = $state(false);
+  let displayedTeams = $derived(associationData.find((t) => t.tab === activeTab)?.teams || []);
+
+  function toggleTeam(teamName) {
+    expandedTeams[teamName] = !expandedTeams[teamName];
+    if (!expandedTeams[teamName]) {
+      expandedMemes[teamName] = false;
+    }
+  }
+
+  // Image resolution logic
+  function getMemberImage(member) {
+    if (member.image) {
+      return getImageUrl(member.image);
+    }
+
+    // Normalize name: lowercase, trim, replace spaces with underscores
+    const normalizedName = member.name.toLowerCase().trim().replace(/\s+/g, '_');
+    const filename = `${normalizedName}.webp`;
+
+    // Log the generated filename to the console
+    // console.log(`[Image Lookup] Normalized filename for ${member.name}:`, filename);
+
+    return getImageUrl(filename);
+  }
+
+  function handleImageError(event, memberName) {
+    // console.error(
+    //   `Image not found in global lookup for: ${memberName}. Falling back to random Dicebear avatar.`
+    // );
+    const fallbackSeed = encodeURIComponent(memberName.replace(/\s+/g, ''));
+    event.target.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${fallbackSeed}&backgroundColor=b6e3f4`;
+    event.target.onerror = null; // Prevent infinite loop if fallback also fails
+  }
+</script>
+
+<svelte:head>
+  <title>Our Association | Department of ECE</title>
+  <meta name="description" content="Meet the members of the ECE Web Association." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<div class="association-page">
+  <section class="association-hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <h1>ECE ASSOCIATION</h1>
+      <p>Building the backbone of our department.</p>
+    </div>
+  </section>
+
+  <Section
+    title="OUR MISSION"
+    description="Meet the dedicated students who drive the EC Association forward. From office bearers and committee heads to team members, this section highlights the individuals who work together to organize initiatives, foster innovation, and strengthen our community."
+  />
+
+  <Section title="MEET THE TEAM" animate={false}>
+    {#if associationData.length > 0}
+      <div class="dropdown-wrapper">
+        <div class="dropdown-container">
+          <button class="dropdown-toggle" onclick={() => (isDropdownOpen = !isDropdownOpen)}>
+            <div class="dropdown-toggle-content">
+              <span class="dropdown-value">{activeTab}</span>
+            </div>
+            <svg
+              class="chevron"
+              class:open={isDropdownOpen}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg
+            >
+          </button>
+
+          {#if isDropdownOpen}
+            <div class="dropdown-menu">
+              {#each associationData as tabData}
+                <button
+                  class="dropdown-item"
+                  class:active={activeTab === tabData.tab}
+                  onclick={() => {
+                    activeTab = tabData.tab;
+                    isDropdownOpen = false;
+                  }}
+                >
+                  {tabData.tab}
+                </button>
+              {/each}
+            </div>
+          {/if}
+        </div>
+      </div>
+    {/if}
+
+    <div class="teams-container">
+      {#each displayedTeams as team (team.team)}
+        {@const currentIndex = teamIndexes[team.team] || 0}
+        <div
+          class="team-block"
+          class:clickable={!expandedMemes[team.team] && team.memeImage}
+          onclick={() => {
+            const isDesktop = window.innerWidth >= 768;
+            const canShowMobile =
+              team.members.length <= (team.tag || 1) || expandedTeams[team.team];
+
+            if (!expandedMemes[team.team] && team.memeImage && (isDesktop || canShowMobile)) {
+              expandedMemes[team.team] = true;
+            }
+          }}
+          in:fade={{ duration: 300 }}
+        >
+          <div class="team-header">
+            <div class="team-info">
+              <h3>{team.team}</h3>
+              {#if team.description}
+                <p>{team.description}</p>
+              {/if}
+            </div>
+          </div>
+
+          <!-- === MOBILE LAYOUT === -->
+          <div class="mobile-only">
+            <div class="members-grid">
+              {#each team.members.slice(0, team.tag || 1) as member, i (member.name)}
+                <div class="member-card lead-member">
+                  <div class="avatar">
+                    <img
+                      src={getMemberImage(member)}
+                      alt={member.name}
+                      loading="lazy"
+                      decoding="async"
+                      width="120"
+                      height="120"
+                      onerror={(e) => handleImageError(e, member.name)}
+                    />
+                  </div>
+                  <div class="member-details">
+                    <h4>{member.name}</h4>
+                    <p class="role">{member.role}</p>
+                    {#if member.year}<p class="year">{member.year}</p>{/if}
+                  </div>
+                </div>
+              {/each}
+            </div>
+
+            {#if expandedTeams[team.team] && team.members.length > (team.tag || 1)}
+              <div transition:slide={{ duration: 400 }}>
+                <div class="members-grid" style="padding-top: 2rem;">
+                  {#each team.members.slice(team.tag || 1) as member, i (member.name)}
+                    <div class="member-card" out:fade={{ duration: 200 }}>
+                      <div class="avatar">
+                        <img
+                          src={getMemberImage(member)}
+                          alt={member.name}
+                          loading="lazy"
+                          decoding="async"
+                          width="120"
+                          height="120"
+                          onerror={(e) => handleImageError(e, member.name)}
+                        />
+                      </div>
+                      <div class="member-details">
+                        <h4>{member.name}</h4>
+                        <p class="role">{member.role}</p>
+                        {#if member.year}<p class="year">{member.year}</p>{/if}
+                      </div>
+                    </div>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+          </div>
+
+          <!-- === DESKTOP LAYOUT === -->
+          <div class="desktop-only">
+            <div class="desktop-carousel-wrapper">
+              <!-- Left Arrow Container -->
+              <div class="arrow-container">
+                {#if team.members.length > 3 && currentIndex > 0}
+                  <button
+                    class="scroll-arrow left"
+                    aria-label="Previous members"
+                    onclick={(e) => {
+                      e.stopPropagation();
+                      teamIndexes[team.team] = currentIndex - 1;
+                    }}
+                    in:fade={{ duration: 150 }}
+                  >
+                    &larr;
+                  </button>
+                {/if}
+              </div>
+
+              <!-- Sliced Container -->
+              <div class="desktop-scroll-container spread-items">
+                {#each team.members.slice(currentIndex, currentIndex + 3) as member, i (member.name)}
+                  <div
+                    class="member-card {currentIndex + i < (team.tag || 1) ? 'lead-member' : ''}"
+                    in:fade={{ duration: 250 }}
+                  >
+                    <div class="avatar">
+                      <img
+                        src={getMemberImage(member)}
+                        alt={member.name}
+                        loading="lazy"
+                        decoding="async"
+                        width="120"
+                        height="120"
+                        onerror={(e) => handleImageError(e, member.name)}
+                      />
+                    </div>
+                    <div class="member-details">
+                      <h4>{member.name}</h4>
+                      <p class="role">{member.role}</p>
+                      {#if member.year}<p class="year">{member.year}</p>{/if}
+                    </div>
+                  </div>
+                {/each}
+              </div>
+
+              <!-- Right Arrow Container -->
+              <div class="arrow-container">
+                {#if team.members.length > 3 && currentIndex < team.members.length - 3}
+                  <button
+                    class="scroll-arrow right"
+                    aria-label="Next members"
+                    onclick={(e) => {
+                      e.stopPropagation();
+                      teamIndexes[team.team] = currentIndex + 1;
+                    }}
+                    in:fade={{ duration: 150 }}
+                  >
+                    &rarr;
+                  </button>
+                {/if}
+              </div>
+            </div>
+          </div>
+
+          <!-- MOBILE FOOTER TOGGLE -->
+          {#if team.members.length > (team.tag || 1)}
+            <div class="team-footer mobile-only">
+              <button
+                class="toggle-btn"
+                aria-label="Toggle team members"
+                onclick={(e) => {
+                  e.stopPropagation();
+                  toggleTeam(team.team);
+                }}
+              >
+                {expandedTeams[team.team] ? 'Hide Team -' : 'View All +'}
+              </button>
+            </div>
+          {/if}
+
+          <!-- MEME / EASTER EGG SECTION -->
+          <div
+            class="meme-wrapper"
+            class:mobile-hidden={team.members.length > (team.tag || 1) && !expandedTeams[team.team]}
+          >
+            {#if expandedMemes[team.team] && team.memeImage}
+              <div transition:slide={{ duration: 400 }}>
+                <div class="easter-egg" out:fade={{ duration: 200 }}>
+                  <img
+                    src={getImageUrl(team.memeImage)}
+                    alt="Team Meme"
+                    class="secret-image"
+                    loading="lazy"
+                    decoding="async"
+                    width="120"
+                    height="120"
+                  />
+                  <p class="secret-line">{team.memeLine}</p>
+                  <button
+                    class="hide-meme-text"
+                    aria-label="Hide meme"
+                    onclick={(e) => {
+                      e.stopPropagation();
+                      expandedMemes[team.team] = false;
+                    }}
+                  >
+                    Hide Meme -
+                  </button>
+                </div>
+              </div>
+            {:else if team.memeImage}
+              <p class="meme-hint" in:fade={{ duration: 300 }}>click to show meme</p>
+            {/if}
+          </div>
+        </div>
+      {/each}
+    </div>
+  </Section>
+</div>
+
+<style>
+  /* --- Base Layout / Existing CSS --- */
+  .association-page {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    line-height: 1.7;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .association-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3) saturate(1.2);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0;
+    color: #bb9af7;
+    text-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+
+  .hero-content p {
+    font-size: 1.5rem;
+    color: #a9b1d6;
+  }
+
+  .dropdown-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .dropdown-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    background-color: rgba(26, 27, 38, 0.4);
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    border-radius: 16px;
+    color: #c0caf5;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-toggle-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .dropdown-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #bb9af7;
+  }
+
+  .dropdown-toggle:hover {
+    background: rgba(26, 27, 38, 0.9);
+    border-color: rgba(187, 154, 247, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .chevron {
+    color: #bb9af7;
+    transition: transform 0.3s ease;
+  }
+
+  .chevron.open {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    width: 100%;
+    background: #16161e;
+    border: 1px solid rgba(187, 154, 247, 0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-item {
+    padding: 1.25rem 2rem;
+    background: transparent;
+    border: none;
+    color: #a9b1d6;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+    border-bottom: 1px solid rgba(187, 154, 247, 0.1);
+  }
+
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-item:hover {
+    background-color: rgba(187, 154, 247, 0.1);
+    color: #c0caf5;
+  }
+
+  .dropdown-item.active {
+    color: #bb9af7;
+    font-weight: 700;
+    background-color: rgba(187, 154, 247, 0.05);
+  }
+
+  .teams-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  .team-block {
+    background-color: rgba(26, 27, 38, 0.4);
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .team-block.clickable {
+    cursor: pointer;
+  }
+
+  .team-block.clickable:hover {
+    border-color: rgba(187, 154, 247, 0.5);
+    background-color: rgba(26, 27, 38, 0.5);
+  }
+
+  .team-header {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(187, 154, 247, 0.2);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .team-info h3 {
+    font-size: 1.8rem;
+    color: #bb9af7;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .team-info p {
+    margin: 0;
+    color: #a9b1d6;
+    font-size: 1.1rem;
+  }
+
+  .toggle-btn {
+    background-color: rgba(187, 154, 247, 0.1);
+    color: #bb9af7;
+    border: 1px solid #bb9af7;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .toggle-btn:hover {
+    background-color: #bb9af7;
+    color: #1a1b26;
+    box-shadow: 0 0 10px rgba(187, 154, 247, 0.4);
+  }
+
+  .team-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(187, 154, 247, 0.2);
+    padding-top: 1.5rem;
+  }
+
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  .member-card {
+    text-align: center;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem auto;
+    border: 3px solid #565f89;
+    overflow: hidden;
+    padding: 3px;
+    transition: border-color 0.3s ease;
+  }
+
+  .lead-member .avatar {
+    border-color: #bb9af7;
+    box-shadow: 0 0 15px rgba(187, 154, 247, 0.3);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .member-details h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.2rem;
+    color: #c0caf5;
+  }
+
+  .member-details .role {
+    margin: 0 0 0.25rem 0;
+    font-size: 0.95rem;
+    color: #7aa2f7;
+    font-weight: 600;
+  }
+
+  .member-details .year {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #a9b1d6;
+  }
+
+  /* --- Easter Egg --- */
+  .easter-egg {
+    margin: 2rem auto 0 auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  .secret-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .secret-line {
+    font-size: 0.55rem;
+    color: #565f89;
+    margin: 0;
+  }
+
+  .hide-meme-text {
+    background: none;
+    border: none;
+    color: #bb9af7;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    padding: 0;
+    margin-top: 1.25rem;
+    transition: color 0.3s ease;
+  }
+
+  .hide-meme-text:hover {
+    color: #c0caf5;
+  }
+
+  .meme-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #565f89;
+    margin: 1.5rem 0 0 0;
+    font-style: italic;
+  }
+
+  /* =========================================
+     RESPONSIVE LAYOUT SWITCHING
+     ========================================= */
+
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  /* --- Desktop Carousel Styles --- */
+  .desktop-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .arrow-container {
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .desktop-scroll-container.spread-items {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+    gap: 1rem;
+  }
+
+  .desktop-scroll-container .member-card {
+    flex: 0 1 250px;
+    width: 100%;
+  }
+
+  .scroll-arrow {
+    background: rgba(26, 27, 38, 0.8);
+    border: 1px solid #bb9af7;
+    color: #bb9af7;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-arrow:hover {
+    background: #bb9af7;
+    color: #1a1b26;
+    box-shadow: 0 0 15px rgba(187, 154, 247, 0.4);
+  }
+
+  /* --- Responsive Breakpoints --- */
+  @media (max-width: 767px) {
+    .meme-wrapper.mobile-hidden {
+      display: none;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+    .toggle-btn {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      padding: 0 1.5rem;
+    }
+
+    .mobile-only {
+      display: none !important;
+    }
+
+    .desktop-only {
+      display: block;
+    }
+  }
+</style>
+</file>
+
+<file path="src/lib/components/PcbBoard.svelte">
+<script>
+  // ==========================================
+  // 1. COMPONENT PROPS
+  // ==========================================
+  let {
+    // --- DESKTOP CONFIGURATION ---
+    icWidthDesktop = 700,
+    icHeightDesktop = 500,
+    enableGlowDesktop = false,
+    textOffsetXDesktop = 60,
+    fontSizeDesktop = 64,
+    lineSpacingDesktop = 68,
+    tracesXDesktop = 8,
+    tracesYDesktop = 10,
+
+    // --- MOBILE CONFIGURATION ---
+    icWidthMobile = 280,
+    icHeightMobile = 360,
+    enableGlowMobile = false,
+    textOffsetXMobile = 25,
+    fontSizeMobile = 32,    
+    lineSpacingMobile = 40,
+    tracesXMobile = 10,
+    tracesYMobile = 12,
+
+    // --- DISCRETE COMPONENTS (RESISTORS / CAPACITORS) ---
+    resistorsDesktop = 0,
+    resistorsMobile = 1,
+    capacitorsDesktop = 0,
+    capacitorsMobile = 1,
+
+    // --- GLOBAL SETTINGS ---
+    textLabelDesktop = "ELECTRONICS\nAND\nCOMMUNICATION\nDEPARTMENT", 
+    textLabelMobile = "ELECTRONICS\nAND\nCOMMUN-\nICATION\nDEPARTMENT",
+    showGrid = false,
+    viaSpawnChance = 0.2,
+    activeStreaksLimit = 15,
+
+    // --- POWER SWITCH ---
+    defaultPowerOn = true
+  } = $props();
+
+  const ROUTING = { 
+    occlusionDepth: 40, maxDesktop: 60, maxMobile: 24,
+    streakLength: 100, staggerSpacing: 16
+  };
+  const PAD = { stick: 16, overlap: 4, thickness: 6 };
+
+  // ==========================================
+  // 2. REACTIVE SYSTEM STATE & LAYOUT
+  // ==========================================
+  
+  let boardW = $state(1000); 
+  let boardH = $state(600);
+  let isMobile = $state(false);
+
+  let safeIcW = $derived(isMobile ? icWidthMobile : icWidthDesktop);
+  let safeIcH = $derived(isMobile ? icHeightMobile : icHeightDesktop);
+  
+  let isGlowEnabled = $derived(isMobile ? enableGlowMobile : enableGlowDesktop);
+  
+  let textOffsetX = $derived(isMobile ? textOffsetXMobile : textOffsetXDesktop);
+  let fontSize = $derived(isMobile ? fontSizeMobile : fontSizeDesktop);
+  let lineSpacing = $derived(isMobile ? lineSpacingMobile : lineSpacingDesktop);
+
+  let tracesX = $derived(isMobile ? tracesXMobile : tracesXDesktop);
+  let tracesY = $derived(isMobile ? tracesYMobile : tracesYDesktop);
+
+  let resistorCount = $derived(isMobile ? resistorsMobile : resistorsDesktop);
+  let capacitorCount = $derived(isMobile ? capacitorsMobile : capacitorsDesktop);
+
+  // Scaled up footprints
+  let resistorBodyLen = $derived(isMobile ? 24 : 32);
+  let resistorBodyW = $derived(isMobile ? 12 : 16);
+  let resistorPadLen = $derived(isMobile ? 6 : 8);
+
+  let capBaseSize = $derived(isMobile ? 22 : 28);
+  // Radius > capBaseSize / 2 so the circle overlaps the square base
+  let capRadius = $derived(isMobile ? 13 : 16); 
+  let capPadLen = $derived(isMobile ? 6 : 8);
+  let capPadW = $derived(isMobile ? 8 : 10);
+
+  let icX = $derived((boardW - safeIcW) / 2);
+  let icY = $derived((boardH - safeIcH) / 2);
+  
+  let pin1Cx = $derived(icX + 30);
+  let pin1Cy = $derived(icY + 30);
+  
+  let textX = $derived(icX + textOffsetX); 
+  let textCenterY = $derived(icY + safeIcH / 2); 
+  
+  let currentTextLabel = $derived(isMobile ? textLabelMobile : textLabelDesktop);
+  let textLines = $derived(currentTextLabel.split('\\n').flatMap(line => line.split('\n')));
+
+  let isVisible = $state(true);
+  
+  let totalTraces = $derived(tracesX + tracesY);
+  let maxTraces = $derived(isMobile ? ROUTING.maxMobile : ROUTING.maxDesktop);
+  
+  let routedConnections = $state([]);
+  let connectionIdCounter = 0;
+  
+  let activeStreaks = $state([]);
+  let streakIdCounter = 0;
+  let prevLimit = -2; 
+  let prevTotal = -1;
+
+  let cardEl; 
+
+  let powerOn = $state(defaultPowerOn);
+  let isBooting = $state(false);
+
+  let railConnections = $derived(routedConnections.filter(c => c.isRail));
+
+  let switchScale = $derived(isMobile ? 0.8 : 1.5); 
+  let switchBodyW = $derived(32 * switchScale);
+  let switchBodyH = $derived(84 * switchScale); 
+  let switchLeadLen = $derived(16 * switchScale);
+  let switchViaGap = $derived(16 * switchScale);
+  let switchViaR = $derived(6 * switchScale);
+  let switchKnobSize = $derived(44 * switchScale); 
+  let switchMargin = $derived(isMobile ? 22 : 38);
+  
+  let switchClearanceX = $derived(isMobile? 10 : 120); 
+  let switchClearanceY = $derived(isMobile? 120: 30); 
+  
+  let switchX = $derived(switchMargin + switchClearanceX);
+  let switchY = $derived(boardH - switchBodyH - switchMargin - switchClearanceY);
+
+  // ==========================================
+  // 3. PURE UTILITY FUNCTIONS
+  // ==========================================
+  
+  function getRoutePoints(startX, startY, edgeX, edgeY, side, index = 0, total = 1) {
+    const dx = edgeX - startX;
+    const dy = edgeY - startY;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+    const dirX = Math.sign(dx);
+    const dirY = Math.sign(dy);
+
+    const stagger = (index - (total - 1) / 2) * ROUTING.staggerSpacing;
+    const points = [[startX, startY]];
+
+    if (side === 'top' || side === 'bottom') {
+      if (absDx <= absDy) {
+        const straightY = (absDy - absDx) / 2;
+        const y1 = startY + straightY * dirY;
+        const y2 = y1 + absDx * dirY;
+        points.push([startX, y1], [edgeX, y2], [edgeX, edgeY]);
+      } else {
+        const half = absDy / 2;
+        const straightX = absDx - half;
+        const x1 = startX + straightX * dirX;
+        const y1 = edgeY - half * dirY;
+        points.push([x1, startY], [edgeX, y1], [edgeX, edgeY]);
+      }
+    } else {
+      if (absDy <= absDx) {
+        const straightX = (absDx - absDy) / 2;
+        const x1 = startX + straightX * dirX;
+        const x2 = x1 + absDy * dirX;
+        points.push([x1, startY], [x2, edgeY], [edgeX, edgeY]);
+      } else {
+        const midX = startX + dx / 2 + stagger;
+        points.push([midX, startY], [midX, edgeY], [edgeX, edgeY]);
+      }
+    }
+    return points;
+  }
+
+  function getPointOnRoute(points, distance) {
+    let currentDist = 0;
+    for (let i = 0; i < points.length - 1; i++) {
+      const p1 = points[i];
+      const p2 = points[i+1];
+      const segLen = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]);
+      if (currentDist + segLen >= distance) {
+        const t = (distance - currentDist) / segLen;
+        const vx = p1[0] + (p2[0] - p1[0]) * t;
+        const vy = p1[1] + (p2[1] - p1[1]) * t;
+        return { via: [vx, vy], newRoute: [[vx, vy], ...points.slice(i + 1)] };
+      }
+      currentDist += segLen;
+    }
+    return { via: points[0], newRoute: points };
+  }
+
+  function getPointAndAngleOnPath(points, distance) {
+    let currentDist = 0;
+    for (let i = 0; i < points.length - 1; i++) {
+      const p1 = points[i];
+      const p2 = points[i + 1];
+      const segLen = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]);
+      if (segLen > 0 && currentDist + segLen >= distance) {
+        const t = (distance - currentDist) / segLen;
+        const x = p1[0] + (p2[0] - p1[0]) * t;
+        const y = p1[1] + (p2[1] - p1[1]) * t;
+        const angle = Math.atan2(p2[1] - p1[1], p2[0] - p1[0]);
+        return { x, y, angle };
+      }
+      currentDist += segLen;
+    }
+    const last = points[points.length - 1];
+    const prev = points[points.length - 2] ?? last;
+    return { x: last[0], y: last[1], angle: Math.atan2(last[1] - prev[1], last[0] - prev[0]) };
+  }
+
+  function getCirclePoints(cx, cy, r, startAngle = 0, numPoints = 16) {
+    const pts = [];
+    for (let i = 0; i <= numPoints; i++) {
+      const angle = startAngle + (i / numPoints) * Math.PI * 2;
+      pts.push([cx + Math.cos(angle) * r, cy + Math.sin(angle) * r]);
+    }
+    return pts;
+  }
+
+  function pointsToPath(points) {
+    return points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p[0]} ${p[1]}`).join(' ');
+  }
+
+  function pathLength(points) {
+    let total = 0;
+    for (let i = 1; i < points.length; i++) {
+      total += Math.hypot(points[i][0] - points[i - 1][0], points[i][1] - points[i - 1][1]);
+    }
+    return total;
+  }
+
+  function getEvenlySpaced(count, min, max) {
+    if (count === 0) return [];
+    const step = (max - min) / (count + 1);
+    return Array.from({ length: count }, (_, i) => min + step * (i + 1));
+  }
+
+  function distributeEvenly(total, numBuckets) {
+    const base = Math.floor(total / numBuckets);
+    const remainder = total % numBuckets;
+    const counts = new Array(numBuckets).fill(base);
+    const order = Array.from({ length: numBuckets }, (_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    for (let i = 0; i < remainder; i++) counts[order[i]]++;
+    return counts;
+  }
+
+  function getPadRect(edge, side) {
+    const { stick, overlap, thickness } = PAD;
+    switch (side) {
+      case 'left':   return { x: edge[0] - stick + overlap, y: edge[1] - thickness / 2, w: stick, h: thickness };
+      case 'right':  return { x: edge[0] - overlap,         y: edge[1] - thickness / 2, w: stick, h: thickness };
+      case 'top':    return { x: edge[0] - thickness / 2,   y: edge[1] - stick + overlap, w: thickness, h: stick };
+      case 'bottom': 
+      default:       return { x: edge[0] - thickness / 2,   y: edge[1] - overlap,         w: thickness, h: stick };
+    }
+  }
+
+  function generateConnections(countX, countY, connectionIdStart) {
+    if (boardW <= 0 || boardH <= 0) return [];
+
+    const xCounts = distributeEvenly(countX, 2);
+    const yCounts = distributeEvenly(countY, 2);
+    
+    const buckets = {
+      left: xCounts[0], right: xCounts[1],
+      top: yCounts[0], bottom: yCounts[1]
+    };
+    
+    let raw = [];
+
+    if (buckets.left > 0) {
+      const innerYs = getEvenlySpaced(buckets.left, icY + 10, icY + safeIcH - 10);
+      const outerYs = isMobile ? innerYs : getEvenlySpaced(buckets.left, 20, boardH - 20);
+      for (let i = 0; i < buckets.left; i++) {
+        raw.push({ start: [0, outerYs[i]], edge: [icX, innerYs[i]], occluded: [icX + ROUTING.occlusionDepth, innerYs[i]], side: 'left', index: i, total: buckets.left });
+      }
+    }
+
+    if (buckets.right > 0) {
+      const innerYs = getEvenlySpaced(buckets.right, icY + 10, icY + safeIcH - 10);
+      const outerYs = isMobile ? innerYs : getEvenlySpaced(buckets.right, 20, boardH - 20);
+      for (let i = 0; i < buckets.right; i++) {
+        raw.push({ start: [boardW, outerYs[i]], edge: [icX + safeIcW, innerYs[i]], occluded: [icX + safeIcW - ROUTING.occlusionDepth, innerYs[i]], side: 'right', index: i, total: buckets.right });
+      }
+    }
+
+    if (buckets.top > 0) {
+      const outerXs = getEvenlySpaced(buckets.top, 20, boardW - 20);
+      const innerXs = getEvenlySpaced(buckets.top, icX + 10, icX + safeIcW - 10);
+      for (let i = 0; i < buckets.top; i++) {
+        raw.push({ start: [outerXs[i], 0], edge: [innerXs[i], icY], occluded: [innerXs[i], icY + ROUTING.occlusionDepth], side: 'top', index: i, total: buckets.top });
+      }
+    }
+
+    if (buckets.bottom > 0) {
+      const outerXs = getEvenlySpaced(buckets.bottom, 20, boardW - 20);
+      const innerXs = getEvenlySpaced(buckets.bottom, icX + 10, icX + safeIcW - 10);
+      for (let i = 0; i < buckets.bottom; i++) {
+        raw.push({ start: [outerXs[i], boardH], edge: [innerXs[i], icY + safeIcH], occluded: [innerXs[i], icY + safeIcH - ROUTING.occlusionDepth], side: 'bottom', index: i, total: buckets.bottom });
+      }
+    }
+
+    let idOffset = connectionIdStart;
+    
+    const mapped = raw.map((conn, index) => {
+      const routePoints = getRoutePoints(conn.start[0], conn.start[1], conn.edge[0], conn.edge[1], conn.side, conn.index, conn.total);
+      const fullLength = pathLength(routePoints);
+      
+      let finalRoute = routePoints;
+      let viaData = null;
+
+      if (Math.random() < viaSpawnChance) {
+        const targetDist = fullLength * (0.3 + Math.random() * 0.4);
+        const split = getPointOnRoute(routePoints, targetDist);
+        finalRoute = split.newRoute;
+        viaData = { x: split.via[0], y: split.via[1], r: 7 }; 
+      }
+
+      const physicalPoints = [...finalRoute, conn.occluded];
+      let animPoints = physicalPoints;
+
+      if (viaData) {
+        const nextPoint = finalRoute[1] ?? conn.occluded;
+        const exitAngle = Math.atan2(nextPoint[1] - viaData.y, nextPoint[0] - viaData.x);
+        const viaPts = getCirclePoints(viaData.x, viaData.y, viaData.r, exitAngle);
+        animPoints = [...viaPts, ...finalRoute.slice(1), conn.occluded];
+      }
+
+      let isOutward = index % 2 === 1;
+
+      return {
+        id: idOffset++,
+        physicalPoints,
+        animPoints,
+        isOutward,
+        edge: conn.edge,
+        side: conn.side,
+        via: viaData,
+        isRail: false,
+        componentType: null,
+        componentLabel: null
+      };
+    });
+
+    const topConns = mapped.filter(c => c.side === 'top');
+    const bottomConns = mapped.filter(c => c.side === 'bottom');
+    if (topConns.length) {
+      let tl = topConns.reduce((a, b) => (a.edge[0] <= b.edge[0] ? a : b));
+      tl.isRail = true;
+      tl.isOutward = false; 
+    }
+    if (bottomConns.length) {
+      let br = bottomConns.reduce((a, b) => (a.edge[0] >= b.edge[0] ? a : b));
+      br.isRail = true;
+      br.isOutward = true; 
+    }
+
+    // Filter valid component candidates based on platform space
+    const componentCandidates = mapped.filter(c => {
+      if (c.via || c.isRail) return false;
+      if (isMobile && (c.side === 'left' || c.side === 'right')) return false;
+      return true;
+    });
+
+    const shuffledCandidates = [...componentCandidates];
+    for (let i = shuffledCandidates.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledCandidates[i], shuffledCandidates[j]] = [shuffledCandidates[j], shuffledCandidates[i]];
+    }
+
+    const wantedResistors = Math.max(0, Math.floor(resistorCount));
+    const wantedCapacitors = Math.max(0, Math.floor(capacitorCount));
+
+    shuffledCandidates.slice(0, wantedResistors).forEach((c, i) => {
+      c.componentType = 'resistor';
+      c.componentLabel = `R${i + 1}`;
+    });
+    shuffledCandidates.slice(wantedResistors, wantedResistors + wantedCapacitors).forEach((c, i) => {
+      c.componentType = 'capacitor';
+      c.componentLabel = `C${i + 1}`;
+    });
+
+    return mapped.map(conn => {
+      let finalAnimPoints = conn.isOutward ? [...conn.animPoints].reverse() : conn.animPoints;
+      
+      const length = pathLength(finalAnimPoints);
+      const dash = Math.min(ROUTING.streakLength, length / 4);
+      const gap = length + dash;
+
+      let component = null;
+      if (conn.componentType) {
+        const fullLen = pathLength(conn.physicalPoints);
+        const minD = fullLen * 0.3;
+        const maxD = fullLen * 0.7;
+        const targetDist = minD + Math.random() * (maxD - minD);
+        const { x, y, angle } = getPointAndAngleOnPath(conn.physicalPoints, targetDist);
+
+        let angleDeg = angle * (180 / Math.PI);
+        angleDeg = ((angleDeg + 180) % 360 + 360) % 360 - 180;
+        if (angleDeg > 90) angleDeg -= 180;
+        else if (angleDeg <= -90) angleDeg += 180;
+
+        component = {
+          type: conn.componentType,
+          label: conn.componentLabel,
+          x, y,
+          angle: angleDeg
+        };
+      }
+
+      return {
+        id: conn.id,
+        physicalPathData: pointsToPath(conn.physicalPoints),
+        animPathData: pointsToPath(finalAnimPoints), 
+        dash, gap,
+        offsetStart: 1.5 * dash,
+        offsetEnd: -(length + 0.5 * dash),
+        duration: Math.min(4, Math.max(1.4, length / 90)),
+        edge: conn.edge,
+        side: conn.side,
+        via: conn.via,
+        isRail: conn.isRail,
+        component
+      };
+    });
+  }
+
+  // ==========================================
+  // 4. STREAK POOL MANAGER
+  // ==========================================
+
+  function addRandomStreak() {
+    if (!powerOn || activeStreaksLimit === -1) return; 
+    
+    let activeConnIds = new Set(activeStreaks.map(s => s.conn.id));
+    let available = routedConnections.filter(c => !activeConnIds.has(c.id) && !c.isRail);
+    
+    if (available.length === 0) return;
+    
+    let randomConn = available[Math.floor(Math.random() * available.length)];
+    
+    activeStreaks = [...activeStreaks, {
+        uid: streakIdCounter++,
+        conn: randomConn,
+        delay: Math.random() * 1.5 
+    }];
+  }
+
+  function handleStreakEnd(uid) {
+    let idx = activeStreaks.findIndex(s => s.uid === uid);
+    if (idx !== -1) {
+        let newStreaks = [...activeStreaks];
+        newStreaks.splice(idx, 1);
+        activeStreaks = newStreaks;
+
+        setTimeout(() => {
+            const nonRailTotal = routedConnections.filter(c => !c.isRail).length;
+            if (powerOn && activeStreaksLimit !== -1 && activeStreaks.length < Math.min(activeStreaksLimit, nonRailTotal)) {
+                addRandomStreak();
+            }
+        }, 50);
+    }
+  }
+
+  let activeTracesX = $derived(Math.min(tracesX, maxTraces));
+  let activeTracesY = $derived(Math.min(tracesY, maxTraces));
+
+  $effect(() => {
+    routedConnections = generateConnections(activeTracesX, activeTracesY, connectionIdCounter);
+    connectionIdCounter += totalTraces; 
+    
+    activeStreaks = [];
+    prevTotal = -1; 
+  });
+
+  $effect(() => {
+    let limit = Number(activeStreaksLimit);
+    let total = routedConnections.filter(c => !c.isRail).length;
+
+    if (!powerOn) {
+        activeStreaks = [];
+        return;
+    }
+
+    if (limit === -1) {
+        activeStreaks = [];
+        prevLimit = -1;
+        return;
+    }
+
+    if (limit !== prevLimit || total !== prevTotal || activeStreaks.length === 0) {
+        prevLimit = limit;
+        prevTotal = total;
+        
+        let targetCount = Math.min(limit, total);
+        
+        if (activeStreaks.length < targetCount) {
+            let diff = targetCount - activeStreaks.length;
+            for(let i = 0; i < diff; i++) addRandomStreak();
+        } else if (activeStreaks.length > targetCount) {
+            activeStreaks = activeStreaks.slice(0, targetCount);
+        }
+    }
+  });
+
+  // ==========================================
+  // 5. POWER SWITCH LOGIC
+  // ==========================================
+
+  function toggleSwitch() {
+    powerOn = !powerOn;
+  }
+
+  function handleSwitchKey(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleSwitch();
+    }
+  }
+
+  $effect(() => {
+    if (powerOn) {
+      isBooting = true;
+    }
+  });
+
+  function handleTextAnimEnd() {
+    isBooting = false;
+  }
+
+  // ==========================================
+  // 6. BROWSER EVENT EFFECTS
+  // ==========================================
+
+  $effect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(max-width: 480px)');
+    isMobile = mq.matches;
+    const handleChange = (e) => { isMobile = e.matches; };
+    mq.addEventListener('change', handleChange);
+    return () => mq.removeEventListener('change', handleChange);
+  });
+
+  $effect(() => {
+    if (typeof window === 'undefined' || !cardEl) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting; },
+      { threshold: 0.05 }
+    );
+    observer.observe(cardEl);
+    return () => observer.disconnect();
+  });
+
+</script>
+
+<div class="ece-card-wrapper" bind:this={cardEl} bind:clientWidth={boardW} bind:clientHeight={boardH}>
+  
+  <svg
+    viewBox={`0 0 ${boardW} ${boardH}`}
+    xmlns="http://www.w3.org/2000/svg"
+    class="pcb-board"
+    class:mobile={isMobile}
+    class:paused={!isVisible || !powerOn}
+    class:powered={powerOn}
+    class:all-active-mode={Number(activeStreaksLimit) === -1 && powerOn}
+  >
+
+    <defs>
+      <filter id="glow-heavy" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      
+      <filter id="glow-light" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+
+      <filter id="chip-shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="20" stdDeviation="15" flood-color="#000000" flood-opacity="0.8" />
+      </filter>
+
+      {#if showGrid}
+        <pattern id="pcb-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="4" cy="4" r="2" fill="rgba(168, 130, 255, 0.15)" />
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"/>
+        </pattern>
+      {/if}
+    </defs>
+
+    {#if showGrid}
+      <rect width="100%" height="100%" fill="url(#pcb-grid)" />
+    {/if}
+
+    {#each routedConnections as conn (conn.id)}
+      <path 
+        class="physical-trace" 
+        class:rail={conn.isRail}
+        d={conn.physicalPathData} 
+        filter={isGlowEnabled && Number(activeStreaksLimit) === -1 && powerOn ? 'url(#glow-light)' : null}
+      />
+
+      {#if conn.via}
+        <circle 
+          class="via-ring" 
+          class:rail={conn.isRail}
+          cx={conn.via.x} 
+          cy={conn.via.y} 
+          r={conn.via.r} 
+          filter={isGlowEnabled && Number(activeStreaksLimit) === -1 && powerOn ? 'url(#glow-light)' : null}
+        />
+        <circle class="via-hole" cx={conn.via.x} cy={conn.via.y} r={conn.via.r * 0.45} />
+      {/if}
+
+      {@const pad = getPadRect(conn.edge, conn.side)}
+      <rect 
+        class="ic-pad" 
+        class:rail={conn.isRail}
+        x={pad.x} 
+        y={pad.y} 
+        width={pad.w} 
+        height={pad.h} 
+        rx="2" 
+        filter={isGlowEnabled && powerOn ? 'url(#glow-light)' : null}
+      />
+    {/each}
+
+    {#if powerOn && isVisible}
+      {#each railConnections as rconn (rconn.id)}
+        <path
+          class="rail-streak"
+          d={rconn.animPathData}
+          filter="url(#glow-heavy)"
+          style="--dash-len:{rconn.dash}; --gap-len:{rconn.gap}; --offset-start:{rconn.offsetStart}; --offset-end:{rconn.offsetEnd}; --duration:{rconn.duration}s;"
+        />
+      {/each}
+
+      {#each activeStreaks as streak (streak.uid)}
+        <path
+          class="trace"
+          d={streak.conn.animPathData}
+          filter={isGlowEnabled ? 'url(#glow-heavy)' : null}
+          style="--dash-len:{streak.conn.dash}; --gap-len:{streak.conn.gap}; --offset-start:{streak.conn.offsetStart}; --offset-end:{streak.conn.offsetEnd}; --duration:{streak.conn.duration}s; animation-delay:{streak.delay}s"
+          onanimationend={() => handleStreakEnd(streak.uid)}
+        />
+      {/each}
+    {/if}
+
+    {#each routedConnections as conn (conn.id)}
+      {#if conn.component}
+        <g
+          class="component-group"
+          transform={`translate(${conn.component.x}, ${conn.component.y}) rotate(${conn.component.angle})`}
+          filter={isGlowEnabled && powerOn ? 'url(#glow-light)' : null}
+        >
+          {#if conn.component.type === 'resistor'}
+            <rect class="resistor-body" x={-resistorBodyLen / 2} y={-resistorBodyW / 2} width={resistorBodyLen} height={resistorBodyW} rx="1" />
+            <rect class="smd-pad" x={-resistorBodyLen / 2} y={-resistorBodyW / 2} width={resistorPadLen} height={resistorBodyW} rx="1" />
+            <rect class="smd-pad" x={resistorBodyLen / 2 - resistorPadLen} y={-resistorBodyW / 2} width={resistorPadLen} height={resistorBodyW} rx="1" />
+            <text class="component-label" x="0" y={-resistorBodyW / 2 - 6} text-anchor="middle">{conn.component.label}</text>
+          {:else}
+            <rect class="smd-pad" x={-capBaseSize / 2 - capPadLen} y={-capPadW / 2} width={capPadLen} height={capPadW} rx="1" />
+            <rect class="smd-pad" x={capBaseSize / 2} y={-capPadW / 2} width={capPadLen} height={capPadW} rx="1" />
+            <rect class="cap-base" x={-capBaseSize / 2} y={-capBaseSize / 2} width={capBaseSize} height={capBaseSize} rx="2" />
+            <circle class="cap-circle" cx="0" cy="0" r={capRadius} />
+            <path class="cap-purple-half" d={`M 0 ${-capRadius} A ${capRadius} ${capRadius} 0 0 1 0 ${capRadius} Z`} />
+            <text class="component-label" x="0" y={-capRadius - 6} text-anchor="middle">{conn.component.label}</text>
+          {/if}
+        </g>
+      {/if}
+    {/each}
+
+    <g
+      class="switch-group"
+      transform={`translate(${switchX}, ${switchY})`}
+      role="switch"
+      aria-checked={powerOn}
+      aria-label="Power switch"
+      tabindex="0"
+      onclick={toggleSwitch}
+      onkeydown={handleSwitchKey}
+    >
+      <line
+        class="switch-trace" class:on={powerOn}
+        x1={switchBodyW / 2} y1={-switchLeadLen} x2={switchBodyW / 2} y2="0"
+      />
+      <circle
+        class="via-ring switch-via-ring" class:on={powerOn}
+        cx={switchBodyW / 2} cy={-switchLeadLen - switchViaGap} r={switchViaR}
+      />
+      <circle
+        class="via-hole"
+        cx={switchBodyW / 2} cy={-switchLeadLen - switchViaGap} r={switchViaR * 0.45}
+      />
+
+      <line
+        class="switch-trace" class:on={powerOn}
+        x1={switchBodyW / 2} y1={switchBodyH} x2={switchBodyW / 2} y2={switchBodyH + switchLeadLen}
+      />
+      <circle
+        class="via-ring switch-via-ring" class:on={powerOn}
+        cx={switchBodyW / 2} cy={switchBodyH + switchLeadLen + switchViaGap} r={switchViaR}
+      />
+      <circle
+        class="via-hole"
+        cx={switchBodyW / 2} cy={switchBodyH + switchLeadLen + switchViaGap} r={switchViaR * 0.45}
+      />
+
+      <rect class="switch-plate" x="-4" y="-4" width={switchBodyW + 8} height={switchBodyH + 8} rx="7" />
+      <rect class="switch-housing" x="0" y="0" width={switchBodyW} height={switchBodyH} rx="12" />
+      <rect class="switch-track" x={(switchBodyW - 8) / 2} y="6" width="8" height={switchBodyH - 12} rx="4" />
+
+      <text class="switch-mark" x="-14" y="16" text-anchor="end" dominant-baseline="middle">|</text>
+      <text class="switch-mark" x="-14" y={switchBodyH - 16} text-anchor="end" dominant-baseline="middle">○</text>
+
+      <rect
+        class="switch-knob" class:on={powerOn}
+        x={(switchBodyW - switchKnobSize) / 2}
+        y={powerOn ? 4 : switchBodyH - switchKnobSize - 4}
+        width={switchKnobSize} height={switchKnobSize}
+        rx="6"
+      />
+      
+      <text class="silk-label" x={switchBodyW / 2} y={switchBodyH + switchLeadLen + switchViaGap + 20} text-anchor="middle">SW1</text>
+    </g>
+
+    <text class="silk-label" x={icX} y={icY - 10} text-anchor="start">IC1</text>
+
+    <rect 
+      x={icX} 
+      y={icY} 
+      width={safeIcW} 
+      height={safeIcH} 
+      rx="16" 
+      class="ic-chip" 
+      filter="url(#chip-shadow)"
+    />
+    <circle 
+      class="ic-pin1" 
+      class:on={powerOn}
+      cx={pin1Cx} 
+      cy={pin1Cy} 
+      r={7} 
+      filter={powerOn && isGlowEnabled ? 'url(#glow-light)' : null}
+    />
+    
+    <text 
+      text-anchor="start" 
+      dominant-baseline="middle"
+      class="ic-text"
+      class:active={powerOn && !isBooting}
+      class:booting={isBooting}
+      font-size="{fontSize}px"
+      onanimationend={handleTextAnimEnd}
+    >
+      {#each textLines as line, i}
+        <tspan 
+          x={textX} 
+          y={textCenterY + (i - (textLines.length - 1) / 2) * lineSpacing}
+        >
+          {line}
+        </tspan>
+      {/each}
+    </text>
+
+  </svg>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  .ece-card-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: #0d0e13;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pcb-board {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .via-ring {
+    fill: none;
+    stroke: rgba(168, 130, 255, 0.18);
+    stroke-width: 2.5; 
+    transition: stroke 0.4s ease;
+  }
+
+  .via-hole {
+    fill: #0d0e13;
+  }
+
+  .ic-pad {
+    fill: #cdb8f5;
+    stroke: #6b4fb3;
+    stroke-width: 1; 
+    pointer-events: none;
+  }
+
+  .ic-pin1 {
+    fill: #3a3d4d;
+    transition: fill 0.3s ease;
+  }
+  .ic-pin1.on {
+    fill: #a882ff;
+  }
+
+  .ic-chip {
+    fill: #1a1b26;
+    stroke-width: 4; 
+  }
+
+  .ic-text {
+    fill: #383a48;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-weight: 400;
+    letter-spacing: 4px; 
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    transition: fill 0.4s ease;
+  }
+
+  .ic-text.active {
+    fill: #a882ff;
+    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
+    animation: textFlicker 2.6s ease-in-out infinite;
+  }
+
+  .ic-text.booting {
+    fill: #a882ff;
+    text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff;
+    animation: textBootFlicker 1.6s steps(1, end) 1 both;
+  }
+
+  .pcb-board.paused .ic-text.active,
+  .pcb-board.paused .ic-text.booting {
+    animation-play-state: paused;
+  }
+
+  @keyframes textFlicker {
+    0%, 100% { opacity: 1; text-shadow: 0 0 15px #a882ff, 0 0 30px #a882ff; }
+    45%      { opacity: 0.86; text-shadow: 0 0 10px #a882ff, 0 0 22px #a882ff; }
+    55%      { opacity: 0.92; text-shadow: 0 0 12px #a882ff, 0 0 26px #a882ff; }
+    75%      { opacity: 0.88; text-shadow: 0 0 10px #a882ff, 0 0 22px #a882ff; }
+  }
+
+  @keyframes textBootFlicker {
+    0%   { opacity: 0; }
+    3%   { opacity: 1; }
+    6%   { opacity: 0; }
+    9%   { opacity: 1; }
+    11%  { opacity: 0.1; }
+    14%  { opacity: 1; }
+    17%  { opacity: 0; }
+    21%  { opacity: 1; }
+    24%  { opacity: 0.15; }
+    28%  { opacity: 1; }
+    35%  { opacity: 0.4; }
+    40%  { opacity: 1; }
+    47%  { opacity: 0.05; }
+    52%  { opacity: 1; }
+    62%  { opacity: 0.5; }
+    68%  { opacity: 1; }
+    80%  { opacity: 0.7; }
+    88%  { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  .physical-trace {
+    fill: none;
+    stroke: #1a1b26;
+    stroke-width: 4; 
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    transition: stroke 0.4s ease, stroke-opacity 0.4s ease;
+  }
+
+  .pcb-board.all-active-mode .physical-trace {
+    stroke: #a882ff;
+    stroke-opacity: 0.9;
+  }
+  
+  .pcb-board.all-active-mode .via-ring {
+    stroke: #a882ff;
+  }
+
+  .physical-trace.rail {
+    stroke: #a882ff;
+    stroke-opacity: 0.85;
+  }
+  .ic-pad.rail {
+    fill: #cdb8f5;
+    stroke: #a882ff;
+  }
+  .via-ring.rail {
+    stroke: #a882ff;
+  }
+
+  .rail-streak {
+    fill: none;
+    stroke: #dcc9ff;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    will-change: stroke-dashoffset;
+    stroke-dasharray: var(--dash-len) var(--gap-len);
+    animation: signalFlow var(--duration) linear infinite;
+  }
+
+  .trace {
+    fill: none;
+    stroke: #a882ff;
+    stroke-width: 4; 
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    
+    will-change: stroke-dashoffset;
+    transform: translate3d(0, 0, 0);
+
+    stroke-dasharray: var(--dash-len) var(--gap-len);
+    stroke-dashoffset: var(--offset-start);
+    animation: signalFlow var(--duration) linear forwards;
+  }
+
+  .pcb-board.paused .trace {
+    animation-play-state: paused;
+  }
+
+  @keyframes signalFlow {
+    0% { stroke-dashoffset: var(--offset-start); }
+    100% { stroke-dashoffset: var(--offset-end); }
+  }
+
+  .silk-label {
+    fill: rgba(255, 255, 255, 0.7);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    pointer-events: none;
+  }
+
+  .component-group {
+    pointer-events: none;
+  }
+
+  .resistor-body {
+    fill: #1a1b26;
+    stroke: #2a2c38;
+    stroke-width: 1;
+  }
+
+  .smd-pad {
+    fill: #cdb8f5;
+    stroke: #6b4fb3;
+    stroke-width: 1;
+  }
+
+  .cap-base {
+    fill: #23242e;
+    stroke: #3a3c4a;
+    stroke-width: 1;
+  }
+
+  .cap-circle {
+    fill: #1a1b26;
+    stroke: #3a3d4d;
+    stroke-width: 1;
+  }
+
+  .cap-purple-half {
+    fill: #a882ff;
+  }
+
+  .component-label {
+    fill: rgba(255, 255, 255, 0.55);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .switch-group {
+    cursor: pointer;
+  }
+  .switch-group:focus-visible {
+    outline: none;
+  }
+  .switch-group:focus-visible .switch-housing {
+    stroke: #a882ff;
+    stroke-width: 2;
+  }
+
+  .switch-plate {
+    fill: #15161c;
+    stroke: #2a2c38;
+    stroke-width: 1;
+  }
+
+  .switch-housing {
+    fill: #23242e;
+    stroke: #3a3c4a;
+    stroke-width: 1.5;
+    transition: stroke 0.2s ease;
+  }
+  .switch-group:hover .switch-housing {
+    stroke: #54566a;
+  }
+
+  .switch-track {
+    fill: #0a0b10;
+  }
+
+  .switch-mark {
+    fill: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    font-family: 'Share Tech Mono', monospace;
+    pointer-events: none;
+  }
+
+  .switch-knob {
+    fill: #5a5d70;
+    stroke: #7c7f94;
+    stroke-width: 1;
+    transition: y 0.25s cubic-bezier(0.4, 0, 0.2, 1), fill 0.3s ease, stroke 0.3s ease;
+  }
+  .switch-knob.on {
+    fill: #a882ff;
+    stroke: #d3bbff;
+  }
+
+  .switch-trace {
+    stroke: #1a1b26;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke 0.3s ease;
+  }
+  .switch-trace.on {
+    stroke: #a882ff;
+  }
+
+  .switch-via-ring.on {
+    stroke: #a882ff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .trace { animation: none; opacity: 0; }
+    .rail-streak { animation: none; opacity: 0; }
+    .ic-text.active, .ic-text.booting { animation: none !important; }
+    .switch-knob { transition: none; }
+  }
+</style>
+</file>
+
+<file path="src/routes/epoch/+page.svelte">
+<script>
+  import { Section, NewsCard, EventCard, epochData, getImageUrl } from '$lib';
+
+  const latestEvent = epochData.find((event) => event.tag === 'latest');
+  const previousEvents = epochData.filter((event) => event.tag !== 'latest');
+</script>
+
+<svelte:head>
+  <title>Epoch</title>
+  <meta name="description" content="Dive deep into Epoch, the annual technical symposium of CET." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<div class="epoch-page">
+  <section class="epoch-hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <h1>EPOCH</h1>
+      <p>
+        <span class="sentence">Building Competence.</span>
+        <span class="sentence">Shaping Careers.</span>
+        <span class="sentence">Creating Opportunities.</span>
+      </p>
+    </div>
+  </section>
+
+  <Section
+    title="VISION"
+    description="EPOCH (Electronics Placement & Outcome Competency Hub) is a flagship initiative of the Department of Electronics and Communication Engineering dedicated to enhancing student employability, professional competencies, and career outcomes. It serves as a structured platform that brings together faculty mentors, industry insights, alumni support, and student coordinators to prepare learners for successful careers in both core and non-core domains."
+  />
+
+  <Section title="WHAT WE PROVIDE">
+    <div class="provide-content">
+      <p>
+        EPOCH equips students with the skills and confidence required to excel in recruitment
+        processes through:
+      </p>
+      <ul class="feature-list">
+        <li>
+          <svg
+            class="arrow-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+          >
+          Regular aptitude and technical assessments
+        </li>
+        <li>
+          <svg
+            class="arrow-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+          >
+          Placement-oriented training
+        </li>
+        <li>
+          <svg
+            class="arrow-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+          >
+          Mock interviews and group discussions
+        </li>
+        <li>
+          <svg
+            class="arrow-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+          >
+          Industry interactions and technical workshops
+        </li>
+        <li>
+          <svg
+            class="arrow-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+          >
+          Career guidance sessions
+        </li>
+      </ul>
+      <p>
+        The initiative also fosters continuous learning, industry exposure, and performance
+        tracking, creating a holistic ecosystem for professional growth and placement readiness.
+      </p>
+    </div>
+  </Section>
+
+  <Section title="LATEST EVENT">
+    <EventCard
+      image={latestEvent.image}
+      alt={latestEvent.alt}
+      date={latestEvent.date}
+      title={latestEvent.title}
+      speaker={latestEvent.speaker}
+      company={latestEvent.company}
+      details={latestEvent.details}
+      link={latestEvent.link}
+    />
+  </Section>
+
+  <Section title="PREVIOUS EVENTS">
+    <div class="previous-events-list">
+      {#each previousEvents as event (event.alt)}
+        <NewsCard
+          item={event}
+          id={event.alt.replace(/\s+/g, '-').toLowerCase()}
+          group="epoch-previous-events"
+        />
+      {/each}
+    </div>
+  </Section>
+</div>
+
+<style>
+  .epoch-page {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    line-height: 1.7;
+  }
+
+  .epoch-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1534665482403-a909d0d97c67?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin: 0;
+    color: #bb9af7;
+    text-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+
+  .hero-content p {
+    font-size: 1.5rem;
+    color: #a9b1d6;
+  }
+
+  .sentence {
+    display: inline-block;
+  }
+
+  .provide-content {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #a9b1d6;
+    margin-bottom: 2.5rem;
+  }
+
+  .provide-content p {
+    margin: 0 0 1rem 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding-left: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .arrow-icon {
+    color: #bb9af7;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  .previous-events-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 3rem;
+    }
+    .provide-content {
+      font-size: 1.175rem;
+      line-height: 1.4;
+    }
+  }
+</style>
+</file>
+
+<file path="src/routes/+layout.svelte">
+<script>
+  let { children } = $props();
+  import { slide, fly } from 'svelte/transition';
+
+  let isOpen = $state(false);
+
+  const menuItems = [
+    { label: 'Epoch', href: '/epoch' },
+    { label: 'Oppam', href: '/oppam' },
+    { label: 'Newsroom', href: '/newsroom' },
+    { label: 'Achievements', href: '/achievements' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Data', href: '/information' },
+    { label: 'About Us', href: '/association' }
+  ];
+
+  const socialLinks = {
+    instagram: 'https://www.instagram.com/ec_association_cet?igsh=bmw4amhzOW83Mm5z',
+    github: 'https://github.com/skjeeth1',
+    linkedin: 'https://in.linkedin.com/company/ec-association-cet',
+    college: 'https://ece.cet.ac.in/'
+  };
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+
+    if (typeof window !== 'undefined') {
+      document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
+    }
+  }
+
+  function handleResize() {
+    if (typeof window !== 'undefined' && window.innerWidth >= 768 && isOpen) {
+      isOpen = false;
+      document.body.style.overflowY = 'auto';
+    }
+  }
+</script>
+
+<svelte:head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<svelte:window onresize={handleResize} />
+
+<nav class="navbar" class:bg-solid={isOpen}>
+  <div class="nav-container">
+    <a
+      href="/"
+      class="logo"
+      onclick={() => {
+        isOpen = false;
+        if (typeof window !== 'undefined') document.body.style.overflowY = 'auto';
+      }}
+    >
+      <img src="/favicon.ico" alt="Site Logo" class="logo-image" />
+    </a>
+
+    <ul class="desktop-menu">
+      {#each menuItems as item (item.label)}
+        <li>
+          <a href={item.href} class="desktop-link">
+            {item.label}
+          </a>
+        </li>
+      {/each}
+    </ul>
+
+    <div class="nav-actions">
+      <button class="menu-toggle" aria-label="Toggle menu" onclick={toggleMenu}>
+        {#if !isOpen}
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        {:else}
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        {/if}
+      </button>
+    </div>
+  </div>
+</nav>
+
+{#if isOpen}
+  <div class="mobile-menu" transition:slide={{ duration: 300 }}>
+    <ul class="menu-list">
+      {#each menuItems as item, i (item.label)}
+        <li in:fly={{ y: 20, duration: 400, delay: 100 + i * 50 }}>
+          <a href={item.href} class="menu-link" onclick={toggleMenu}>
+            {item.label}
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </div>
+{/if}
+
+{@render children()}
+
+<footer class="global-footer">
+  <div class="footer-content">
+    <p class="footer-text">Made by ECE Web Association</p>
+    <div class="social-links">
+      <a
+        href={socialLinks.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        title="Instagram"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path
+            d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+          ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg
+        >
+      </a>
+      <a
+        href={socialLinks.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        title="GitHub"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+          ></path></svg
+        >
+      </a>
+      <a
+        href={socialLinks.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        title="LinkedIn"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+          ></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"
+          ></circle></svg
+        >
+      </a>
+      <a
+        href={socialLinks.college}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="College"
+        title="College"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c3 3 9 3 12 0v-5"></path></svg
+        >
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Global / Base */
+  :global(*, *::before, *::after) {
+    box-sizing: border-box;
+  }
+
+  :global(html, body) {
+    margin: 0;
+    padding: 0;
+    background-color: #0c0c10;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  :global(h1, h2, h3, h4, h5, h6) {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Navbar */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(12, 12, 16, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 50;
+    border-bottom: 1px solid rgba(187, 154, 247, 0.5);
+    box-shadow:
+      0 4px 20px rgba(187, 154, 247, 0.4),
+      0 0 10px rgba(187, 154, 247, 0.3);
+    transition: background-color 0.3s ease;
+  }
+  .navbar.bg-solid {
+    background-color: #0c0c10;
+    border-bottom-color: transparent;
+    box-shadow: none;
+  }
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 100%;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: #ffffff;
+  }
+  .logo-image {
+    height: 2rem;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Desktop Menu */
+  .desktop-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    gap: 2rem;
+  }
+  .desktop-link {
+    text-decoration: none;
+    color: #8f93a2;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .desktop-link:hover {
+    color: #ffffff;
+  }
+
+  /* Nav Actions */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .menu-toggle {
+    background: transparent;
+    border: none;
+    color: #e2e8f0;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 60;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+  .menu-toggle svg {
+    width: 24px;
+    height: 24px;
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease;
+  }
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: #0c0c10;
+    z-index: 40;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .menu-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #8f93a2;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .menu-link:hover,
+  .menu-link:active {
+    color: #ffffff;
+  }
+
+  @media (min-width: 768px) {
+    .nav-container {
+      padding: 0 2rem;
+    }
+    .desktop-menu {
+      display: flex;
+    }
+    .menu-toggle {
+      display: none;
+    }
+    .mobile-menu {
+      display: none !important;
+    }
+  }
+
+  /* Footer */
+  .global-footer {
+    background-color: #0c0c10;
+    border-top: 1px solid rgba(187, 154, 247, 0.2);
+    padding: 2rem 1rem;
+  }
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .footer-text {
+    color: #8f93a2;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .social-links a {
+    color: #8f93a2;
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .social-links a:hover {
+    color: #bb9af7;
+    transform: translateY(-3px);
+  }
+  .social-links svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (min-width: 768px) {
+    .global-footer {
+      padding: 2rem 1.5rem;
+    }
+    .footer-content {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+</style>
+</file>
+
+<file path="src/routes/+page.svelte">
+<script>
+  import { fly } from 'svelte/transition';
+  import { onMount } from 'svelte';
+
+  import {
+    // components
+    // ElectricCard,
+    PcbBoard,
+    Section,
+    GalleryCarousel,
+    AchievementCard,
+    NotificationToast,
+    EventCard,
+
+    // data
+    achievementsData,
+    newsData,
+    epochData,
+    galleryData,
+
+    // utils
+    reveal,
+    getImageUrl
+  } from '$lib';
+
+  // Flatten all images from gallery data to pass into a single carousel
+  // and attach an href so each image links to its specific subsection.
+  const allGalleryImages = galleryData.flatMap((section) =>
+    section.images.map((image) => ({
+      ...(typeof image === 'string' ? { src: image } : image),
+      href: `/gallery#${section.id}`
+    }))
+  );
+
+  const popupItem = newsData.find((item) => item.showAsPopup);
+  const latestEvent = epochData.find((event) => event.tag === 'latest');
+
+  const debtimg = getImageUrl('dept.webp');
+</script>
+
+<svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<div class="page-wrapper">
+  <PcbBoard tracesX={10} tracesY={10} />
+
+  <!-- Main About section -->
+  <Section
+    id="about"
+    title="ABOUT"
+    description="The Department of Electronics and Communication Engineering, established at CET Campus, Sreekariyam in 1964–65, is one of the institution’s oldest and most distinguished departments. Starting with a B.Tech. programme in Electronics and Communication Engineering and an initial intake of 33 students, the department has grown into a centre for quality education and research."
+  >
+    <div class="department-photo-container" use:reveal>
+      <img src={debtimg} alt="ECE Department" class="department-photo" />
+      <p class="photo-subtext">Our humble department</p>
+    </div>
+  </Section>
+
+  <!-- Epoch section -->
+  <Section
+    id="epoch"
+    title="EPOCH"
+    description="The ultimate technical symposium hosted by the finest minds in engineering."
+  >
+    <div use:reveal>
+      <EventCard
+        image={latestEvent.image}
+        alt={latestEvent.alt}
+        date={latestEvent.date}
+        title={latestEvent.title}
+        speaker={latestEvent.speaker}
+        company={latestEvent.company}
+        details={latestEvent.details}
+        link={latestEvent.link}
+      />
+    </div>
+    <div class="explore-container" use:reveal>
+      <a href="/epoch" class="cta-button">Explore all events &rarr;</a>
+    </div>
+  </Section>
+
+  <!-- Oppam section -->
+  <Section
+    id="oppam"
+    title="OPPAM"
+    description="Your ultimate repository for study materials. orem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur augue elit, ullamcorper imperdiet leo interdum id. Etiam et tincidunt elit. Quisque nisl mauris, dignissim at ligula non, pulvinar finibus nibh. Vestibulum convallis justo sem, eget rhoncus metus dapibus eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  >
+    <div class="explore-container" use:reveal>
+      <a href="/oppam" class="cta-button">Visit Oppam &rarr;</a>
+    </div>
+  </Section>
+
+  <!-- Newsroom section -->
+  <Section
+    id="newsroom"
+    title="NEWSROOM"
+    description="Upcoming departmental activities, seminars, and notifications."
+  >
+    <div class="events-list">
+      {#each newsData.slice(0, 2) as event (event.title)}
+        <div class="event-row" use:reveal>
+          <div class="event-date">
+            <span class="day">{event.day}</span>
+            <span class="month">{event.month}</span>
+          </div>
+          <div class="event-details">
+            <span class="event-tag {event.tag}">
+              {event.tag === 'notification' ? 'NOTIFICATION' : 'DEPARTMENT EVENT'}
+            </span>
+            <h4>{event.title}</h4>
+            <p>{event.description}</p>
+          </div>
+        </div>
+      {/each}
+    </div>
+
+    <div class="explore-container" use:reveal>
+      <a href="/newsroom" class="cta-button">Explore all news &rarr;</a>
+    </div>
+  </Section>
+
+  <!-- Achievements section -->
+  <Section
+    id="achievements"
+    title="ACHIEVEMENTS"
+    description="Celebrating the outstanding milestones and successes of our students and faculty."
+  >
+    {#each achievementsData.slice(0, 1) as achievement, i (achievement.title)}
+      <div use:reveal>
+        <EventCard
+          image={achievement.image}
+          alt={achievement.title}
+          date={achievement.date || 'Recent'}
+          title={achievement.title}
+          speaker={achievement.name || 'Student Achievement'}
+          company={achievement.category || 'Milestone'}
+          details={achievement.description || achievement.details}
+          link={achievement.link || '/achievements'}
+        />
+      </div>
+    {/each}
+
+    <div class="explore-container" use:reveal>
+      <a href="/achievements" class="cta-button">View all achievements &rarr;</a>
+    </div>
+  </Section>
+
+  <!-- Gallery section -->
+  <Section
+    id="gallery"
+    title="GALLERY"
+    description="A visual journey through our department's events, workshops, and everyday life."
+  >
+    <div class="gallery-container" use:reveal>
+      <GalleryCarousel images={allGalleryImages} />
+    </div>
+
+    <div class="explore-container" use:reveal>
+      <a href="/gallery" class="cta-button">View Full Gallery &rarr;</a>
+    </div>
+  </Section>
+
+  <!-- Association section -->
+  <Section
+    id="association"
+    title="OUR TEAM"
+    description="Meet the dedicated students who drive the EC Association forward. From office bearers and committee heads to team members, this section highlights the individuals who work together to organize initiatives, foster innovation, and strengthen our community. Their leadership, commitment, and collaborative spirit play a vital role in shaping the association's activities and impact. Through their efforts, the EC Association continues to create meaningful opportunities for learning, growth, and engagement."
+  >
+    <div class="explore-container" use:reveal>
+      <a href="/association" class="cta-button">Meet the Members &rarr;</a>
+    </div>
+  </Section>
+
+  <Section
+    id="information"
+    title="DEPARTMENT DATA"
+    description="Access essential information and insights about the department. Explore key resources, records, and institutional data in one place."
+  >
+    <div class="explore-container" use:reveal>
+      <a href="/information" class="cta-button">Consult the archives &rarr;</a>
+    </div>
+  </Section>
+</div>
+
+{#if popupItem}
+  <NotificationToast
+    title={popupItem.title}
+    description={popupItem.description}
+    image={popupItem.image}
+    tag={popupItem.tag}
+    link={popupItem.link}
+    linkName={popupItem.linkName}
+  />
+{/if}
+
+<style>
+  .page-wrapper {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .content-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 64px 32px 64px;
+  }
+
+  .content-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 64px 64px 64px;
+  }
+
+  .divider {
+    border: none;
+    height: 1px;
+    background-color: var(--electric-border-color);
+    opacity: 0.3;
+    mask-image: linear-gradient(to right, transparent, black, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+    margin: 0;
+  }
+
+  /* --- Typography --- */
+  .main-title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #c0caf5;
+    margin: 0;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #c0caf5;
+    margin: 0 0 2rem 0;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: rgba(187, 154, 247, 0.1);
+    color: #bb9af7;
+    border: 1px solid #bb9af7;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #bb9af7;
+    color: #1a1b26;
+    box-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+
+  .explore-container {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .dummy-text {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #565f89;
+    margin-bottom: 3rem;
+  }
+
+  /* --- About Section Photo --- */
+  .department-photo-container {
+    margin-top: 2.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .department-photo {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(187, 154, 247, 0.2);
+  }
+
+  .photo-subtext {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #7aa2f7;
+  }
+
+  /* --- Image Grid Cards --- */
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-top: 1rem;
+    justify-items: center;
+  }
+
+  .image-card {
+    background-color: rgba(26, 27, 38, 0.5);
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    max-width: 28rem;
+  }
+
+  .image-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(187, 154, 247, 0.6);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: rgba(26, 27, 38, 0.8);
+    color: #a9b1d6;
+    border: 1px solid #565f89;
+    z-index: 2;
+  }
+
+  .card-badge.latest {
+    background-color: rgba(187, 154, 247, 0.2);
+    color: #bb9af7;
+    border-color: #bb9af7;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+    width: fit-content;
+  }
+
+  /* --- Events List --- */
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .event-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgba(26, 27, 38, 0.4);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #bb9af7;
+    position: relative;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .event-row:hover {
+    transform: translateX(5px);
+    background-color: rgba(26, 27, 38, 0.8);
+  }
+
+  .event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    color: #bb9af7;
+  }
+
+  .event-date .day {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .event-date .month {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+  }
+
+  .event-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .event-tag.event {
+    background-color: rgba(187, 154, 247, 0.15);
+    color: #bb9af7;
+  }
+
+  .event-tag.notification {
+    background-color: rgba(122, 162, 247, 0.15);
+    color: #7aa2f7;
+  }
+
+  .event-details h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+    color: #c0caf5;
+  }
+
+  .event-details p {
+    margin: 0;
+    color: #7aa2f7;
+    line-height: 1.5;
+    font-size: 1rem;
+  }
+
+  /* --- Achievements Grid --- */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .gallery-container {
+    width: 100%;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .content-top {
+      padding: 80px 1rem 24px 1rem;
+    }
+    .content-bottom {
+      padding: 24px 1rem 80px 1rem;
+    }
+    .main-title {
+      font-size: 2.5rem;
+    }
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .event-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      border-left: none;
+      border-top: 4px solid #bb9af7;
+    }
+
+    .event-date {
+      flex-direction: row;
+      gap: 0.5rem;
+      align-items: baseline;
+    }
+
+    .event-tag {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    .card-content h4 {
+      margin: 0 0 0.5rem 0;
+      color: #c0caf5;
+      font-size: 1.1rem;
+      width: fit-content;
+    }
+
+    .card-content p {
+      margin: 0;
+      color: #7aa2f7;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      width: fit-content;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-section {
+      padding: 2rem;
+    }
+  }
+</style>
+</file>
+
+</files>

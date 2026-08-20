@@ -5,8 +5,6 @@
     {
       "team": "Secretary",
       "description": "Managing records, correspondence, and keeping everything organized.",
-      "memeImage": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
-      "memeLine": "\"Did someone say paperwork?\" 📝",
       "tag": 2,
       "members": [
         {
@@ -18,8 +16,6 @@
     {
       "team": "Joint Secretaries",
       "description": "Assisting in administration and ensuring smooth operations across all domains.",
-      "memeImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
-      "memeLine": "\"Double the trouble, double the fun!\" 🤝",
       "tag": 2,
       "members": [
         {
@@ -35,8 +31,6 @@
     {
       "team": "Treasurer",
       "description": "Managing the finances, budgeting, and keeping the accounts in check.",
-      "memeImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
-      "memeLine": "\"Where did all the money go?\" 💸",
       "tag": 2,
       "members": [
         {
@@ -48,8 +42,6 @@
     {
       "team": "Program Secretary",
       "description": "Planning, organizing, and executing top-notch programs and events.",
-      "memeImage": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80",
-      "memeLine": "\"Everything is under control... mostly.\" 🎭",
       "tag": 2,
       "members": [
         {
@@ -69,8 +61,6 @@
     {
       "team": "Association Coordinator",
       "description": "Bridging the gap between the association, teams, and the student body.",
-      "memeImage": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
-      "memeLine": "\"I know a guy who knows a guy.\" 🔗",
       "tag": 2,
       "members": [
         {
@@ -82,8 +72,6 @@
     {
       "team": "LET & Non-Keralite Representative",
       "description": "Representing Lateral-Entry & Non-Keralite students and voicing their unique concerns.",
-      "memeImage": "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80",
-      "memeLine": "\"Arriving late but making a statement.\" 🚀",
       "tag": 2,
       "members": [
         {
@@ -100,8 +88,6 @@
   {
     "team": "Executive Committee",
     "description": "The driving force behind our initiatives, ensuring everything runs smoothly behind the scenes.",
-    "memeImage": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
-    "memeLine": "\"Another meeting that could have been an email.\" 💼",
     "tag": 6,
     "members": [
       {
@@ -140,8 +126,6 @@
         {
         "team": "Web Team",
         "description": "Architects of the digital experience and internal tools.",
-        "memeImage": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "\"It works on my machine\" 🤷‍♂️",
         "tag": 1,
         "members": [
             {
@@ -169,8 +153,6 @@
         {
         "team": "Design Team",
         "description": "Crafting the visual identity and user experience for all platforms.",
-        "memeImage": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "\"Make the logo bigger!\"",
         "tag": 2,
         "members": [
             {
@@ -206,8 +188,6 @@
         {
         "team": "PR Team",
         "description": "Connecting our vision with the community and managing communications.",
-        "memeImage": "https://images.unsplash.com/photo-1557425955-df376b5903c8?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "\"Is this going on the gram?\" 📸",
         "tag": 2,
         "members": [
             {
@@ -243,8 +223,6 @@
         {
         "team": "Newsletter Team",
         "description": "Curating stories, updates, and campus news for everyone.",
-        "memeImage": "https://images.unsplash.com/photo-1585241936939-f9c349a4fba7?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "\"Check your spam folder.\" 📧",
         "tag": 2,
         "members": [
             {
@@ -292,8 +270,6 @@
         {
         "team": "Media Team",
         "description": "Capturing moments and creating engaging multimedia content.",
-        "memeImage": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "\"We'll fix it in post.\" 🎬",
         "tag": 2,
         "members": [
             {
@@ -333,8 +309,6 @@
         {
         "team": "Content Team",
         "description": "Crafting engaging narratives and written content.",
-        "memeImage": "https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "\"Let me ChatGPT that real quick.\" ✍️",
         "tag": 2,
         "members": [
             {
@@ -374,8 +348,6 @@
         {
         "team": "Events Team",
         "description": "Organizing, planning, and executing memorable events.",
-        "memeImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
-        "memeLine": "\"Where is the mic?!\" 🎤",
         "tag": 2,
         "members": [
             {

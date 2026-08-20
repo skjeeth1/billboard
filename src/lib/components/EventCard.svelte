@@ -19,9 +19,13 @@
     <p class="event-description">
       {details}
     </p>
-    <a href={link} class="cta-button">
-      {link === '#register' ? 'GMeet Link' : 'Learn More'}
-    </a>
+
+    <!-- Conditionally render the button only if a link is supplied -->
+    {#if link}
+      <a href={link} class="cta-button">
+        {link === '#register' ? 'GMeet Link' : 'Learn More'}
+      </a>
+    {/if}
   </div>
 </div>
 

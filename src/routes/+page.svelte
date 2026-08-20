@@ -58,7 +58,7 @@
   >
     <div class="department-photo-container" use:reveal>
       <img src={debtimg} alt="ECE Department" class="department-photo" />
-      <p class="photo-subtext">Our humble department</p>
+      <p class="photo-subtext">Our department</p>
     </div>
   </Section>
 
@@ -89,7 +89,7 @@
   <Section
     id="oppam"
     title="OPPAM"
-    description="Your ultimate repository for study materials. orem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur augue elit, ullamcorper imperdiet leo interdum id. Etiam et tincidunt elit. Quisque nisl mauris, dignissim at ligula non, pulvinar finibus nibh. Vestibulum convallis justo sem, eget rhoncus metus dapibus eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    description="Your go-to destination for all your solutions to past KTU question papers for Electronics and Communication Engineering."
   >
     <div class="explore-container" use:reveal>
       <a href="/oppam" class="cta-button">Visit Oppam &rarr;</a>
@@ -121,7 +121,7 @@
     </div>
 
     <div class="explore-container" use:reveal>
-      <a href="/newsroom" class="cta-button">Explore all news &rarr;</a>
+      <a href="/updates" class="cta-button">Explore all news &rarr;</a>
     </div>
   </Section>
 
@@ -141,13 +141,12 @@
           speaker={achievement.name || 'Student Achievement'}
           company={achievement.category || 'Milestone'}
           details={achievement.description || achievement.details}
-          link={achievement.link || '/achievements'}
         />
       </div>
     {/each}
 
     <div class="explore-container" use:reveal>
-      <a href="/achievements" class="cta-button">View all achievements &rarr;</a>
+      <a href="/updates#achievements" class="cta-button">View all achievements &rarr;</a>
     </div>
   </Section>
 

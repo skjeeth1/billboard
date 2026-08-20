@@ -6,9 +6,9 @@
 
   const menuItems = [
     { label: 'Epoch', href: '/epoch' },
+    { label: 'Spectra', href: '/spectra' },
     { label: 'Oppam', href: '/oppam' },
-    { label: 'Newsroom', href: '/newsroom' },
-    { label: 'Achievements', href: '/achievements' },
+    { label: 'Updates', href: '/updates' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Data', href: '/information' },
     { label: 'About Us', href: '/association' }
