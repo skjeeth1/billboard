@@ -1,14 +1,26 @@
 [
-  {
-    "id": "robosoccer",
-    "title": "Robosoccer 2024",
-    "description": "Highlights from the annual autonomous robotics competition, where student-built machines face off on the field.",
-    "images": [
-      { "src": "epoch1.webp", "alt": "Robosoccer Match 1" },
-      { "src": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80", "alt": "Team preparing" },
-      { "src": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", "alt": "Audience cheering" },
-      { "src": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80", "alt": "Bot tuning" },
-      { "src": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80", "alt": "Final Match" }
-    ]
-  }
+{
+  "id": "spectra-24",
+  "title": "SPECTRA'24",
+  "description": "A glimpse into the history of SPECTRA'24",
+  "images": [
+    { "src": "spectra1.webp", "alt": "SPECTRA'24 Robosoccer Match 1" },
+    { "src": "spectra2.webp", "alt": "SPECTRA'24 Team Preparing" },
+    { "src": "spectra3.webp", "alt": "SPECTRA'24 Audience Cheering" },
+    { "src": "spectra4.webp", "alt": "SPECTRA'24 Bot Tuning" },
+    { "src": "spectra5.webp", "alt": "SPECTRA'24 Final Match" },
+    { "src": "spectra8.webp", "alt": "SPECTRA'24 Robotics Showcase" },
+    { "src": "spectra9.webp", "alt": "SPECTRA'24 Closing Event" }
+  ]
+},
+{
+  "id": "farewell-26",
+  "title": "FAREWELL 26",
+  "description": "A heartwarming farewell to our seniors.",
+  "images": [
+    { "src": "farewell1.webp", "alt": "SPECTRA'24 Robosoccer Match 1" },
+    { "src": "farewell2.webp", "alt": "SPECTRA'24 Team Preparing" },
+    { "src": "farewell3.webp", "alt": "SPECTRA'24 Audience Cheering" }
+  ]
+}
 ]
