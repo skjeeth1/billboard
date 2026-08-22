@@ -2,21 +2,21 @@
   "faculties": [
     {
       "name": "Dr. Shajahan E. S.",
-      "designation": "HOD & Professor",
+      "designation": "Head-Of-Department ECE",
       "speciality": "Mixed Signal Circuit Design, RF MEMS",
       "photo": "https://ece.cet.ac.in/wp-content/uploads/2019/12/shajahan.png"
     },
     {
-      "name": "Dr. Joseph Zacharias",
-      "designation": "Dean & Professor",
-      "speciality": "Optical Communication, Radio Over Fibre,",
-      "photo": "https://ece.cet.ac.in/wp-content/uploads/2019/12/joseph_zakh-n.jpg"
+      "name": "Dr. Binu L S",
+      "designation": "UG Coordinator ECE",
+      "speciality": "Process Control, Control Systems",
+      "photo": "https://ece.cet.ac.in/wp-content/uploads/2021/08/BinuLS.jpeg"
     },
     {
-      "name": "Dr. Haris P. A.",
-      "designation": "Professor",
-      "speciality": "Digital Communication, Wireless Communication",
-      "photo": "https://ece.cet.ac.in/wp-content/uploads/2022/09/Dr.-Haris-P-A.jpg"
+      "name": "Dr. Sreelatha G.",
+      "designation": "UG Coordinator AEI",
+      "speciality": "Signal Processing, Image Processing",
+      "photo": "https://ece.cet.ac.in/wp-content/uploads/2025/09/Sreelatha_28_08_2022_2.jpg"
     }
   ],
   "labs": [
