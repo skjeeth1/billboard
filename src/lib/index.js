@@ -1,5 +1,5 @@
 // components
-export { default as ElectricCard } from '$lib/components/ElectricCard.svelte';
+// export { default as ElectricCard } from '$lib/components/ElectricCard.svelte';
 export { default as Section } from '$lib/components/Section.svelte';
 export { default as GalleryCarousel } from '$lib/components/GalleryCarousel.svelte';
 export { default as AchievementCard } from '$lib/components/AchievementCard.svelte';

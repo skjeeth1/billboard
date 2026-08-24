@@ -1,7 +1,7 @@
 <script>
   import { getImageUrl } from '$lib/utils/images.js';
-  
-  let { item, id =  item.title.replace(/\s+/g, '-').toLowerCase(), group = undefined } = $props();
+
+  let { item, id = item.title.replace(/\s+/g, '-').toLowerCase(), group = undefined } = $props();
 </script>
 
 <details class="news-card {item.image ? 'has-image' : ''}" {id} name={group}>
@@ -10,14 +10,26 @@
       <div class="summary-header">
         <span class="news-date">{item.date}</span>
         <div class="toggle-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg
+          >
         </div>
       </div>
       <h4 class="news-title">{item.title}</h4>
       {#if item.speaker || item.company}
         <p class="news-speaker">
           {#if item.speaker}<span class="speaker-name">{item.speaker}</span>{/if}
-          {#if item.speaker && item.company} | {/if}
+          {#if item.speaker && item.company}
+            |
+          {/if}
           {#if item.company}<span class="speaker-company">{item.company}</span>{/if}
         </p>
       {/if}
@@ -26,10 +38,10 @@
       {/if}
       {#if item.link && item['link-name']}
         <div class="news-action">
-          <a 
-            href={item.link} 
-            target={item.link.startsWith('http') ? '_blank' : null} 
-            rel={item.link.startsWith('http') ? 'noopener noreferrer' : null} 
+          <a
+            href={item.link}
+            target={item.link.startsWith('http') ? '_blank' : null}
+            rel={item.link.startsWith('http') ? 'noopener noreferrer' : null}
             class="news-link"
             onclick={(e) => e.stopPropagation()}
           >
@@ -191,8 +203,14 @@
   }
 
   @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .news-details-layout {
@@ -254,7 +272,7 @@
     .news-card[open] {
       grid-column: 1 / -1;
     }
-    
+
     /* 1. Add this rule to flatten the browser's hidden details wrapper */
     .news-card.has-image[open]::details-content {
       display: contents;
@@ -263,47 +281,48 @@
     .news-card.has-image[open] {
       display: grid;
       grid-template-columns: 40% 1fr;
-      grid-template-rows: max-content max-content 1fr; 
+      grid-template-rows: max-content max-content 1fr;
       grid-template-areas:
-        "image summary"
-        "image divider"
-        "image details";
+        'image summary'
+        'image divider'
+        'image details';
       gap: 0 2rem;
     }
-    
+
     .news-card.has-image[open] summary {
       grid-area: summary;
       padding: 1.5rem 2rem 0.5rem 0;
     }
-    
+
     /* 2. Your existing display: contents rules stay exactly the same */
     .news-card.has-image[open] .news-details,
     .news-card.has-image[open] .news-details-layout {
       display: contents;
     }
-    
+
     .news-card.has-image[open] .news-image-wrapper {
       grid-area: image;
       padding: 1.5rem 0 1.5rem 1.5rem;
       box-sizing: border-box;
     }
-    
+
     .news-card.has-image[open] .news-image {
       margin: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
+
     .news-card.has-image[open] .news-content-wrapper {
       grid-area: details;
       padding: 0 2rem 1.5rem 0;
     }
-    
+
     .news-card.has-image[open] .news-divider {
       grid-area: divider;
       display: block;
-      margin: 0.75rem 2rem 1.25rem 0; 
+      margin: 0.75rem 2rem 1.25rem 0;
     }
   }
 </style>
+

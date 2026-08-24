@@ -41,30 +41,89 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
 
   <!-- Registration Section -->
   <Section
-    id="registration"
+    id="expo-registration"
     title="PROJECT EXPO'26"
     description="Innovation deserves a stage. Present your project at SPECTRA: Project Expo '26 and showcase your ideas to a wider audience."
   >
     <div class="registration-content">
-      <ul class="guidelines-list">
-        <li>Open to projects from all domains</li>
-        <li>Maximum 4 members per team</li>
-        <li>Free registration – no participation fee</li>
-        <li>
-          Only one team member needs to fill out the Google Form provided. Once registered, bring
-          your project on the day of SPECTRA and showcase your innovation.
-        </li>
-      </ul>
-      <div class="action-container">
-        <!-- Replace # with your actual Google Form or registration link -->
-        <a
-          href="https://forms.gle/YiuPjD6iTyH5E9vK9"
-          class="cta-button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Register Now &rarr;
-        </a>
+      <!-- Image Wrapper (Placed first so it appears on top in mobile) -->
+      <div class="expo-image-wrapper">
+        <img src={getImageUrl('spectra.webp')} alt="Spectra Project Expo" class="expo-image" />
+      </div>
+
+      <!-- Text & Button Wrapper -->
+      <div class="expo-text-wrapper">
+        <ul class="guidelines-list">
+          <li>Open to projects from all domains</li>
+          <li>Maximum 4 members per team</li>
+          <li>Free registration – no participation fee</li>
+          <li>
+            Only one team member needs to fill out the Google Form provided. Once registered, bring
+            your project on the day of SPECTRA and showcase your innovation.
+          </li>
+        </ul>
+        <div class="action-container">
+          <a
+            href="https://forms.gle/YiuPjD6iTyH5E9vK9"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Register Now &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Line Follower Registration Section -->
+  <Section
+    id="line-follower-registration"
+    title="LINE FOLLOWER CHALLENGE"
+    description="Put your robot to the test! Compete in the Line Follower Robot Competition by SPECTRA ’26 × Build Club CET."
+  >
+    <div class="registration-content">
+      <!-- Image Wrapper (Placed first so it appears on top in mobile) -->
+      <div class="expo-image-wrapper">
+        <img
+          src={getImageUrl('line_follower.webp')}
+          alt="Line Follower Challenge"
+          class="expo-image"
+        />
+      </div>
+
+      <!-- Text & Button Wrapper -->
+      <div class="expo-text-wrapper">
+        <ul class="guidelines-list">
+          <li>Prize Pool: ₹8,000</li>
+          <li>Registration: ₹399/team</li>
+          <li>Team Size: Max. 4 members</li>
+          <li>September 8, 2026</li>
+        </ul>
+
+        <div class="additional-info">
+          <p>
+            Detailed rules & guidelines are available in the
+            <a
+              href="https://drive.google.com/drive/folders/1pk1p0rORKFq2TgzmVtvX94STBVfdQ-a8?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link">attached link</a
+            >.
+          </p>
+          <p class="tagline">Build. Follow. Conquer. 🚀</p>
+        </div>
+
+        <div class="action-container">
+          <a
+            href="https://forms.gle/ERemG5n2P4Gt4HUe9"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Register Now &rarr;
+          </a>
+        </div>
       </div>
     </div>
   </Section>
@@ -98,7 +157,6 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
     left: 0;
     width: 100%;
     height: 100%;
-    /* You can replace this Unsplash URL with a local image like getImageUrl('spectra.webp') */
     background-size: cover;
     background-position: center;
     filter: brightness(0.3) saturate(1.2);
@@ -126,16 +184,33 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
     margin-top: 1rem;
   }
 
-  .about-details {
-    font-size: 1.25rem;
-    color: #a9b1d6;
-    margin-top: 1rem;
-  }
-
+  /* --- Registration Layout --- */
   .registration-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Mobile: Stacks vertically */
     gap: 2rem;
+    width: 100%;
+  }
+
+  .expo-image-wrapper {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .expo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .expo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .guidelines-list {
@@ -161,7 +236,7 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
   }
 
   .action-container {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 
   .cta-button {
@@ -181,6 +256,49 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
     background-color: #bb9af7;
     color: #1a1b26;
     box-shadow: 0 0 15px rgba(187, 154, 247, 0.5);
+  }
+
+  /* --- Additional Text Styles --- */
+  .additional-info {
+    margin-top: 1.5rem;
+    color: #a9b1d6;
+    font-size: 1.05rem;
+  }
+
+  .text-link {
+    color: #bb9af7;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .text-link:hover {
+    color: #c0caf5;
+  }
+
+  .tagline {
+    font-weight: 700;
+    color: #c0caf5;
+    margin-top: 1rem;
+    font-size: 1.15rem;
+  }
+
+  /* --- Responsive Breakpoints --- */
+  @media (min-width: 768px) {
+    .registration-content {
+      flex-direction: row-reverse; /* Desktop: Places image on the right, text on the left */
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .expo-image-wrapper {
+      flex: 1; /* Takes up 50% of the space */
+    }
+
+    .expo-text-wrapper {
+      flex: 1.2; /* Gives slightly more room to the text */
+    }
   }
 
   @media (max-width: 768px) {

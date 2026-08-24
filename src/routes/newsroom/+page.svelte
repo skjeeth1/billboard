@@ -9,7 +9,7 @@
   onMount(() => {
     const handleGridReflow = (e) => {
       const summary = e.target.closest('summary');
-      
+
       // Check if a summary was clicked and if the browser supports View Transitions
       if (!summary || !document.startViewTransition) return;
 
@@ -26,7 +26,7 @@
 
     // Attach listener to capture clicks on the summary elements
     document.addEventListener('click', handleGridReflow);
-    
+
     // Cleanup listener on destroy
     return () => document.removeEventListener('click', handleGridReflow);
   });
@@ -72,9 +72,11 @@
   >
     <div class="news-container">
       {#each notifications as item (item.title)}
-        <NewsCard {item}
-        id={item.title.replace(/\s+/g, '-').toLowerCase()} 
-        group="newsroom-notifications" />
+        <NewsCard
+          {item}
+          id={item.title.replace(/\s+/g, '-').toLowerCase()}
+          group="newsroom-notifications"
+        />
       {/each}
     </div>
   </Section>
@@ -145,3 +147,4 @@
     }
   }
 </style>
+
