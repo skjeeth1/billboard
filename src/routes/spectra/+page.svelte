@@ -130,7 +130,7 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
 
   <!-- Voice Controlled Bot Workshop Section -->
   <Section
-    id="voice-bot-workshop"
+    id="voice-controlled-bot-workshop"
     title="VOICE CONTROLLED BOT WORKSHOP"
     description="SPECTRA ’26 in collaboration with RoboCET brings you... What if your voice could bring a robot to life? Step into the world of robotics and learn to build, command, & control your very own bot!"
   >
