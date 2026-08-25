@@ -127,6 +127,65 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
       </div>
     </div>
   </Section>
+
+  <!-- Voice Controlled Bot Workshop Section -->
+  <Section
+    id="voice-bot-workshop"
+    title="VOICE CONTROLLED BOT WORKSHOP"
+    description="SPECTRA ’26 in collaboration with RoboCET brings you... What if your voice could bring a robot to life? Step into the world of robotics and learn to build, command, & control your very own bot!"
+  >
+    <div class="registration-content">
+      <!-- Image Wrapper -->
+      <div class="expo-image-wrapper">
+        <!-- You can swap 'spectra.webp' out if you have a specific poster for this workshop later -->
+        <img
+          src={getImageUrl('voice_controlled_bot_workshop.webp')}
+          alt="Voice Controlled Bot Workshop"
+          class="expo-image"
+        />
+      </div>
+
+      <!-- Text & Button Wrapper -->
+      <div class="expo-text-wrapper">
+        <ul class="guidelines-list">
+          <li>📅 Date: September 8, 2026</li>
+          <li>💰 Registration Fee: ₹129/-</li>
+        </ul>
+
+        <div class="additional-info">
+          <p style="margin-bottom: 0.5rem; color: #c0caf5; font-weight: 600;">
+            TAKEAWAY KIT OPTIONS:
+          </p>
+          <ul class="guidelines-list" style="margin-bottom: 1.5rem;">
+            <li>Arduino Only – ₹300</li>
+            <li>Full Kit – ₹1,000</li>
+            <li>Full Kit without Arduino – ₹700</li>
+          </ul>
+
+          <p class="tagline">Speak. Command. Control. 🚀</p>
+          <p style="font-size: 0.95rem; margin-top: 1rem; color: #7aa2f7;">
+            <strong>For Queries Contact:</strong><br />
+            Sisira: +91 95447 58104<br />
+            Joe: +91 97460 78926
+          </p>
+        </div>
+
+        <div class="action-container">
+          <a
+            href="https://forms.gle/89upHKsMSzzgSzDA6"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Register Now &rarr;
+          </a>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #565f89; font-style: italic;">
+            Limited slots. Let your voice take control!
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
 </div>
 
 <style>
