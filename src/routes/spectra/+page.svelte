@@ -28,7 +28,6 @@
     </div>
   </section>
 
-  <!-- About Section -->
   <Section
     id="about"
     title="ABOUT SPECTRA"
@@ -39,19 +38,16 @@ The event goes beyond the classroom, creating an environment where students can 
 More than just an event, SPECTRA is a celebration of the spirit, talent, and enthusiasm of the ECE community."
   ></Section>
 
-  <!-- Registration Section -->
   <Section
     id="expo-registration"
     title="PROJECT EXPO'26"
     description="Innovation deserves a stage. Present your project at SPECTRA: Project Expo '26 and showcase your ideas to a wider audience."
   >
     <div class="registration-content">
-      <!-- Image Wrapper (Placed first so it appears on top in mobile) -->
       <div class="expo-image-wrapper">
         <img src={getImageUrl('spectra.webp')} alt="Spectra Project Expo" class="expo-image" />
       </div>
 
-      <!-- Text & Button Wrapper -->
       <div class="expo-text-wrapper">
         <ul class="guidelines-list">
           <li>Open to projects from all domains</li>
@@ -76,14 +72,12 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
     </div>
   </Section>
 
-  <!-- Line Follower Registration Section -->
   <Section
     id="line-follower-registration"
     title="LINE FOLLOWER CHALLENGE"
     description="Put your robot to the test! Compete in the Line Follower Robot Competition by SPECTRA ’26 × Build Club CET."
   >
     <div class="registration-content">
-      <!-- Image Wrapper (Placed first so it appears on top in mobile) -->
       <div class="expo-image-wrapper">
         <img
           src={getImageUrl('line_follower.webp')}
@@ -92,7 +86,6 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
         />
       </div>
 
-      <!-- Text & Button Wrapper -->
       <div class="expo-text-wrapper">
         <ul class="guidelines-list">
           <li>Prize Pool: ₹8,000</li>
@@ -128,16 +121,13 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
     </div>
   </Section>
 
-  <!-- Voice Controlled Bot Workshop Section -->
   <Section
     id="voice-controlled-bot-workshop"
     title="VOICE CONTROLLED BOT WORKSHOP"
     description="SPECTRA ’26 in collaboration with RoboCET brings you... What if your voice could bring a robot to life? Step into the world of robotics and learn to build, command, & control your very own bot!"
   >
     <div class="registration-content">
-      <!-- Image Wrapper -->
       <div class="expo-image-wrapper">
-        <!-- You can swap 'spectra.webp' out if you have a specific poster for this workshop later -->
         <img
           src={getImageUrl('voice_controlled_bot_workshop.webp')}
           alt="Voice Controlled Bot Workshop"
@@ -145,11 +135,10 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
         />
       </div>
 
-      <!-- Text & Button Wrapper -->
       <div class="expo-text-wrapper">
         <ul class="guidelines-list">
-          <li>📅 Date: September 8, 2026</li>
-          <li>💰 Registration Fee: ₹129/-</li>
+          <li>Date: September 8, 2026</li>
+          <li>Registration Fee: ₹129/-</li>
         </ul>
 
         <div class="additional-info">
@@ -182,6 +171,41 @@ More than just an event, SPECTRA is a celebration of the spirit, talent, and ent
           <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #565f89; font-style: italic;">
             Limited slots. Let your voice take control!
           </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="tee-drop"
+    title="THE OFFICIAL TEE DROP"
+    description="Wear the legacy. Own the signal. 📺 Designed for the ones who live beyond the frequency."
+  >
+    <div class="registration-content">
+      <div class="expo-image-wrapper">
+        <img src={getImageUrl('tee_drop.webp')} alt="Spectra Official Tee" class="expo-image" />
+      </div>
+
+      <div class="expo-text-wrapper">
+        <ul class="guidelines-list">
+          <li>Normal Fit — ₹319/-</li>
+          <li>Oversized Fit — ₹349/-</li>
+        </ul>
+
+        <div class="additional-info">
+          <p class="tagline" style="margin-bottom: 0.25rem;">SPECTRA ’26 × ZEVRA</p>
+          <p style="font-size: 1.05rem; color: #a9b1d6; font-style: italic;">Woven with Legacy.</p>
+        </div>
+
+        <div class="action-container">
+          <a
+            href="https://forms.gle/13QEqV6EdawCAbVJA"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Grab Yours Now &rarr;
+          </a>
         </div>
       </div>
     </div>
