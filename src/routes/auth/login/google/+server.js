@@ -34,6 +34,7 @@ export async function GET({ cookies, platform, url }) {
   authorizationUrl.searchParams.set('state', state);
   authorizationUrl.searchParams.set('code_challenge', codeChallenge);
   authorizationUrl.searchParams.set('code_challenge_method', 'S256');
+  authorizationUrl.searchParams.set('prompt', 'select_account');
 
   throw redirect(302, authorizationUrl.toString());
 }
