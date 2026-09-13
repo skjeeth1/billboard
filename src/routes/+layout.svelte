@@ -1,8 +1,9 @@
 <script>
-  let { children } = $props();
+  let { data, children } = $props();
   import { slide, fly } from 'svelte/transition';
 
   let isOpen = $state(false);
+  let isProfileOpen = $state(false);
 
   const menuItems = [
     { label: 'Epoch', href: '/epoch' },
@@ -35,6 +36,13 @@
       document.body.style.overflowY = 'auto';
     }
   }
+
+  // Close the desktop profile dropdown when clicking outside of it
+  function handleWindowClick(e) {
+    if (isProfileOpen && !e.target.closest('.desktop-profile')) {
+      isProfileOpen = false;
+    }
+  }
 </script>
 
 <svelte:head>
@@ -47,7 +55,7 @@
   />
 </svelte:head>
 
-<svelte:window onresize={handleResize} />
+<svelte:window onresize={handleResize} onclick={handleWindowClick} />
 
 <nav class="navbar" class:bg-solid={isOpen}>
   <div class="nav-container">
@@ -73,6 +81,44 @@
     </ul>
 
     <div class="nav-actions">
+      <!-- Desktop Profile Dropdown (always visible on desktop) -->
+      <div class="desktop-profile">
+        <button
+          class="profile-btn"
+          aria-label="Account menu"
+          onclick={() => (isProfileOpen = !isProfileOpen)}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="avatar-icon"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        {#if isProfileOpen}
+          <div class="profile-dropdown" transition:fly={{ y: 5, duration: 200 }}>
+            {#if data?.user}
+              <p class="profile-name">{data.user.name}</p>
+              <p class="profile-email">{data.user.email}</p>
+              <hr class="profile-divider" />
+              <form action="/auth/logout" method="POST">
+                <button type="submit" class="logout-btn">Sign Out</button>
+              </form>
+            {:else}
+              <p class="profile-message">Sign in to access dashboard and exams</p>
+              <a href="/auth/login/google" class="login-btn-dropdown">Sign In</a>
+            {/if}
+          </div>
+        {/if}
+      </div>
+
       <button class="menu-toggle" aria-label="Toggle menu" onclick={toggleMenu}>
         {#if !isOpen}
           <svg
@@ -114,6 +160,47 @@
         </li>
       {/each}
     </ul>
+
+    <!-- Mobile User Info anchored to bottom -->
+    {#if data?.user}
+      <div
+        class="mobile-profile-bottom"
+        in:fly={{ y: 20, duration: 400, delay: 100 + menuItems.length * 50 }}
+      >
+        <div class="mobile-user-details">
+          <div class="avatar-large">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div>
+            <p class="profile-name">{data.user.name}</p>
+            <p class="profile-email">{data.user.email}</p>
+          </div>
+        </div>
+        <form action="/auth/logout" method="POST">
+          <button type="submit" class="logout-btn">Sign Out</button>
+        </form>
+      </div>
+    {:else}
+      <div
+        class="mobile-profile-bottom"
+        in:fly={{ y: 20, duration: 400, delay: 100 + menuItems.length * 50 }}
+      >
+        <p class="profile-message" style="margin-bottom: 1rem;">
+          Sign in to access dashboard and exams
+        </p>
+        <a href="/auth/login/google" class="login-btn-dropdown">Sign In</a>
+      </div>
+    {/if}
   </div>
 {/if}
 
@@ -297,8 +384,125 @@
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
   }
+
+  /* --- Desktop Profile --- */
+  .desktop-profile {
+    position: relative;
+    display: none;
+  }
+
+  .profile-btn {
+    background: transparent;
+    border: 1px solid rgba(187, 154, 247, 0.3);
+    border-radius: 50%;
+    color: #bb9af7;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .profile-btn:hover {
+    background: rgba(187, 154, 247, 0.1);
+    border-color: #bb9af7;
+  }
+
+  .avatar-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .profile-dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background-color: #16161e;
+    border: 1px solid rgba(187, 154, 247, 0.3);
+    border-radius: 12px;
+    padding: 1.25rem;
+    min-width: 250px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    text-align: center;
+  }
+
+  .profile-name {
+    color: #c0caf5;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  .profile-email {
+    color: #8f93a2;
+    font-size: 0.85rem;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    word-break: break-all;
+    text-align: left;
+  }
+
+  .profile-message {
+    color: #a9b1d6;
+    font-size: 0.95rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+  }
+
+  .profile-divider {
+    border: none;
+    height: 1px;
+    background: rgba(187, 154, 247, 0.2);
+    margin: 1rem 0;
+  }
+
+  .logout-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background: transparent;
+    color: #f7768e;
+    border: 1px solid rgba(247, 118, 142, 0.3);
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .logout-btn:hover {
+    background: rgba(247, 118, 142, 0.1);
+    border-color: #f7768e;
+  }
+
+  .login-btn-dropdown {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    background: rgba(187, 154, 247, 0.1);
+    color: #bb9af7;
+    border: 1px solid rgba(187, 154, 247, 0.3);
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .login-btn-dropdown:hover {
+    background: rgba(187, 154, 247, 0.2);
+    border-color: #bb9af7;
+    color: #ffffff;
+  }
+
   .menu-toggle {
     background: transparent;
     border: none;
@@ -320,7 +524,8 @@
       transform 0.2s ease,
       color 0.2s ease;
   }
-  /* Mobile Menu */
+
+  /* --- Mobile Menu --- */
   .mobile-menu {
     position: fixed;
     top: 70px;
@@ -329,8 +534,10 @@
     height: calc(100vh - 70px);
     background-color: #0c0c10;
     z-index: 40;
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
   }
   .menu-list {
@@ -340,6 +547,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
+    flex: 1; /* Pushes the profile section to the bottom */
   }
   .menu-link {
     display: flex;
@@ -356,6 +564,37 @@
     color: #ffffff;
   }
 
+  .mobile-profile-bottom {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(187, 154, 247, 0.2);
+    text-align: center;
+  }
+
+  .mobile-user-details {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .avatar-large {
+    width: 50px;
+    height: 50px;
+    color: #bb9af7;
+    background: rgba(187, 154, 247, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar-large svg {
+    width: 24px;
+    height: 24px;
+  }
+
   @media (min-width: 768px) {
     .nav-container {
       padding: 0 2rem;
@@ -368,6 +607,9 @@
     }
     .mobile-menu {
       display: none !important;
+    }
+    .desktop-profile {
+      display: block;
     }
   }
 
