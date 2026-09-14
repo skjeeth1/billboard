@@ -36,6 +36,10 @@ export async function GET({ url, cookies, platform }) {
     const name = claims.name || 'User';
     const avatar = claims.picture || null;
 
+    if (!platform?.env?.DB) {
+      throw new Error('Database binding (DB) is missing in the Cloudflare environment.');
+    }
+
     const db = platform.env.DB;
 
     let user = await db

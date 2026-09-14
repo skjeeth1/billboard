@@ -1,6 +1,15 @@
 [
   {
     "tag": "latest",
+    "image": "epoch10.webp",
+    "alt": "epoch10",
+    "date": "",
+    "title": "What it takes to crack core roles at Schneider Electric?",
+    "speaker": "Julin Mary Deepak",
+    "company": "Schneider Electric",
+    "details": "Get insights from Julin Mary Deepak, S7 ECE covering Analog, C Programming & Embedded basics. 'Be confident about what you know, honest about what you don't know, and focus on explaining your thought process clearly'. An Initiative of EC & AEI association"
+  },
+  {
     "image": "epoch9.webp",
     "alt": "epoch9",
     "date": "July 18, 2026 | 3:30 PM",
