@@ -108,6 +108,9 @@
               <p class="profile-name">{data.user.name}</p>
               <p class="profile-email">{data.user.email}</p>
               <hr class="profile-divider" />
+              <a href="/dashboard" class="dashboard-btn" onclick={() => (isProfileOpen = false)}
+                >Dashboard</a
+              >
               <form action="/auth/logout" method="POST">
                 <button type="submit" class="logout-btn">Sign Out</button>
               </form>
@@ -186,9 +189,12 @@
             <p class="profile-email">{data.user.email}</p>
           </div>
         </div>
-        <form action="/auth/logout" method="POST">
-          <button type="submit" class="logout-btn">Sign Out</button>
-        </form>
+        <div class="mobile-action-buttons">
+          <a href="/dashboard" class="dashboard-btn" onclick={toggleMenu}>Dashboard</a>
+          <form action="/auth/logout" method="POST">
+            <button type="submit" class="logout-btn">Sign Out</button>
+          </form>
+        </div>
       </div>
     {:else}
       <div
@@ -653,6 +659,35 @@
   .social-links svg {
     width: 22px;
     height: 22px;
+  }
+
+  .dashboard-btn {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 0.75rem;
+    background: rgba(187, 154, 247, 0.1);
+    color: #bb9af7;
+    border: 1px solid rgba(187, 154, 247, 0.3);
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .dashboard-btn:hover {
+    background: rgba(187, 154, 247, 0.2);
+    border-color: #bb9af7;
+    color: #ffffff;
+  }
+
+  .mobile-action-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   @media (min-width: 768px) {

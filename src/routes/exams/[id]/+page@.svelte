@@ -55,6 +55,12 @@
 
 <svelte:head>
   <title>{exam.title} | Examination</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
 </svelte:head>
 
 <div class="exam-layout">
@@ -84,6 +90,11 @@
         </div>
       </div>
       <div class="nav-right">
+        <div class="marking-scheme">
+          <span class="positive">+{exam.marks_per_correct}</span>
+          <span class="separator">|</span>
+          <span class="negative">-{exam.negative_marks_per_wrong}</span>
+        </div>
         <button class="submit-btn" type="submit">Submit Test</button>
       </div>
     </nav>
@@ -105,6 +116,13 @@
                 complete this exam.
               </li>
               <li>
+                <strong>Marking Scheme:</strong> You will be awarded
+                <span class="highlight-pos">+{exam.marks_per_correct}</span>
+                marks for every correct answer, and penalized
+                <span class="highlight-neg">-{exam.negative_marks_per_wrong}</span> marks for every incorrect
+                answer. Unattempted questions carry no penalty.
+              </li>
+              <li>
                 <strong>Auto-Submit:</strong> The test will automatically submit and conclude when the
                 timer reaches zero.
               </li>
@@ -122,7 +140,26 @@
         <!-- EXISTING QUESTIONS LOOP -->
         {#each exam.questions as question, index (question.id)}
           <div class="question-card" id={`q-${question.id}`}>
-            <!-- ... your existing question rendering logic ... -->
+            <div class="question-header">
+              <span class="question-number">Question {index + 1}</span>
+            </div>
+            <p class="question-text">{question.text}</p>
+
+            <div class="options-list">
+              {#each question.options as option, optIndex}
+                <label class="option-label" class:selected={answers[question.id] === optIndex}>
+                  <input
+                    type="radio"
+                    name={`q-${question.id}`}
+                    value={optIndex}
+                    bind:group={answers[question.id]}
+                    class="hidden-radio"
+                  />
+                  <span class="custom-radio"></span>
+                  <span class="option-text">{option}</span>
+                </label>
+              {/each}
+            </div>
           </div>
         {/each}
       </div>
@@ -166,19 +203,34 @@
     padding: 0 2rem;
     box-sizing: border-box;
     z-index: 100;
+    gap: 1rem; /* Added gap to prevent overlap */
   }
 
   .nav-left {
     display: flex;
     align-items: center;
     gap: 2rem;
+    flex: 1; /* Allow it to take up available space */
+    min-width: 0; /* Crucial for ellipsis to work in flexbox */
   }
+
   .exam-title {
     font-size: 1.25rem;
     font-weight: 700;
     color: #ffffff;
     margin: 0;
     font-family: 'Space Grotesk', sans-serif;
+    /* Truncation properties */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-shrink: 0; /* Prevents the right side from getting squished */
   }
 
   .timer {
@@ -192,6 +244,8 @@
     padding: 0.4rem 1rem;
     border-radius: 8px;
     border: 1px solid rgba(187, 154, 247, 0.2);
+    white-space: nowrap;
+    flex-shrink: 0; /* Protects the timer */
   }
   .timer.danger {
     color: #f7768e;
@@ -201,13 +255,14 @@
 
   .submit-btn {
     padding: 0.6rem 1.5rem;
-    background-color: rgba(187, 154, 247, 0.1);
-    color: #bb9af7;
-    border: 1px solid #bb9af7;
+    background-color: #bb9af7;
+    color: #1a1b26;
+    border: none;
     border-radius: 8px;
-    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
-    transition: all 0.3s ease; /* Add this */
+    cursor: pointer;
+    white-space: nowrap; /* Prevents two-line wrapping */
   }
 
   .submit-btn:hover {
@@ -337,5 +392,67 @@
   .option-label.selected .option-text {
     color: #ffffff;
     font-weight: 600;
+  }
+
+  .marking-scheme {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    background-color: rgba(26, 27, 38, 0.5);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid rgba(187, 154, 247, 0.2);
+  }
+
+  .marking-scheme .positive,
+  .highlight-pos {
+    color: #9ece6a; /* Green for positive */
+  }
+
+  .marking-scheme .negative,
+  .highlight-neg {
+    color: #f7768e; /* Red for negative */
+  }
+
+  .marking-scheme .separator {
+    color: #565f89;
+    font-weight: 400;
+  }
+
+  /* Mobile Adjustment */
+  @media (max-width: 768px) {
+    .exam-navbar {
+      padding: 0 1rem;
+      gap: 0.5rem;
+    }
+    .nav-left {
+      gap: 0.5rem;
+    }
+    .exam-title {
+      display: block; /* Make sure this isn't hidden anymore */
+      font-size: 1.05rem;
+    }
+    .timer {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.95rem;
+    }
+    .submit-btn {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+    }
+    .marking-scheme {
+      display: none;
+    }
+    .question-card {
+      padding: 1.5rem;
+    }
+    .nav-right {
+      gap: 1rem;
+    }
+    .marking-scheme {
+      display: none; /* Hide on very small screens to save navbar space */
+    }
   }
 </style>

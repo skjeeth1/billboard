@@ -5,6 +5,12 @@
 
 <svelte:head>
   <title>Results | {title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
 </svelte:head>
 
 <div class="results-layout">
@@ -13,7 +19,7 @@
       <h1 class="exam-title">{title} - Results</h1>
     </div>
     <div class="nav-right">
-      <a href="/dashboard" class="return-btn">Return to Dashboard</a>
+      <a href="/dashboard" class="return-btn">Dashboard</a>
     </div>
   </nav>
 
@@ -129,17 +135,30 @@
     padding: 0 2rem;
     box-sizing: border-box;
     z-index: 100;
+    gap: 1rem;
   }
+
   .nav-left {
     display: flex;
     align-items: center;
+    flex: 1;
+    min-width: 0;
   }
+
+  .nav-right {
+    flex-shrink: 0;
+  }
+
   .exam-title {
     font-size: 1.25rem;
     font-weight: 700;
     color: #ffffff;
     margin: 0;
     font-family: 'Space Grotesk', sans-serif;
+    /* Truncation properties */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .return-btn {
@@ -150,9 +169,9 @@
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    transition: all 0.3s ease; /* Add this */
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Prevents three-line wrapping */
   }
-
   /* Add this hover state */
   .return-btn:hover {
     background-color: #bb9af7;
@@ -348,5 +367,18 @@
   .is-wrong .tag {
     background: rgba(247, 118, 142, 0.2);
     color: #f7768e;
+  }
+
+  @media (max-width: 768px) {
+    .exam-navbar {
+      padding: 0 1rem;
+    }
+    .exam-title {
+      font-size: 1.05rem;
+    }
+    .return-btn {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+    }
   }
 </style>

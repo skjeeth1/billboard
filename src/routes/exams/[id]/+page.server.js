@@ -9,7 +9,7 @@ export const load = async ({ locals, params, request, platform }) => {
   const db = platform?.env?.DB;
 
   const exam = await db.prepare(
-    `SELECT id, title, duration_seconds, content_json 
+    `SELECT id, title, duration_seconds, content_json, marks_per_correct, negative_marks_per_wrong 
      FROM exams WHERE id = ? AND status = 'published'`
   ).bind(params.id).first();
 
@@ -55,6 +55,8 @@ export const load = async ({ locals, params, request, platform }) => {
       id: exam.id,
       title: exam.title,
       duration_seconds: exam.duration_seconds,
+      marks_per_correct: exam.marks_per_correct,
+      negative_marks_per_wrong: exam.negative_marks_per_wrong,
       questions: JSON.parse(exam.content_json)
     },
     savedState: {
