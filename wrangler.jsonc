@@ -1,12 +1,18 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "cet-ece-billboard",
-  "compatibility_date": "2026-09-13",
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "ece-db",
-      "database_id": "8f4dba3e-a5ab-474a-b1f1-642f43102d78"
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "cet-ece-billboard",
+	"compatibility_date": "2026-09-13",
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "ece-db",
+			"database_id": "8f4dba3e-a5ab-474a-b1f1-642f43102d78"
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "EXAM_CACHE",
+			"id": "aa1b5a422eb14c468902182f7059db61"
+		}
+	]
 }
