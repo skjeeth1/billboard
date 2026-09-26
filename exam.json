@@ -1,0 +1,68 @@
+{
+  "slug": "general-knowledge-test-01",
+  "title": "Dummy Test: General Knowledge",
+  "duration_seconds": 600,
+  "marks_per_correct": 1.0,
+  "negative_marks_per_wrong": 0.25,
+  "questions": [
+    { "id": "q1", "text": "What is 2 + 2?", "options": ["3", "4", "5", "6"] },
+    {
+      "id": "q2",
+      "text": "What is the capital of France?",
+      "options": ["London", "Berlin", "Paris", "Madrid"]
+    },
+    {
+      "id": "q3",
+      "text": "Which planet is known as the Red Planet?",
+      "options": ["Earth", "Mars", "Jupiter", "Venus"]
+    },
+    {
+      "id": "q4",
+      "text": "What is the chemical formula for water?",
+      "options": ["H2O", "CO2", "O2", "NaCl"]
+    },
+    {
+      "id": "q5",
+      "text": "What is the largest mammal on Earth?",
+      "options": ["Elephant", "Blue Whale", "Giraffe", "Shark"]
+    },
+    {
+      "id": "q6",
+      "text": "What is the boiling point of water at sea level in Celsius?",
+      "options": ["90", "100", "110", "120"]
+    },
+    { "id": "q7", "text": "The Sun is a:", "options": ["Planet", "Star", "Asteroid", "Comet"] },
+    {
+      "id": "q8",
+      "text": "How many continents are there on Earth?",
+      "options": ["5", "6", "7", "8"]
+    },
+    {
+      "id": "q9",
+      "text": "Who is the principal founder of Microsoft?",
+      "options": ["Steve Jobs", "Bill Gates", "Elon Musk", "Mark Zuckerberg"]
+    },
+    {
+      "id": "q10",
+      "text": "What are the primary colors of light?",
+      "options": [
+        "Red, Green, Blue",
+        "Cyan, Magenta, Yellow",
+        "Red, Yellow, Blue",
+        "Black, White, Gray"
+      ]
+    }
+  ],
+  "answer_key": {
+    "q1": 1,
+    "q2": 2,
+    "q3": 1,
+    "q4": 0,
+    "q5": 1,
+    "q6": 1,
+    "q7": 1,
+    "q8": 2,
+    "q9": 1,
+    "q10": 0
+  }
+}

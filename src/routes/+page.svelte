@@ -11,14 +11,10 @@
     AchievementCard,
     NotificationToast,
     EventCard,
-
-    // data
     achievementsData,
     newsData,
     epochData,
     galleryData,
-
-    // utils
     reveal,
     getImageUrl
   } from '$lib';
