@@ -22,7 +22,7 @@ export async function GET({ url, cookies, platform }) {
     const response = await oauth.authorizationCodeGrantRequest(
       as,
       client,
-      clientAuth,       // <-- was missing before
+      clientAuth, // <-- was missing before
       params,
       redirectUri,
       codeVerifier
@@ -50,7 +50,9 @@ export async function GET({ url, cookies, platform }) {
     if (!user) {
       const userId = crypto.randomUUID();
       await db
-        .prepare('INSERT INTO users (id, google_id, email, name, avatar_url) VALUES (?, ?, ?, ?, ?)')
+        .prepare(
+          'INSERT INTO users (id, google_id, email, name, avatar_url) VALUES (?, ?, ?, ?, ?)'
+        )
         .bind(userId, googleId, email, name, avatar)
         .run();
       user = { id: userId, email, name };
@@ -77,5 +79,5 @@ export async function GET({ url, cookies, platform }) {
     return new Response(`OAuth Error: ${err?.message || err}`, { status: 400 });
   }
 
-  throw redirect(302, '/');
+  throw redirect(302, '/dashboard');
 }
