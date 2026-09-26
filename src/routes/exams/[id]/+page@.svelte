@@ -26,21 +26,39 @@
       }
     }, 1000);
 
-    // 2. The Auto-Save Pinger (runs every 10 seconds)
-    autoSaveTimer = setInterval(() => {
+    const triggerAutosave = () => {
       const timeTaken = exam.duration_seconds - timeLeft;
+      const payload = JSON.stringify({ answers, timeTaken });
 
-      // Fire and forget fetch request
-      fetch(`/exams/${exam.id}/autosave`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ answers, timeTaken })
-      }).catch((err) => console.error('Autosave failed:', err));
-    }, 120000);
+      if (navigator.sendBeacon) {
+        const blob = new Blob([payload], { type: 'application/json' });
+        navigator.sendBeacon(`/exams/${exam.id}/autosave`, blob);
+      } else {
+        fetch(`/exams/${exam.id}/autosave`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload,
+          keepalive: true
+        }).catch((err) => console.error('Autosave failed:', err));
+      }
+    };
+
+    autoSaveTimer = setInterval(triggerAutosave, 120000);
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        triggerAutosave();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('pagehide', triggerAutosave);
 
     return () => {
       clearInterval(timer);
       clearInterval(autoSaveTimer);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('pagehide', triggerAutosave);
     };
   });
 
@@ -143,7 +161,7 @@
             <div class="question-header">
               <span class="question-number">Question {index + 1}</span>
             </div>
-            <p class="question-text">{question.text}</p>
+            <pre class="question-text">{question.text}</pre>
 
             <div class="options-list">
               {#each question.options as option, optIndex}
@@ -310,6 +328,7 @@
     font-size: 1.2rem;
     color: #c0caf5;
     margin: 0 0 1.5rem 0;
+    white-space: pre-wrap;
   }
 
   /* Instructions Specific Styling */
@@ -388,6 +407,7 @@
   .option-text {
     font-size: 1.05rem;
     color: #a9b1d6;
+    white-space: pre-wrap;
   }
   .option-label.selected .option-text {
     color: #ffffff;
