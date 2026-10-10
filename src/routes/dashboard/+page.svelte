@@ -110,7 +110,7 @@
                     rel="noopener noreferrer"
                     class="answers-link"
                   >
-                    answers &rarr;
+                    Answers &rarr;
                   </a>
                 {/if}
               </p>
@@ -390,29 +390,36 @@
     color: #bb9af7;
   }
 
-  .drive-link {
-    font-size: 0.95rem;
-    color: #7dcfff;
-    text-decoration: none;
-    font-weight: 700;
-    padding: 0.25rem 0.6rem;
-    border: 1px solid rgba(125, 207, 255, 0.4);
-    border-radius: 6px;
-    background-color: rgba(125, 207, 255, 0.1);
-    transition: all 0.3s ease;
-    margin-top: 0.2rem;
-  }
-
-  .drive-link:hover {
-    background-color: #7dcfff;
-    color: #1a1b26;
-    box-shadow: 0 0 10px rgba(125, 207, 255, 0.4);
-  }
-
   .empty-state {
     color: #565f89;
     font-style: italic;
     font-size: 1.1rem;
+  }
+
+  .attempt-date {
+    margin: 0;
+    color: #a9b1d6;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .separator {
+    color: #565f89;
+  }
+
+  .answers-link {
+    color: #7dcfff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .answers-link:hover {
+    color: #bb9af7;
   }
 
   /* Responsive Adjustments */
