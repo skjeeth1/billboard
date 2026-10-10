@@ -111,6 +111,19 @@
                 <span class="stat-label">Time Taken</span>
                 <span class="stat-value">{formatTime(attempt.time_taken_seconds)}</span>
               </div>
+              {#if attempt.drive_link}
+                <div class="stat">
+                  <span class="stat-label">Solution</span>
+                  <a
+                    href={attempt.drive_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="drive-link"
+                  >
+                    ANSWERS &rarr;
+                  </a>
+                </div>
+              {/if}
             </div>
           </div>
         {/each}
@@ -350,6 +363,7 @@
 
   .attempt-stats {
     display: flex;
+    align-items: center;
     gap: 2rem;
   }
 
@@ -374,6 +388,25 @@
 
   .stat-value.highlight {
     color: #bb9af7;
+  }
+
+  .drive-link {
+    font-size: 0.95rem;
+    color: #7dcfff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(125, 207, 255, 0.4);
+    border-radius: 6px;
+    background-color: rgba(125, 207, 255, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 0.2rem;
+  }
+
+  .drive-link:hover {
+    background-color: #7dcfff;
+    color: #1a1b26;
+    box-shadow: 0 0 10px rgba(125, 207, 255, 0.4);
   }
 
   .empty-state {
