@@ -100,7 +100,20 @@
           <div class="attempt-row">
             <div class="attempt-details">
               <h4>{attempt.exam_title}</h4>
-              <p class="attempt-date">Submitted on {formatDate(attempt.submitted_at)}</p>
+              <p class="attempt-date">
+                Submitted on {formatDate(attempt.submitted_at)}
+                {#if attempt.drive_link}
+                  <span class="separator">•</span>
+                  <a
+                    href={attempt.drive_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="answers-link"
+                  >
+                    Answers &rarr;
+                  </a>
+                {/if}
+              </p>
             </div>
             <div class="attempt-stats">
               <div class="stat">
@@ -350,6 +363,7 @@
 
   .attempt-stats {
     display: flex;
+    align-items: center;
     gap: 2rem;
   }
 
@@ -380,6 +394,32 @@
     color: #565f89;
     font-style: italic;
     font-size: 1.1rem;
+  }
+
+  .attempt-date {
+    margin: 0;
+    color: #a9b1d6;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .separator {
+    color: #565f89;
+  }
+
+  .answers-link {
+    color: #7dcfff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .answers-link:hover {
+    color: #bb9af7;
   }
 
   /* Responsive Adjustments */
