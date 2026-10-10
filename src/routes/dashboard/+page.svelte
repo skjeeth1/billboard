@@ -100,7 +100,20 @@
           <div class="attempt-row">
             <div class="attempt-details">
               <h4>{attempt.exam_title}</h4>
-              <p class="attempt-date">Submitted on {formatDate(attempt.submitted_at)}</p>
+              <p class="attempt-date">
+                Submitted on {formatDate(attempt.submitted_at)}
+                {#if attempt.drive_link}
+                  <span class="separator">•</span>
+                  <a
+                    href={attempt.drive_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="answers-link"
+                  >
+                    answers &rarr;
+                  </a>
+                {/if}
+              </p>
             </div>
             <div class="attempt-stats">
               <div class="stat">
@@ -111,19 +124,6 @@
                 <span class="stat-label">Time Taken</span>
                 <span class="stat-value">{formatTime(attempt.time_taken_seconds)}</span>
               </div>
-              {#if attempt.drive_link}
-                <div class="stat">
-                  <span class="stat-label">Solution</span>
-                  <a
-                    href={attempt.drive_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="drive-link"
-                  >
-                    ANSWERS &rarr;
-                  </a>
-                </div>
-              {/if}
             </div>
           </div>
         {/each}
